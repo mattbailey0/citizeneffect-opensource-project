@@ -1,0 +1,7 @@
+Over the last five years, you helped Citizen Effect raise $1 million from over 6,000 donors in support of 75 amazing nonprofit partners. That effort improved the lives of 350,000 people around the world. From a single well in India to tutoring in Detroit, Citizen Effect was an organization dedicated to transforming passionate people into effective community leaders and fundraisers.
+
+Citizen Effect's success stemmed from a few sources: dedicated Citizen Philanthropists, passionate nonprofit partners and a powerful technology platform that connected them both. We are extremely proud of our Citizen Philanthropists, thankful of our nonprofit partners and in awe of the enabling nature of the right technology.
+
+With all that in mind, we at Citizen Effect have made an important strategic decision. Rather than facilitate and manage projects ourselves, requiring a costly infrastructure and keeping a valuable tool behind closed doors, we are excited to announce that in May we will be open sourcing our code base, making it freely available to everyone. So while Citizen Effect will be going away as an organization, our platform will live on and be available for you to study, test and deploy. If you are interested in joining this open source project, please email open@citizeneffect.org.
+
+Over the next month or so we'll attempt to guage interest and possible uses for this codebase and will be expanding our documentation and engagement with the community accordingly.  Let us know what you think should come next!
