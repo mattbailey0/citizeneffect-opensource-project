@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: History.txt</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>History.txt</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>History.txt
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Wed Sep 02 18:44:52 -0400 2009</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h2>0.0.6 2009-03-19</h2>
+<ul>
+<li>Support for meta, strong, dl, dt, dd, and em HTML elements.
+
+</li>
+<li>Update to <a href="../classes/HtmlUnit.html">HtmlUnit</a> 2.5-SNAPSHOT.
+
+</li>
+<li>New options for Browser#new: :proxy, :charset, :render, :log_level
+
+</li>
+<li>Methods added:
+
+<ul>
+<li>Browser#add_cookie
+
+</li>
+<li>Browser#asynchronized
+
+</li>
+<li>Browser#add_listener
+
+</li>
+<li>Browser#content_type
+
+</li>
+<li>Browser#cookies
+
+</li>
+<li>Browser#debug_web_connection
+
+</li>
+<li>Browser#focused_element
+
+</li>
+<li>Browser#io
+
+</li>
+<li>Browser#remove_cookie
+
+</li>
+<li>Browser#response_headers
+
+</li>
+<li>Browser#wait
+
+</li>
+<li>Browser#xml
+
+</li>
+<li>Browser#{element,elements}_by_xpath
+
+</li>
+<li>ClickableElement#{double,right}_click
+
+</li>
+<li>ElementCollection#{first,last}
+
+</li>
+</ul>
+</li>
+<li>Methods removed:
+
+<ul>
+<li>Browser#show_*
+
+</li>
+</ul>
+</li>
+<li>Methods renamed:
+
+<ul>
+<li>SelectList#get_all_contents =&gt; SelectList#options
+
+</li>
+<li>SelectList#get_selected_items =&gt; selected_options
+
+</li>
+<li>SelectList#clear_selection =&gt; SelectList#clear
+
+</li>
+</ul>
+</li>
+<li>Add support for finding elements by their corresponding &lt;label&gt;.
+
+</li>
+<li>Recognize buttons of type image, reset, submit.
+
+</li>
+<li>Proxy support (see Browser.new)
+
+</li>
+<li>Lots of refactorings, bug fixes and minor enhancements.
+
+</li>
+</ul>
+<p>
+Thanks to Hirobumi Hama, Kamal Fariz Mahyuddin and Thomas Marek for
+contributions in this release.
+</p>
+<h2>0.0.4 2008-08-18</h2>
+<ul>
+<li>Minor enhancements
+
+<ul>
+<li>Update <a href="../classes/HtmlUnit.html">HtmlUnit</a> to 2.2
+
+</li>
+<li>New methods: Element#focus, Element#parent, Table#child_row,
+Table#child_cell, TableRow#child_cell
+
+</li>
+<li>Rename Celerity::IE -&gt; <a
+href="../classes/Celerity/Browser.html">Celerity::Browser</a> (but
+Celerity::IE still points to the class)
+
+</li>
+<li>Add Celerity::Browser.new(:browser =&gt; :firefox) to use <a
+href="../classes/HtmlUnit.html">HtmlUnit</a>&#8216;s Firefox mode.
+
+</li>
+<li>Make it easier to run the spec suite against other implementations.
+
+</li>
+<li>Bugfixes:
+
+<ul>
+<li>Image#click
+
+</li>
+<li>Finding elements by id could give weird errors if multiple elements had the
+same id.
+
+</li>
+<li>If getElementById returns an element with the wrong tag name, output a
+warning and find the correct element by iteration instead.
+
+</li>
+<li>Browser#goto regexp
+
+</li>
+<li>Frames (collection) support
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2>0.0.3 2008-05-26</h2>
+<ul>
+<li>3 major enhancements:
+
+<ul>
+<li>Added support for &lt;ul&gt;, &lt;ol&gt;, &lt;thead&gt;, &lt;tfoot&gt;,
+&lt;h1&gt;, &lt;h2&gt;, &lt;h3&gt;, &lt;h4&gt;, &lt;h5&gt; and &lt;h6&gt;
+elements
+
+</li>
+<li>Better support for &lt;tbody&gt;, &lt;tr&gt; and &lt;option&gt; elements.
+They are now accessible from the top level in the same way as every other
+element, meaning you can do ie.option(:id, &#8216;some_id&#8217;), or
+ie.row(:index, 1).
+
+</li>
+<li>Better HTTPS support
+
+</li>
+</ul>
+</li>
+<li>8 minor enhancements:
+
+<ul>
+<li>Improved CelerityViewer
+
+</li>
+<li>Watir-like show methods (IE#show_divs, IE#show_tables, etc.)
+
+</li>
+<li>All HTML elements now has a default how parameter, see <a
+href="http://celerity.rubyforge.org/wiki/wiki.pl?ListOfSupportedHtmlElementsAndTheirDefaultHowParameter">celerity.rubyforge.org/wiki/wiki.pl?ListOfSupportedHtmlElementsAndTheirDefaultHowParameter</a>
+
+</li>
+<li>Raketask cleanup
+
+</li>
+<li>Separated out Watir compatibility specific stuff
+
+</li>
+<li>Form#submit implemented
+
+</li>
+<li>Updated ATTRIBUTES constants for all element classes
+
+</li>
+<li>TextField#type bug fixed
+
+</li>
+</ul>
+</li>
+</ul>
+<h2>0.0.2 2008-05-15</h2>
+<ul>
+<li>3 major enhancements:
+
+<ul>
+<li>Support for multiple how =&gt; what conditions
+
+</li>
+<li>Fixed performance issue with collections
+
+</li>
+<li>Specs will now run on Windows
+
+</li>
+</ul>
+</li>
+<li>3 minor enhancements:
+
+<ul>
+<li>Benchmark scripts
+
+</li>
+<li>Method generator
+
+</li>
+<li>Fixed multi-byte characters issue for text fields
+
+</li>
+</ul>
+</li>
+</ul>
+<h2>0.0.1 2008-05-07</h2>
+<ul>
+<li>1 major enhancement:
+
+<ul>
+<li>Initial release
+
+</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

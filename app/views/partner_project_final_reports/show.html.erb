@@ -1,0 +1,209 @@
+<% content_for(:page_title, "Final Report For #{@project.name}") %>
+
+<div class="clear"></div>
+
+<div class="breadcrumbs">
+  <%= link_to "&laquo; back to project", @project, :class => "breadcrumbs green" %>
+</div>
+
+<div id="wrapper-copy">
+  <div class="component-header-full nopadtop">
+    <h3><%=h @partner_project_final_report.project.name %></h3>
+  </div>
+  <div class="box-full-middle">
+    <div class="pad_top pad_left">
+      <p><em>Posted: <%=h @partner_project_final_report.created_at.strftime("%m/%d/%Y") %></em></p>
+      
+      <hr />
+      <p><strong>Construction</strong></p>
+      <hr />
+
+      <p>
+        <strong>Start date</strong><br />
+        <%=h @partner_project_final_report.start_date.strftime("%m/%d/%Y") %>
+      </p>
+
+      <p>
+        <strong>Expected completion date</strong><br />
+        <%=h @partner_project_final_report.expected_completion_date.strftime("%m/%d/%Y") %>
+      </p>
+
+      <% unless @partner_project_final_report.what_has_been_purchased.blank? %>
+      <p>
+        <strong>What Has Been Purchased for the Project</strong><br />
+        <%= auto_link(simple_format(h(@partner_project_final_report.what_has_been_purchased))) %>
+      </p>
+      <% end %>
+
+
+      <% unless @partner_project_final_report.number_of_construction_jobs_created.blank? %>
+      <p>
+        <strong>Jobs Created During Construction</strong><br />
+        <%= h(@partner_project_final_report.number_of_construction_jobs_created) %>
+      </p>
+      <% end %>
+
+      <% unless @partner_project_final_report.construction_job_breakdown.blank? %>
+      <p>
+        <strong>Description and breakdown of jobs </strong><br />
+        <%= auto_link(simple_format(h(@partner_project_final_report.construction_job_breakdown))) %>
+      </p>
+      <% end %>
+
+      <% unless @partner_project_final_report.completion_summary.blank? %>
+      <p>
+        <strong>Summary of Project Completion</strong><br />
+        <%= auto_link(simple_format(h(@partner_project_final_report.completion_summary))) %>
+      </p>
+      <% end %>
+      
+      <hr />
+      <p><strong>Final Budget</strong></p>
+      <hr />
+      
+      <% unless @partner_project_final_report.final_cost_in_local_currency.blank? %>
+      <p>
+        <strong>Final project cost in local currency</strong><br />
+        <%= h(@partner_project_final_report.final_cost_in_local_currency) %> <%= h(@partner_project_final_report.local_currency_type.currency_code) %>
+      </p>
+      <% end %>
+      
+      <% unless @partner_project_final_report.final_cost_in_usd.blank? %>
+      <p>
+        <strong>Final project cost in USD</strong><br />
+        <%=h number_to_currency(@partner_project_final_report.final_cost_in_usd) %>
+      </p>
+      <% end %>
+      
+
+      <hr />
+      <p><strong>Impact (to date)</strong></p>
+      <hr />
+      <% unless @partner_project_final_report.lives_directly_impacted.blank? %>
+      <p>
+        <strong>Lives directly impacted</strong><br />
+        <%= h(@partner_project_final_report.lives_directly_impacted) %>
+      </p>
+      <% end %>
+      
+      <% unless @partner_project_final_report.primary_benefits_summary.blank? %>
+      <p>
+        <strong>Direct Impact/Primary Benefits</strong><br />
+        <%= auto_link(simple_format(h(@partner_project_final_report.primary_benefits_summary))) %>
+      </p>
+      <% end %>
+
+      
+      <% unless @partner_project_final_report.lives_indirectly_impacted.blank? %>
+      <p>
+        <strong>Lives Indirectly Impacted </strong><br />
+        <%= h(@partner_project_final_report.lives_indirectly_impacted) %>
+      </p>
+      <% end %>
+
+      
+      <% unless @partner_project_final_report.extended_benefits_summary.blank? %>
+      <p>
+        <strong>Community-wide Impact/Extended Benefits</strong><br />
+        <%= auto_link(simple_format(h(@partner_project_final_report.extended_benefits_summary))) %>
+      </p>
+      <% end %>
+
+      
+      <% unless @partner_project_final_report.education_and_nutrition.blank? %>
+      <p>
+        <strong>Education &amp; Nutrition</strong><br />
+        <%= auto_link(simple_format(h(@partner_project_final_report.education_and_nutrition))) %>
+      </p>
+      <% end %>
+
+      <% unless @partner_project_final_report.improved_health.blank? %>
+      <p>
+        <strong>Improved health</strong><br />
+        <%= auto_link(simple_format(h(@partner_project_final_report.improved_health))) %>
+      </p>
+      <% end %>
+
+      
+      <% unless @partner_project_final_report.agriculture_and_food.blank? %>
+      <p>
+        <strong>Agriculture and food</strong><br />
+        <%= auto_link(simple_format(h(@partner_project_final_report.agriculture_and_food))) %>
+      </p>
+      <% end %>
+
+      
+      <% unless @partner_project_final_report.clean_energy.blank? %>
+      <p>
+        <strong>Clean energy</strong><br />
+        <%= auto_link(simple_format(h(@partner_project_final_report.clean_energy))) %>
+      </p>
+      <% end %>
+
+      
+      <hr />
+      <p><strong>Employment Generation</strong></p>
+      <hr />
+
+
+      <% unless @partner_project_final_report.productive_time_created.blank? %>
+      <p>
+        <strong>Productive time created</strong><br />
+        <%= auto_link(simple_format(h(@partner_project_final_report.productive_time_created))) %>
+      </p>
+      <% end %>
+
+      
+      <% unless @partner_project_final_report.number_of_jobs_created.blank? %>
+      <p>
+        <strong>Jobs created</strong><br />
+        <%= h(@partner_project_final_report.number_of_jobs_created) %>
+      </p>
+      <% end %>
+
+
+      <% unless @partner_project_final_report.job_breakdown.blank? %>
+      <p>
+        <strong>Description and breakdown of jobs </strong><br />
+        <%= auto_link(simple_format(h(@partner_project_final_report.job_breakdown))) %>
+      </p>
+      <% end %>
+
+      
+      <% unless @partner_project_final_report.wages_increased.blank? %>
+      <p>
+        <strong>Wages increased</strong><br />
+        <%= auto_link(simple_format(h(@partner_project_final_report.wages_increased))) %>
+      </p>
+      <% end %>
+
+      <% unless @partner_project_final_report.small_businesses_created.blank? %>
+      <p>
+        <strong>Small businesses created</strong><br />
+        <%= h(@partner_project_final_report.small_businesses_created) %>
+      </p>
+      <% end %>
+
+      <% unless @partner_project_final_report.business_breakdown.blank? %>
+      <p>
+        <strong>Description and breakdown of businesses </strong><br />
+        <%= auto_link(simple_format(h(@partner_project_final_report.business_breakdown))) %>
+      </p>
+      <% end %>
+
+      
+      <% unless @partner_project_final_report.other.blank? %>
+      <p>
+        <strong>Other </strong><br />
+        <%= auto_link(simple_format(h(@partner_project_final_report.other))) %>
+      </p>
+      <% end %>
+      
+      
+      
+      <%= render :partial => "shared/partner_project_report_downloads", :locals => { :report => @partner_project_final_report } %>
+    </div>
+  </div>
+  <div class="box-full-bottom"></div>
+</div>
+<div class="clear">

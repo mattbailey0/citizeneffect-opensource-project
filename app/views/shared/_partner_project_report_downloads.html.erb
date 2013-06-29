@@ -1,0 +1,9 @@
+<% if report.associated_files.any? %>
+  <hr />
+  <p><strong>Downloads</strong></p>
+  <hr />
+
+  <% report.associated_files.each do |file| %>
+    <p><%= link_to h(file.andand.original_filename), file.andand.url %></p>
+  <% end %>
+<% end %>

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+params: (container, type, *args)
+is_singleton: true
+block_params: 
+name: new
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Can optionally take a value parameter as a third arg, so we override initialize
+full_name: Celerity::RadioCheckCommon::new
+visibility: public
+aliases: []
+

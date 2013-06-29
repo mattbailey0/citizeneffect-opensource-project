@@ -1,0 +1,18 @@
+!!! 
+
+%html{ :xmlns => "http://www.w3.org/1999/xhtml" }
+  %head
+    = javascript_include_tag 'jquery'
+  %body{ :style => "margin:0px;" }
+    %div
+      %div{:style => "clear:both; margin:0px !important; padding:0px !important; height: 1px; font-size: 1px; line-height: 1px;"}
+      = @regular_page.content
+      %div{:style => "clear:both; margin:0px !important; padding:0px !important; height: 1px; font-size: 1px; line-height: 1px;"}
+    :javascript
+      setHeight = function(){ 
+        outer = window.top.$("##{dom_id(@regular_page)}").height();
+        inner = $(document.body).height();
+        if(inner > outer){ window.top.$("##{dom_id(@regular_page)}").height(inner); }
+      }
+      setInterval(setHeight, 100);
+      $(document).ready( function(){ $("a[target!='_blank']").attr("target", "_top"); });

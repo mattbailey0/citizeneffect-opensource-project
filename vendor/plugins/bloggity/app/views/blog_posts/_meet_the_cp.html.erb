@@ -1,0 +1,29 @@
+<% cp = @project.cp -%>
+<!-- meet the CP -->
+<div class="box-rightcol-inner-header">
+	<div class="box-rightcol-header"><h3>MEET THE CP</h3></div>
+</div>
+<div class="box-rightcol-inner">
+	<div class="meet">
+		<div class="left"><%= link_to image_tag(cp.picture_url_thumb(:profile), :alt => ""), cp %></div>
+		<div class="right">
+			<p class="name"><%= link_to h(cp.display_name), cp, :class => 'content-blue bold px12' %></p>
+			<p class="location"><%=h cp.display_location %></p>
+			
+      <p class="send_message">
+        <%= link_to image_tag("btn_send_a_message.png", :alt => ""), message_user_path(cp), 
+        :class => "send_a_message" -%>
+      </p>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="meet last">
+		<p class="copy">
+		  <% unless cp.about_me.blank? %>
+			<strong>About Me:</strong>
+			<%=h cp.about_me %>
+			<% end %>
+		</p>
+	</div>
+</div>
+<div class="box-rightcol-bottom"></div>

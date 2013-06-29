@@ -1,0 +1,48 @@
+PaperclipWithUnifiedTable
+=========================
+
+Introduction goes here.
+
+
+Example
+=======
+
+create_table :unified_uploads do |t|
+  t.string  :uploadable_type
+  t.integer :uploadable_id
+  t.string  :flavor
+  t.string  :content_file_name
+  t.string  :content_content_type
+  t.string  :content_file_size
+  t.string  :content_updated_at
+  t.timestamps
+end
+
+class UnifiedUpload < ActiveRecord::Base
+  belongs_to :uploadable, :polymorphic => true
+  has_attached_file :content
+  validates_presence_of :flavor 
+end
+
+Example goes here.
+
+
+Copyright (c) 2009 [name of plugin creator], released under the MIT license
+
+# should have the default table name be configurable
+# don't really need to namespace the 'flavor' column; it's already polymorphic
+# don't need to override has_one since we just made our own pretty method
+# auto-generate the migration for the One True Table
+# need to reflect to override the associations
+# should require validation of flavor; we could even make sure it's one of the indicated flavors
+  by tracking associations
+
+# should have these by default on the Upload model
+  def url
+    content.andand.url
+  end
+
+  def path
+    content.andand.path
+  end
+

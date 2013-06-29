@@ -1,0 +1,8 @@
+%table
+  %tr{:style => "font-weight:bold;"}
+    %td ID
+    %td Name
+  - @focus_areas.each do |focus_area|
+    %tr
+      %td= h focus_area.id
+      %td= h focus_area.name

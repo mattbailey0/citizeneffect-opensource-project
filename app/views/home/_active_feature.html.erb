@@ -1,0 +1,14 @@
+<div id="featured_project_<%=h active_feature.id %>_picture" class="featured_project_<%=h active_feature.id %> featured_project_picture" style="position: absolute; top: 0px; left: <%=h active_feature == first ? "" : "-20000" %>0px;">
+
+  <a href='<%= active_feature.url_identifier || '#' -%>'><img src='<%= active_feature.picture.url(:featured_project) -%>' width="629" height="391" alt="" id="slideshow_1" /></a>
+  <div class="screen_top"></div>
+  <div class="screen_bottom"></div>
+  <div class="screen_line"></div>
+  <div class="copy">
+  	<div class="right"><a href='<%= active_feature.url_identifier -%>' class="readmore">read more</a></div>
+    <h6 class="active_feature_title"><%=h active_feature.title -%></h6>
+  	<p class="active_feature_caption"><%=h active_feature.caption -%></p>
+  	<div class="clear"></div>
+  </div>
+
+</div>

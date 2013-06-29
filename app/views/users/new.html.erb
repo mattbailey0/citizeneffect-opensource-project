@@ -1,0 +1,102 @@
+<% content_for(:page_title, "Create Account") %>
+
+<% @user.password = @user.password_confirmation = nil %>
+
+<div class="breadcrumbs"></div>
+
+<% content_for :form_errors do -%>
+  <%= error_messages_for :user %>
+<% end -%>
+
+<% form_for :user, :url => users_path do |f| -%>
+<%= f.hidden_field :referral_code %>		
+		
+<!-- main body copy -->
+<div id="wrapper-copy">
+		
+	<div class="component-header-full nopadtop">
+		<h3>ACCOUNT SIGN UP</h3>
+	</div> 		
+		
+	<!-- full-width component -->
+	<style type="text/css">
+		.difference_container{
+				width:100%;
+				background-color:#dbeaf2;
+				height:63px;
+				padding:25px 12px 0 0;
+				margin-left:-7px;
+				font-size:12px;
+		}
+		.large_text{
+				font-size:14px;
+		}
+		.difference{
+				padding-left:16px;
+		}
+		#account_signup{
+				width:500px;
+				margin:0 auto;
+				text-align: center;
+				padding-bottom:50px;
+		}
+		#account_signup p{
+				text-align:left;
+		}
+		#account_signup p.tos { text-align:center;}
+		.email_large{
+				width:220px;
+		}
+		.zip_small{
+				width:78px;
+		}
+	</style>
+  <div class="box-full-middle" style="">
+    <div class="difference_container">
+      <p class="difference pad_left left">
+        <span class="bold large_text">IT'S EASY TO MAKE A REAL DIFFERENCE</span><br />
+        Sign up to share projects, interact, track donations, and be a Citizen Philanthropist
+      </p>
+      <p class="pad_right right">
+        Already have a Citizen Effect account? <%= link_to "Sign In", login_path, :class => "green" %>
+      </p>
+    </div>
+  </div>
+	<div id="account_signup_container" class="box-full-middle account-info pad_top">
+    <div id="account_signup">
+      <p class="left pad_right">
+        <%= f.label :first_name, "FIRST NAME" %>
+        <%= f.text_field :first_name %>
+      </p>
+      <p class="left">
+        <%= f.label :last_name, "LAST NAME" %>
+        <%= f.text_field :last_name %>
+      </p>
+      <p class="left pad_right">
+        <%= f.label :email, "E-MAIL" %>
+        <%= f.text_field :email, :class => "email_large" %>
+      </p>
+      <p class="left">
+        <%= f.label :zip, "ZIPCODE" %>
+        <%= f.text_field :zip, :class => "zip_small" %>
+      </p>
+      <p class="left pad_right">
+        <%= f.label :password, "PASSWORD" %>
+        <%= f.password_field :password %>
+      </p>
+      <p class="left pad_bottom">
+        <%= f.label :password_confirmation, "CONFIRM PASSWORD" %>
+        <%= f.password_field :password_confirmation %>
+      </p>
+      <div class="clear"></div>
+      <p class="tos center pad_top pad_bottom">
+        By clicking "Create My Account" below you are agreeing to the <a href="http://citizeneffect.org/p/account-terms-of-service">Citizen Effect Terms of Service</a>.
+      </p>
+      <%= image_submit_tag "create_account.png", :alt => 'Create My Account', :class => "pad_top create_account" %>
+    </div>
+    <div class="clear"></div>
+  </div>
+	<div class="box-full-bottom"></div>
+</div>
+
+<% end -%>

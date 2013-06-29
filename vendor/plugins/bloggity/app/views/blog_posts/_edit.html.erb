@@ -1,0 +1,194 @@
+<% content_for(:page_title, "Editing #{@blog_post.title.blank? ? %Q{Blog Post} : h(@blog_post.title)} | #{@project ? h(@project.name) : %{Citizen Effect}} Blog") %>
+
+		<div class="breadcrumbs">
+      <%= link_to "&laquo; back to project page", @blog.project, :class => "breadcrumbs green" if @blog.project %>
+      <%= link_to "&laquo; back to blog", {:controller => 'blog_posts', :action => :index, 
+          :blog_id => @blog.id}, :class => "breadcrumbs green" %>
+		</div>
+		
+		<!-- main body copy -->
+		<div id="wrapper-copy">
+		
+			
+			<div class="component-header-full nopadtop">
+				<h3>ADD/EDIT BLOG POST</h3>
+			</div>
+			
+			<!-- full-width component -->
+			<div id="add_blog" class="box-full-middle account-info">
+        <% content_for :form_errors do -%>
+          <%= error_messages_for :blog_post %>
+        <% end -%>
+
+        <% form_for(@blog_post, :url => { :controller => 'blog_posts', :action => :update, :id => @blog_post, :blog_id => @blog_id }) do |f| %>
+				<h5><%= @blog.project ? @blog.project.name_with_cp_and_location : "Citizen Effect" %></h5>
+				<div class="left left_column">
+          <%= f.label :title, "TITLE:" %>
+          <%= f.text_field :title, :class => "xxl_input" %>
+					<label class="pad_top">PERMALINK:</label>
+					<span>http://citizeneffect.org/blog/<%=h @blog.project ? @blog.project.to_param : "main" %>/ </span>
+          <%= f.text_field :url_identifier, :class => "large" %>
+          <br />
+	
+					<span class="permalink_instructions">Letters, numbers, and dashes(-) only</span>
+          <%= f.label :excerpt, "EXCERPT:" %>
+          <%= f.text_area :excerpt, :class => "xxl_textarea" %>
+					<p>An introductory paragraph of your post, also displayed on your project's homepage.</p>
+<!-- 					<label>CONTENT:</label> -->
+<!-- 					<script type="text/javascript"> -->
+<!-- 						var oFCKeditor = new FCKeditor('content'); -->
+<!-- 						oFCKeditor.BasePath = "/javascripts/bloggity/fckeditor/";     -->
+<!-- 						oFCKeditor.ToolbarSet = "Basic"; -->
+<!-- 						oFCKeditor.Height = "400"; -->
+<!-- 						oFCKeditor.Width = "588"; -->
+<!-- 						oFCKeditor.Create(); -->
+<!-- 					</script> -->
+          <%= f.label :body, "CONTENT:" %>
+          <%= f.text_area :body, :class => "xxl_textarea" %>
+	
+				 </div>
+				<div class="right right_column">
+					<h6>PUBLISH</h6>
+					<p class="publish">
+            <%= f.submit "Preview" unless @blog_post.is_complete? %>
+            
+<!-- 		<%#= f.check_box :is_complete -%> -->
+<!--     <%#= f.label :is_complete?, "Publish?", :style => "display: inline" -%> -->
+
+            <%= image_submit_tag "save_publish.png", :name => "save_and_publish", :class => "pad_left margin_left" %>
+          </p>
+
+<!-- 					<h6>POST TAGS</h6> -->
+					<h6><%= f.label :category_id, "POST CATEGORY" %></h6>
+					
+					<p class="medblue"><em>The category determines the icon of your post.</em></p>
+					
+					<p>
+<!-- 						<input type="text" class="post_tags_input" /><input type="submit" value="Add" /><br /> -->
+<!-- 						<span class="italic">Separate tags with commas</span> -->
+
+            <%= f.select :category_id, BlogCategory.find(:all).collect { |bc| [bc.name, bc.id] }.insert(0, ["None", nil]) -%>
+	
+					</p>
+					<h6>POST MEDIA &amp; ATTACHMENTS</h6>
+					
+					
+					<ul>
+            <% if @blog.project %>
+						<li class="link_album">
+							<label class="left">PHOTO ALBUMS:</label>
+              <%= link_to image_tag("link_album.png"), new_project_media_album_path(@blog.project, :media_album => { :blog_post_ids => [@blog_post.id]}), :target => "_blank" %>
+						  
+						  <span class="clear"></span>
+    					<p class="medblue"><em>Linked albums will show up automatically at the bottom of your blog post.</em></p>
+    					
+						  <% @blog_post.media_albums.each do |album| %>
+						    <div>Linked Album: <%= link_to h(album.title), [:edit, album.project, album], :target => "_blank" %></div>
+						  <% end %>
+						  
+						</li>
+            <% end %>
+	
+<!-- 						<li> -->
+<!-- 							<label class="left">DOCUMENTS:</label> -->
+<!-- 							<span>text.pdf</span><span class="clear"></span> -->
+<!-- 							<input type="image" src="/images/browse.png" /> -->
+<!-- 						</li> -->
+<!-- 						<li> -->
+<!-- 							<label class="left extra_pad">AUDIO:</label> -->
+	
+<!-- 							<span>sound.wav</span><span class="clear"></span> -->
+<!-- 							<input type="image" src="/images/browse.png" /> -->
+<!-- 						</li> -->
+					</ul>
+				</div>
+        <% end %>
+				<div class="right right_column">
+					<ul>
+						<li>
+							<label class="left">ATTACHMENTS:</label>
+              
+						  <span class="clear"></span>
+    					<p class="medblue"><em>Attachments are extra images or files that you can link to in your blog post.  Copy and paste the attachment URLs into your blog post, as a hyperlink or as an image.</em></p>
+    					
+	<div id="outer_asset_container">
+		<%= render :partial => "blog_assets", :locals => { :blog_assets => @blog_post.assets } -%>
+	</div>
+
+              <span class="clear"></span>
+<!-- 							<input type="image" src="/images/browse.png" /> -->
+              <% remote_form_for(:blog_asset, :url => { :controller => "blog_posts", :action => :create_asset },
+              		:html => { :method => :post, :id => 'uploadForm', :multipart => true }) do |f| -%>
+	              <%= f.hidden_field :blog_post_id, :value => @blog_post.id %>
+<!-- 	              <label>Upload a file:</label> -->
+                <%= f.file_field :uploaded_data, :size => nil %>
+              <% end %>
+						</li>
+						<li>
+							<label class="left">DUPLICATE:</label>
+						  <span class="clear"></span>
+          <% form_tag [:clone, @blog, @blog_post], :method => :put do %>
+		      <select name="new_blog_id" id="new_blog_id" style="width:225px;">
+            <% if @blog.id != Blog::MAIN_BLOG_ID %>
+              <option value="<%= Blog::MAIN_BLOG_ID %>"><%= Blog.main_blog.title %></option>
+            <% end %>
+            <% Project.user_visible_projects.find(:all, :order => "name").each do |project| %>
+              <% next unless project.blog %>
+              <% next if project.blog.id == @blog.id %>
+              <% next unless current_user.can_blog?(project.blog.id) %>
+              <option value="<%= project.blog.id %>"><%= project.name %></option>
+            <% end %>
+            
+          </select>
+          <%= submit_tag "Duplicate" %>
+          <% end %>
+            </li>
+
+					</ul>
+<!-- 					<h6>SEARCH ENGINE META INFORMATION</h6> -->
+<!-- 					<p id="seo_container"> -->
+<!-- 						<label>META KEYWORDS <span>(optional):</span></label> -->
+	
+<!-- 						<input type="text" class="keywords_input" name="" /> -->
+<!-- 						<label class="pad_top">META DESCRIPTION <span>(optional):</span></label> -->
+<!-- 						<textarea name="" cols="30" rows="4"></textarea> -->
+<!--           </p> -->
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="box-full-bottom"></div>
+		</div>
+<% javascript_tag do %>
+       jQuery(document).ready(function($) 
+       {
+
+						var oFCKeditor = new FCKeditor('blog_post[excerpt]');
+						oFCKeditor.BasePath = "/javascripts/bloggity/fckeditor/";
+//						oFCKeditor.ToolbarSet = "Basic";
+						oFCKeditor.Height = "300";
+						oFCKeditor.ReplaceTextarea();
+
+               var fckEditor = new FCKeditor('blog_post[body]');
+               fckEditor.BasePath = "/javascripts/bloggity/fckeditor/";
+               fckEditor.ReplaceTextarea();
+               
+               $('#uploadForm input').change(function(){
+                               $(this).parent().ajaxSubmit({
+                                               beforeSubmit: function(a,f,o) {
+                                                       o.dataType = 'json';
+                                               },
+                                               complete: function(XMLHttpRequest, textStatus) {
+
+                                                       new_text = $("<div class='asset_filename'>").html("Attachment URL: <a href='" + XMLHttpRequest.responseText + "'>" + XMLHttpRequest.responseText + "</a>");
+                                                       new_container = $("<div class='uploaded_asset'>");
+                                                       $('#inner_asset_container').append(new_container);
+
+                                                       new_container.append(new_text);
+                                               },
+                                               success: function(data) { 
+                                                       //afterSuccessfulUpload(data); 
+                                               }
+                                       });
+                       });
+               });
+<% end %>

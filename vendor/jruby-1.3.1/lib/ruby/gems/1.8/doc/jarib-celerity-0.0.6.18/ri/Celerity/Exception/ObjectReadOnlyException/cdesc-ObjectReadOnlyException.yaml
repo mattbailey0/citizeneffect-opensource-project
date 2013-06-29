@@ -1,0 +1,18 @@
+--- !ruby/object:RI::ClassDescription 
+includes: []
+
+name: ObjectReadOnlyException
+constants: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: This exception is thrown if an attempt is made to access an object that is
+    in a read-only state
+attributes: []
+
+instance_methods: []
+
+full_name: Celerity::Exception::ObjectReadOnlyException
+superclass: CelerityException
+class_methods: []
+

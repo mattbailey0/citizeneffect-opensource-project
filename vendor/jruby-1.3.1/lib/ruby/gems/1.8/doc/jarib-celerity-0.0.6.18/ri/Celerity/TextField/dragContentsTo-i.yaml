@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+params: (how, what)
+is_singleton: false
+block_params: 
+name: dragContentsTo
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: 'Alias for #drag_contents_to'
+full_name: Celerity::TextField#dragContentsTo
+visibility: public
+aliases: []
+

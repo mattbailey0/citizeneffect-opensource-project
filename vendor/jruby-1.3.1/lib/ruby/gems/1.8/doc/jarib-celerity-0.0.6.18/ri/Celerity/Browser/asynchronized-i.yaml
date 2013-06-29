@@ -1,0 +1,17 @@
+--- !ruby/object:RI::MethodDescription 
+params: (&block) {|self| ...}
+is_singleton: false
+block_params: self
+name: asynchronized
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Allows you to temporarliy switch to HtmlUnit's default AjaxController, so
+    ajax calls are performed asynchronously. This is useful if you have created the
+    Browser with :resynchronize =&gt; true, but want to switch it off temporarily.
+- !ruby/struct:SM::Flow::P 
+  body: '@yieldparam [Celerity::Browser] browser The current browser object. @see
+    Celerity::Browser#new'
+full_name: Celerity::Browser#asynchronized
+visibility: public
+aliases: []
+

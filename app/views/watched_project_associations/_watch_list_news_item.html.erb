@@ -1,0 +1,8 @@
+				<li class="<%=h object == last ? "lastcol" : "" %>" style="background:url(<%=h watch_list_news_item_icon(object) %>) no-repeat">
+					<div>
+
+            <%=h time_ago_in_words(object.created_at) %> ago -
+            <%=h object.news_message %><br />
+            <%= link_to "check out our newest projects here", projects_path %>
+					</div>
+				</li>

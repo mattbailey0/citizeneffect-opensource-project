@@ -1,0 +1,13 @@
+--- !ruby/object:RI::MethodDescription 
+params: (attribute)
+is_singleton: false
+block_params: 
+name: attribute_value
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: '@param [String, #to_s] The attribute. @return [String] The value of the given
+    attribute.'
+full_name: Celerity::Element#attribute_value
+visibility: public
+aliases: []
+

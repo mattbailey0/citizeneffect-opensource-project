@@ -1,0 +1,17 @@
+					<div class="calendar<%=h event == last ? " last" : "" %>">
+						<div class="left">
+							<div class="date">
+								<div class="month"><%=h event.event_start_time.strftime("%b").upcase %></div>
+								<div class="day"><%=h event.event_start_time.strftime("%d") %></div>
+							</div>
+						</div>
+						<div class="right">
+							<p class="link"><%= link_to h("#{event.name} - #{event.event_start_time.strftime("%H:%M")}"), event %></p>
+							<p class="description">
+                <%=h event.short_description %>
+							</p>
+              <a class="orange_bottom" href="#<%=h share_box_id(event) %>" rel="facebox">share</a>
+              <%= render_with_last :partial => "shared/share_box", :locals => { :shareable => event }%>
+						</div>
+						<div class="clear"></div>
+					</div>

@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+require 'thread' #for rubygems >1.5
+require File.dirname(__FILE__) + '/../config/boot'
+require 'commands/server'

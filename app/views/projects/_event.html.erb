@@ -1,0 +1,18 @@
+<li>
+	<div class="carousel<%=h cycle(" alt", "") %>">
+		<div class="date-container cal">
+			<div class="date">
+				<div class="month"><%=h event.event_start_time.strftime("%b").upcase %></div>
+				<div class="day"><%=h event.event_start_time.strftime("%e") %></div>
+			</div>
+		</div>
+		<div class="copy cal">
+      <p class="link"><%= link_to h("#{event.name.upcase} - #{event.event_start_time.strftime("%B %e, %Y at %l:%M%p")}"), [event.project, event] %></p>
+			<p class="description">
+				<%=h event.short_description %>
+				<%= link_to "visit project", [event.project], :class => 'orange underline' -%>
+			</p>
+		</div>
+		<div class="clear"></div>
+	</div>
+</li>

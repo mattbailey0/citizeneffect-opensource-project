@@ -1,0 +1,16 @@
+!!! XML
+!!!
+%html
+  %head
+    %title<
+      = @title.blank? ? "Citizen Effect" : h(@title)
+    %meta{'http-equiv' => 'Content-Type', :content => "text/html"}/
+    %meta{'name' => "keywords",  'content' => "#{ @meta_keywords.blank? ? 'citizen,effect,citizen_effect,citizen effect' : h(@meta_keywords) }"}/
+    %meta{'name' => "description", 'content' => "#{ @meta_description.blank? ? 'citizen effect' : h(@meta_description)}" }/
+    = stylesheet_link_tag "admin", "scaffold"
+  %body
+    #container
+      #header
+        = image_tag "logo_tmp.png"
+      #content
+        = yield

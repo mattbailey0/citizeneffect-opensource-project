@@ -1,0 +1,31 @@
+#social-media-links.component-header-full.nopadtop
+  %h3 SOCIAL MEDIA LINKS
+/ full-width component
+.box-full-middle.social-media-links
+  - form_for @user do |f|
+    = f.label :twitter_path, "twitter:"
+    = "http://twitter.com/"
+    = f.text_field :twitter_path, :class => "pad_bottom small"
+
+    = f.label :linkedin_path, "linkedin:"
+    = "http://linkedin.com/"
+    = f.text_field :linkedin_path, :class => "pad_bottom small"
+
+    = f.label :facebook_path, "facebook:"
+    = "http://facebook.com/"
+    = f.text_field :facebook_path, :class => "pad_bottom small"
+
+    = f.label :myspace_path, "myspace:"
+    = "http://myspace.com/"
+    = f.text_field :myspace_path, :class => "pad_bottom small"
+
+    = f.label :youtube_path, "youtube:"
+    = "http://youtube.com/"
+    = f.text_field :youtube_path, :class => "pad_bottom small"
+    
+    = f.label :blog_url, "blog:"
+    = f.text_field :blog_url, :class => "pad_bottom large"
+
+    = image_submit_tag "btn_save_changes.png", :class => "pad_top block update_social_media_links", :name => "commit", :value => "social-media-links"
+
+.box-full-bottom

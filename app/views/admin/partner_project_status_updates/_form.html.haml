@@ -1,0 +1,12 @@
+- report = @partner_project_status_update
+
+%tr
+  %td.fl
+    %strong= f.label :title, "Title of Status Update*"
+  %td= f.text_field :title
+
+%tr
+  %td.no_pad= f.label :field_updates, "Updates from the Field"
+  %td= f.text_area :field_updates
+
+= render :partial => "admin/shared/report_footer", :locals => { :report => report, :community_profiles_optional => true }

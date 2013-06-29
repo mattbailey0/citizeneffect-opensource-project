@@ -1,0 +1,53 @@
+<!-- find your perfect project -->
+<div class="box-rightcol-inner-header">
+	<div class="box-rightcol-header"><h3 class="full">THIS PROJECT NEEDS YOU!</h3></div>
+</div>
+<div class="box-rightcol-inner pad_top">
+  <%= render :partial => "project_status_progress" %>
+	<div class="pad_top pad_bottom"
+       style="background:url(<%= image_path @project.type_icon_url(:project_needs_you) -%>) top right no-repeat">
+		<h1 class="home">
+			Lives Impacted: <%=h number_with_delimiter(@project.combined_lives_impacted) %><br />
+			<%=h format_dollars(@project.total_cost_in_usd) %> to raise
+		</h1>
+		
+		<div class="left">
+		  <%= link_to image_tag("btn_be_the_cp_with_padding.png", :width => "118", :height => "42", :alt => "be a CP"), 
+                new_cp_application_path(:project_id => @project.id), 
+                :class => "become_the_cp_#{@project.id} become_the_cp_project" %>
+    </div>
+		<div class="left">
+      <a href="#<%=h share_box_id(@project) %>" rel="facebox"><%= image_tag "btn_share.png" %></a>
+      <%= render :partial => "shared/share_box", :locals => { :shareable => @project }%>
+    </div>
+		<div class="clear"></div>
+		
+		
+		
+		<div class="icon-wrapper pad_top dashed">
+			<div class="impacted pad_bottom"><%=h format_dollars(@project.total_amount_raised_in_usd) %>
+        of <%=h format_dollars(@project.total_cost_in_usd) %>
+        raised from - <%=h @project.donor_count %> donors</div>
+			<span class="progressBar"><%=h @project.percent_raised %>%</span>
+			<span class="progressBar_text">'til complete</span>
+			<div class="clear"></div>
+		</div>
+		
+		<div class="dashed">
+			<h5><strong>COUNTRY:</strong> <%=h @project.country.andand.name %></h5>
+			<h5><strong>STATE:</strong> <%=h @project.community_state %></h5>
+			<h5><strong>COMMUNITY:</strong> <%=h @project.community_name %></h5>
+		</div>
+		<div class="dashed">
+			<h5><strong>FIELD PARTNER:</strong> <%=h @project.partner.display_name %> </h5>
+  		<%= image_tag @project.partner.logo.blank? ? "default_partner_logo.png" : @project.partner.logo.url(:partner_logo), :width => "180", :height => "65", :alt => "" %>
+		</div>
+		
+    <%= render :partial => "join_mailing_list" %>
+		<br />
+    <%= render :partial => "add_to_watchlist", :locals => { :project => @project, :css_class => "green left block pad_top", :do_not_use_clear => true } %>
+
+		<div class="clear"></div>
+	</div>
+</div>
+<div class="box-rightcol-bottom"></div>

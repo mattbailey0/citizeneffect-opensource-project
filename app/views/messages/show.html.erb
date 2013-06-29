@@ -1,0 +1,63 @@
+<% content_for(:page_title, "Message") %>
+
+<div class="breadcrumbs">
+  <%= link_to "&laquo; back to profile", @user, :class => "breadcrumbs green" %>
+  <%= link_to "&laquo; back to inbox", user_messages_path(@user), :class => "breadcrumbs green" %>
+</div>
+
+<!-- main body copy -->
+<div id="wrapper-copy">
+	<div class="component-header-full nopadtop">
+		<h3>
+      MESSAGES - <%=h @message.subject %>
+    </h3>
+	</div>
+  <style>
+	  .grid-email .label {clear:both; width:50px; text-align:right; float:left; font-size:11px; padding-right:5px; font-weight:bold}
+	  .grid-email .text {float:left; font-size:11px}
+	  .grid-email .from {line-height:20px}
+  </style>
+	<!-- full-width component -->
+  <div class="box-full-middle">
+		<div class="message_links">
+      <%= link_to "INBOX " + (@user.unread_messages? ? "(#{@user.unread_message_count}) " : ""), 
+          user_messages_path(@user) %>
+      <%= link_to "SENT MESSAGES", user_messages_path(@user, :mailbox => "sent") %>
+		</div>
+		<div class="message_list">
+			<div class="grid-email">
+				<div class="bg_ltblue pad_full">
+					<p class="label from"><%= @message.sender == @user ? "To" : "From" %>:</p>
+          <% display_user = (@message.sender == @user ? @message.recipient : @message.sender) %>
+					<p class="text from">
+            <%= image_tag display_user.picture_url_thumb(:imported_contact_thumb), 
+                :width => "20", :height => "20" %>
+          </p>
+					<p class="right">
+            <%= link_to "<input type='button' value='Reply to Message' />",  
+                new_user_message_path(@user, :reply_to => @message) %>
+          </p>
+					<p class="text from">&nbsp;<%= display_user.display_name %></p>
+					<p class="label">Sent:</p>
+					<p class="text"><%= @message.created_at.to_s(:long) %></p>
+					<p class="label">Subject:</p>
+					<p class="text"><%=h @message.subject %></p>
+					<div class="clear"></div>
+				</div>
+				<div class="pad_full">
+					<p><%= auto_link(simple_format(h(@message.body))) %></p>
+				</div>
+				<div class="pad_full bg_ltblue">
+					<p class="right nopad">
+            <%= link_to "<input type='button' value='Reply to Message' />",  
+                new_user_message_path(@user, :reply_to => @message) %>
+          </p>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="clear"></div>
+  </div>
+	<div class="box-full-bottom"></div>
+</div>

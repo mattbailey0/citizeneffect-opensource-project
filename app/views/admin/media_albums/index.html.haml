@@ -1,0 +1,14 @@
+%h1
+  Listing Media Albums for
+  = "'#{@project.name}'"
+
+%table.index-list{:cellpadding => "0", :cellspacing => "0" }
+  %tr.index-list-header
+    %th Title
+    %th{:colspan => "3"} Actions
+  - @project.media_albums.each do |album|
+    %tr
+      %td= h album.title
+      %td= link_to "Show", [:admin, @project, album]
+      %td= link_to "Edit", [:edit, :admin, @project, album]
+      %td= link_to "Destroy", [:admin, @project, album], :confirm => "Are you sure?", :method => :delete

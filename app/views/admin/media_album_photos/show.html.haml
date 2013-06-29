@@ -1,0 +1,26 @@
+%h1 Viewing Media Album Photo
+
+%p
+  %b Title
+  %br
+  = h @media_album_photo.title
+
+%p
+  %b Description
+  %br
+  = h @media_album_photo.description
+
+%p
+  %b Filename
+  %br
+  = h @media_album_photo.photo.andand.original_filename
+
+%p
+  %b Picture
+  %br
+  - unless @media_album_photo.photo.blank?
+    = image_tag @media_album_photo.photo.url
+
+= link_to "Edit", [:edit, :admin, @project, @media_album, @media_album_photo]
+|
+= link_to "Back", [:admin, @project, @media_album, :media_album_photos]

@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+params: (opts)
+is_singleton: false
+block_params: 
+name: short_inspect
+comment: 
+full_name: Celerity::ShortInspect#short_inspect
+visibility: public
+aliases: []
+

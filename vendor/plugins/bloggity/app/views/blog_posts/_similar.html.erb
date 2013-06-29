@@ -1,0 +1,20 @@
+				<!-- posts you might like -->
+				<div class="box-rightcol-inner-header">
+					<div class="box-rightcol-header"><h3 class="full">POSTS YOU MIGHT LIKE</h3></div>
+				</div>
+
+				<div class="box-rightcol-inner">
+          <% @blog_posts.each do |blog_post| %>
+					<div class="people <%=h blog_post == @blog_posts.last ? "last" : "" %>" style="background:url(<%= image_path "blog_icon_#{h blog_post.category.andand.id}.gif" %>) right 3px no-repeat">
+						<div class="left"><%= link_to image_tag(blog_post.posted_by.picture_url_thumb(:tiny_blog_post_thumb), :alt => "", :width => "50", :height => "50"), blog_named_link(blog_post) %></div>
+						<div class="right pad_icon">
+							<p class="name"><%= link_to h(blog_post.title), blog_named_link(blog_post), :class => 'content-blue bold px12' %></p>
+							<p class="subhead">Blog posted - <%= blog_post.created_at.strftime("%B %d, %Y") -%></p>
+							<p class="link"><%= link_to("read more", blog_named_link(blog_post)) %></p>
+
+						</div>
+						<div class="clear"></div>
+					</div>
+          <% end %>
+				</div>
+				<div class="box-rightcol-bottom"></div>

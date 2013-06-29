@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title></title>
+</head>
+<body>
+
+<p>
+Dear <%=h @user.first_name %>,
+</p>
+
+<p>
+Thank you for joining the Citizen Effect movement -- <b>please activate your account by clicking on the following link: <%= link_to  activate_url({:activation_code => @activation_code}), activate_url({:activation_code => @activation_code}) %></b>
+</p>
+
+<p>
+Once your account is activated, you can sign up to be a Citizen Philanthropist -- a lead fundraiser for your own project -- or find a project to support on our <%= link_to "website", projects_url %>.
+</p>
+
+<p>
+Warmly,
+</p>
+<p>
+The Citizen Effect Team
+</p>
+
+</body>
+</html>

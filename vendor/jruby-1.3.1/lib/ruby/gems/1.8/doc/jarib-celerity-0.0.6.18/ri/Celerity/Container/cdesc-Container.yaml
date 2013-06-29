@@ -1,0 +1,226 @@
+--- !ruby/object:RI::ClassDescription 
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: Celerity::Exception
+- !ruby/object:RI::IncludedModule 
+  name: Celerity::ShortInspect
+name: Container
+constants: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: This class contains methods for accessing elements inside a container, usually
+    the Browser object, meaning the current page. The most common syntax is
+- !ruby/struct:SM::Flow::VERB 
+  body: "  browser.elem(:attribute, 'value')\n"
+- !ruby/struct:SM::Flow::P 
+  body: 'Note that the element is located lazily, so no exceptions will be raised
+    if the element doesn''t exist until you call a method on the resulting object.
+    To do this you would normally use Element#exists? or an action method, like ClickableElement#click.
+    You can also pass in a hash:'
+- !ruby/struct:SM::Flow::VERB 
+  body: "  browser.link(:index =&gt; 1).click\n"
+- !ruby/struct:SM::Flow::P 
+  body: 'All elements support multiple attributes identification using the hash syntax
+    (though this might not always be compatible with Watir):'
+- !ruby/struct:SM::Flow::VERB 
+  body: "  browser.span(:class_name =&gt; 'product', :index =&gt; 5).text\n"
+- !ruby/struct:SM::Flow::P 
+  body: 'Checkboxes and radio buttons support a special three-argument syntax:'
+- !ruby/struct:SM::Flow::VERB 
+  body: "  browser.check_box(:name, 'a_name', '1234').set\n"
+- !ruby/struct:SM::Flow::P 
+  body: 'You can also get all the elements of a certain type by using the plural form
+    (@see Celerity::ElementCollection):'
+- !ruby/struct:SM::Flow::VERB 
+  body: "  browser.links # =&gt; #&lt;Celerity::Links:0x7a1c2da2 ...&gt;\n"
+attributes: 
+- !ruby/object:RI::Attribute 
+  name: browser
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Points back to the Browser instance that contains this element
+  rw: R
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: area
+- !ruby/object:RI::MethodSummary 
+  name: areas
+- !ruby/object:RI::MethodSummary 
+  name: bodies
+- !ruby/object:RI::MethodSummary 
+  name: body
+- !ruby/object:RI::MethodSummary 
+  name: button
+- !ruby/object:RI::MethodSummary 
+  name: buttons
+- !ruby/object:RI::MethodSummary 
+  name: cell
+- !ruby/object:RI::MethodSummary 
+  name: cells
+- !ruby/object:RI::MethodSummary 
+  name: checkBox
+- !ruby/object:RI::MethodSummary 
+  name: check_box
+- !ruby/object:RI::MethodSummary 
+  name: checkbox
+- !ruby/object:RI::MethodSummary 
+  name: checkboxes
+- !ruby/object:RI::MethodSummary 
+  name: container=
+- !ruby/object:RI::MethodSummary 
+  name: contains_text
+- !ruby/object:RI::MethodSummary 
+  name: dd
+- !ruby/object:RI::MethodSummary 
+  name: dds
+- !ruby/object:RI::MethodSummary 
+  name: div
+- !ruby/object:RI::MethodSummary 
+  name: divs
+- !ruby/object:RI::MethodSummary 
+  name: dl
+- !ruby/object:RI::MethodSummary 
+  name: dls
+- !ruby/object:RI::MethodSummary 
+  name: dt
+- !ruby/object:RI::MethodSummary 
+  name: dts
+- !ruby/object:RI::MethodSummary 
+  name: em
+- !ruby/object:RI::MethodSummary 
+  name: ems
+- !ruby/object:RI::MethodSummary 
+  name: file_field
+- !ruby/object:RI::MethodSummary 
+  name: file_fields
+- !ruby/object:RI::MethodSummary 
+  name: form
+- !ruby/object:RI::MethodSummary 
+  name: forms
+- !ruby/object:RI::MethodSummary 
+  name: frame
+- !ruby/object:RI::MethodSummary 
+  name: frames
+- !ruby/object:RI::MethodSummary 
+  name: h1
+- !ruby/object:RI::MethodSummary 
+  name: h1s
+- !ruby/object:RI::MethodSummary 
+  name: h2
+- !ruby/object:RI::MethodSummary 
+  name: h2s
+- !ruby/object:RI::MethodSummary 
+  name: h3
+- !ruby/object:RI::MethodSummary 
+  name: h3s
+- !ruby/object:RI::MethodSummary 
+  name: h4
+- !ruby/object:RI::MethodSummary 
+  name: h4s
+- !ruby/object:RI::MethodSummary 
+  name: h5
+- !ruby/object:RI::MethodSummary 
+  name: h5s
+- !ruby/object:RI::MethodSummary 
+  name: h6
+- !ruby/object:RI::MethodSummary 
+  name: h6s
+- !ruby/object:RI::MethodSummary 
+  name: hidden
+- !ruby/object:RI::MethodSummary 
+  name: hiddens
+- !ruby/object:RI::MethodSummary 
+  name: image
+- !ruby/object:RI::MethodSummary 
+  name: images
+- !ruby/object:RI::MethodSummary 
+  name: inspect
+- !ruby/object:RI::MethodSummary 
+  name: label
+- !ruby/object:RI::MethodSummary 
+  name: labels
+- !ruby/object:RI::MethodSummary 
+  name: li
+- !ruby/object:RI::MethodSummary 
+  name: link
+- !ruby/object:RI::MethodSummary 
+  name: links
+- !ruby/object:RI::MethodSummary 
+  name: lis
+- !ruby/object:RI::MethodSummary 
+  name: map
+- !ruby/object:RI::MethodSummary 
+  name: maps
+- !ruby/object:RI::MethodSummary 
+  name: meta
+- !ruby/object:RI::MethodSummary 
+  name: metas
+- !ruby/object:RI::MethodSummary 
+  name: ol
+- !ruby/object:RI::MethodSummary 
+  name: ols
+- !ruby/object:RI::MethodSummary 
+  name: option
+- !ruby/object:RI::MethodSummary 
+  name: p
+- !ruby/object:RI::MethodSummary 
+  name: pre
+- !ruby/object:RI::MethodSummary 
+  name: pres
+- !ruby/object:RI::MethodSummary 
+  name: ps
+- !ruby/object:RI::MethodSummary 
+  name: radio
+- !ruby/object:RI::MethodSummary 
+  name: radios
+- !ruby/object:RI::MethodSummary 
+  name: row
+- !ruby/object:RI::MethodSummary 
+  name: rows
+- !ruby/object:RI::MethodSummary 
+  name: select_list
+- !ruby/object:RI::MethodSummary 
+  name: select_lists
+- !ruby/object:RI::MethodSummary 
+  name: span
+- !ruby/object:RI::MethodSummary 
+  name: spans
+- !ruby/object:RI::MethodSummary 
+  name: strong
+- !ruby/object:RI::MethodSummary 
+  name: strongs
+- !ruby/object:RI::MethodSummary 
+  name: table
+- !ruby/object:RI::MethodSummary 
+  name: tables
+- !ruby/object:RI::MethodSummary 
+  name: tbodies
+- !ruby/object:RI::MethodSummary 
+  name: tbody
+- !ruby/object:RI::MethodSummary 
+  name: text_field
+- !ruby/object:RI::MethodSummary 
+  name: text_fields
+- !ruby/object:RI::MethodSummary 
+  name: tfeet
+- !ruby/object:RI::MethodSummary 
+  name: tfoot
+- !ruby/object:RI::MethodSummary 
+  name: tfoots
+- !ruby/object:RI::MethodSummary 
+  name: th
+- !ruby/object:RI::MethodSummary 
+  name: thead
+- !ruby/object:RI::MethodSummary 
+  name: theads
+- !ruby/object:RI::MethodSummary 
+  name: ths
+- !ruby/object:RI::MethodSummary 
+  name: ul
+- !ruby/object:RI::MethodSummary 
+  name: uls
+full_name: Celerity::Container
+superclass: 
+class_methods: []
+

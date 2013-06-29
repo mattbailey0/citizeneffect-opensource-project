@@ -1,0 +1,47 @@
+%h1
+  Mailing List Subscribers
+
+.xls_link
+  = link_to "Download As Excel Spreadsheet", url_for({:format => :xls}.merge(params))
+
+
+- @mailing_lists.each do |mailing_list|
+  - next if mailing_list.project_id && mailing_list.project.nil?
+  %h2= h mailing_list.name
+  %table.index-list.sortable{:cellpadding => "0", :cellspacing => "0"}
+    %thead
+      %tr.index-list-header
+        %th Mailing List Name
+        %th
+          .sort-icon
+          Email
+        %th
+          .sort-icon
+          Zip
+        %th
+          .sort-icon
+          First Name
+        %th
+          .sort-icon
+          Last Name
+        %th
+          .sort-icon
+          Tracking Code
+        %th
+          .sort-icon
+          Sign Up Date
+        %th CE Profile Link
+    %tbody
+      - mailing_list.subscribers.each do |subscriber|
+        %tr
+          %td= h mailing_list.name
+          %td= link_to h(subscriber.email), "mailto:#{subscriber.email}"
+          %td= h subscriber.zip
+          %td= h subscriber.first_name
+          %td= h subscriber.last_name
+          %td= h subscriber.tracking_code
+          %td= h subscriber.created_at.to_date
+          %td= (subscriber.user.nil? ? '' : link_to('CE Profile', subscriber.user))
+
+  %br
+

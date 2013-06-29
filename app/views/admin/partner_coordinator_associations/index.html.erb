@@ -1,0 +1,23 @@
+<h1>Listing partner_coordinator_associations</h1>
+
+<div class="new-button">
+  <%= link_to '(+) Add Partner Coordinator to Project', new_admin_partner_coordinator_association_path %>
+</div>
+
+<table cellpadding="0" cellspacing="0" class="index-list">
+  <tr class="index-list-header">
+    <th>User</th>
+    <th>Project</th>
+    <th colspan="3">Actions</th>
+  </tr>
+
+<% @partner_coordinator_associations.each do |partner_coordinator_association| %>
+  <tr>
+    <td><%=h partner_coordinator_association.user_id %></td>
+    <td><%=h partner_coordinator_association.project_id %></td>
+    <td><%= link_to 'Show', [:admin, partner_coordinator_association] %></td>
+    <td><%= link_to 'Edit', edit_admin_partner_coordinator_association_path(partner_coordinator_association) %></td>
+    <td><%= link_to 'Destroy', [:admin, partner_coordinator_association], :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>

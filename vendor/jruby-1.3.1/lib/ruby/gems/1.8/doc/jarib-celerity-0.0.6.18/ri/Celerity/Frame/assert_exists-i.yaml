@@ -1,0 +1,13 @@
+--- !ruby/object:RI::MethodDescription 
+params: ()
+is_singleton: false
+block_params: 
+name: assert_exists
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Override assert_exists to raise UnknownFrameException (for Watir compatibility)
+    @api private
+full_name: Celerity::Frame#assert_exists
+visibility: public
+aliases: []
+

@@ -1,0 +1,14 @@
+<h1>Viewing Community Member Message</h1>
+<p>
+  <b>Community member profile:</b>
+  <%=h @community_member_message.community_member_profile.name %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%=h @community_member_message.content %>
+</p>
+
+
+<%= link_to 'Edit', [:edit, :admin, @community_member_profile, @community_member_message] %> |
+<%= link_to 'Back', [:admin, @community_member_profile, :community_member_messages] %>

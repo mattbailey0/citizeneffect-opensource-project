@@ -1,0 +1,11 @@
+					<p class="<%= last_class(object, last) -%>">
+<!--   <%=h news_item.created_at.strftime("%m.%d.%y") %> - -->
+						<span class="icon water_smaller" style="background-image:url(<%= image_path news_item.type_icon_url -%>)"></span>
+						<span class="text">
+  <%=h news_item.news_message %>
+  - <%=h time_ago_in_words(news_item.created_at) %> ago
+  <%= news_item_link(news_item) %>
+
+						</span>
+						<span class="clear"></span>
+					</p>

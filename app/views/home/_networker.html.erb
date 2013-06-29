@@ -1,0 +1,9 @@
+					<div class="people<%= last_class(object, last) -%>">
+						<div class="left"><%= link_to image_tag(networker.picture_url_thumb), networker %></div>
+						<div class="right">
+							<p class="name"><%= link_to h(networker.display_name), networker, :class => 'content-blue bold px12' -%></p>
+							<p class="location"><%=h networker.display_location -%></p>
+							<p class="description"><%=h networker.users_recruited -%> USERS RECRUITED</p>
+						</div>
+						<div class="clear"></div>
+					</div>

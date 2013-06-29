@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+params: (request_settings)
+is_singleton: false
+block_params: 
+name: getResponse
+comment: 
+full_name: Celerity::IgnoringWebConnection#getResponse
+visibility: public
+aliases: []
+

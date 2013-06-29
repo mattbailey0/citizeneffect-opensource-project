@@ -1,0 +1,115 @@
+--- !ruby/object:RI::ClassDescription 
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: Exception
+- !ruby/object:RI::IncludedModule 
+  name: Container
+name: Element
+constants: 
+- !ruby/object:RI::Constant 
+  name: TO_S_SIZE
+  value: "14"
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: number of spaces that separate the property from the value in the create_string
+      method
+- !ruby/object:RI::Constant 
+  name: HTML_401_TRANSITIONAL
+  value: '{       :core        => [:class, :id, :style, :title],       :cell_halign
+    => [:align, :char, :charoff],       :cell_valign => [:valign],       :i18n        =>
+    [:dir, :lang],       :event       => [:onclick, :ondblclick, :onmousedown, :onmouseup,
+    :onmouseover,                        :onmousemove, :onmouseout, :onkeypress, :onkeydown,
+    :onkeyup],       :sloppy      => [:name, :value]'
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: HTML 4.01 Transitional DTD
+- !ruby/object:RI::Constant 
+  name: CELLHALIGN_ATTRIBUTES
+  value: HTML_401_TRANSITIONAL[:cell_halign]
+  comment: 
+- !ruby/object:RI::Constant 
+  name: CELLVALIGN_ATTRIBUTES
+  value: HTML_401_TRANSITIONAL[:cell_valign]
+  comment: 
+- !ruby/object:RI::Constant 
+  name: BASE_ATTRIBUTES
+  value: HTML_401_TRANSITIONAL.values_at(:core, :i18n, :event, :sloppy).flatten
+  comment: 
+- !ruby/object:RI::Constant 
+  name: ATTRIBUTES
+  value: BASE_ATTRIBUTES
+  comment: 
+- !ruby/object:RI::Constant 
+  name: TAGS
+  value: '[]'
+  comment: 
+- !ruby/object:RI::Constant 
+  name: DEFAULT_HOW
+  value: nil
+  comment: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Superclass for all HTML elements.
+attributes: 
+- !ruby/object:RI::Attribute 
+  name: container
+  comment: 
+  rw: R
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: asXml
+- !ruby/object:RI::MethodSummary 
+  name: as_xml
+- !ruby/object:RI::MethodSummary 
+  name: assert_exists
+- !ruby/object:RI::MethodSummary 
+  name: attribute_string
+- !ruby/object:RI::MethodSummary 
+  name: attribute_value
+- !ruby/object:RI::MethodSummary 
+  name: exist?
+- !ruby/object:RI::MethodSummary 
+  name: exists
+- !ruby/object:RI::MethodSummary 
+  name: exists?
+- !ruby/object:RI::MethodSummary 
+  name: fire_event
+- !ruby/object:RI::MethodSummary 
+  name: focus
+- !ruby/object:RI::MethodSummary 
+  name: html
+- !ruby/object:RI::MethodSummary 
+  name: innerText
+- !ruby/object:RI::MethodSummary 
+  name: inner_text
+- !ruby/object:RI::MethodSummary 
+  name: inner_text
+- !ruby/object:RI::MethodSummary 
+  name: javascript_object
+- !ruby/object:RI::MethodSummary 
+  name: locate
+- !ruby/object:RI::MethodSummary 
+  name: method_missing
+- !ruby/object:RI::MethodSummary 
+  name: methods
+- !ruby/object:RI::MethodSummary 
+  name: object
+- !ruby/object:RI::MethodSummary 
+  name: parent
+- !ruby/object:RI::MethodSummary 
+  name: respond_to?
+- !ruby/object:RI::MethodSummary 
+  name: text
+- !ruby/object:RI::MethodSummary 
+  name: to_s
+- !ruby/object:RI::MethodSummary 
+  name: to_xml
+- !ruby/object:RI::MethodSummary 
+  name: visible?
+- !ruby/object:RI::MethodSummary 
+  name: xpath
+full_name: Celerity::Element
+superclass: Object
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new

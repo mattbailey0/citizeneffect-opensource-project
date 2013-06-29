@@ -1,0 +1,13 @@
+<li>
+	<div class="carousel">
+		<div class="pic"><%= link_to image_tag(object.main_picture_url(:standard_thumb), :alt => "", :width => "50", :height => "49"), object %></div>
+		<div class="copy">
+			<p class="title"><%= link_to h(object.name), object, :class => 'content-blue bold px11' %></p>
+			<p class="description">
+        <%=h truncate(object.summary_for_website, :length => 80) %>
+				<%= link_to "visit project", object, :class => 'orange underline' %>
+			</p>
+		</div>
+		<div class="clear"></div>
+	</div>
+</li>

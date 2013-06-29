@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>new (Celerity::Browser)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/celerity/browser.rb, line 56</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">opts</span> = {})
+      <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>)
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">TypeError</span>, <span class="ruby-node">&quot;wrong argument type #{opts.class}, expected Hash&quot;</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-keyword kw">unless</span> (<span class="ruby-identifier">render_types</span> = [<span class="ruby-identifier">:html</span>, <span class="ruby-identifier">:xml</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-value str">'html'</span>, <span class="ruby-value str">'xml'</span>]).<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:render</span>])
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;expected one of #{render_types.inspect} for key :render&quot;</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">opts</span>     = <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">dup</span> <span class="ruby-comment cmt"># we'll delete from opts, so dup to avoid side effects</span>
+      <span class="ruby-ivar">@options</span> = <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">dup</span> <span class="ruby-comment cmt"># keep the unmodified version around as well</span>
+
+      <span class="ruby-ivar">@render_type</span>   = <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:render</span>)    <span class="ruby-operator">||</span> <span class="ruby-identifier">:html</span>
+      <span class="ruby-ivar">@charset</span>       = <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:charset</span>)   <span class="ruby-operator">||</span> <span class="ruby-value str">&quot;UTF-8&quot;</span>
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">log_level</span> = <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:log_level</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">:warning</span>
+
+      <span class="ruby-ivar">@page</span>           = <span class="ruby-keyword kw">nil</span>
+      <span class="ruby-ivar">@error_checkers</span> = []
+      <span class="ruby-ivar">@browser</span>        = <span class="ruby-keyword kw">self</span> <span class="ruby-comment cmt"># for Container#browser</span>
+
+      <span class="ruby-identifier">setup_webclient</span> <span class="ruby-identifier">opts</span>
+      <span class="ruby-identifier">setup_viewer</span> <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:viewer</span>)
+
+      <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;unknown option #{opts.inspect}&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

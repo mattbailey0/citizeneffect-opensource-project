@@ -1,0 +1,17 @@
+<h1>New focus_area</h1>
+
+<% form_for([:admin, @focus_area]) do |f| %>
+  <%= f.error_messages %>
+
+<table border="0" cellspacing="0" cellpadding="0" class="form-table">
+  <tr>
+    <td class="form-label"><%= f.label :name %></td>
+    <td><%= f.text_field :name %></td>
+  </tr>
+  <tr>
+    <td class="form-submit" colspan="2"><%= f.submit 'Create' %></td>
+  </tr>
+</table>
+<% end %>
+
+<%= link_to 'Back', admin_focus_areas_path %>

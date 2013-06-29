@@ -1,0 +1,18 @@
+%h1= "Listing Media Album Photos for Project '#{@project.name}', Media Album '#{@media_album.title}'"
+
+.new-button= link_to '(+) Add a photo', [:new, :admin, @project, @media_album, :media_album_photo]
+
+%table.index-list{:cellpadding => "0", :cellspacing => "0" }
+  %tr.index-list-header
+    %th Title
+    %th Filename
+    %th Description
+    %th{:colspan => "3"} Actions
+  - @media_album_photos.each do |photo|
+    %tr
+      %td= h photo.title
+      %td= h photo.photo.andand.original_filename
+      %td= h photo.description
+      %td= link_to "Show", [:admin, @project, @media_album, photo]
+      %td= link_to "Edit", [:edit, :admin, @project, @media_album, photo]
+      %td= link_to "Destroy", [:admin, @project, @media_album, photo], :confirm => "Are you sure?", :method => :delete

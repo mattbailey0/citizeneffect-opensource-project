@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+params: (message, origin)
+is_singleton: false
+block_params: 
+name: notify
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: interface IncorrectnessListener
+full_name: Celerity::Listener#notify
+visibility: public
+aliases: []
+

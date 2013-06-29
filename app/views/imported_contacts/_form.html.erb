@@ -1,0 +1,50 @@
+<% content_for :form_errors do -%>
+  <%= f.error_messages %>
+<% end -%>
+
+			<div class="editform left">
+        <div style="width: 620px;">
+
+					<input type="button" name="" class="pad_bottom pad_left margin_top right" value="Select Contacts" onclick="$('#imported_contacts_box').toggle()" /> 
+          <%= f.text_field :to, :value => "Imported Contacts", :disabled => true, :class => "pad_bottom right margin_top", :style => "width:448px" %>
+          <%= f.label :to, "TO:", :class => "right pad_top" %>
+					<div class="clear"></div>
+					
+          <%= f.text_field :subject, :class => "pad_bottom right", :style => "width:550px" %>
+          <%= f.label :subject, "SUBJECT:", :class => "right" %>
+					<div class="clear"></div>
+					
+          <%= f.text_area :mail_contents, :class => "right margin_bottom", :style => "width:555px; height:160px" %>
+          <%= f.label :mail_contents, "CUSTOM<br />MESSAGE:", :class => "block right" %>
+
+					<div class="clear"></div>
+					
+					<div class="right" style="width:555px">
+<!-- 						<label class="block">EVENT INFORMATION:</label> -->
+
+<!-- 					  <div class="clear"></div> -->
+
+<!--             <div class="margin_bottom" style="border: solid 1px #aaa; width:555px;"> -->
+<!--               <div style="padding: 2px;"> -->
+<!-- 	              <p> -->
+<!-- 		              <%#=h f.object.event_information_text %> -->
+<!-- 	              </p> -->
+<!-- 	              <p> -->
+<!-- 		              <%#= link_to h(f.object.event_information_link_text), "#", :onclick => "return false;" %> -->
+<!-- 	              </p> -->
+<!--               </div> -->
+<!--             </div> -->
+
+
+						<div class="center">
+              <%= image_submit_tag "btn_send.png", :name => "send", :class => "send_invitations" %>
+            </div>
+
+
+					</div>
+					<div class="clear"></div>
+        </div>
+
+			</div>
+      <%= render :partial => "import_popup", :locals => { :f => f } -%>
+			<div class="clear"></div>

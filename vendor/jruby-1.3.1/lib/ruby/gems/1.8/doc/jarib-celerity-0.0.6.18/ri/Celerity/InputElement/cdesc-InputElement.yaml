@@ -1,0 +1,25 @@
+--- !ruby/object:RI::ClassDescription 
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: ClickableElement
+- !ruby/object:RI::IncludedModule 
+  name: DisabledElement
+name: InputElement
+constants: 
+- !ruby/object:RI::Constant 
+  name: ATTRIBUTES
+  value: BASE_ATTRIBUTES | [:type, :name, :value, :checked, :disabled, :readonly,
+    :size, :maxlength,                                     :src, :alt, :usemap, :ismap,
+    :tabindex, :accesskey, :onfocus, :onblur,                                     :onselect,
+    :onchange, :accept, :align]
+  comment: 
+comment: 
+attributes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: readonly?
+full_name: Celerity::InputElement
+superclass: Element
+class_methods: []
+

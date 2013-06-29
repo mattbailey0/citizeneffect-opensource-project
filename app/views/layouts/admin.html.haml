@@ -1,0 +1,72 @@
+!!!
+%html{ "xml:lang" => "en", :lang => "en", :xmlns => "http://www.w3.org/1999/xhtml" }
+  %head
+    %meta{ :content => "text/html;charset=UTF-8", "http-equiv" => "content-type" }
+    %title
+      = "#{controller_name.titleize}: #{controller.action_name.titleize}"
+    = stylesheet_link_tag 'admin', 'scaffold'
+    = javascript_include_tag "bloggity/fckeditor/fckeditor"
+    = javascript_include_tag "jquery", 'jquery.tablesorter', 'jquery.livequery', 'lowpro.jquery', 'behaviors'
+  %body
+    #header
+      %img{ :src => "/images/admin-logo.png", :alt => "Citizen Effect Logo", :style => "margin-top: -1px" }
+      Administration Center
+      |
+      = link_to 'Public Site', '/'
+      #user_bar
+        = render :partial => "users/user_bar"
+    - if current_user.andand.is_a_citizen_effect_admin?
+      #admin-nav
+        = link_to "Projects", admin_projects_path
+        |
+        = link_to "All Donations", admin_all_donations_path
+        |
+        = link_to "CPs", admin_role_user_role_associations_path(Role.cp)
+        |
+        = link_to "CP Applications", admin_cp_applications_path
+        |
+        = link_to "General Forms", admin_general_forms_path
+        |
+        = link_to "Partners", admin_partners_path
+        |
+        = link_to "Partnership Inquiries", admin_partner_inquiry_forms_path
+        |
+        = link_to "Campaigns", admin_campaigns_path
+
+        %br
+        = link_to "Website Pages", admin_regular_pages_path
+        |
+        = link_to "Homepage Features", admin_featured_projects_path
+        |
+        = link_to "Countries", admin_countries_path
+        |
+        = link_to "Currency Types", admin_currency_types_path
+        |
+        = link_to "Project Types", admin_project_types_path
+        |
+        = link_to "Fundraiser Types", admin_fundraiser_types_path
+        |
+        = link_to "Focus Areas", admin_focus_areas_path
+        %br
+        = link_to "Admins", admin_role_user_role_associations_path(Role.citizen_effect_admin)
+        |
+        = link_to "All Users", admin_all_users_path
+        |
+        = link_to "Mailing List", [:new, MailingList.global_list, :mailing_list_email]
+        |
+        = link_to "Subscribers", admin_subscribers_path
+        |
+        = link_to "System-Wide Network Impact", admin_network_impacts_path
+        %br
+        = link_to "Fundraising Mgmt", admin_project_management_path
+    - if current_user.andand.is_an_partner_admin?
+      #admin-nav
+        = link_to "Projects", admin_projects_path
+    #feedback_messages_for_users
+      .green
+        = flash[:notice]
+      .red
+        = flash[:error]
+    #content
+      = yield
+

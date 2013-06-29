@@ -1,0 +1,11 @@
+%h1 New User
+
+- form_for [:admin, @user], :html => { :multipart => true } do |f|
+  = f.error_messages
+  %table.form-table{ :border => 0, :cellspacing => 0, :cellpadding=> 0 }
+    = render "form", :f => f
+    %tr
+      %td.form-submit{:colspan => 2}
+        = f.submit "Create User"
+
+= link_to 'Back', admin_all_users_path

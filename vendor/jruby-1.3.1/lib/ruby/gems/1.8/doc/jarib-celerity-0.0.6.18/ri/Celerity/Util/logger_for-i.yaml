@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+params: (package_string)
+is_singleton: false
+block_params: 
+name: logger_for
+comment: 
+full_name: Celerity::Util#logger_for
+visibility: public
+aliases: []
+

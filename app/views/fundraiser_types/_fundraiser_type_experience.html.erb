@@ -1,0 +1,13 @@
+                            <div class="cp-container carousel">
+                                <div class="pic"><%= link_to sized_image_tag(fundraiser_type_experience.user, :picture_url_thumb, :standard_thumb), fundraiser_type_experience.user %></div>
+                                <div class="copy blue">
+                                    <p class="title"><%= link_to h(fundraiser_type_experience.user.display_name), fundraiser_type_experience.user %></p>
+                                    <p class="description">
+                                      <%=h fundraiser_type_experience.user.display_location %><br /><br />
+
+                                      <%= link_to "send a message", 
+                                          message_user_path(fundraiser_type_experience.user), :class => "green" %>
+                                    </p>
+                                </div>
+                                <div class="clear"></div>
+                            </div>

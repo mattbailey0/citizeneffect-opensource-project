@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+params: ()
+is_singleton: false
+block_params: 
+name: maps
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: '@return [Celerity::Maps]'
+full_name: Celerity::Container#maps
+visibility: public
+aliases: []
+

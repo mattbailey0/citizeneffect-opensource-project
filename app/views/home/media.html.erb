@@ -1,0 +1,43 @@
+<% content_for(:page_title, "Featured Media") %>
+
+		<div class="breadcrumbs">
+			
+		</div>
+
+		
+		<!-- main body copy -->
+		<div id="wrapper-copy" class="media_page">
+		
+			<!-- left column -->
+			<div class="twocol-left">
+            	
+
+        <%= render :partial => "media_page_galleries" %>
+
+
+			</div>
+			
+			<!-- right column -->
+			<div class="twocol-right">
+				
+								<!-- search -->
+				<div class="box-rightcol-inner-header">
+					<div class="box-rightcol-header"><h3 class="full">SEARCH FOR MORE COVERAGE</h3></div>
+				</div>
+
+				<div class="box-rightcol-inner blue search_container bold">
+					<div class="pad_full">
+						<p>Find more media by searching for projects and viewing their media galleries</p>
+            <% form_tag search_path, :method => :get do %>
+							<label>TYPE HERE TO SEARCH &raquo;</label>
+              <%= text_field_tag "q", params[:q], :class => "larger" %>
+							<input class="right pad_top pad_right" type="image" src="/images/btn_search_blue.png" />
+							<div class="clear"></div>
+
+            <% end -%>
+					</div>
+				</div>
+				<div class="box-rightcol-bottom"></div>
+			</div>
+			<div class="clear"></div>
+		</div>

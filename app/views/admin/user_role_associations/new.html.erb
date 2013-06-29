@@ -1,0 +1,16 @@
+<% form_for([:admin, @role, @user_role_association]) do |f| %>
+
+<table border="0" cellspacing="0" cellpadding="0" class="form-table">
+  <tr>
+    <td class="form-label"><%= f.label :user_id,  "Select User Account" %></td>
+    <td><%= f.select :user_id, @users.map {|u| [u.name_and_email,u.id]} %></td>
+  </tr>
+  <tr>
+    <% if @role.name == "cp" %>
+    <td class="form-submit" colspan="2"><%= f.submit "Grant CP Status" %></td>
+    <% elsif @role.name == "citizen_effect_admin" %>
+    <td class="form-submit" colspan="2"><%= f.submit "Add Admin" %></td>
+    <% end %>
+  </tr>
+</table>
+<% end %>

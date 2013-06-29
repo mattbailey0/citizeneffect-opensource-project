@@ -1,0 +1,23 @@
+%table
+  %tr{:style => "font-weight:bold;"}
+    %td ID
+    %td Use on Homepage
+    %td Automatically Calculated
+    %td Lives Impacted
+    %td Donors
+    %td Citizen Philanthropists
+    %td Dollars Donated
+    %td Completed Projects
+    %td Projects In Progress
+
+  - @network_impacts.each do |network_impact|
+    %tr
+      %td= h network_impact.id
+      %td= h(network_impact.use_on_homepage ? "Yes" : "No")
+      %td= h(network_impact.automatically_calculated ? "Yes" : "No")
+      %td= h network_impact.total_lives_impacted
+      %td= h network_impact.total_unique_donors
+      %td= h network_impact.total_citizen_philanthropists
+      %td= h network_impact.total_dollars_donated
+      %td= h network_impact.total_completed_projects
+      %td= h network_impact.total_projects_in_progress

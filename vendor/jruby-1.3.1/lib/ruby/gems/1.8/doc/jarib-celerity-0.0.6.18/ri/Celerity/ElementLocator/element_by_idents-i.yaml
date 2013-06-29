@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+params: (idents = @idents)
+is_singleton: false
+block_params: 
+name: element_by_idents
+comment: 
+full_name: Celerity::ElementLocator#element_by_idents
+visibility: public
+aliases: []
+

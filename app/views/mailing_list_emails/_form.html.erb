@@ -1,0 +1,49 @@
+  <% content_for :form_errors do -%>
+  <%= f.error_messages %>
+<% end -%>
+
+              <%= label_tag nil, "TO:" %>
+              <%= text_field_tag :to, "#{h(@mailing_list.project.andand.name || "Global")} Mailing List", :disabled => true, :class => "pad_bottom right", :style => "width:550px" %>
+							<div class="clear"></div>
+							
+              <%= f.label :bcc, "BCC:" %>
+              <%= f.text_field :bcc, :class => "pad_bottom right", :style => "width:550px" %>
+							<div class="clear"></div>
+
+							
+              <%= f.label :subject, "SUBJECT:" %>
+              <%= f.text_field :subject, :class => "pad_bottom right", :style => "width:535px" %>
+							<div class="clear"></div>
+							
+              <table>
+                <tr>
+              <td><%= label_tag nil, "ATTACHMENTS:&nbsp;" %></td>
+              <td>
+
+
+                <% f.fields_for :email_attachments do |attachments_form| %>
+                  <div>
+                    <%=h attachments_form.object.original_filename %>
+                    <a href="#" onclick="$(this).parent().replaceWith('<%= escape_javascript(h(attachments_form.hidden_field("_delete", :value => true))) -%>'); return false;">X</a>
+                  </div>
+                <% end %>
+
+
+              <% f.fields_for :email_attachments, @mailing_list_email.email_attachments.build, :child_index => "index_to_replace_with_js" do |attachments_form| %>
+              <%= attachments_form.file_field :content, :onchange => "$(this).parent().append($('&lt;span&gt;').append($(this).clone()).html().replace(/index_to_replace_with_js/g, new Date().getTime())); $(this).attr('onchange', '');" %>
+              <% end %>
+
+              </td>
+              </tr>
+              </table>
+							<div class="clear"></div>
+							
+              <%= f.label :mail_contents, "MESSAGE:" %>
+              <%= f.text_area :mail_contents, :class => "right margin_bottom", :style => "width:560px; height:160px" %>
+
+							<div class="clear"></div>
+							
+							
+              <%= image_submit_tag "btn_send.png", :name => "send", :class => "pad_top right pad_left" %>
+              <%= image_submit_tag "btn_save_draft.png", :name => "save_draft", :class => "pad_top right" %>
+							<div class="clear"></div>

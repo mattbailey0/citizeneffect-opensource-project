@@ -1,0 +1,15 @@
+--- !ruby/object:RI::MethodDescription 
+params: ()
+is_singleton: false
+block_params: 
+name: click_and_attach
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Click the element and return a new Browser instance with the resulting page.
+    This is useful for elements that trigger popups when clicked.
+- !ruby/struct:SM::Flow::P 
+  body: '@return [Celerity::Browser]'
+full_name: Celerity::ClickableElement#click_and_attach
+visibility: public
+aliases: []
+

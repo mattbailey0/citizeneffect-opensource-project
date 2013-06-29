@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+params: () {|item(idx)| ...}
+is_singleton: false
+block_params: item(idx)
+name: each
+comment: 
+full_name: Java::OrgW3cDom::NamedNodeMap#each
+visibility: public
+aliases: []
+

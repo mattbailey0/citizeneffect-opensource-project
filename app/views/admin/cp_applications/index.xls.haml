@@ -1,0 +1,48 @@
+%table
+  %tr{:style => "font-weight:bold;"}
+    %td
+      ID
+    %td
+      New CP?
+    %td
+      Email
+    %td
+      Last Name
+    %td
+      First Name
+    %td
+      State
+    %td
+      Zip Code
+    %td
+      Applying to Project
+    %td
+      Applied On
+    %td
+      Completed Projects
+    %td
+      Status
+  - @cp_applications.each do |cpa|
+    %tr
+      %td
+        =h cpa.id
+      %td
+        =h cpa.applicant_is_new_cp? ? "Yes" : "No"
+      %td
+        =h cpa.email
+      %td
+        =h cpa.last_name
+      %td
+        =h cpa.first_name
+      %td
+        =h cpa.state_code
+      %td
+        =h cpa.zip
+      %td
+        =h cpa.project.andand.name
+      %td
+        =h cpa.created_at.to_date.to_s
+      %td
+        =h cpa.applicant_projects_completed_count
+      %td
+        =h cpa.approval_status

@@ -1,0 +1,141 @@
+%h1
+  - if @project
+    Listing Donations
+    %br
+    %br
+    Project: #{h @project.name}
+  - else
+    All Donations
+
+.new-button
+  = link_to "(+) Add Donation", new_admin_donation_path(:project_id => @project.andand.id)
+
+.xls_link
+  = link_to "Download All As Excel Spreadsheet", url_for({:format => :xls}.merge(params))
+
+- form_tag '/admin/donations.xls', :method => 'get' do
+  = select_tag :year, "<option>2009</option><option>2010</option><option>2011</option><option>2012</option><option>2013</option><option>2014</option>"
+  = submit_tag "Download as Excel", :name=>nil
+
+- form_tag request.path, :method => 'get' do
+  = text_field_tag :search, params[:search]
+  = submit_tag "Search", :name=>nil
+
+%div= will_paginate(@donations_paginated)
+
+%table.index-list.sortable{:cellpadding => "0", :cellspacing => "0"}
+  %thead
+    %tr.index-list-header
+      %th
+        .sort-icon
+        Project Name
+      %th
+        .sort-icon
+        CP Name
+      %th
+        .sort-icon
+        Anonymous?
+      %th
+        .sort-icon
+        Donor First Name
+      %th
+        .sort-icon
+        Donor Last Name
+      %th
+        .sort-icon
+        Date & Time
+      %th
+        .sort-icon
+        Original Base Donation Amount
+      %th
+        .sort-icon
+        Fee Percentage
+      %th
+        .sort-icon
+        Original Project Donation Amount
+      %th
+        .sort-icon
+        Original Tip %
+      %th
+        .sort-icon
+        Original Total Charged
+      %th
+        .sort-icon
+        Total Refunded Amount
+      %th
+        .sort-icon
+        Revised Tip %
+      %th
+        .sort-icon
+        Net Base Donation Amount
+      %th
+        .sort-icon
+        Net Project Donation Amount
+      %th
+        .sort-icon
+        Net CE Donation Amount
+      %th
+        .sort-icon
+        Net Total Charged
+      %th
+        .sort-icon
+        Address
+      %th
+        .sort-icon
+        City
+      %th
+        .sort-icon
+        State
+      %th
+        .sort-icon
+        Zip
+      %th
+        .sort-icon
+        Donor Email
+      %th
+        .sort-icon
+        Campaign Code
+      %th
+        .sort-icon
+        Actions
+
+  %tbody
+    - @donations_paginated.each do |donation|
+      %tr
+        %td
+          - if donation.project
+            = link_to h(donation.project.name), [:admin, donation.project]
+          - else
+            Citizen Effect General Donation
+        %td= donation.project.andand.cp ? h(donation.project.andand.cp.name) : h(donation.donation_cp.andand.name)
+        %td= donation.anonymous ? "yes" : "no"
+        %td= donation.donor ? link_to(h(donation.first_name), donation.donor) : h(donation.first_name)
+        %td= donation.donor ? link_to(h(donation.last_name), donation.donor) : h(donation.last_name)
+        %td= h donation.donated_at.in_time_zone('Eastern Time (US & Canada)').strftime("%Y-%m-%d %H:%M %Z")
+        %td= h number_to_currency(donation.amount_in_dollars)
+        %td= h (donation.fee_percentage.to_f * 100).to_s + "%"
+        %td= h number_to_currency(donation.project ? donation.project_amount_in_dollars : 0)
+        %td= h number_to_percentage(donation.tip_percentage.to_i, :precision => 0)
+        %td= h number_to_currency(donation.actual_amount_in_dollars)
+        %td= h number_to_currency(donation.refunded_amount_in_dollars)
+        %td= h number_to_percentage(donation.current_tip_percentage, :precision => 0)
+        %td= h number_to_currency(donation.net_amount_in_dollars)
+        %td= h number_to_currency(donation.net_project_amount_in_dollars)
+        %td= h number_to_currency(donation.net_ce_amount_in_dollars)
+        %td= h number_to_currency(donation.net_actual_amount_in_dollars)
+        %td
+          = h donation.address1
+          - unless donation.address2.blank?
+            %br
+            = h donation.address2
+        %td= h donation.city
+        %td= h donation.state
+        %td= h donation.zip
+        %td= link_to h(donation.email), "mailto:#{donation.email}"
+        %td= h donation.campaign_code
+        %td
+          = link_to "Edit", [:edit, :admin, @project, donation].compact
+%br
+
+%div= will_paginate(@donations_paginated)
+

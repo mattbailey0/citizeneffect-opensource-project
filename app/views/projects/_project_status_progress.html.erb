@@ -1,0 +1,12 @@
+<ul class="small-links">
+  <% status_progress = @project.project_status.get_status_progress -%>
+	<li class="<%= status_progress[:proposal] -%>">Proposal</li>
+	<li class="spacer_progress">|</li>
+	<li class="<%= status_progress[:fundraising] -%>">Fundraising</li>
+	<li class="spacer_progress">|</li>
+	<li class="<%= status_progress[:construction] -%>">Construction</li>
+	<li class="spacer_progress">|</li>
+	<li class="<%= status_progress[:completion] -%>">Completion</li>
+	<li class="spacer_progress">|</li>
+	<li class="<%= status_progress[:evaluation] -%>">Evaluation</li>
+</ul>

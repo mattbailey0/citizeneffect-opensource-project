@@ -1,0 +1,26 @@
+			<div id="imported_contacts_box" class="right" style="<%=h @imported_contact_ids.empty? ? "display: none;" : "" %>">
+				<div class="facebox_scroll_outer bg_ltblue2">
+						<img src="/images/arrow_left_ltblue.png" alt="" width="5" height="10" class="facebox_scroll_arrow" />
+					<p class="pad_top_large pad_left strong">SELECT CONTACTS FROM YOUR IMPORTATED EMAIL LIST.</p>
+					<p class="right pad_right">
+            <%= link_to image_tag("btn_select_all.png", :alt => "", :width => "76", :height => "21"), "#",
+                  :onclick => "var old_val = $('#imported_contacts_box :checkbox').get(0).checked;
+                               $('#imported_contacts_box :checkbox').each(function(){this.checked = !old_val;});
+                               return false;" %>
+          </p>
+					<div class="facebox_scroll narrow right bg_white">
+						<div class="facebox_scroll_pad ">
+
+              <% current_user.imported_contacts.each do |imported_contact| %>
+							  <p>
+                  <%= f.check_box :imported_contact_ids, { :multiple => true, :checked => @imported_contact_ids.map(&:to_i).include?(imported_contact.id), :id => "project_event_invitation_email_imported_contact_ids_#{h imported_contact.id}" }, h(imported_contact.id), "" %>
+                  <%= label_tag "project_event_invitation_email_imported_contact_ids_#{h imported_contact.id}", h(imported_contact.name_and_email), :class => "inline" %>
+                </p>
+              <% end %>
+
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+<!-- 				<input type="image" src="/images/btn_add_selected.png" class="right pad_top" /> -->
+			</div>

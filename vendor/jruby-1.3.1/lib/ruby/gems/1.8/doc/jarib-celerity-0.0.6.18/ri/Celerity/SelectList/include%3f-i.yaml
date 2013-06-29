@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+params: (value)
+is_singleton: false
+block_params: 
+name: include?
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Returns true if the select list has one or more options matching the given
+    value.
+- !ruby/struct:SM::Flow::P 
+  body: '@param [String, Regexp] value A value. @return [true, false]'
+full_name: Celerity::SelectList#include?
+visibility: public
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: includes?

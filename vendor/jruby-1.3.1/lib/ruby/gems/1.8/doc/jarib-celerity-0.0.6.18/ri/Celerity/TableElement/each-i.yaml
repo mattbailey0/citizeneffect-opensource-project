@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+params: () {|TableRow.new(self, :object, row) }| ...}
+is_singleton: false
+block_params: TableRow.new(self, :object, row) }
+name: each
+comment: 
+full_name: Celerity::TableElement#each
+visibility: public
+aliases: []
+

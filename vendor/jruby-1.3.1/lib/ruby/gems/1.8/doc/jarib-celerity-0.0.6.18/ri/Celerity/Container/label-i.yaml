@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+params: (*args)
+is_singleton: false
+block_params: 
+name: label
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: '@return [Celerity::Label]'
+full_name: Celerity::Container#label
+visibility: public
+aliases: []
+

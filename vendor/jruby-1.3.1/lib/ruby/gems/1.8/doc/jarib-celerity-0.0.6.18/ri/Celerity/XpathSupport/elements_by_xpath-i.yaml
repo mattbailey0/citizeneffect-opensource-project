@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+params: (xpath)
+is_singleton: false
+block_params: 
+name: elements_by_xpath
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Get all the elements matching the given XPath.
+- !ruby/struct:SM::Flow::P 
+  body: '@param [String] xpath @return [Array&lt;Celerity::Element&gt;] array of elements'
+full_name: Celerity::XpathSupport#elements_by_xpath
+visibility: public
+aliases: []
+

@@ -1,0 +1,39 @@
+<div id="info_box_details" class="component info_box_content">
+	<strong>Project Summary</strong><br />
+	<% unless @project.summary_for_website.blank? %>
+		<%= auto_link(simple_format(h(@project.summary_for_website))) %>
+		
+		<br/>
+		<a href="javascript:showHideDivs('more_project_details_box','more_project_details_link')" id="more_project_details_link">Learn more about the project</a>
+		<div id="more_project_details_box" class="hidden">
+			
+			<% unless @project.what_will_be_done.blank? %>
+				<br/><hr/><br/>
+				<strong>What?</strong>
+				<br/>	<br/>
+				<%= auto_link(simple_format(h(@project.what_will_be_done))) %>	
+			<% end %>
+			
+			<% unless @project.justification_for_project.blank? %>
+				<br/><hr/><br/>
+				<strong>Why?</strong>
+				<br/>	<br/>
+				<%= auto_link(simple_format(h(@project.justification_for_project))) %>	
+			<% end %>
+			
+			<% unless @project.how_will_it_be_done.blank? %>
+				<br/><hr/><br/>
+				<strong>How?</strong>
+				<br/>	<br/>
+				<%= auto_link(simple_format(h(@project.how_will_it_be_done))) %>
+			<% end %>
+			
+			
+			<br/>
+			<a href="javascript:showHideDivs('more_project_details_link','more_project_details_box')">Hide extra project detail</a>
+		</div>
+	<% else %>
+		<em>No project summary yet.</em>
+	<% end %>
+  <%= link_to "edit featured media", [@project, :featured_media_associations], :class => "green" if (logged_in? && current_user.is_a_citizen_effect_admin?) %>
+</div>

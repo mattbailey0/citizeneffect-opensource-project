@@ -1,0 +1,26 @@
+%tr
+  %td{:colspan => "2"}
+    %strong Final Budget*
+
+%tr
+  %td.fl
+    %strong= f.label :final_budget, "Upload PDF*"
+  %td
+    = f.file_field :final_budget
+- unless f.object.new_record? || f.object.final_budget.blank?
+  %tr
+    %td.fl Existing budget file
+    %td= link_to h(f.object.final_budget.andand.original_filename), f.object.final_budget.andand.url
+
+%tr
+  %td.fl
+    %strong= f.label :final_cost_in_local_currency, "Final project cost in local currency*"
+  %td
+    = f.text_field :final_cost_in_local_currency
+    = f.select :local_currency_type_id, @currency_types.map {|c| [c.currency_code,c.id]}
+
+%tr
+  %td.fl= f.label :final_cost_in_usd, "Final project cost in USD"
+  %td
+    = f.text_field :final_cost_in_usd
+    USD

@@ -1,0 +1,8 @@
+  					<div class="people">
+	  					<div class="left"><%= link_to sized_image_tag(fundraiser_type.picture, :url, :tiny_fundraiser_type_thumb), fundraiser_type %></div>
+		  				<div class="right">
+			  				<p class="name"><%= link_to h(fundraiser_type.name), fundraiser_type, :class => "blue strong" %></p>
+				  			<p class="little ltblue"><%=h first_sentence_of(fundraiser_type.description) %></p>
+					  	</div>
+						  <div class="clear"></div>
+				  	</div>

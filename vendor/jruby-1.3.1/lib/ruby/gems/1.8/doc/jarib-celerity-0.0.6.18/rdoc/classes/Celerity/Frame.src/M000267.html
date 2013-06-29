@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>method_missing (Celerity::Frame)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/celerity/elements/frame.rb, line 65</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">method_missing</span>(<span class="ruby-identifier">meth</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
+      <span class="ruby-identifier">meth</span> = <span class="ruby-identifier">selector_to_attribute</span>(<span class="ruby-identifier">meth</span>)
+      <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span><span class="ruby-operator">::</span><span class="ruby-constant">ATTRIBUTES</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">meth</span>)
+        <span class="ruby-identifier">assert_exists</span>
+        <span class="ruby-ivar">@inline_frame_object</span>.<span class="ruby-identifier">getAttribute</span>(<span class="ruby-identifier">meth</span>.<span class="ruby-identifier">to_s</span>)
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-constant">Log</span>.<span class="ruby-identifier">warn</span> <span class="ruby-node">&quot;Element\#method_missing calling super with #{meth.inspect}&quot;</span>
+        <span class="ruby-keyword kw">super</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

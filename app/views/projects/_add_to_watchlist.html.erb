@@ -1,0 +1,36 @@
+<% css_class ||= "green pad_top pad_bottom" -%>
+<% do_not_use_clear ||= false -%>
+
+<span class="" id='<%= "watch-list-action-container-#{h project.id}" -%>'>
+  <% if logged_in? -%>
+    <% if current_user.watches_project?(project) -%>
+      <%= render :partial => "projects/added_to_watchlist", :locals => { :association => WatchedProjectAssociation.find_by_project_id_and_user_id(project.id, current_user.id), :project => project } -%>
+    <% else -%>
+      <div id="project_user_association_fields_<%=h project.id -%>" style="display:none;">
+        <input type="hidden" name="watched_project_association[user_id]" id="watched_project_association_user_id" value="<%=h current_user.id -%>" />
+        <input type="hidden" name="watched_project_association[project_id]" id="watched_project_association_project_id" value="<%=h project.id -%>" />
+      </div>
+      <%= link_to_remote "add to watch list", { :url => {:action => "create", :controller => "watched_project_associations", :user_id => current_user.id }, :submit => "project_user_association_fields_#{h project.id}", :success => "handleCreateSuccess_#{project.id}(request)", :failure => "handleCreateFailure_#{project.id}(request)", :datatype => "html" }, { :class => css_class, :id => "add-project-to-watch-list-#{project.id}"} %>
+   
+      <div id="remote_message" style="display:none"></div>
+   
+      <script type="text/javascript">
+        //<![CDATA[
+        function handleCreateSuccess_<%= project.id -%>(request) {
+          var association_id = $(request).find('#association-id').val();
+          $('#watch-list-action-container-<%= "#{project.id}" -%>').replaceWith(request);
+          $('#remove-from-watchlist-'+association_id).effect("highlight", {}, 3000);
+        }
+        function handleCreateFailure_<%= project.id -%>(request) {
+          $('#remote_message').html(message).addClass('red').show().effect("highlight", {}, 3000);
+        }
+        //]]>
+      </script>
+    <% end -%>
+  <% else -%>
+    <%= link_to "add to watch list", signup_path(:watch_project => project.id), :class => css_class %>
+  <% end -%>
+</span>
+<% unless do_not_use_clear -%>
+<div class="clear"></div>
+<% end %>

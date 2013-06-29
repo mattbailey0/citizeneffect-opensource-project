@@ -1,0 +1,24 @@
+<% events = events_nearby %>
+<% nearby = !events.empty? %>
+<% events = ProjectEvent.upcoming if events.empty? %>
+<% if events.any? %>
+  <!-- full-width carousel -->
+	<div class="box-full-top"></div>
+	<div class="box-full-middle">
+		<div class="header">
+      <h4>
+        <% if current_user && nearby -%>
+          <%=h "Events near #{current_user.display_location}".upcase -%>
+        <% else -%>
+          UPCOMING EVENTS
+        <% end -%>
+        (<%=h events.size %>)
+      </h4>
+    </div>
+    <ul class="carousel3 jcarousel-skin-tango">
+      <%= render :partial => "projects/event", :collection => events %>
+    </ul>
+		<div class="clear"></div>
+	</div>
+	<div class="box-full-bottom"></div>
+<% end %>

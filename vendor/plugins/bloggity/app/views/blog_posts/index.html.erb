@@ -1,0 +1,61 @@
+<% content_for(:page_title, "#{@project ? @project.name : %{Citizen Effect}} Blog") %>
+
+<div class="breadcrumbs">
+  <%= link_to "&laquo; back to project", @project, :class => "breadcrumbs green" if @project %>
+</div>
+
+<!-- main body copy -->
+<div id="wrapper-copy">
+		
+	<!-- left column -->
+	<div class="twocol-left">
+		<!-- blog posts -->
+		<div class="component-wrapper">
+			<div class="component-header">
+        <h3><%= @project ? header_text(@project.name, :length => 43) : "CITIZEN EFFECT" -%> BLOG</h3>
+        <div class="component-subheader">
+          <div class="right pad_top_medium">
+            <%= link_to image_tag("rss-icon.gif"), [:feed, @blog] %>
+          </div>
+        </div>
+      </div>
+			<div class="component">
+	      <% if blog_logged_in? && current_user.can_blog?(@blog_id) %>
+        <p>
+		      <%= link_to "(+) Add Blog Post", { :controller => 'blog_posts', :action => :new, :blog_id => @blog_id } %>
+		    or <%= link_to "see pending posts", blog_named_link(nil, :pending, { :blog => @blog }) %>
+        </p>
+        
+	      <% end %>
+
+	      <% for blog_post in @blog_posts %>
+		    <%= render :partial => 'excerpt', :locals => { :blog_post => blog_post, :header_style => 'h2', :show_comment_count => true, :last => @blog_posts.last } %>
+	      <% end %>
+	
+        <% if @blog_posts && @blog_posts.total_pages > 1 -%>
+		    <p class="paginate_container right older_posts">
+          <%= link_to "new posts", blog_named_link(nil, :index, { :blog => @blog }) %> /
+          <%= will_paginate(@blog_posts, {:form_name => :blog_show_params, :param_name => :page, :page_links => false, :previous_label => "", :next_label => "older posts", :container => false} ) -%>
+        </p>
+	      <% end %>
+			</div>
+		</div>
+		<div class="component-bottom"></div>
+	</div>
+	
+	<!-- right column -->
+	<div class="twocol-right">
+    
+		<%= render :partial => "meet_the_cp" if @project.andand.cp %>
+    <%= render :partial => "project_summary" if @project %>
+		
+    <%= render :partial => "news_feed" %>
+		
+    <%= render :partial => "projects/recently_active" unless @project %>
+    
+    <%= render :partial => "events" if @project %>
+    
+    <%= render :partial => "shared/social_network_icons" %>
+	</div>
+	<div class="clear"> </div>
+</div>

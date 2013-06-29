@@ -1,0 +1,38 @@
+%h1
+  Citizen Effect Network Impact
+
+.xls_link
+  = link_to "Download As Excel Spreadsheet", url_for({:format => :xls}.merge(params))
+
+%table.index-list{:cellpadding => "0", :cellspacing => "0"}
+  %tr.index-list-header
+    %th ID
+    %th Use on Homepage
+    %th Automatically Calculated
+    %th Lives Impacted
+    %th Donors
+    %th Citizen Philanthropists
+    %th Dollars Donated
+    %th Completed Projects
+    %th Projects In Progress
+    %th Actions
+
+  - @network_impacts.each do |network_impact|
+    %tr
+      %td= h network_impact.id
+      %td= h(network_impact.use_on_homepage ? "Yes" : "No")
+      %td= h(network_impact.automatically_calculated ? "Yes" : "No")
+      %td= h network_impact.total_lives_impacted
+      %td= h network_impact.total_unique_donors
+      %td= h network_impact.total_citizen_philanthropists
+      %td= h network_impact.total_dollars_donated
+      %td= h network_impact.total_completed_projects
+      %td= h network_impact.total_projects_in_progress
+      %td
+        - if network_impact.automatically_calculated
+          = link_to 'Recalculate', recalculate_admin_network_impact_path(network_impact, :_method => "put")
+          |
+        = link_to 'Edit', edit_admin_network_impact_path(network_impact)
+
+
+%br

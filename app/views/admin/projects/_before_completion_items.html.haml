@@ -1,0 +1,20 @@
+%h2 Before Completion
+%br
+
+= link_to "View Proposal", [:admin, @project]
+%br
+%br
+%br
+
+= link_to "(+) New Status Update", new_admin_project_partner_project_status_update_path(@project)
+%br
+%span.small Ongoing updates feature community profiles and media
+%br
+%br
+
+- if @project.partner_project_progress_reports.blank?
+  = link_to "(+) Add Progress Report", [:new, :admin, @project, :partner_project_progress_report]
+- else
+  = link_to "(&#x2713;) Complete Progress Report", [:edit, :admin, @project, @project.partner_project_progress_reports.first]
+%br
+%span.small Mid-Construction Report (1 per project)

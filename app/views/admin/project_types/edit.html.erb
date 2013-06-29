@@ -1,0 +1,33 @@
+<h1>Editing Project Type '<%=h @project_type.name -%>'</h1>
+
+<% form_for([:admin, @project_type], :html => { :multipart => true }) do |f| %>
+  <%= f.error_messages %>
+
+<table border="0" cellspacing="0" cellpadding="0" class="form-table">
+  <tr>
+    <td class="form-label"><%= f.label :name %></td>
+    <td><%= f.text_field :name %></td>
+  </tr>
+
+  <tr>
+    <td class="form-label"><%= f.label :icon %></td>
+    <td><%= f.file_field :icon %></td>
+  </tr>
+
+  <tr>
+    <td class="form-label"><%= label_tag "existing_picture", "Current Picture" -%></td>
+    <td>
+      <% if @project_type.icon.blank? -%>
+        None
+      <% else -%>
+        <%= image_tag @project_type.icon.url, :id => "existing_picture" %>
+      <% end -%>
+    </td>
+  <tr>
+    <td class="form-submit" colspan="2"><%= f.submit 'Update' %></td>
+  </tr>
+</table>
+<% end %>
+
+<%= link_to 'Show', [:admin, @project_type] %> |
+<%= link_to 'Back', admin_project_types_path %>

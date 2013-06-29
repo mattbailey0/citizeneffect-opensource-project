@@ -1,0 +1,27 @@
+<h1>Listing Audio Files of Project
+<br/>
+Project: <%=h @project.name %></h1>
+
+<div class="new-button">
+  <%= link_to '(+) Add Audio to Project', [:new, :admin, @project, :project_audio] %>
+</div>
+
+<table cellpadding="0" cellspacing="0" class="index-list">
+  <tr class="index-list-header">
+    <th>Audio file name</th>
+    <th>Caption</th>
+    <th>Related project stage</th>
+    <th colspan="3">Actions</th>
+  </tr>
+
+<% @project_audios.each do |project_audio| %>
+  <tr>
+    <td><%=h project_audio.audio_file_name %></td>
+    <td><%=h project_audio.caption %></td>
+    <td><%=h project_audio.related_project_stage %></td>
+    <td><%= link_to 'Show', [:admin, @project, project_audio] %></td>
+    <td><%= link_to 'Edit', [:edit, :admin, @project, project_audio] %></td>
+    <td><%= link_to 'Destroy', [:admin, @project, project_audio], :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>

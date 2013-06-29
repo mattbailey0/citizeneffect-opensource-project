@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+params: (expected_text)
+is_singleton: false
+block_params: 
+name: contains_text
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Check if the given text fields contains the given String or Regexp.
+full_name: Celerity::TextField#contains_text
+visibility: public
+aliases: []
+

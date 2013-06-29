@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+params: ()
+is_singleton: false
+block_params: 
+name: colspan
+comment: 
+full_name: Celerity::TableCell#colspan
+visibility: public
+aliases: []
+

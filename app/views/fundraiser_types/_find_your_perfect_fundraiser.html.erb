@@ -1,0 +1,37 @@
+                <div class="component-wrapper">
+					<div class="component-header">
+						<h3>FIND YOUR PERFECT FUNDRAISER!</h3>
+					</div>	
+					<div class="component">
+						<h1 class="larger">Answer a few simple questions, and find the<br />perfect fundraiser for you!</h1>
+            <% form_tag find_your_perfect_fundraiser_fundraiser_types_path do %>
+              <% fields_for :find_your_perfect_fundraiser do |form| %>
+
+
+  							<div class="select-row">
+  								<div class="select-menu">
+  									<div class="select-title">What are your friends and family interested in?</div>
+                    <%# FundraiserTag.all.each do |tag| %>
+                      <%#= form.check_box "fundraiser_tag_ids", { :multiple => true, :id => "fundraiser_tag_#{tag.id}" }, tag.id %>
+                      <%#= form.label "fundraiser_tag_#{tag.id}", h(tag.name) %>
+                    <%# end %>
+                    <%= select_tag "find_your_perfect_fundraiser[fundraiser_tag_ids][]", options_for_select([["Please Select", ""]]) + options_from_collection_for_select(FundraiserTag.all, :id, :name, { :prompt => true }), :id => "grayBox3", :class => "selectBoxGray" %>
+  								</div>
+  								<div class="select-menu right">
+  									<div class="select-title">How much money are you looking to raise?</div>
+                    <%= form.collection_select :fundraising_goal_range_id, FundraisingGoalRange.all, :id, :display_name, { :prompt => true }, :id => "grayBox4", :class => "selectBoxGray" %>
+  								</div>
+  							</div>
+  							<div class="select-row">
+  								<div class="select-menu">
+  									<div class="select-title">Home many fundraisers have you held before in the past?</div>
+                    <%= form.select :number_of_fundraisers, ["0", "1", "2", "3", "4+"], { :prompt => true }, :id => "grayBox5", :class => "selectBoxGray" %>
+  								</div>
+  								<div class="select-submit"><%= image_submit_tag "btn_submit.png" %></div>
+  							</div>
+  							<div class="clear"></div>
+              <% end %>
+            <% end %>
+					</div>
+				</div>
+				<div class="component-bottom"></div>

@@ -1,0 +1,72 @@
+				<div id="<%=h container_id %>" class="upload" style="display:none">
+					<h4>ADVANCED SEARCH</h4>
+
+					<br />
+					SELECT FROM PROJECT GALLERY OR UPLOAD A NEW ONE
+          <% form_for [@project, FeaturedMediaAssociation.new], :html => { :multipart => true } do |form| %>
+						<div class="left">
+							<h5 class="facebox_header">UPLOAD NEW PICTURE</h5>
+              <% form.fields_for :featured_media, MediaAlbumPhoto.new do |media_form| %>
+                <%= media_form.hidden_field :type, :value => "MediaAlbumPhoto" %>
+  							<div class="facebox_filebox">
+                  <%= media_form.file_field :photo, :size => nil %>
+  							</div>
+                <%= media_form.label :title, "Title", :class => "pad_top" %>
+                <%= media_form.text_field :title, :class => "upload_textbox" %>
+                <%= media_form.label :description, "Description", :class => "pad_top" %>
+                <%= media_form.text_field :description, :class => "upload_textarea" %>
+                <%= image_submit_tag "btn_upload.png", :class => "pad_top" %>
+              <% end %>
+						</div>
+						
+						<div class="right">
+							<h5 class="facebox_header">SELECT FROM PROJECT GALLERY</h5>
+
+							<ul class="facebox_album_nav">
+                <li class="pad_bottom" style="display:none;"></li>
+                <% @project.media_albums.each_with_index do |album, album_index| %>
+  								<li class="<%=h ["first", "second", "third"][album_index] %> pad_bottom" style="<%=h album_index < 3 ? "" : "display:none;" %>">
+
+                    <% if album_index == 0 %>
+                    <span class="left_arrows">&laquo;</span>
+                    <% end %>
+
+                    <%= link_to "#{h truncate(album.title.upcase, :length => 10)} (#{h album.photos.size})", "#",
+                        :class => album_index == 0 ? "active" : "",
+                        :onclick => "switch_album(this, #{h album.id}); return false;" %>
+
+                    <% if album_index == 2 %>
+                    <span class="right_arrows">&raquo;</span>
+                    <% end %>
+
+                  </li>
+                <% end %>
+                <li class="pad_bottom" style="display:none;"></li>
+							</ul>
+							<div class="facebox_scroll">
+                <% @project.media_albums.each_with_index do |album, album_index| %>
+  								<div class="facebox_scroll_pad dialog_album album_<%=h album.id %>" style="<%=h album_index == 0 ? "" : "display: none;" %>">
+
+  								  <% (album.medias - @project.featured_medias).each do |media| %>
+    									<div class="carousel facebox <%=h cycle "alt", "" %>">
+    										<div class="pic"><%= image_tag media.photo.url(:standard_thumb), :alt => "", :width => "50", :height => "49" %></div>
+    										<div class="copy">
+    											<p class="title"><%=h media.title.upcase %></p>
+    											<p class="description">
+    												<%=h media.description %>
+                            <%= link_to "choose this picture", "#", :onclick => "$(this).parent().append('#{escape_javascript(h(form.hidden_field(:featured_media_id, :value => media.id) + form.hidden_field(:featured_media_type, :value => media.class.name)))}').closest('form').submit(); return false;" %>
+    
+    											</p>
+    										</div>
+    										<div class="clear"></div>
+    									</div>
+                    <% end %>
+  									
+  								</div>
+                <% end %>
+							</div>
+						</div>
+          <% end %>
+
+					<div class="clear"></div>
+				</div>

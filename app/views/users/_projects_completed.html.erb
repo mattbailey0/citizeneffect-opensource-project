@@ -1,0 +1,19 @@
+		<div class="component-header-full">
+
+			<h3>PROJECTS COMPLETED (<%=h @user.projects_completed.size %>)</h3>
+		</div> <div class="clear"></div>
+			
+      <% @user.projects_completed.in_groups_of(2, false) do |project_group| %>
+  			<!-- --------------------------- -->
+  			<!-- begin row of search results -->
+  			<!-- --------------------------- -->
+  			<div class="search-results">
+          <%= render :partial => "search_result_project", :collection => project_group %>
+  				<div class="clear"></div>
+  			</div>
+  			<!-- ------------------------- -->
+  			<!-- end row of search results -->
+  			<!-- ------------------------- -->
+      <% end %>
+
+			<%= link_to "view all projects &raquo;", projects_path, :class => "back_to_project" %>

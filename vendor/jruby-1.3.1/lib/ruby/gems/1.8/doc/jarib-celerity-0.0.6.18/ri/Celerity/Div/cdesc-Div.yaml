@@ -1,0 +1,18 @@
+--- !ruby/object:RI::ClassDescription 
+includes: []
+
+name: Div
+constants: 
+- !ruby/object:RI::Constant 
+  name: TAGS
+  value: '[ Identifier.new(''div'')]'
+  comment: 
+comment: 
+attributes: []
+
+instance_methods: []
+
+full_name: Celerity::Div
+superclass: NonControlElement
+class_methods: []
+

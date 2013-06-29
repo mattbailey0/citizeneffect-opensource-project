@@ -1,0 +1,18 @@
+--- !ruby/object:RI::ClassDescription 
+includes: []
+
+name: H2
+constants: 
+- !ruby/object:RI::Constant 
+  name: TAGS
+  value: '[ Identifier.new(''h2'') ]'
+  comment: 
+comment: 
+attributes: []
+
+instance_methods: []
+
+full_name: Celerity::H2
+superclass: NonControlElement
+class_methods: []
+

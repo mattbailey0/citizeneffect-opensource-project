@@ -1,0 +1,20 @@
+<h1>Edit Refund
+<% if @project %>
+<br/><br/>
+Project: <%=h @donation.project.andand.name || @project.name %>
+<% end %>
+</h1>
+
+<% form_for([:admin, @donation, @refund].compact) do |f| %>
+  <%= f.error_messages %>
+
+<table border="0" cellspacing="0" cellpadding="0" class="form-table">
+  <%= render :partial => "form", :locals => { :f => f } %>
+
+  <tr>
+    <td class="form-submit" colspan="2"><%= f.submit 'Update' %></td>
+  </tr>
+</table>
+<% end %>
+
+<%= link_to 'Back', admin_donations_path(:project_id => @project.andand.id) %>

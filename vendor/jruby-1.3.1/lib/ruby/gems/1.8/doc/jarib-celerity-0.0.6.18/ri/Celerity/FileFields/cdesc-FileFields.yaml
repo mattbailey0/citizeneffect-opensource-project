@@ -1,0 +1,16 @@
+--- !ruby/object:RI::ClassDescription 
+includes: []
+
+name: FileFields
+constants: []
+
+comment: 
+attributes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: element_class
+full_name: Celerity::FileFields
+superclass: ElementCollection
+class_methods: []
+

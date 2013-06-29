@@ -1,0 +1,11 @@
+%h2 Summary
+%br
+Total Cost:
+%span.money= h "$#{@project.total_cost_in_usd}"
+%br
+Amount Raised:
+%span.money= h "$#{@project.total_amount_raised_in_usd}"
+= "(#{@project.percent_raised}%)"
+%br
+CP:
+= h @project.cp.andand.name

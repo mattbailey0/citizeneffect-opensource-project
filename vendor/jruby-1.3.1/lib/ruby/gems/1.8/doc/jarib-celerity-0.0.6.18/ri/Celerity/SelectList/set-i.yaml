@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+params: (value)
+is_singleton: false
+block_params: 
+name: set
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: 'Alias for #select'
+full_name: Celerity::SelectList#set
+visibility: public
+aliases: []
+

@@ -1,0 +1,57 @@
+<% form_for([:admin, @project], :html => { :multipart => true }) do |f| %>
+<%= f.error_messages %>
+
+<table cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="33%" valign="top">
+      <div class="project_group_heading">
+        Deny
+      </div>
+      <table border="0" cellspacing="0" cellpadding="0" class="form-table">
+      <tr>
+        <td class="form-label"><%= f.label :why_denied, "Why?" %></td>
+        <td><%= f.text_area :why_denied, :rows => 2, :cols => 18 %></td>
+      </tr>
+      <tr>
+        <td class="form-submit" colspan="2"><%= f.submit "Deny" %></td>
+      </tr>
+      </table>
+    </td>
+
+    <td width="33%" valign="top">
+      <div class="project_group_heading">
+        Need More Info
+      </div>
+      <table border="0" cellspacing="0" cellpadding="0" class="form-table">
+      <tr>
+        <td class="form-label"><%= f.label :whats_missing, "What\'s missing?" %></td>
+        <td><%= f.text_area :whats_missing, :rows => 2, :cols => 18 %></td>
+      </tr>
+      <tr>
+        <td class="form-submit" colspan="2"><%= f.submit "Send back to Partner" %></td>
+      </tr>
+      </table>
+    </td>
+
+    <td width="33%" valign="top">
+      <div class="project_group_heading">
+        Approve
+      </div>
+      <table border="0" cellspacing="0" cellpadding="0" class="form-table">
+        <tr>
+          <td class="form-label"><%= f.label :next_step, "What\'s the next step?" %></td>
+          <td><%= f.text_area :next_step, :rows => 1, :cols => 18 %></td>
+        </tr>
+        <tr>
+          <td class="form-label"><%= f.label :due_on, "Due Date" %></td>
+          <td><%= f.text_field :due_on %></td>
+        </tr>
+        <tr>
+          <td class="form-submit" colspan="2"><%= f.submit "Approve Now" %></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<% end %>

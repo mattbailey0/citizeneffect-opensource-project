@@ -1,0 +1,18 @@
+<p>
+  <b>Community member profile:</b>
+  <%=h @community_member_picture.community_member_profile.name %>
+</p>
+
+<p>
+  <b>Picture:</b>
+  <%= link_to h(@community_member_picture.picture.original_filename), @community_member_picture.picture.url %><br />
+  <%= image_tag @community_member_picture.picture.andand.url -%>
+</p>
+
+<p>
+  <b>Caption:</b>
+  <%=h @community_member_picture.caption %>
+</p>
+
+<%= link_to 'Edit', [:edit, :admin, @community_member_profile, @community_member_picture] %> |
+<%= link_to 'Back', [:admin, @community_member_profile, :community_member_pictures] %>

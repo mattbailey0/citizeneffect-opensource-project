@@ -1,0 +1,44 @@
+--- !ruby/object:RI::ClassDescription 
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: Container
+- !ruby/object:RI::IncludedModule 
+  name: XpathSupport
+name: Frame
+constants: 
+- !ruby/object:RI::Constant 
+  name: TAGS
+  value: '[Identifier.new(''frame''), Identifier.new(''iframe'')]'
+  comment: 
+- !ruby/object:RI::Constant 
+  name: ATTRIBUTES
+  value: BASE_ATTRIBUTES | [:longdesc, :name, :src, :frameborder, :marginwidth, :marginheight,
+    :noresize, :scrolling]
+  comment: 
+- !ruby/object:RI::Constant 
+  name: DEFAULT_HOW
+  value: ":name"
+  comment: 
+comment: 
+attributes: 
+- !ruby/object:RI::Attribute 
+  name: page
+  comment: 
+  rw: RW
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: assert_exists
+- !ruby/object:RI::MethodSummary 
+  name: execute_script
+- !ruby/object:RI::MethodSummary 
+  name: locate
+- !ruby/object:RI::MethodSummary 
+  name: method_missing
+- !ruby/object:RI::MethodSummary 
+  name: to_s
+- !ruby/object:RI::MethodSummary 
+  name: update_page
+full_name: Celerity::Frame
+superclass: Element
+class_methods: []
+

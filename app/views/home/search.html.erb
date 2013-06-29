@@ -1,0 +1,79 @@
+<% content_for(:page_title, "Project Search") %>
+
+<div class="breadcrumbs">
+  <%= link_to "view all projects &raquo;", projects_path, :class => "breadcrumbs green" %>
+</div>
+		
+<!-- main body copy -->
+<div id="wrapper-copy" class="pad_bottom">
+		
+	<div class="component-header-full nopadtop">
+		<h3>SEARCH RESULTS (<%=h @result_count %>)</h3>
+	</div> 
+  <div class="clear"></div>
+
+  <% index = -1 %>
+
+  <% if params["find_your_perfect_project.x"] %>
+  <div class="search-results">
+    <%= render :partial => "search_result_project", :object => @projects.shift, :locals => { :search_result_project_counter => 0, :index => (index += 1) } unless @projects.empty? %>
+    <%= render :partial => "find_your_perfect_project" %>
+  	<div class="clear"></div>
+  </div>
+  <% end %>
+
+  <% if "Citizen Effect's Brackets With Benefits" =~ /#{params[:q]}/i %>
+    <div class="box-half-left">
+      <div class="box-half-middle nocp">
+        <div class="search-results-left">
+          <%= link_to image_tag("BwB-2011_Logo_Thumb2.png", :alt => "", :width => "124", 
+            :height => "130"), "/tourney", :class => "block pad_bottom", 
+            :style => "margin-left:30px;width:124px;height:130px;" %>
+          <%= link_to "read more", "/tourney" %> &nbsp;
+        </div>
+        <div class="search-results-right">
+          <p class="title">
+            <%= link_to "Brackets With Benefits", "/tourney", :class => 'content-blue bold px14' %>
+          </p>
+          <p class="description">
+			      Make a $10 donation and participate in Citizen Effect’s Brackets with Benefits!
+		      </p>
+          <div class="btn_share" style="margin-top:15px;">
+            <%= link_to image_tag("btn_donate_stripped.png", :alt => "", :width => "85", :height => "33"), 
+                "/tourney" %>
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="box-half-bottom blue">
+      </div>
+    </div>
+
+    <%= render :partial => "search_result_project", :object => @projects.shift, :locals => { :search_result_project_counter => 0, :index => (index += 1) } unless @projects.empty? %>
+    <div class="clear"></div>
+  <% end %>
+
+
+  <% @projects.in_groups_of(2, false) do |project_group| %>
+  <% index += 1 %>
+  			<!-- --------------------------- -->
+  			<!-- begin row of search results -->
+  			<!-- --------------------------- -->
+  			<div class="search-results">
+          <%= render :partial => "search_result_project", :collection => project_group, :locals => { :index => index } %>
+  				<div class="clear"></div>
+  			</div>
+  			<!-- ------------------------- -->
+  			<!-- end row of search results -->
+  			<!-- ------------------------- -->
+      <% end %>
+
+<%= will_paginate @projects %>
+			
+</div>
+
+
+    <%= render :partial => "projects/similar" %>
+
+    <%= render :partial => "projects/events" %>

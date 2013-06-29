@@ -1,0 +1,14 @@
+#picture.component-header-full.nopadtop
+  %h3 PICTURE
+/ full-width component
+.box-full-middle.picture
+  - form_for @user, :html => { :multipart => true } do |f|
+    = f.label :current_picture, "CURRENT PICTURE:"
+    = image_tag @user.picture_url_thumb(:profile), :id => "current_picture", :class => "pad_bottom large"
+  
+    = f.label :picture, "SELECT PROFILE PICTURE:"
+    = f.file_field :picture, :class => "pad_bottom large"
+
+    = image_submit_tag "btn_save_changes.png", :class => "pad_top block update_picture", :name => "commit", :value => "picture"
+.box-full-bottom
+

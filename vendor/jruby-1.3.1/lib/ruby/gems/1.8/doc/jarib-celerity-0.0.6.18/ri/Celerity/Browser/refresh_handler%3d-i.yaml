@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+params: (symbol)
+is_singleton: false
+block_params: 
+name: refresh_handler=
+comment: 
+full_name: Celerity::Browser#refresh_handler=
+visibility: public
+aliases: []
+

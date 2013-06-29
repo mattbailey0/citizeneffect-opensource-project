@@ -1,0 +1,49 @@
+- community_profiles_optional = false if nil == community_profiles_optional
+
+%tr
+  %td.fl 
+    - if community_profiles_optional
+      Community Member Profiles
+    - else
+      %strong Community Member Profiles*
+  %td
+    - unless report.new_record?
+      %ol.message_wrapper
+        = @project.community_member_profiles.map{|pcmp| "<li>#{h(pcmp.name)}</li>" }
+      = link_to "Edit community member profiles", admin_project_community_member_profiles_path(@project), :target => "_blank", :class => "edit-association"
+      %br
+      - unless community_profiles_optional
+        %strong At least 1 profile is required.
+      %br
+      %em Changes will only be shown here after this page is reloaded.
+    - else
+      %em= "Add Community Member Profiles after #{report.class.name.titleize} is created."
+
+%tr
+  %td.fl
+    %strong Files (movies, pictures, pdf, doc, xls, etc)*
+  %td
+    - if report.new_record?
+      %em= "Add Other Files after #{report.class.name.titleize} is created."
+    - else
+      %ol.message_wrapper
+        - report.associated_files.each do |file|
+          %li= link_to h(file.andand.original_filename), file.andand.url
+      = link_to "Edit uploads for #{report.class.name.titleize.downcase}", admin_unified_uploads_path(:uploadable_id => report.id, :uploadable_type => report.class, :association_name => "associated_files"), :target => "_blank", :class => "edit-association"
+      %br
+      %strong At least 3 photos are required.
+      %br
+      %em Changes will only be shown here after this page is reloaded.
+
+- if current_user.andand.is_a_citizen_effect_admin?
+  %tr
+    %td.fl Media Albums
+    %td
+      - if report.new_record?
+        %em= "Add Media after #{report.class.name.titleize} is created."
+      - else
+        %ol.message_wrapper
+          %li= h report.media_album.title
+        = link_to "Edit media album for #{report.class.name.titleize.downcase}", edit_admin_project_media_album_path(@project, report.media_album), :target => "_blank", :class => "edit-association"
+        %br
+        %em Changes will only be shown here after this page is reloaded.

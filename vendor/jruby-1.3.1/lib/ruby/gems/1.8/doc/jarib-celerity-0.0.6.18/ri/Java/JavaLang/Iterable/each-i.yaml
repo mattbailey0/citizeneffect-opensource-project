@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+params: () {|it.next while it.hasNext| ...}
+is_singleton: false
+block_params: it.next while it.hasNext
+name: each
+comment: 
+full_name: Java::JavaLang::Iterable#each
+visibility: public
+aliases: []
+

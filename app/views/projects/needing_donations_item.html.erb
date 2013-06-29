@@ -1,0 +1,23 @@
+<%= render :partial => "carousel_1", :object => @project, :locals => { :color => "ltblue" } %>
+<div class="component nopad_bottom">
+	<div class="people_small">
+		<div class="pic left"><%= link_to image_tag(@project.cp.picture_url_thumb(:watched_project_cp), :alt => "", :width => "50", :height => "50"), @project.cp -%></div>
+		<div class="right">
+			<p class="name"><%= link_to h(@project.cp.display_name), @project.cp, :class => 'content-blue bold px12' %></p>
+			<p class="location"><%=h @project.cp.display_location %></p>
+			<p class="link">
+        <%= link_to "send member a message", message_user_path(@project.cp) %>
+      </p>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="icon-wrapper left">
+    <%= image_tag @project.type_icon_url, :width => "30", :style => "float:right;" %>
+    <%= render :partial => "stats_progress_small", :object => @project %>
+	</div>
+  <% if Time.now.year < 2013 %> 
+  <%= link_to image_tag("btn_donate_stripped.png", :alt => "Donate to This @Project", :height => "33", 
+  :width => "85"), [:new, @project, :donation], :class => "btn_right" %>
+  <% end %>
+	<div class="clear"></div>
+</div>

@@ -1,0 +1,6 @@
+				<div class="box-half-<%=h search_result_project_counter == 0 ? "left" : "right" %>">
+          <% unless defined?(index) && index == 0 %>
+					<div class="box-half-top"></div>
+          <% end %>
+          <%= render :partial => "shared/search_result_project_body", :object => search_result_project %>
+				</div>

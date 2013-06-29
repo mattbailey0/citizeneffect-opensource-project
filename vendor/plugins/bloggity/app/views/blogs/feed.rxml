@@ -1,0 +1,26 @@
+xml.instruct! :xml, :version=>"1.0"
+xml.rss(:version=>"2.0") {
+	xml.channel {
+		xml.title(@blog.title)  
+		#if(!@blog.feedburner_url.blank?)
+		#	xml.link(:rel => 'alternate', :type => 'application/rss+xml', :href => @blog.feedburner_url)
+		#else
+    xml.link(url_for(:only_path => false))
+		#end 
+		xml.description(@blog.subtitle)  
+		xml.language('en-us')  
+		for blog_post in @blog_posts
+			xml.item do
+        link = ONEWELL_HOST + blog_named_link(blog_post)
+        comment_link = link_to("leave a comment", link + "#disqus_thread", "data-disqus-identifier" => blog_post.id)
+        content = blog_post.excerpt + link_to("read more", link) + " | " + comment_link
+        xml.title(blog_post.title || '')  
+        xml.link(ONEWELL_HOST + blog_named_link(blog_post))
+        xml.description(content)  
+        xml.tag(blog_post.tag_string)  
+        xml.posted_by(blog_post.posted_by.user_name)  
+        xml.guid("#{blog_post.id} at #{ONEWELL_HOST}", :isPermaLink => false)
+      end  
+    end  
+	}
+}

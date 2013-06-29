@@ -1,0 +1,15 @@
+--- !ruby/object:RI::ClassDescription 
+includes: []
+
+name: OrgW3cDom
+constants: []
+
+comment: 
+attributes: []
+
+instance_methods: []
+
+full_name: Java::OrgW3cDom
+superclass: 
+class_methods: []
+

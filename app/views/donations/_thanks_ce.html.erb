@@ -1,0 +1,11 @@
+				<div class="donation-ce">
+					<div class="thumb-icon"><img src="/images/icon_thumbs_up.png" alt="" width="50" height="60"></div>
+					<div class="project-text">
+            Thank you, <%=h @donation.first_name %> for your<br>generous contribution!<br>
+            You've donated <%=h number_to_currency(@donation.actual_amount_in_dollars) %>
+          </div>
+					<div class="donation-share-buttons">
+            <a href="#<%=h share_box_id %>" rel="facebox"><%= image_tag "btn_share_stripped.png" %></a>
+            <%= render :partial => "shared/share_box", :locals => { :shareable => nil } %>
+          </div>
+				</div>

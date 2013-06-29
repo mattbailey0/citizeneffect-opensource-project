@@ -1,0 +1,57 @@
+<% content_for(:page_title, "Completed CP Application") %>
+
+<div class="breadcrumbs">
+  <% if @project -%>
+    <%= link_to "&laquo; back to project page", @project, :class => "breadcrumbs green" %>
+  <% else -%>
+    <%= link_to "&laquo; home", home_index_path, :class => "breadcrumbs green" %>
+  <% end -%>
+</div>
+
+<!-- main body copy -->
+<div id="wrapper-copy">
+  <div class="component-header-full nopadtop">
+		<h3>THANK YOU FOR YOUR INTEREST IN BECOMING A CITIZEN PHILANTHROPIST</h3>
+	</div>
+	<!-- full-width component -->
+	<div class="box-full-middle social">
+    <div class="confirm-box">
+      <div class="media_details_wrapper">
+        <% unless @cp_application.project.blank? -%>
+        <%= image_tag @cp_application.project.main_picture_url(:watch_list), 
+            :width => "185", :height => "130", :alt => "" %>
+        <% end -%>
+			</div>
+      <div class="confirm-text">
+        <div class="confirm-donation">
+          You’re on your way to making a direct impact on a community in need!
+        </div>
+        <div class="confirm-time">
+          <div class="check"><img src="/images/green_check.png"></div>
+          <div class="confirm-time-message">
+            Thank you for signing up to become a Citizen Philanthropist! We will email you shortly about starting your own project as the lead fundraiser.
+             <br/>
+             <span class="bold">
+               While we review your application, explore our <%= link_to "available projects", search_path(:with => { :project_status_id => [6]}) %> and find one that speaks to you.
+             </span>
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div class="confirm-buttons">
+          <% unless @cp_application.project.blank? -%>
+          <%= link_to image_tag("btn_return_project.png"), @cp_application.project %>
+          <% end -%>
+          <a href="#<%=h share_box_id(@cp_application.project) %>" rel="facebox">
+            <%= image_tag "btn_share.png" %>
+          </a>
+          <%= render :partial => "shared/share_box", :locals => { :shareable => @cp_application.project }%>
+        </div>
+      </div>
+      
+      
+      <div class="clear"></div>
+    </div>
+    
+  </div>
+	<div class="box-full-bottom"></div>
+</div>

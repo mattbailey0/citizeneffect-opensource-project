@@ -1,0 +1,17 @@
+--- !ruby/object:RI::ClassDescription 
+includes: []
+
+name: IgnoringWebConnection
+constants: []
+
+comment: 
+attributes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: getResponse
+full_name: Celerity::IgnoringWebConnection
+superclass: HtmlUnit::Util::FalsifyingWebConnection
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new

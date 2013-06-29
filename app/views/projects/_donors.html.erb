@@ -1,0 +1,18 @@
+<% top_5_donations = @project.donations.recent.top_5.all -%>
+<% if top_5_donations.any? -%>
+  <div class="box-rightcol-top"></div>
+	<div class="box-rightcol-inner">
+		<div class="header">
+			<h4>OUR PROJECT DONORS</h4>
+		</div>
+    
+    <div id="project_donors">
+      <%= render :partial => "donor", :collection => top_5_donations, :locals => { :last => top_5_donations.last } %>
+    </div>
+		<%= link_to_remote "view more", { :url => donors_project_path, :with => "'page=' + ++project_donors_page", :method => :get }, :id => "project_donors_view_more", :class => "pad_top pad_left" %>
+	</div>
+	<div class="box-rightcol-bottom"></div>
+<% end -%>
+<% javascript_tag do %>
+  project_donors_page = 1;
+<% end %>

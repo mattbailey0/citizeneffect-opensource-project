@@ -1,0 +1,3 @@
+							<li class="row<%=h carousel_row_counter == 0 ? "" : " last" %>">
+                <%= render :partial => "carousel_item", :collection => carousel_row, :spacer_template => "spacer" %>
+							</li>

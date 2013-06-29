@@ -1,0 +1,10 @@
+		<div id="wrapper-header">
+			<div id="header-left">
+        <%= render :partial => "shared/header_logo" %>
+				
+				<%= render :partial => "shared/header_left_nav" unless params[:action] == "new" %>
+			</div>
+		</div>
+    <div class="clear">
+    </div>
+

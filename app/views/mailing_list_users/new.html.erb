@@ -1,0 +1,56 @@
+<div class="component-header-full nopad">
+	<h3>JOIN THE CITIZEN EFFECT</h3>
+</div>
+
+<div class="box-full-middle">
+  
+  <div class="image">
+    <%= image_tag "mailing_list_users_new.jpg" %>
+  </div>
+
+  <div class="top_section">
+    
+    <div class="heading">
+      START MAKING A REAL DIFFERENCE RIGHT NOW
+    </div>
+
+    <div>
+      Take the first step to being part of the Citizen Effect
+    </div>
+
+  </div>
+
+
+  <div class="copy">
+    By becoming part of the Citizen Effect you are part of a movement of Citizen Philanthropists around the world making a difference one community at a time.  You can follow projects that interest you, learn more about how real devleopment works, and become a Citizen Philanthropist yourself.
+  </div>
+
+  <div class="form blue">
+    <% form_for [@mailing_list, @mailing_list_user] do |f| %>
+      <%= f.hidden_field :tracking_code, :value => params[:ctc] %>
+      <div style="width: 180px;">
+        <%= f.label :first_name, "FIRST NAME" %>
+        <%= f.text_field :first_name, :size => nil, :style => "width: 93%;" %>
+      </div>
+      <div style="width: 160px;">
+        <%= f.label :last_name, "LAST NAME" %>
+        <%= f.text_field :last_name, :size => nil, :style => "width: 100%;" %>
+      </div>
+      <div style="width: 260px; padding-top: 10px; clear: left;">
+        <%= f.label :email, "E-MAIL*" %>
+        <%= f.text_field :email, :size => nil, :style => "width: 95%;" %>
+      </div>
+      <div style="width: 80px; padding-top: 10px;">
+        <%= f.label :zip, "ZIPCODE*" %>
+        <%= f.text_field :zip, :size => nil, :style => "width: 100%;" %>
+      </div>
+
+      <div class="join_button">
+        <%= image_submit_tag "join_the_movement.png", :class => "join_the_movement" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="clear"></div>
+</div>
+<div class="box-full-bottom"></div>

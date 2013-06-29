@@ -1,0 +1,131 @@
+<h1>Project List</h1>
+
+<div class="new-button">
+  <%= link_to '(+) New Project Proposal', new_admin_project_path %>
+</div>
+
+<hr>
+<% form_tag request.path, :method => 'get' do %>
+  	<table>
+		<tr>
+			<td>
+				Keyword
+			</td> 
+			<td>
+				<%= text_field_tag :search, params[:search] %>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Campaign 
+			</td>
+			<td>
+				<%= select_tag :campaign, "<option></option>" + options_from_collection_for_select(Campaign.all, "name", "name", params[:campaign]) %>
+			<td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>
+	  			<%= submit_tag "Search", :name=>nil %>
+			</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>
+	  			<div class="xls_link">
+				  <%= link_to "Download Current Results As Excel Spreadsheet", url_for({:format => :xls}.merge(params)) %>
+				</div>
+			</td>
+		</tr>
+	</table>
+<% end %>
+<br/>
+
+
+<%= will_paginate(@projects_paginated) %>
+
+<table cellpadding="0" cellspacing="0" class="index-list sortable">
+  <thead>
+  <tr class="index-list-header">
+    <th><div class="sort-icon"></div>Status</th>
+    <th><div class="sort-icon"></div>Weeks in Status</th>
+    <th><div class="sort-icon"></div>Campaigns</th>
+    <th><div class="sort-icon"></div>Partner</th>
+    <th><div class="sort-icon"></div>Priority</th>
+    <th><div class="sort-icon"></div>ID</th>
+    <th><div class="sort-icon"></div>Name</th>
+    <th><div class="sort-icon"></div>Project types</th>
+    <th><div class="sort-icon"></div>District name</th>
+    <th><div class="sort-icon"></div>Country</th>
+    <th><div class="sort-icon"></div>Total Cost</th>
+    <th><div class="sort-icon"></div>Net Total Raised</th>
+    <th><div class="sort-icon"></div>Net Total Online</th>
+    <th><div class="sort-icon"></div>Net Total Offline</th>
+    <th><div class="sort-icon"></div>Net % Raised</th>
+    <th><div class="sort-icon"></div>Next step</th>
+    <th><div class="sort-icon"></div>CP</th>
+    <th><div class="sort-icon"></div>CP Email</th>
+    <th><div class="sort-icon"></div>Fundraising Start Date</th>
+    <th><div class="sort-icon"></div>Expected Close Date</th>
+    <th><div class="sort-icon"></div>Actual Close Date</th>
+    <th><div class="sort-icon"></div>Email Exempt?</th>
+            <th>Actions</th>
+  </tr>
+</thead>
+
+<tbody>
+<% @projects_paginated.each do |project| %>
+  <tr>
+    <td><%=h project.state %></td>
+    <td><%=h project.state_updated_at ? ((Date.today - project.state_updated_at.to_date) / 7.0).round(1) : "" %></td>
+    <td>
+		<% Project.find_by_id(project.id).campaigns.each do |c| %>
+			<%= c.name ? link_to(c.name, [:admin, c	]) : "" %>
+			<br/>
+		<% end %>
+	</td>
+    <td><%=h project.partner.andand.display_name %></td>
+    <td><%=h project.priority %></td>
+    <td><%=h project.id %></td>
+    <td><%= project.user_visible? ? link_to(project.name, project_path(project)) : project.name %></td>
+    <td><%=h project.types.map(&:name).to_sentence %></td>
+    <td><%=h project.district_name %></td>
+    <td><%=h project.country.andand.name %></td>
+    <td><%=h number_to_currency(project.total_cost_in_usd) %></td>
+    <td><%=h number_to_currency(project.total_amount_raised_in_usd) %></td>
+    <td><%=h number_to_currency(project.online_donations_total_in_dollars) %></td>
+    <td><%=h number_to_currency(project.offline_donations_total_in_dollars) %></td>
+    <td>
+      <%=h project.percent_raised %>%
+      <% if project.project_status == ProjectStatus.fundraising %>
+        <% if project.total_amount_raised_in_cents >= project.total_cost_in_us_cents %>
+        <br/>
+          <%= link_to "Finish Fundraising", admin_project_path(project, :project => {:project_status_id => ProjectStatus.planning.id}), :method => :put %>
+        <% end %>
+      <% end %>
+    </td>
+    <td><%=h project.next_step %></td>
+    <td><%=h project.cp.andand.name %></td>
+    <td><%=h project.cp.andand.email %></td>
+    <td><%=h project.fundraising_start_date ? project.fundraising_start_date : "" %></td>
+    <td><% if project.state=="Fundraising" %>
+          <%=h project.estimated_close_date ? project.estimated_close_date : project.state_updated_at.to_date + 140 %>
+        <% else %>
+          <%=h "n/a" %>
+        <% end %>
+    </td>
+    <td><%=h project.actual_close_date %></td>
+    <td><%= ((project.email_exempt and !project.email_exempt.blank? and project.email_exempt != 0) ? "exempt" : "not exempt") %></td>
+    <td>
+      <%= link_to 'Show', partner_view_admin_project_path(project) %>
+      <%= link_to 'Edit', edit_admin_project_path(project) %><br/>
+      <% #= link_to 'Destroy', [:admin, project], :confirm => 'Are you sure?', :method => :delete %>
+      <%= link_to 'Duplicate', clone_admin_project_path(project), :confirm => 'Are you sure?', :method => :put %>
+    </td>
+  </tr>
+<% end %>
+</tbody>
+
+</table>
+<%= will_paginate(@projects_paginated) %>
+

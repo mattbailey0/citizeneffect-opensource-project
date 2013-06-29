@@ -1,0 +1,83 @@
+<p>
+  <b>Display name:</b>
+  <%=h @partner.display_name %>
+</p>
+
+<p>
+  <b>Full name:</b>
+  <%=h @partner.full_name %>
+</p>
+
+<p>
+  <b>Logo:</b>
+  <%= link_to h(@partner.logo.andand.original_filename), @partner.logo.andand.url %>
+</p>
+
+<p>
+  <b>Representative picture:</b>
+  <%= link_to h(@partner.representative_picture.andand.original_filename), @partner.representative_picture.andand.url %>
+</p>
+
+<p>
+  <b>Permalink:</b>
+  <%=h @partner.permalink %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%=h @partner.url %>
+</p>
+
+<p>
+  <b>Public email:</b>
+  <%=h @partner.public_email %>
+</p>
+
+<p>
+  <b>Address1:</b>
+  <%=h @partner.address1 %>
+</p>
+
+<p>
+  <b>Address2:</b>
+  <%=h @partner.address2 %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%=h @partner.city %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%=h @partner.state %>
+</p>
+
+<p>
+  <b>Zip:</b>
+  <%=h @partner.zip %>
+</p>
+
+<p>
+  <b>Country:</b>
+  <%=h @partner.country %>
+</p>
+
+<p>
+  <b>Phone number:</b>
+  <%=h @partner.phone_number %>
+</p>
+
+<p>
+  <b>Fax number:</b>
+  <%=h @partner.fax_number %>
+</p>
+
+<p>
+  <b>Details for website:</b>
+  <%=h @partner.details_for_website %>
+</p>
+
+
+<%= link_to 'Edit', edit_admin_partner_path(@partner) %> |
+<%= link_to 'Back', admin_partners_path %>

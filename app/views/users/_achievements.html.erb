@@ -1,0 +1,14 @@
+							<p>
+								<strong>ACHIEVEMENTS</strong><br />
+								Citizen Effect is all about having a direct impact on the lives of
+                others so we track the impact you are having. When you reach a
+                milestone (eg, $1,000 raised; 1 completed project), a badge will
+                appear on your profile. The more badges, the greater impact you have
+                had.
+							</p>
+              <% (show_projects? ? @user.achievements.cp_achievements : @user.achievements.donor_achievements).in_groups_of(2, false) do |achievement_group| %>
+							<ul class="achievements">
+                <%= render :partial => "achievement", :collection => achievement_group %>
+								<li class="clear"></li>
+							</ul>
+              <% end %>

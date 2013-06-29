@@ -1,0 +1,19 @@
+xml.instruct! :xml, :version=>"1.0"
+xml.rss(:version=>"2.0") {
+	xml.channel {
+		xml.title("Citizen Effect - Projects Needing Donations")  
+    xml.link(url_for(:only_path => false))
+		xml.description("Citizen Effect - Projects Needing Donations")
+		xml.language('en-us')  
+		for project in @projects
+			xml.item do  
+				 xml.title("#{h project.name}, #{project.focus_areas.first ? h(project.focus_areas.first.name) + " in" : ""} #{h project.community_name}, #{h project.country.name}")  
+				 xml.link(project_url(project))
+				 xml.description(render(:partial => "feed_project", :locals => { :project => project }))
+# 				 xml.tag(blog_post.tag_string)
+# 				 xml.posted_by(blog_post.posted_by.user_name)
+         xml.guid(project_url(project))
+			 end  
+		 end  
+	}
+}

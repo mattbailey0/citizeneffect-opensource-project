@@ -1,0 +1,51 @@
+--- !ruby/object:RI::ClassDescription 
+includes: []
+
+name: SelectList
+constants: 
+- !ruby/object:RI::Constant 
+  name: TAGS
+  value: '[ Identifier.new(''select'') ]'
+  comment: 
+- !ruby/object:RI::Constant 
+  name: DEFAULT_HOW
+  value: ":name"
+  comment: 
+comment: 
+attributes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: clear
+- !ruby/object:RI::MethodSummary 
+  name: clearSelection
+- !ruby/object:RI::MethodSummary 
+  name: clear_selection
+- !ruby/object:RI::MethodSummary 
+  name: getAllContents
+- !ruby/object:RI::MethodSummary 
+  name: getSelectedItems
+- !ruby/object:RI::MethodSummary 
+  name: include?
+- !ruby/object:RI::MethodSummary 
+  name: includes?
+- !ruby/object:RI::MethodSummary 
+  name: options
+- !ruby/object:RI::MethodSummary 
+  name: select
+- !ruby/object:RI::MethodSummary 
+  name: select_value
+- !ruby/object:RI::MethodSummary 
+  name: selected?
+- !ruby/object:RI::MethodSummary 
+  name: selected_options
+- !ruby/object:RI::MethodSummary 
+  name: set
+- !ruby/object:RI::MethodSummary 
+  name: type
+- !ruby/object:RI::MethodSummary 
+  name: value
+full_name: Celerity::SelectList
+superclass: InputElement
+class_methods: []
+

@@ -1,0 +1,16 @@
+--- !ruby/object:RI::ClassDescription 
+includes: []
+
+name: HTMLElement
+constants: []
+
+comment: 
+attributes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: method_missing
+full_name: Java::ComGargoylesoftwareHtmlunitJavascriptHostHtml::HTMLElement
+superclass: Object
+class_methods: []
+

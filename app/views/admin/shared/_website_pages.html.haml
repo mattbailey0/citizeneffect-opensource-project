@@ -1,0 +1,7 @@
+#website_pages_header
+  .regular_pages{:class => highlight == "regular_pages" ? "highlight" : ""}
+    = link_to "Regular Pages", admin_regular_pages_path
+  |
+  .blog{:class => highlight == "blog" ? "highlight" : ""}
+    = link_to "Main Blog", blog_blog_posts_path(Blog::MAIN_BLOG_ID)
+    

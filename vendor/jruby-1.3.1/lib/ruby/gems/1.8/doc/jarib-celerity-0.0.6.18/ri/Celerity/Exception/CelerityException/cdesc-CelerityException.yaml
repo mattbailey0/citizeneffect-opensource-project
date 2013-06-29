@@ -1,0 +1,17 @@
+--- !ruby/object:RI::ClassDescription 
+includes: []
+
+name: CelerityException
+constants: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Superclass for all Celerity exceptions.
+attributes: []
+
+instance_methods: []
+
+full_name: Celerity::Exception::CelerityException
+superclass: StandardError
+class_methods: []
+

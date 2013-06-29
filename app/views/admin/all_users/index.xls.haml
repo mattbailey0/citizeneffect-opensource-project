@@ -1,0 +1,31 @@
+%table
+  %tr{:style => "font-weight:bold;"}
+    %td ID
+    %td First Name
+    %td Last Name
+    %td Email
+    %td City
+    %td State
+    %td Zip
+    %td Total Donated
+    %td Lives Impacted
+    %td # Projects Donated
+    %td Signed Up
+    %td Activated
+    %td Profile
+
+  - @users_paginated.each do |user|
+    %tr
+      %td= h user.id
+      %td= h user.first_name
+      %td= h user.last_name
+      %td= h user.email
+      %td= h user.city_name.to_s
+      %td= h user.state_name.to_s
+      %td= h user.zip
+      %td= h user.donation_total_in_usd
+      %td= h user.lives_impacted_as_donor
+      %td= h user.projects_donated_to.count
+      %td= h user.created_at.strftime('%m/%d/%Y')
+      %td= h (user.state == "active" ? "Yes" : "No")
+      %td= h (ONEWELL_HOST + url_for(user))

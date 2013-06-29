@@ -1,0 +1,15 @@
+%h1 Edit Media Album Photo
+
+- form_for([:admin, @project, @media_album, @media_album_photo], :html => { :multipart => true}) do |f|
+  = f.error_messages
+
+  %table.form-table{:border => "0", :cellspacing => "0", :cellpadding => "0"}
+    = render :partial => "form", :locals => { :f => f }
+
+    %tr
+      %td.form-submit{:colspan => "2"}
+        = f.submit 'Update Photo'
+
+= link_to "Show", [:admin, @project, @media_album, @media_album_photo]
+|
+= link_to "Back", [:admin, @project, @media_album, :media_album_photos]

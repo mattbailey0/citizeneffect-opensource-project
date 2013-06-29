@@ -1,0 +1,28 @@
+<%= link_to '&laquo; Back to the Community Member Profile Page', [:edit, :admin, @project, @community_member_profile] %>
+
+<h1>Listing Pictures for '<strong><%= @community_member_profile.name -%></strong>'</h1>
+
+<div class="new-button">
+  <%= link_to '(+) Add Picture to Community Member', [:new, :admin, @community_member_profile, :community_member_picture] %>
+</div>
+
+<table cellpadding="0" cellspacing="0" class="index-list">
+  <tr class="index-list-header">
+    <th>Community member profile</th>
+    <th>Picture file name</th>
+    <th>Caption</th>
+    <th colspan="3">Actions</th>
+  </tr>
+
+<% @community_member_pictures.each do |community_member_picture| %>
+  <tr>
+    <td><%=h community_member_picture.community_member_profile.andand.name %></td>
+    <td><%= link_to h(community_member_picture.picture.andand.original_filename), community_member_picture.picture.andand.url, :target => "_blank" %></td>
+    <td><%=h community_member_picture.caption %></td>
+    <td><%= link_to 'Show', [:admin, @community_member_profile, community_member_picture] %></td>
+    <td><%= link_to 'Edit', [:edit, :admin, @community_member_profile, community_member_picture] %></td>
+    <td><%= link_to 'Destroy', [:admin, @community_member_profile, community_member_picture], :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+

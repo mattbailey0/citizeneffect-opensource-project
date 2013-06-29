@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+params: ()
+is_singleton: false
+block_params: 
+name: height
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: returns the height in pixels of the image, as a string
+full_name: Celerity::Image#height
+visibility: public
+aliases: []
+

@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title></title>
+</head>
+<body>
+
+<p>
+  <%= simple_format @personal_content %>
+</p>
+
+<p>
+  <%= link_to "Click here to sign up!", signup_url({:referral_code => @referral_code})%>
+</p>
+
+<br/>
+<p>
+  ---
+</p>
+<p>
+  Sent by <%= link_to @referrer.display_name, user_url(@referrer) -%> via Citizen Effect.
+</p>
+
+</body>
+</html>

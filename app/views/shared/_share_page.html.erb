@@ -1,0 +1,56 @@
+<div class="share">
+	<% form_tag push_status_user_path(current_user) do %>
+    <% fields_for :status do |f| %>
+      <% default_text = default_share_box_text(shareable) %>
+       <label>  
+         TYPE IN YOUR MESSAGE HERE 
+         <span id='<%=h "message_char_count_#{share_box_id(shareable)}" %>'>
+           <%= default_text.length.to_s %> Characters
+         </span>
+       </label>
+       <%= f.text_area :message, :id => h("#{share_box_id(shareable)}_message"),
+       :onkeyup => 
+       "$('#message_char_count_#{h(share_box_id(shareable))}').html($(this).val().length + ' Characters')",
+       :value => default_text %>
+       <div class="share-icon-container">
+         <div class="post-to-container pad_top">
+           <% if current_user && current_user.can_push_any_status? -%>
+		         <% if current_user.can_push_twitter_status? -%>
+             <label>POST TO:</label>
+		         <%= f.check_box :push_twitter, :checked => true, :style => "margin-left:-4px;" %>
+		         <%= image_tag("icon_twitter_large.png") %>
+             <span>Twitter</span>
+		         <% end -%>
+		         <% if current_user.can_push_facebook_status? -%>
+		         <%= f.check_box :push_facebook, :checked => true %>
+		         <%= image_tag("icon_facebook_large.png") %>
+             <span>Facebook</span>
+		         <% end -%>
+		         <% if current_user.can_push_myspace_status? -%>
+		         <%= f.check_box :push_myspace, :checked => true %>
+		         <%= image_tag("icon_myspace_large.png", :class => "extra_margin") %>
+             <span>MySpace</span>
+		         <% end -%>
+             <%= image_submit_tag "share.png", :style => "float:right;margin-right:22px;margin-top:0px" %>
+           <% elsif current_user -%>
+             <label>Connect your account to social networks to share!</label>
+           <% else -%>
+             <label>Log in and connect your account to social networks to share!</label>
+           <% end -%>
+         </div>
+         <div class="clear"></div>
+       </div>
+     <% end -%>
+  <% end -%>
+  <div class="share-icon-container">
+    <div class="share-on-other-container" style="height:125px;">
+      <label>OR SHARE ON OTHER NETWORKS -</label>
+      <% share_info_array(shareable).each do |value| %>
+        <p>
+          <%= image_tag(value[:icon]) %> 
+          <span><%= link_to value[:name], value[:url], :target => "_blank" %></span>
+        </p>
+      <% end -%>
+    </div>
+  </div>
+</div>

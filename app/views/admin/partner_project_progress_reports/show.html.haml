@@ -1,0 +1,15 @@
+- report = @partner_project_progress_report
+
+= link_to '&laquo; Back to the Project Page', [:partner_view, :admin, @project]
+
+%h1 Viewing Partner Project Progress Report
+
+= render :partial => "admin/shared/report_owner_show", :locals => { :report => report }
+
+= render :partial => "admin/shared/report_construction_show", :locals => { :report => report, :report_type => "progress" }
+
+= render :partial => "admin/shared/report_impact_show", :locals => { :report => report }
+
+= render :partial => "admin/shared/report_approval" if current_user.is_a_citizen_effect_admin?
+
+= link_to 'Edit Progress Report', [:edit, :admin, @project, report]

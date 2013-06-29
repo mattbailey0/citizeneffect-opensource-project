@@ -1,0 +1,64 @@
+%h1
+  = h 'Viewing Fundraiser Type: ' + @fundraiser_type.name
+
+= link_to 'Edit', edit_admin_fundraiser_type_path(@fundraiser_type)
+|
+= link_to 'Back', admin_fundraiser_types_path
+%hr
+%br
+
+%p
+  %b Active?
+  %br
+  = @fundraiser_type.active? ? "Active":"Inactive"
+
+%p
+  %b Description
+  %br
+  = h @fundraiser_type.description
+
+%p
+  %b Typical Fundraising Amount
+  %br
+  = h "$#{@fundraiser_type.minimum_typical_amount_raised_in_dollars} - $#{@fundraiser_type.maximum_typical_amount_raised_in_dollars}"
+
+%p
+  %b Difficulty
+  %br
+  = h "#{@fundraiser_type.difficulty_text}"
+
+%p
+  %b Good For (Tags)
+  %br
+  = h "#{@fundraiser_type.good_for_tags}"
+
+%p
+  %b PDFs
+%p.indented
+  - @fundraiser_type.associated_files.each do |file|
+    = link_to "#{file.original_filename}", file.url
+    %br
+
+%p
+  %b CP Experiences
+%p.indented
+  - @fundraiser_type.fundraiser_type_experiences.each do |experience|
+    CP:
+    = h experience.user.name
+    %br
+    Quote
+    = h experience.quote
+    %br
+
+%p
+  %b Picture
+  %br
+  = @fundraiser_type.picture.blank? ? "No Picture" : image_tag(@fundraiser_type.picture.url)
+
+
+%br
+%hr
+= link_to 'Edit', edit_admin_fundraiser_type_path(@fundraiser_type)
+|
+= link_to 'Back', admin_fundraiser_types_path
+

@@ -1,0 +1,13 @@
+- content_for(:page_title, "Page Not Found")
+
+.breadcrumbs
+  = link_to "&laquo; back to projects", projects_path, :class => "breadcrumbs green"
+
+#wrapper-copy
+  .component-header-full.nopadtop
+    %h3="404 - NOT FOUND"
+  .box-full-middle
+    .pad_top_large.pad_left.pad_bottom
+      %p= "The page you specified was not found.  Perhaps you should try and search for what you are looking for?"
+  .box-full-bottom
+

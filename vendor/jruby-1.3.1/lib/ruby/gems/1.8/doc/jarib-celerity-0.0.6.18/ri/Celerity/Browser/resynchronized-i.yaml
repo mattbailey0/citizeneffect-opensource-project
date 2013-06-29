@@ -1,0 +1,19 @@
+--- !ruby/object:RI::MethodDescription 
+params: (&block) {|self| ...}
+is_singleton: false
+block_params: self
+name: resynchronized
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Allows you to temporarily switch to HtmlUnit's NicelyResynchronizingAjaxController
+    to resynchronize ajax calls.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  @browser.resynchronized do |b|\n    b.link(:id, 'trigger_ajax_call').click\n\
+    \  end\n"
+- !ruby/struct:SM::Flow::P 
+  body: '@yieldparam [Celerity::Browser] browser The current browser object. @see
+    Celerity::Browser#new for how to configure the browser to always use this.'
+full_name: Celerity::Browser#resynchronized
+visibility: public
+aliases: []
+

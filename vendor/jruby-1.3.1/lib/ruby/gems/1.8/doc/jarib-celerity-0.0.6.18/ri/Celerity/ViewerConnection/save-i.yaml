@@ -1,0 +1,13 @@
+--- !ruby/object:RI::MethodDescription 
+params: (path)
+is_singleton: false
+block_params: 
+name: save
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Tells the viewer to save a screenshot of the current page to the given path.
+    May not be available on all viewers.
+full_name: Celerity::ViewerConnection#save
+visibility: public
+aliases: []
+

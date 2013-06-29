@@ -1,0 +1,107 @@
+  <tr>
+    <td class="form-label"><%= f.label :display_name %></td>
+    <td><%= f.text_field :display_name %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :full_name %></td>
+    <td><%= f.text_field :full_name %></td>
+  </tr>
+  
+  <!--<tr>
+    <td class="form-label"><%= f.label :permalink %></td>
+    <td><%= f.text_field :permalink %></td>
+  </tr>-->
+  
+  <tr>
+    <td class="form-label"><%= f.label :logo %></td>
+    <td><%= f.file_field :logo %><br/>180px X 65px</td>
+  </tr>
+
+  <tr>
+    <td class="form-label"><%= f.label :representative_picture %></td>
+    <td><%= f.file_field :representative_picture %></td>
+  </tr>
+
+  <tr>
+    <td class="form-label">Admins</td>
+    <td>
+    <% unless @partner.new_record? %>  
+        <%= @partner.admins.map{|na| h("#{na.name} - #{na.email}") + '<br/>' } %>
+        <%= link_to "Edit Admins", [:admin, @partner, :partner_admin_associations], :target => '_blank', :class => 'edit-association' %><br/>
+        <em>Changes will only be shown here after this page is reloaded.</em>
+    <% else %>
+      <em>Can only edit after project has been created.</em>
+    <% end %>
+    </td>
+  </tr>
+  
+  <tr>
+    <td class="form-label">Countries Operating In</td>
+    <td>
+    <% unless @partner.new_record? %>  
+      <%= @partner.countries.map{|na| h(na.name) + '<br/>' } %>
+      <%= link_to "Edit countries", [:admin, @partner, :partner_country_associations], :target => '_blank', :class => 'edit-association' %><br/>
+      <em>Changes will only be shown here after this page is reloaded.</em>
+    <% else %>
+      <em>Can only edit after project has been created.</em>
+    <% end %>
+    </td>
+  </tr>
+  
+  <tr>
+    <td class="form-label">Partner Focus Areas</td>
+    <td>
+    <% unless @partner.new_record? %>  
+        <%= @partner.focus_areas.map{|na| h(na.name) + '<br/>' } %>
+      <%= link_to "Edit focus areas", [:admin, @partner, :partner_focus_area_associations], :target => '_blank', :class => 'edit-association' %><br/>
+      <em>Changes will only be shown here after this page is reloaded.</em>
+    <% else %>
+      <em>Can only edit after project has been created.</em>
+    <% end %>
+    </td>
+  </tr>
+
+  <tr>
+    <td class="form-label"><%= f.label :url %></td>
+    <td><%= f.text_field :url %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :public_email %></td>
+    <td><%= f.text_field :public_email %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :address1 %></td>
+    <td><%= f.text_field :address1 %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :address2 %></td>
+    <td><%= f.text_field :address2 %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :city %></td>
+    <td><%= f.text_field :city %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :state %></td>
+    <td><%= f.text_field :state %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :zip %></td>
+    <td><%= f.text_field :zip %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :country %></td>
+    <td><%= f.text_field :country %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :phone_number %></td>
+    <td><%= f.text_field :phone_number %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :fax_number %></td>
+    <td><%= f.text_field :fax_number %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :details_for_website %></td>
+    <td><%= f.text_area :details_for_website, :rows => 8 %></td>
+  </tr>

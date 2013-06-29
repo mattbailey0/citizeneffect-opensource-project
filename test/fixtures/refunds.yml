@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  amount_in_cents: 1
+  project_id: 1
+  comment: MyString
+  donation_id: 1
+
+two:
+  amount_in_cents: 1
+  project_id: 1
+  comment: MyString
+  donation_id: 1

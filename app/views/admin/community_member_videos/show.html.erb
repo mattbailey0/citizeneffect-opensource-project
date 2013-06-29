@@ -1,0 +1,20 @@
+<h1>Viewing Community Member Video</h1>
+<p>
+  <b>Community member profile:</b>
+  <%=h @community_member_video.community_member_profile.name %>
+</p>
+
+<p>
+  <b>Youtube url:</b>
+  <%= link_to h(@community_member_video.url), @community_member_video.url %><br />
+  <%= @community_member_video.embedded_html %>
+</p>
+
+<p>
+  <b>Caption:</b>
+  <%=h @community_member_video.caption %>
+</p>
+
+
+<%= link_to 'Edit', [:edit, :admin, @community_member_profile, @community_member_video] %> |
+<%= link_to 'Back', [:admin, @community_member_profile, :community_member_videos] %>

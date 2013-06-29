@@ -1,0 +1,13 @@
+--- !ruby/object:RI::MethodDescription 
+params: (path)
+is_singleton: false
+block_params: 
+name: save_render_tree
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Tells the viewer to dump the render tree to the given path. Only available
+    in the Qt viewer.
+full_name: Celerity::ViewerConnection#save_render_tree
+visibility: public
+aliases: []
+

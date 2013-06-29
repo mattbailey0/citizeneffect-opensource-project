@@ -1,0 +1,43 @@
+<p>
+  <b>Project:</b>
+  <%=h @project_picture.project.name %>
+</p>
+
+<p>
+  <b>Picture:</b>
+  <%= link_to h(@project_picture.picture.original_filename), @project_picture.picture.url %>
+</p>
+
+<!-- <p> -->
+<!--   <b>Picture file name:</b> -->
+<!--   <%=h @project_picture.picture_file_name %> -->
+<!-- </p> -->
+
+<!-- <p> -->
+<!--   <b>Picture content type:</b> -->
+<!--   <%=h @project_picture.picture_content_type %> -->
+<!-- </p> -->
+
+<!-- <p> -->
+<!--   <b>Picture file size:</b> -->
+<!--   <%=h @project_picture.picture_file_size %> -->
+<!-- </p> -->
+
+<!-- <p> -->
+<!--   <b>Picture updated at:</b> -->
+<!--   <%=h @project_picture.picture_updated_at %> -->
+<!-- </p> -->
+
+<p>
+  <b>Caption:</b>
+  <%=h @project_picture.caption %>
+</p>
+
+<p>
+  <b>Related project stage:</b>
+  <%=h @project_picture.related_project_stage.humanize %>
+</p>
+
+
+<%= link_to 'Edit', [:edit, :admin, @project, @project_picture] %> |
+<%= link_to 'Back', [:admin, @project, :project_pictures] %>

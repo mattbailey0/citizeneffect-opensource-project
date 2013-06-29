@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+params: (index)
+is_singleton: false
+block_params: 
+name: '[]'
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: 'Alias for #child_cell'
+full_name: Celerity::TableRow#[]
+visibility: public
+aliases: []
+

@@ -1,0 +1,28 @@
+<p>
+  <b>First name:</b>
+  <%=h @basic_user_detail.first_name %>
+</p>
+
+<p>
+  <b>Last name:</b>
+  <%=h @basic_user_detail.last_name %>
+</p>
+
+<p>
+  <b>Zip:</b>
+  <%=h @basic_user_detail.zip %>
+</p>
+
+<p>
+  <b>Phone number:</b>
+  <%=h @basic_user_detail.phone_number %>
+</p>
+
+<p>
+  <b>Skype username:</b>
+  <%=h @basic_user_detail.skype_username %>
+</p>
+
+
+<%= link_to 'Edit', edit_admin_basic_user_detail_path(@basic_user_detail) %> |
+<%= link_to 'Back', admin_basic_user_details_path %>

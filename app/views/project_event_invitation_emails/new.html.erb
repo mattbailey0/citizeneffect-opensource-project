@@ -1,0 +1,34 @@
+<% content_for(:page_title, "Invitation Email For #{@project_event.name}") %>
+
+<div class="breadcrumbs">
+	<%= link_to "&laquo; back to event page", [@project_event.project, @project_event], :class => "breadcrumbs green" %>
+</div>
+
+<!-- main body copy -->
+<div id="wrapper-copy">
+			
+	<div class="component-header-full nopadtop">
+		<h3>SEND INVITATIONS</h3>
+	</div> 	
+	<!-- full-width component -->
+	<div class="box-full-middle">
+		<h5 class="pad_full strong"><%=h @project_event.project.cp.first_name %>’s <%=h @project_event.name %></h5>
+		<!-- buttons -->
+		<div class="filter pad_bottom">
+			<div class="left large">&nbsp;</div>
+			<div class="buttons large">
+        <%= link_to "", [:share, @project_event.project, @project_event], :id => "share" %>
+        <%= link_to "", [:new, @project_event, :project_event_invitation_email], :id => "email_contacts", 
+        :class => "active" %>
+      </div>
+			<div class="right large">&nbsp;</div>
+			<div class="clear"></div>
+		</div>
+		
+		<% form_for([@project_event, @project_event_invitation_email], :html => { :multipart => true }) do |f| %>
+		<%= render :partial => "form", :locals => { :f => f } %>
+		<% end %>
+
+	</div>
+	<div class="box-full-bottom"></div>
+</div>

@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+params: (uri)
+is_singleton: false
+block_params: 
+name: goto
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Goto the given URL
+- !ruby/struct:SM::Flow::P 
+  body: '@param [String] uri The url. @return [String] The url.'
+full_name: Celerity::Browser#goto
+visibility: public
+aliases: []
+

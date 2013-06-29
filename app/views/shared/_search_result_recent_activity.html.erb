@@ -1,0 +1,7 @@
+<% project = object %>
+						<div>
+              Recent Activity:
+              <%= link_to "Blog Posts", blog_blog_posts_path(project.blog) %> (<%=h project.recent_blog_posts_count %>),
+              <%= link_to "New Events", project %> (<%=h project.new_events_count %>),
+              <%= link_to "Announcements", project %> (<%=h project.recent_announcements_count %>)
+            </div>

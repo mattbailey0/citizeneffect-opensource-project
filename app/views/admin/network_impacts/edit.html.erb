@@ -1,0 +1,43 @@
+<h1>Editing Network Impact</h1>
+
+<% form_for([:admin, @network_impact]) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :use_on_homepage %><br />
+    <%= f.check_box :use_on_homepage %>
+  </p>
+  <p>
+    <%= f.label :automatically_calculated %><br />
+    <%= f.check_box :automatically_calculated, :disabled => true %>
+  </p>
+  <p>
+    <%= f.label :total_lives_impacted %><br />
+    <%= f.text_field :total_lives_impacted, :disabled => @network_impact.automatically_calculated %>
+  </p>
+  <p>
+    <%= f.label :total_unique_donors %><br />
+    <%= f.text_field :total_unique_donors, :disabled => @network_impact.automatically_calculated %>
+  </p>
+  <p>
+    <%= f.label :total_citizen_philanthropists %><br />
+    <%= f.text_field :total_citizen_philanthropists, :disabled => @network_impact.automatically_calculated %>
+  </p>
+  <p>
+    <%= f.label :total_dollars_donated %><br />
+    <%= f.text_field :total_dollars_donated, :disabled => @network_impact.automatically_calculated %>
+  </p>
+  <p>
+    <%= f.label :total_completed_projects %><br />
+    <%= f.text_field :total_completed_projects, :disabled => @network_impact.automatically_calculated %>
+  </p>
+  <p>
+    <%= f.label :total_projects_in_progress %><br />
+    <%= f.text_field :total_projects_in_progress, :disabled => @network_impact.automatically_calculated %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', admin_network_impacts_path %>

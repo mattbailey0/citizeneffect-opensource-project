@@ -1,0 +1,17 @@
+- follow_urls ||= @user.follow_urls
+- follow_urls << {:url => @user.blog_url, :display_name => "Blog"} unless @user.blog_url.blank?
+
+- unless follow_urls.empty?
+  .follow= "FOLLOW #{h @user.first_name.upcase}:"
+  - follow_urls.to_a.in_groups_of(3, false) do |follow_urls_group|
+    %ul.links
+      - follow_urls_group.each do |follow|
+        %li= link_to h(follow[:display_name]), h(follow[:url])
+        - unless follow == follow_urls_group.last
+          %li.spacer= " | "
+      %li.clear
+
+= link_to "Edit My Social Networks", edit_user_path(@user, :anchor => "social-media-links") if @user == current_user
+- if @user.can_access_api?
+  %br
+  = link_to "API Access", edit_user_path(@user, :anchor => "api-access")

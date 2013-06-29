@@ -1,0 +1,47 @@
+<% content_for(:page_title, "Projects") %>
+
+    <!-- breadcrumbs -->
+		<div class="breadcrumbs">
+		</div>
+
+    <% cache(:key => "project_index_page_#{Time.now.to_i/100.minutes.to_i}_#{current_user.andand.id}") do -%>
+		<!-- main body copy -->
+		<div id="wrapper-copy">
+		
+			<!-- left column -->
+			<div class="twocol-left">
+				
+        <%= render :partial => "projects/needing_a_cp" %>
+				
+        <%= render :partial => "projects/needing_donations" %>
+				
+				<%= link_to image_tag("btn_view_completed_projects.png", :width => "310", :height => "26", :alt => ""),
+             search_path(:with => {:project_status_id => ProjectStatus.statuses_that_count_as_completed.map(&:id)}),
+             :class => "view_completed_projects" %>
+
+        <%= link_to image_tag("btn_view_all_projects.png", :width => "310", :height => "25", :alt => ""),
+             search_path, :class => "view_all_projects" %>
+
+				<div class="clear"></div>
+				
+			</div>
+			
+			<!-- right column -->
+			<div class="twocol-right">
+			
+        <%= render :partial => "find_your_perfect_project" %>
+				
+        <%= render :partial => "recently_active" %>
+
+        <%= render :partial => "shared/social_network_icons" %>
+
+			</div>
+
+			<div class="clear"></div>
+
+		</div>
+    <% end -%>
+		
+    <%= render :partial => "events" %>
+		
+    <%= render :partial => "recently_viewed" %>

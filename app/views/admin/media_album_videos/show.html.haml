@@ -1,0 +1,26 @@
+%h1 Viewing Media Album Video
+
+%p
+  %b Title
+  %br
+  = h @media_album_video.title
+
+%p
+  %b Description
+  %br
+  = h @media_album_video.description
+
+%p
+  %b Url
+  %br
+  = link_to h(@media_album_video.url), @media_album_video.url, :target => "_blank"
+
+%p
+  %b Video
+  %br
+  - unless @media_album_video.url.blank?
+    = @media_album_video.embedded_html
+
+= link_to "Edit", [:edit, :admin, @project, @media_album, @media_album_video]
+|
+= link_to "Back", [:admin, @project, @media_album, :media_album_videos]

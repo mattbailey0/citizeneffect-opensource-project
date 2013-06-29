@@ -1,0 +1,39 @@
+--- !ruby/object:RI::ClassDescription 
+includes: []
+
+name: Button
+constants: 
+- !ruby/object:RI::Constant 
+  name: TAGS
+  value: '[ Identifier.new(''button''),              Identifier.new(''input'', :type
+    => %w[submit reset image button]) ]'
+  comment: 
+- !ruby/object:RI::Constant 
+  name: ATTRIBUTES
+  value: ATTRIBUTES | [:type, :disabled, :tabindex, :accesskey, :onfocus, :onblur]
+    | [:src, :usemap, :ismap]
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Attribute list is a little weird due to this class covering both &lt;button&gt;
+      and &lt;input type=&quot;submit|reset|image|button&quot; /&gt;
+- !ruby/object:RI::Constant 
+  name: DEFAULT_HOW
+  value: ":value"
+  comment: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: 'Input: Button'
+- !ruby/struct:SM::Flow::P 
+  body: Class representing button elements.
+- !ruby/struct:SM::Flow::P 
+  body: This class covers both &lt;button&gt; and &lt;input type=&quot;submit|reset|image|button&quot;
+    /&gt; elements.
+attributes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: locate
+full_name: Celerity::Button
+superclass: InputElement
+class_methods: []
+

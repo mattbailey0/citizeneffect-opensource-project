@@ -1,0 +1,25 @@
+--- !ruby/object:RI::ClassDescription 
+includes: []
+
+name: FileField
+constants: 
+- !ruby/object:RI::Constant 
+  name: TAGS
+  value: '[ Identifier.new(''input'', :type => %w[file]) ]'
+  comment: 
+- !ruby/object:RI::Constant 
+  name: DEFAULT_HOW
+  value: ":name"
+  comment: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: For fields that accept file uploads
+attributes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: set
+full_name: Celerity::FileField
+superclass: InputElement
+class_methods: []
+

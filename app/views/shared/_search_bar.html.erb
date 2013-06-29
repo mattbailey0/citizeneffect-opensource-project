@@ -1,0 +1,142 @@
+<!-- search bar -->
+
+<div id="searchbar">
+  <% with = params[:with] || {} %>
+  <% form_tag search_path, :method => :get do %>
+	  <a href="#info" rel="facebox" class="facebox_top">Advanced Search</a>
+	  <div class="select">
+		  <select name="with[project_status_id][]" id="grayBox2" class="selectBoxGray">
+        <option value="All">All Projects</option>
+        <option value="All">All Projects</option>
+		  	<option value="<%= ProjectStatus.awaiting_cp.id %>">Projects Needing A CP</option>
+	  		<option value="<%= ProjectStatus.fundraising.id %>">Projects Needing Donations</option>
+  			<option value="Completed">Completed Projects</option>
+				<option value="Users">Person's Name</option>
+			</select>
+		</div>
+		<div id="wrapper-searchbox"><%= text_field_tag "q", params[:q], :id => "searchbox" %></div>
+		<div class="right"><%= image_submit_tag "btn_search.png", :class => "btn_search" %></div>
+  <% end -%>
+	<div class="clear"></div>
+	
+	<!-- advanced search -->
+  <div id="info_container" style="display:none">
+	<div id="info">
+    <% form_tag search_path, :method => :get do %>
+    
+		  <h4 class="advanced_search_title">ADVANCED SEARCH</h4>
+			<h6 class="facebox">FILL OUT ALL APPLICABLE AREAS.</h6>
+			<div class="form_left">
+        
+				<h6 class="facebox">REGION <span>(Check all that apply)</span></h6>
+        <% with[:country_id] ||= [] %>
+				<ul>
+          <% Country.all.each do |country| %>
+  					<li>
+              <%= check_box_tag "with[country_id][]", country.id.to_s, 
+                  with[:country_id].include?(country.id.to_s), 
+                  :id => "with_country_id_#{h country.id}" %>
+              <%= label_tag "with_country_id_#{h country.id}", h(country.name) %>
+            </li>
+          <% end %>
+				</ul>
+
+				<h6 class="facebox">LIVES IMPACTED <span>(Check all that apply)</span></h6>
+        <% with[:lives_impacted_range_id] ||= [] %>
+				<ul>
+          <% LivesImpactedRange.all.each do |range| -%>
+            <li>
+              <%= check_box_tag "with[lives_impacted_range_id][]", range.id.to_s,
+                  with[:lives_impacted_range_id].include?(range.id.to_s),
+                  :id => "with_lives_impacted_range_id_#{h range.id}" %>
+              <%= label_tag "with_lives_impacted_range_id_#{h range.id}", h(range.display_name) %>
+            </li>
+          <% end -%>
+				</ul>
+
+				<h6 class="facebox">FUNDRAISING GOAL <span>(Check all that apply)</span></h6>
+        <% with[:fundraising_goal_range_id] ||= [] %>
+        <ul>
+          <% FundraisingGoalRange.all.each do |range| -%>
+            <li>
+              <%= check_box_tag "with[fundraising_goal_range_id][]", range.id.to_s,
+                  with[:fundraising_goal_range_id].include?(range.id.to_s),
+                  :id => "with_fundraising_goal_range_id_#{h range.id}" %>
+              <%= label_tag "with_fundraising_goal_range_id_#{h range.id}", h(range.display_name) %>
+            </li>
+          <% end -%>
+				</ul>
+
+				<h6 class="facebox">PROJECT STATUS <span>(Check all that apply)</span></h6>
+        <% with[:project_status_id] ||= [] %>
+				<ul>
+          <li>
+            <%= check_box_tag "with[project_status_id][]", ProjectStatus.awaiting_cp.id.to_s,
+                with[:project_status_id].include?(ProjectStatus.awaiting_cp.id.to_s),
+                :id => "with_project_status_id_#{h ProjectStatus.awaiting_cp.id}" %>
+            <%= label_tag "with_project_status_id_#{h ProjectStatus.awaiting_cp.id}", 
+                "Projects Needing a CP" %>
+          </li>
+          <li>
+            <%= check_box_tag "with[project_status_id][]", ProjectStatus.fundraising.id.to_s,
+                with[:project_status_id].include?(ProjectStatus.fundraising.id.to_s),
+                :id => "with_project_status_id_#{h ProjectStatus.fundraising.id}" %>
+            <%= label_tag "with_project_status_id_#{h ProjectStatus.fundraising.id}", 
+                "Projects Needing Donations" %>
+          </li>
+          <li>
+            <%= check_box_tag "with[project_status_id][]", "Completed",
+                with[:project_status_id].include?(ProjectStatus.planning.id.to_s),
+                :id => "with_project_status_completed" %>
+            <%= label_tag "with_project_status_completed", "Completed Projects" %>
+          </li>
+				</ul>
+			</div>
+
+			<div class="form_right">
+				<h6 class="facebox">FOCUS AREA <span>(Check all that apply)</span></h6>
+				<ul class="facebook-icons">
+              
+          <% FocusArea.all.each do |area| -%>
+            <li>
+              <div class="checkbox">
+                <%= check_box_tag "with[focus_area_ids][]", area.id.to_s,
+                    params[:with].andand[:focus_area_ids].andand.include?(area.id.to_s),
+                    :id => "with_focus_area_ids_#{h area.id}" %>
+              </div>
+              <div class="icon left <%= area.icon_css_class %>"></div>
+              <div class="label">
+                <%= label_tag "with_focus_area_ids_#{h area.id}", h(area.name.upcase) %>
+              </div>
+            </li>
+          <% end -%>
+				</ul>
+            
+        <%= image_submit_tag "btn_view_results.png", :class => "submit" %>
+
+			</div>
+
+			<div class="clear"></div>
+
+    <% end -%>
+	</div>
+  </div>
+
+  <% javascript_tag do -%>
+
+  $(document).bind('afterReveal.facebox', function() { 
+    if($('#facebox .content #info').size() != 0)
+      $('#info_container > #info').remove(); 
+  });
+  
+  $(document).bind('beforeClose.facebox', function() {  
+    content = $('#facebox .content #info');
+    if(content.size() != 0)
+    { 
+      $('#info_container').append(content);
+      $('#facebox .content #info').remove(); 
+    }
+  });
+
+  <% end -%>
+</div>

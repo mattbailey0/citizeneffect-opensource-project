@@ -1,0 +1,31 @@
+<% removable = false unless local_assigns.has_key?(:removable) -%>
+<% lightbox = true unless local_assigns.has_key?(:lightbox) -%>
+<% display_title = photo.title unless local_assigns.has_key?(:display_title) -%>
+<% display_description = photo.description unless local_assigns.has_key?(:display_description) -%>
+<li>
+<div class="carousel video cspacer">
+	<div class="copy video">
+		<p class="thumb">
+      <% if removable %>
+        <%= link_to %Q{<span class="disc topLeft">X</span>}, [photo.project, photo.media_album], :method => :delete, :confirm => "Are you sure?" %>
+      <% end %>
+      <%= link_to sized_image_tag(photo.photo, :url, image_size_name, :alt => ""), lightbox ? "#media_album_#{h photo.media_album.id}" : photo.project, lightbox ? {:rel => "facebox"} : {} %>
+    </p>
+		<p class="title"><%=h display_title -%></p>
+		<p class="description">
+      <%=h display_description %>
+      <% 
+        unless @project # don't show this link on pages that are already showing the project 
+      %>
+			  <%= link_to "visit project", [photo.project], :class => 'orange underline' %>
+			<% end %>
+      <% if logged_in? -%>
+        <%= link_to "edit media album", [:edit, photo.project, photo.media_album], :class => "orange underline" if current_user_can_edit_public_project? %>
+      <% end -%>
+		</p>
+	</div>
+</div>
+
+<%= render :partial => "projects/album_lightbox", :object => photo.media_album if lightbox %>
+
+</li>

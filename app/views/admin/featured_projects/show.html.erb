@@ -1,0 +1,26 @@
+<p>
+  <b>Title:</b>
+  <%=h @featured_project.title %>
+</p>
+
+<p>
+  <b>Caption:</b>
+  <%=h @featured_project.caption %>
+</p>
+
+<p>
+  <b>Url identifier:</b>
+  <%=h @featured_project.url_identifier %>
+</p>
+<p>
+  <b>Picture (thumbnail)</b><br />
+  <%= image_tag @featured_project.picture_thumbnail.url %>
+</p>
+
+<p>
+  <b>Picture</b><br />
+  <%= image_tag @featured_project.picture.url %>
+</p>
+
+<%= link_to 'Edit', edit_admin_featured_project_path(@featured_project) %> |
+<%= link_to 'Back', admin_featured_projects_path %>

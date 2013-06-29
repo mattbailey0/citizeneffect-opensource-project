@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+params: ()
+is_singleton: false
+block_params: 
+name: clear_cookies
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Clears all cookies. (Celerity only)
+full_name: Celerity::Browser#clear_cookies
+visibility: public
+aliases: []
+

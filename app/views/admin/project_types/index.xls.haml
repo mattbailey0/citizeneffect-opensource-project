@@ -1,0 +1,8 @@
+%table
+  %tr{:style => "font-weight:bold;"}
+    %td ID
+    %td Name
+  - @project_types.each do |project_type|
+    %tr
+      %td= h project_type.id
+      %td= h project_type.name

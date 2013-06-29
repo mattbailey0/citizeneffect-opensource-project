@@ -1,0 +1,22 @@
+--- !ruby/object:RI::ClassDescription 
+includes: []
+
+name: XpathSupport
+constants: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Module to search by xpath
+attributes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: element_by_xpath
+- !ruby/object:RI::MethodSummary 
+  name: element_from_dom_node
+- !ruby/object:RI::MethodSummary 
+  name: elements_by_xpath
+full_name: Celerity::XpathSupport
+superclass: 
+class_methods: []
+

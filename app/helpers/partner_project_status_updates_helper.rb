@@ -1,0 +1,3 @@
+module PartnerProjectStatusUpdatesHelper
+  include CommunityMemberProfilesHelper
+end

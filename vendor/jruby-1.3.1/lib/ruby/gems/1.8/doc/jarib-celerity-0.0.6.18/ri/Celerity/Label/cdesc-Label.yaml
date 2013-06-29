@@ -1,0 +1,27 @@
+--- !ruby/object:RI::ClassDescription 
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: ClickableElement
+name: Label
+constants: 
+- !ruby/object:RI::Constant 
+  name: TAGS
+  value: '[ Identifier.new(''label'') ]'
+  comment: 
+- !ruby/object:RI::Constant 
+  name: ATTRIBUTES
+  value: BASE_ATTRIBUTES | [:for, :accesskey, :onfocus, :onblur]
+  comment: 
+- !ruby/object:RI::Constant 
+  name: DEFAULT_HOW
+  value: ":text"
+  comment: 
+comment: 
+attributes: []
+
+instance_methods: []
+
+full_name: Celerity::Label
+superclass: Element
+class_methods: []
+

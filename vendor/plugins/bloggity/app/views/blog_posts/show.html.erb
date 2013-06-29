@@ -1,0 +1,55 @@
+<% content_for(:page_title, "#{@blog_post.title} | #{@project ? @project.name : %{Citizen Effect}} Blog") %>
+
+<!-- <div id="main_content"> -->
+<!-- 	<%#= render :partial => 'show', :locals => { :blog_post => @blog_post, :last => @blog_post } %> -->
+<!-- 	<%#= render :partial => 'comments', :locals => { :blog_post => @blog_post } %> -->
+<!-- </div> -->
+
+<div class="breadcrumbs">
+  <%= link_to "&laquo; back to project", @project, :class => "breadcrumbs green" if @project %>
+  <%= link_to "&laquo; back to blog", {:controller => 'blog_posts', :action => :index, 
+      :blog_id => @blog_post.blog_id}, :class => "breadcrumbs green" %>
+</div>
+
+<%#= render :partial => 'side_nav' %>
+
+<!-- main body copy -->
+<div id="wrapper-copy">
+		
+	<!-- left column -->
+	<div class="twocol-left">
+				
+	  <%= render :partial => 'show', :locals => { :blog_post => @blog_post, :last => @blog_post } %>
+
+    <div id="disqus_thread" style="width:634px;margin-left:5px;" ></div>
+    <script type="text/javascript">
+      var disqus_developer = <%= Rails.env.production? ? 0 : 1 -%>;
+      var disqus_identifier = <%= @blog_post.id -%>;
+      (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://citizeneffect.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+    <noscript>
+      Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=citizeneffect">comments powered by Disqus.</a>
+    </noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+    <br/><br/>
+	</div>
+			
+	<!-- right column -->
+	<div class="twocol-right">
+				
+    <% if @project -%>
+      <%= render :partial => "meet_the_cp" if @project.cp %>
+      <%= render :partial => "project_summary" %>
+    <% end -%>
+
+  	<%= render :partial => "similar" %>
+
+    <%= render :partial => "blog_posts/news_feed" if @project %>
+
+	</div>
+	<div class="clear"></div>
+</div>

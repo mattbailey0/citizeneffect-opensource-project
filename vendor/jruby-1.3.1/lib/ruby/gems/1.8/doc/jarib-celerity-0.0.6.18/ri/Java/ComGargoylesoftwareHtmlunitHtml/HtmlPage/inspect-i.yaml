@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+params: ()
+is_singleton: false
+block_params: 
+name: inspect
+comment: 
+full_name: Java::ComGargoylesoftwareHtmlunitHtml::HtmlPage#inspect
+visibility: public
+aliases: []
+

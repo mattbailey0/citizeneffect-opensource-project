@@ -1,0 +1,47 @@
+<% project = object -%>
+<div class="box-half-middle <%=h project.cp ? "cp" : "nocp" %>">
+	<div class="search-results-left">
+    <%= link_to image_tag(project.main_picture_url(:watch_list), :alt => "", :width => "185", 
+                  :height => "130"), project, :class => "block pad_bottom", :style => "width:185px; height:130px;" %>
+		<%= link_to "read more", project %> &nbsp;
+    <%= render :partial => "projects/add_to_watchlist", :locals => { :project => project } %>
+	</div>
+	<div class="search-results-right" 
+       style="background-image:url(<%= image_path h(project.type_icon_url) %>); background-repeat: no-repeat;">
+		<p class="title"><%= link_to h("#{project.community_name}, #{project.country.name}"), project, :class => 'content-blue bold px14' %></p>
+		<p class="description">
+			<%=h project.name %>
+		</p>
+    <% if project.cp -%>
+      <%= render :partial => "shared/search_result_cp_info", :object => project.cp %>
+	  	<div class="btn_share">
+        <% if project.in_progress? -%>
+          <%= link_to image_tag("btn_donate_stripped.png", :alt => "", :width => "85", :height => "33"), 
+                      [:new, project, :donation] %>
+        <% else -%>
+          <a href="#<%=h share_box_id(project) %>" rel="facebox">
+            <%= image_tag "btn_share_stripped.png" %>
+          </a>
+        <% end -%>
+      </div>
+    <% else -%>
+		  <%= link_to image_tag("btn_be_the_cp.png", :alt => "", :width => "113", :height => "33"), 
+                  [:new, project, :cp_application], :class => "become_the_cp" %>
+		  <div class="btn_share">
+        <a href="#<%=h share_box_id(project) %>" rel="facebox">
+          <%= image_tag "btn_share_stripped.png" %>
+        </a>
+      </div>
+    <% end -%>
+  	<div class="impacted">
+			LIVES IMPACTED: <%=h project.combined_lives_impacted %><br />
+			<%=h format_dollars(project.amount_left_to_raise_in_usd) %> to raise
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="clear"></div>
+</div>
+<div class="box-half-bottom blue">
+  <%= render :partial => "shared/search_result_recent_activity", :object => project %>
+</div>
+<%= render :partial => "shared/share_box", :locals => { :shareable => project }%>

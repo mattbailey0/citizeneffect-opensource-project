@@ -1,0 +1,18 @@
+--- !ruby/object:RI::ClassDescription 
+includes: []
+
+name: Li
+constants: 
+- !ruby/object:RI::Constant 
+  name: TAGS
+  value: '[ Identifier.new(''li'') ]'
+  comment: 
+comment: 
+attributes: []
+
+instance_methods: []
+
+full_name: Celerity::Li
+superclass: NonControlElement
+class_methods: []
+

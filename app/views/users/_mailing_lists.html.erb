@@ -1,0 +1,12 @@
+		<!-- full-width carousel -->
+		<div class="box-full-top"></div>
+		<div class="box-full-middle mailing_lists">
+			<div class="header"><h4>E-MAIL LISTS <%=h @user.first_name.upcase %> BELONGS TO (<%=h @user.mailing_lists.size %>)</h4></div>
+      <% unless @user.mailing_lists.size == 0 -%>
+      <ul class="carousel3 jcarousel-skin-tango">
+        <%= render :partial => "mailing_list_users/carousel_3", :collection => @user.mailing_list_users %>
+      </ul>
+      <% end -%>
+			<div class="clear"></div>
+		</div>
+		<div class="box-full-bottom"></div>

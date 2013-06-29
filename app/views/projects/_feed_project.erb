@@ -1,0 +1,74 @@
+<table cellspacing="5">
+  <tr>
+    <td valign="top">
+      <img border="0" alt="Project Picture" src="<%= project.main_picture_url(:watch_list) %>" width="185" height="130" align="middle" style="margin: 5px;"/>
+    </td>
+    <td valign="top">
+      <%= link_to h(project.name), project %><br/>
+      <% if project.focus_areas.first %>
+        <%= h project.focus_areas.first.name %> in
+      <% end %>
+      <%= h project.community_name %>, <%= h project.country.name %>
+      <br/>
+      LIVES IMPACTED: <%= h project.combined_lives_impacted %>
+      <br/><br/>
+      <% if project.cp %>
+        <%=h format_dollars(project.amount_left_to_raise_in_usd) %>
+        left to raise of
+        <%=h format_dollars(project.total_cost_in_usd) %>
+        <br/><br/>
+        <%= link_to image_tag("btn_donate.png", :alt => "[Give Now]"), [:new, project, :donation], :class => "donate_to_project" %>
+      <% else %>
+        <%=h format_dollars(project.total_cost_in_usd) %>
+        to raise
+        <br/><br/>
+  		  <%= link_to image_tag("btn_be_the_cp_with_padding.png", :width => "118", :height => "42", :alt => "[Be the CP]"), 
+                    new_cp_application_url(:project_id => project.id), 
+                    :class => "become_the_cp_#{project.id} become_the_cp_project" %>
+      <% end %>
+    </td>
+  </tr>
+</table>
+
+<br/>
+
+<% unless project.summary_for_website.blank? %>
+<b>Project Summary</b>
+
+<br/>
+<%= auto_link(simple_format(h(project.summary_for_website))) %>
+<br/><br/>
+<% end %>
+
+<% unless project.community_summary_for_website.blank? %>
+<b>Community Details</b>
+<br/>
+<%= auto_link(simple_format(h(project.community_summary_for_website))) %>
+<br/><br/>
+<% end %>
+
+<% unless project.primary_benefits.blank? %>
+<b>Impact</b>
+<br/>
+<%= auto_link(simple_format(h(project.primary_benefits))) %>
+<br/><br/>
+<% end %>
+
+
+<hr />
+
+<table cellspacing="5">
+  <tr>
+    <td valign="top">
+      <%= link_to image_tag("logo_citizen_effect.png", :alt => "Citizen Effect Logo", :width => "165", 
+                            :height => "45"), home_index_url %>
+      <br />
+      <font size="-1">with field partner:
+        <br />
+        <%=h project.partner.display_name %></font>
+    </td>
+    <td valign="top">
+      <%= image_tag project.partner.logo.blank? ? "default_partner_logo.png" : project.partner.logo.url(:partner_logo), :width => "180", :height => "65", :alt => "#{h project.partner.display_name} Logo" %>
+    </td>
+  </tr>
+</table>

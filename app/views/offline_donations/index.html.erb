@@ -1,0 +1,70 @@
+<% content_for(:page_title, "Offline Donations For #{@project.name}") %>
+
+<div class="breadcrumbs">
+	<%= link_to "Back to Project", @project, :class => "breadcrumbs green" %>
+</div>
+
+<!-- main body copy -->
+<div id="wrapper-copy">
+			
+	<div class="component-header-full nopadtop">
+		<h3>OFFLINE DONATIONS</h3>
+	</div> 
+
+	<!-- full-width component -->
+  <div class="box-full-middle" style="">
+    <div class="difference_container">
+      <p class="difference pad_left margin_left left">
+        <span class="bold large_text">Donations Made In Person</span><br />
+				You can give credit to donors who gave you cash or checks during your event by entering<br />
+				the detailed information here (and then making a credit card donation yourself)
+      </p>
+			<p class="right pad_right margin_right">
+        <%= link_to image_tag("btn_add_another_offline_donation.png"),
+            new_project_offline_donation_path(@project), :class => "add_offline_donation" %>
+      </p>
+			<div class="clear"></div>
+    </div>
+		<h5 class="pad_full strong"><%=h @project.name %></h5>
+		<table cellpadding="0" cellspacing="0" border="0" class="grid">
+			<colgroup>
+				<col width="19%" />
+				<col width="23%" />
+				<col width="31%" />
+				<col width="17%" />
+				<col width="6%" />
+				<col width="3%" />
+			</colgroup>
+			<tr>
+				<td class="first strong">DATE</td>
+				<td class="strong">NAME</td>
+				<td class="strong">EMAIL</td>
+				<td class="strong">AMOUNT</td>
+				<td colspan="2" class="strong">ACTIONS</td>
+			</tr>
+			
+      <% @donations.each do |donation| %>
+			<tr>
+				<td class="first"><%=h donation.donated_at.to_date.to_s %></td>
+				<td><%=h "#{donation.first_name} #{donation.last_name}" %></td>
+				<td><%=h donation.email %></td>
+				<td><%=h number_to_currency(donation.net_project_amount_in_dollars) %></td>
+				<td>
+          <%= link_to "Edit", edit_project_offline_donation_path(@project, donation), :class => "blue strong" %>
+        </td>
+				<td>
+        </td>
+			</tr>
+      <% end -%>
+
+			<tr>
+				<td class="first strong"></td>
+				<td class="strong"></td>
+				<td class="strong" align="right">Total in Offline Donations:</td>
+				<td class="strong"><%= number_to_currency(@project.offline_donations_total_in_dollars) %></td>
+				<td colspan="2" class="strong"></td>
+			</tr>
+		</table>
+  </div>
+	<div class="box-full-bottom"></div>
+</div>

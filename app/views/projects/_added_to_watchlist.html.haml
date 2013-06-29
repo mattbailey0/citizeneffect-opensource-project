@@ -1,0 +1,3 @@
+%span{ :id => "watch-list-action-container-#{project.id}" }
+  = hidden_field_tag "association-id", association.id
+  = link_to "un-watch", [current_user, association], :method => :delete, :class => "green pad_top pad_bottom", :id => "remove-from-watchlist-#{association.id}"

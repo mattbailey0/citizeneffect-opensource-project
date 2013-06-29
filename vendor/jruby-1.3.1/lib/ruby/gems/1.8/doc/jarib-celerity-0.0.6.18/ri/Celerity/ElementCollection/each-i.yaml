@@ -1,0 +1,13 @@
+--- !ruby/object:RI::MethodDescription 
+params: () {|element_class.new(@container, :object, e)| ...}
+is_singleton: false
+block_params: (element_class.new(@container, :object, e))
+name: each
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: '@yieldparam [Celerity::Element] element Iterate through the elements in this
+    collection.'
+full_name: Celerity::ElementCollection#each
+visibility: public
+aliases: []
+

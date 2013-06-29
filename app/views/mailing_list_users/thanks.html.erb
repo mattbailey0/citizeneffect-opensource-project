@@ -1,0 +1,70 @@
+<div class="component-header-full nopad">
+	<h3>JOIN THE CITIZEN EFFECT</h3>
+</div>
+
+<div class="box-full-middle">
+  
+  <div class="image">
+    <%= image_tag "mailing_list_users_new.jpg" %>
+  </div>
+
+  <div class="top_section">
+    
+    <div class="heading">
+      THANK YOU FOR BEING PART OF OUR COMMUNITY!
+    </div>
+
+    <div>
+      Now it’s time to get to work.
+    </div>
+
+  </div>
+
+
+  <div class="copy">
+    <table>
+      <tr>
+        <td class="number">1</td>
+        <td>
+          <%= link_to "Create", signup_path %>
+          an account so you can learn more about us, 
+          help build our community by recruiting friends, and 
+          track your favorite projects
+        </td>
+      </tr>
+      <tr>
+        <td class="number">2</td>
+        <td>
+          <%= link_to "Search", projects_path %>
+          for projects that interest you
+        </td>
+      </tr>
+      <tr>
+        <td class="number">3</td>
+        <td>
+          <%= link_to "Apply", new_cp_application_path %>
+          to be a Citizen Philanthropist and take on a
+          project of your own anywhere in the world.
+        </td>
+      </tr>
+      <tr>
+        <td class="number">4</td>
+        <td>
+          <%= link_to "Donate", [:new, @project, :donation] %>
+          to any project that needs help or make a 
+          donation to help Citizen Effect expand our partners
+          and make an impact in more communities around the world.
+        </td>
+      </tr>
+    </table>
+    
+
+  </div>
+
+  <div class="clear"></div>
+</div>
+<div class="box-full-bottom"></div>
+
+<div style="padding: 20px 0px 40px 0px; text-align: center;">
+  <%= link_to image_tag("mailing_list_user_donate_now.png"), new_donation_path, :class => "mailing_list_users_donate" %>
+</div>

@@ -1,0 +1,36 @@
+- cpa = @cp_application
+%p
+  %b
+    Regions
+%p
+  - Country.all.each do |c|
+    = check_box_tag c.name, "1", cpa.countries.include?(c), :disabled => true
+    = label_tag c.name
+    %br
+
+%p
+  %b
+    Lives Impacted
+%p
+  - LivesImpactedRange.all.each do |l|
+    = check_box_tag l.display_name, "1", cpa.lives_impacted_range == l, :disabled => true
+    = label_tag l.display_name
+    %br
+
+%p
+  %b
+    Focus Area
+%p
+  - FocusArea.all.each do |f|
+    = check_box_tag f.name, "1", cpa.focus_areas.include?(f), :disabled => true
+    = label_tag f.name
+    %br
+
+%p
+  %b
+    Fundraising Goal
+%p
+  - FundraisingGoalRange.all.each do |f|
+    = check_box_tag f.display_name, "1", cpa.fundraising_goal_range == f, :disabled => true
+    = label_tag f.display_name
+    %br

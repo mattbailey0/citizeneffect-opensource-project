@@ -1,0 +1,20 @@
+%table
+  %tr{:style => "font-weight:bold;"}
+    %td
+      ID
+    %td
+      Title
+    %td
+      Caption
+    %td
+      Url identifier
+  - @featured_projects.each do |featured_project|
+    %tr
+      %td
+        = h featured_project.id
+      %td
+        = h featured_project.title
+      %td
+        = h featured_project.caption
+      %td
+        = h featured_project.url_identifier

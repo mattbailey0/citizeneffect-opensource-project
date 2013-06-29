@@ -1,0 +1,18 @@
+--- !ruby/object:RI::MethodDescription 
+params: (bool, &block) {|| ...}
+is_singleton: false
+block_params: ""
+name: confirm
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Specify a boolean value to click either 'OK' or 'Cancel' in any confirm dialogs
+    that might show up during the duration of the given block.
+- !ruby/struct:SM::Flow::P 
+  body: (Celerity only)
+- !ruby/struct:SM::Flow::P 
+  body: '@param [Boolean] bool true to click ''OK'', false to click ''cancel'' @param
+    [Proc] block A block that will trigger the confirm() call(s).'
+full_name: Celerity::Browser#confirm
+visibility: public
+aliases: []
+

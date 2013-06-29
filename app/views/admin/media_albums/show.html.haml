@@ -1,0 +1,12 @@
+%h1
+  Viewing Media Album for
+  = "'#{@project.name}'"
+
+%p
+  %b Title:
+  = h @media_album.title
+
+
+= link_to "Edit", [:edit, :admin, @project, @media_album]
+|
+= link_to "Back", [:admin, @project, :media_albums]

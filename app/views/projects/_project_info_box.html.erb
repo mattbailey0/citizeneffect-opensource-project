@@ -1,0 +1,15 @@
+<div class="tabs project_info_box">
+  <%= # no spaces between links
+    switch = "$('.project_info_box.tabs a').removeClass('active'); $(this).addClass('active'); $('.info_box_content').hide();"
+    rf = "return false;"
+    link_to("", "#", :onclick => "#{switch} $('#info_box_details').show(); #{rf}", :id => "btn_project_details", :class => "active") +
+    link_to("", "#", :onclick => "#{switch} $('#info_box_community_details').show(); #{rf}", :id => "btn_community_details") +
+    link_to("", "#", :onclick => "#{switch} $('#info_box_people').show(); #{rf}", :id => "btn_people") +
+    link_to("", "#", :onclick => "#{switch} $('#info_box_impact').show(); #{rf}", :id => "btn_impact")
+  %>
+	<div class="clear"></div>
+</div>
+<%= render :partial => "info_box_details" %>
+<%= render :partial => "info_box_community_details" %>
+<%= render :partial => "info_box_people" %>
+<%= render :partial => "info_box_impact" %>

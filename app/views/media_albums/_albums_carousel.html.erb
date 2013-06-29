@@ -1,0 +1,40 @@
+<%# albums = @project.media_albums.map(&:album_cover).compact %>
+<%# Instead, show featured album photo and album title %>
+<% 
+albums = []
+albums_carousel.each do |ma|
+  if ma.album_cover
+    albums << {:album_cover => ma.album_cover, :album_title => ma.title }
+  end
+end 
+albums.compact! 
+%>
+
+<% unless albums_carousel.blank? -%>
+<!-- project photo album -->
+<div class="box-full-top"></div>
+
+<div class="box-full-middle">
+	<div class="header">
+		<h4><%=h header %></h4>
+		<%#= link_to "view more photo albums", [@project, :media_albums], :class => "subheader" %>
+	</div>
+
+  <% unless albums_carousel.blank? -%>
+  <div class="project_show_media_gallery_without_cp">
+	  <div class="prev video"><a href=""><%= image_tag "btn_arrow_left.png", :width => "24", :height => "24", :alt => "" %></a></div>
+	  <div class="next video"><a href=""><%= image_tag "btn_arrow_right.png", :width => "24", :height => "24", :alt => "" %></a></div>
+    <ul class="external_control_carousel_4">
+      <% albums.each do |album_hash| %>
+        <%= render :partial => "projects/photo", :locals => { :photo => album_hash[:album_cover], :display_title => album_hash[:album_title], :image_size_name => :album, :removable => defined?(removable) && removable  } %>
+      <% end %>
+    </ul>
+  </div>
+  <% else -%>
+    <div class="no-album">No photo albums have been uploaded for this project</div>
+  <% end -%>
+
+	<div class="clear"></div>
+</div>
+<div class="box-full-bottom"></div>
+<% end %>

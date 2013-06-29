@@ -1,0 +1,17 @@
+--- !ruby/object:RI::MethodDescription 
+params: (meth, *args, &blk)
+is_singleton: false
+block_params: 
+name: method_missing
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Dynamically get element attributes.
+- !ruby/struct:SM::Flow::P 
+  body: '@see ATTRIBUTES constant for a list of valid methods for a given element.'
+- !ruby/struct:SM::Flow::P 
+  body: '@return [String] The resulting attribute. @raise [NoMethodError] if the element
+    doesn''t support this attribute.'
+full_name: Celerity::Element#method_missing
+visibility: public
+aliases: []
+

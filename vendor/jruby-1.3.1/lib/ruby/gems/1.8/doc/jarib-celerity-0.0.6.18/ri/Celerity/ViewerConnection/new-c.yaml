@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+params: (socket)
+is_singleton: true
+block_params: 
+name: new
+comment: 
+full_name: Celerity::ViewerConnection::new
+visibility: public
+aliases: []
+

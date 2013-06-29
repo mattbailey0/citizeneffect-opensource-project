@@ -1,0 +1,34 @@
+--- !ruby/object:RI::ClassDescription 
+includes: []
+
+name: RadioCheckCommon
+constants: 
+- !ruby/object:RI::Constant 
+  name: DEFAULT_HOW
+  value: ":name"
+  comment: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Common superclass for radios and check boxes.
+attributes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: checked?
+- !ruby/object:RI::MethodSummary 
+  name: clear
+- !ruby/object:RI::MethodSummary 
+  name: getState
+- !ruby/object:RI::MethodSummary 
+  name: get_state
+- !ruby/object:RI::MethodSummary 
+  name: isSet?
+- !ruby/object:RI::MethodSummary 
+  name: is_set?
+- !ruby/object:RI::MethodSummary 
+  name: set?
+full_name: Celerity::RadioCheckCommon
+superclass: InputElement
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new

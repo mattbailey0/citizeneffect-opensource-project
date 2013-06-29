@@ -1,0 +1,16 @@
+--- !ruby/object:RI::ClassDescription 
+includes: []
+
+name: HtmlElement
+constants: []
+
+comment: 
+attributes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: inspect
+full_name: Java::ComGargoylesoftwareHtmlunitHtml::HtmlElement
+superclass: Object
+class_methods: []
+

@@ -1,0 +1,26 @@
+<% unless (projects = Project.user_visible_projects.needing_donations).empty? %>
+    <div id="wrapper-copy">	<div class="component-header-full nopadtop">
+			<h3>OTHER PROJECTS YOU MIGHT LIKE</h3>
+		</div>
+		<!-- full-width component -->
+		<div class="box-full-middle social donation_complete_project_carousel">
+      <div style="padding: 0px 100px;">
+
+        <ul class="internal_control_carousel_1 jcarousel-skin-tango">
+          <% projects.each do |project| %>
+            <li>
+          	  <div class="other-project-box">
+                <div class="other-project-top"></div>
+                <div class="other-project-middle">
+                  <%= render :partial => "shared/project_with_cp_two_thirds", :object => project %>
+                </div>
+                <div class="other-project-bottom"></div>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+        <div class="clear"></div>
+      </div>
+    </div>
+		<div class="box-full-bottom"></div>
+<% end %>

@@ -1,0 +1,50 @@
+<% if achievement.achievement_type == Achievement::CP_PROJECTS_COMPLETED %>
+								<li class="icon"><%= image_tag "icon_profile_making_connections.gif", :width => "52", :height => "41", :alt => "Giving Back" %></li>
+								<li class="text">
+									<span><%=h number_with_delimiter(achievement.reference_amount) %> PROJECTS COMPLETED</span><br />
+									Has successfully completed<br />
+									<%=h number_with_delimiter(achievement.reference_amount) %> projects
+								</li>
+<% elsif achievement.achievement_type == Achievement::CP_MONEY_RAISED_IN_PROJECTS %>
+								<li class="icon"><%= image_tag "icon_profile_honorable_donation.gif", :width => "52", :height => "41", :alt => "Lives Impacted" %></li>
+								<li class="text">
+									<span><%=h number_to_currency(achievement.reference_amount_in_dollars) %> RAISED</span><br />
+									Has raised<br />
+									<%=h number_to_currency(achievement.reference_amount_in_dollars) %> for projects
+								</li>
+<% elsif achievement.achievement_type == Achievement::CP_LIVES_IMPACTED %>
+								<li class="icon"><%= image_tag "icon_profile_lives_impacted.gif", :width => "52", :height => "41", :alt => "Lives Impacted" %></li>
+								<li class="text">
+									<span><%=h number_with_delimiter(achievement.reference_amount) %> LIVES IMPACTED</span><br />
+									Has successfully impacted<br />
+									<%=h number_with_delimiter(achievement.reference_amount) %> lives, as a CP
+								</li>
+<% elsif achievement.achievement_type == Achievement::DONOR_PROJECTS_DONATED %>
+								<li class="icon"><%= image_tag "icon_profile_giving_back.gif", :width => "52", :height => "41", :alt => "Giving Back" %></li>
+								<li class="text">
+									<span>GIVING BACK</span><br />
+									Has successfully donated<br />
+									to <%=h number_with_delimiter(achievement.reference_amount) %> Citizen Effect projects
+								</li>
+<% elsif achievement.achievement_type == Achievement::DONOR_MONEY_DONATED %>
+								<li class="icon"><%= image_tag "icon_profile_honorable_donation.gif", :width => "52", :height => "41", :alt => "Lives Impacted" %></li>
+								<li class="text">
+									<span>HONORABLE DONATION</span><br />
+									Has donated over <%=h number_to_currency(achievement.reference_amount_in_dollars, :precision => 0) %><br />
+									to various projects
+								</li>
+<% elsif achievement.achievement_type == Achievement::DONOR_LIVES_IMPACTED %>
+								<li class="icon"><%= image_tag "icon_profile_lives_impacted.gif", :width => "52", :height => "41", :alt => "Lives Impacted" %></li>
+								<li class="text">
+									<span><%=h number_with_delimiter(achievement.reference_amount) %> LIVES IMPACTED</span><br />
+									Has successfully impacted<br />
+									<%=h number_with_delimiter(achievement.reference_amount) %> lives, through donations
+								</li>
+<% end %>
+<!-- 								<li class="icon"><%= image_tag "icon_profile_making_connections.gif", :width => "52", :height => "41", :alt => "Giving Back" %></li> -->
+<!-- 								<li class="text"> -->
+<!-- 									<span>MAKING CONNECTIONS</span><br /> -->
+<!-- 									Has successfully supported<br /> -->
+<!-- 									10 Citizen Effect Members -->
+<!-- 								</li> -->
+<!-- 								<li class="clear"></li> -->

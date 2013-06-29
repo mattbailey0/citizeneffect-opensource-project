@@ -1,0 +1,14 @@
+				<div class="box-rightcol-inner">
+					<div class="header"><h4>MOST POPULAR</h4></div>
+					
+          <div id="most_popular_fundraiser_types">
+            <%= render :partial => "fundraiser_type", :collection => FundraiserType.most_popular.top_5 %>
+          </div>
+					
+					<%= link_to_remote "view more", { :url => most_popular_fundraiser_types_path, :with => "'page=' + ++most_popular_page", :method => :get }, :id => "most_popular_view_more", :class => "right pad_top pad_bottom" %>
+					<div class="clear"></div>
+				</div>
+				<div class="box-rightcol-bottom"></div>
+<% javascript_tag do %>
+  most_popular_page = 1;
+<% end %>

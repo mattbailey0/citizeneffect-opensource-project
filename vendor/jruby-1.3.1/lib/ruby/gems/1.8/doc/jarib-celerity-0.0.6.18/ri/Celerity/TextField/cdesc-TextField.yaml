@@ -1,0 +1,61 @@
+--- !ruby/object:RI::ClassDescription 
+includes: []
+
+name: TextField
+constants: 
+- !ruby/object:RI::Constant 
+  name: NON_TEXT_TYPES
+  value: '%w[file radio checkbox submit reset image button hidden]'
+  comment: 
+- !ruby/object:RI::Constant 
+  name: TAGS
+  value: '[ Identifier.new(''textarea''),              Identifier.new(''input'', :type
+    => ["text", "password", /^(?!(#{ Regexp.union(*NON_TEXT_TYPES) })$)/])  ]'
+  comment: 
+- !ruby/object:RI::Constant 
+  name: DEFAULT_HOW
+  value: ":name"
+  comment: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Class representing text field elements
+- !ruby/struct:SM::Flow::P 
+  body: This class is the main class for Text Fields Normally a user would not need
+    to create this object as it is returned by the Watir::Container#text_field method
+attributes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: append
+- !ruby/object:RI::MethodSummary 
+  name: clear
+- !ruby/object:RI::MethodSummary 
+  name: contains_text
+- !ruby/object:RI::MethodSummary 
+  name: dragContentsTo
+- !ruby/object:RI::MethodSummary 
+  name: drag_contents_to
+- !ruby/object:RI::MethodSummary 
+  name: getContents
+- !ruby/object:RI::MethodSummary 
+  name: get_contents
+- !ruby/object:RI::MethodSummary 
+  name: get_contents
+- !ruby/object:RI::MethodSummary 
+  name: requires_typing
+- !ruby/object:RI::MethodSummary 
+  name: set
+- !ruby/object:RI::MethodSummary 
+  name: type
+- !ruby/object:RI::MethodSummary 
+  name: value
+- !ruby/object:RI::MethodSummary 
+  name: value=
+- !ruby/object:RI::MethodSummary 
+  name: verify_contains
+- !ruby/object:RI::MethodSummary 
+  name: visible?
+full_name: Celerity::TextField
+superclass: InputElement
+class_methods: []
+

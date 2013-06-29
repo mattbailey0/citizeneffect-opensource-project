@@ -1,0 +1,31 @@
+- report_type = "progress" if nil == report_type
+
+%p
+  %strong Construction start date:
+  = report.start_date
+
+%p
+  %strong Expected completion date:
+  = report.expected_completion_date
+
+- if report_type == "progress"
+  %p
+    %strong What has been constructed:
+    = h report.what_has_been_constructed
+
+%p
+  %strong What has been purchased:
+  = h report.what_has_been_purchased
+
+%p
+  %strong Number of construction jobs created:
+  = report.number_of_construction_jobs_created
+
+%p
+  %strong Description and breakdown of jobs:
+  = h report.construction_job_breakdown
+
+- if report_type == "final"
+  %p
+    %strong Summary of project completion:
+    = h report.completion_summary

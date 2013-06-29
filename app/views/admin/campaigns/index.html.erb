@@ -1,0 +1,30 @@
+<h1>Listing Campaigns</h1>
+
+<div class="new-button">
+  <%= link_to '(+) Add Campaign', new_admin_campaign_path %>
+</div>
+
+<div class="xls_link">
+  <%= link_to "Download As Excel Spreadsheet", url_for({:format => :xls}.merge(params)) %>
+</div>
+
+<table cellpadding="0" cellspacing="0" class="index-list">
+  <tr class="index-list-header">
+    <th>ID</th>
+    <th>Name</th>
+    <th>URL</th>
+    <th colspan="3">Actions</th>
+  </tr>
+
+<% @campaigns.each do |c| %>
+  <tr>
+    <td><%=h c.id %></td>
+    <td><%=h c.name %></td>
+    <td><%=h c.url %></td>
+    <td><%= link_to 'Show', [:admin, c] %></td>
+    <td><%= link_to 'Edit', edit_admin_campaign_path(c) %></td>
+    <td><%= link_to 'Destroy', [:admin, c], :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+

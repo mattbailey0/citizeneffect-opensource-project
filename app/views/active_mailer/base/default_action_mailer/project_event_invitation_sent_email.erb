@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title></title>
+</head>
+<body>
+
+<p>
+  <%= simple_format @user_provided_content %>
+</p>
+
+<p>
+<%= @project_event_invitation_email.event_information_text  %>
+</p>
+
+<p>
+<%= link_to @project_event_invitation_email.event_information_link_text,
+    project_project_event_url(@project_event_invitation_email.project_event.project,
+    @project_event_invitation_email.project_event, :attendance_code => @attendance_code) %>
+</p>
+
+<br/>
+<p>
+---
+</p>
+<p>
+  Sent by <%= link_to @project_event_invitation_email.sender.display_name, user_url(@project_event_invitation_email.sender) -%> via Citizen Effect.
+</p>
+
+</body>
+</html>

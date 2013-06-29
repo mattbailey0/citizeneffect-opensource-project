@@ -1,0 +1,43 @@
+%h1
+  Editing Featured Project
+- form_for([:admin, @featured_project], :html => { :multipart => true }) do |f|
+  = f.error_messages
+  %p
+    = f.label :title
+    %br
+    = f.text_field :title
+  %p
+    = f.label :caption
+    %br
+    = f.text_field :caption
+  %p
+    = f.label :url_identifier
+    %br
+    = f.text_field :url_identifier
+
+  %p
+    = f.label :picture, "Large Picture (629 x 391)"
+    %br
+    = f.file_field :picture
+    %br
+    - if @featured_project.picture
+      Current Picture
+      %br
+      = image_tag @featured_project.picture.url
+
+  %p
+    = f.label :picture_thumbnail, "Thumbnail (67x67)"
+    %br
+    = f.file_field :picture_thumbnail
+    %br
+    - if @featured_project.picture_thumbnail
+      Current Thumbnail
+      %br
+      = image_tag @featured_project.picture_thumbnail.url
+
+  %p
+    = f.submit 'Update', :confirm => "Press OK to publish this Featured Project."
+
+= link_to 'Show', [:admin, @featured_project]
+|
+= link_to 'Back', admin_featured_projects_path

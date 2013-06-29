@@ -1,0 +1,17 @@
+<h1>New currency_type</h1>
+
+<% form_for([:admin, @currency_type]) do |f| %>
+  <%= f.error_messages %>
+
+<table border="0" cellspacing="0" cellpadding="0" class="form-table">
+  <tr>
+    <td class="form-label"><%= f.label :currency_code %></td>
+    <td><%= f.text_field :currency_code %></td>
+  </tr>
+  <tr>
+    <td class="form-submit" colspan="2"><%= f.submit 'Create' %></td>
+  </tr>
+</table>
+<% end %>
+
+<%= link_to 'Back', admin_currency_types_path %>

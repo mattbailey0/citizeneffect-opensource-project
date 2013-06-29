@@ -1,0 +1,68 @@
+%h1
+  All Users
+
+.new-button
+  = link_to '(+) New User', new_admin_user_path
+
+
+%hr
+- form_tag request.path, :method => 'get' do
+  %table
+    %tr
+      %td Keyword
+      %td= text_field_tag :search, params[:search]
+    %tr 
+      %td Year Created
+      %td= select_tag :year, "<option></option><option>2009</option><option>2010</option><option>2011</option><option>2012</option><option>2013</option><option>2014</option>"
+    %tr
+      %td &nbsp;
+      %td= submit_tag "Search", :name=>nil
+    %tr
+      %td &nbsp;
+      %td
+        .xls_link
+          = link_to "Download Current Results As Excel Spreadsheet", url_for({:format => :xls}.merge(params))
+%br
+
+
+%div= will_paginate(@users_paginated)
+
+%table.index-list{:cellpadding => "0", :cellspacing => "0"}
+  %tr.index-list-header
+    %th ID
+    %th First Name
+    %th Last Name
+    %th Email
+    %th City
+    %th State
+    %th Zip
+    %th Total Donated
+    %th Lives Impacted
+    %th # Projects Donated
+    %th Signed Up
+    %th Activated
+    %th Profile
+    %th{:colspan => 2} Options
+
+  - @users_paginated.each do |user|
+    %tr
+      %td= h user.id
+      %td= h user.first_name
+      %td= h user.last_name
+      %td= link_to h(user.email), "mailto:#{user.email}"
+      %td= h user.city_name.to_s
+      %td= h user.state_name.to_s
+      %td= h user.zip
+      %td= h user.donation_total_in_usd
+      %td= h user.lives_impacted_as_donor
+      %td= h user.projects_donated_to.count
+      %td= h user.created_at.strftime('%m/%d/%Y')
+      %td= user.state == "active" ? "Yes" : "No #{link_to "(activate)", [:activate, :admin, user], :method => :put, :cofirm => "Are you sure you want to activate this user?"}"
+      %td= link_to('CE Profile', user)
+      %td= link_to('Change Password', [:change_password, :admin, user])
+      %td= link_to('Edit', [:edit, :admin, user])
+
+%br
+
+%div= will_paginate(@users_paginated)
+

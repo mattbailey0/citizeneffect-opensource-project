@@ -1,0 +1,238 @@
+<% content_for(:page_title, "#{@fundraiser_type.name}") %>
+
+		<div class="breadcrumbs">
+      <%= link_to "&laquo; back to fundraising tools", fundraiser_types_path, :class => "breadcrumbs green" %>
+		</div>
+		
+		<!-- main body copy -->
+		<div id="wrapper-copy">
+		
+		
+		<div class="component-header-full nopadtop">
+			<h3><%=h @fundraiser_type.name.to_s.upcase %></h3>
+		</div> 
+		<!-- full-width component -->
+		<div id="fundraising" class="box-full-middle account-info">
+        	<div id="slideshow_container">
+
+            <%= sized_image_tag(@fundraiser_type.picture, :url, :fundraiser_type_show) %>
+            </div>
+            <div id="throw_container">
+            	<h1><%=h @fundraiser_type.name %></h1>
+                <p><%=h @fundraiser_type.description %></p>
+
+                <p>
+                	<span class="bold">TYPICAL FUNDRAISING AMOUNT:</span>
+                  <%=h format_dollars(@fundraiser_type.minimum_typical_amount_raised_in_dollars) %>
+                  -
+                  <%=h format_dollars(@fundraiser_type.maximum_typical_amount_raised_in_dollars) %>
+                  <br />
+                   	<span class="bold">GOOD FOR:</span>
+<!--                     bakers, friends and family with a sweet tooth, loren ipsum -->
+                    <%=h @fundraiser_type.fundraiser_tags.map(&:name).join(", ") %>
+                </p>
+                <p class="centered_image">
+                	<img src="/images/most_popular.png" />
+                    <img src="/images/most_successful.png" />
+
+<!--                     <input type="image" src="/images/throw_event.png" style="text-align:center;" /> -->
+                </p>
+            </div>
+            <div class="clear"></div>
+		</div>
+		<div class="box-full-bottom"></div> 
+		<div class="component-header-full nopadtop">
+			<h3>HELPFUL TOOLS FOR THROWING THIS EVENT</h3>
+		</div>
+
+		
+			<!-- left column -->
+			<div class="twocol-left">
+				
+                				<style type="text/css">
+					.contact_prev{
+						position:absolute;
+						top:50%;
+						left:10px;
+					}
+					.contact_next{
+						position:absolute;
+						top:50%;
+						left:603px;
+					}
+					.header{				
+						border-bottom:1px solid #DFDAD6;
+						display:block;
+						margin-left:5px;
+						padding:5px 0 0 7px;
+						position:relative;
+						width:610px;
+					}
+					.contact-cp-wrapper{
+						background:transparent url(/images/bg_component.png) repeat-y scroll 0 0;
+						width:644px;
+					}
+					.cp-container{
+						float:left;
+						height:85px;
+						width:265px;
+						background-color:#efece9;
+						margin:7px;
+						position:relative;
+					}
+					.cp-wrapper{
+						padding-left:15px;
+					}
+					.cp-wrapper .carousel{
+						width:265px;
+						padding:0;
+						height:85px;
+					}
+					.cp-wrapper .carousel .copy{
+						width:185px;
+						padding-top:13px;
+						line-height:12px;
+						font-size:12px;
+					}
+					.cp-wrapper .carousel .copy .description{
+						color:#224471;
+					}
+					.cp-wrapper .carousel .pic{
+						margin:10px;
+					}
+					.margin_top_small{
+						margin-top:5px;
+					}
+				</style>
+				<!-- project search -->
+				<div class="component-top margin_top_small"></div>
+                <div class="contact-cp-wrapper">
+                    <div class="component thinpad">
+						<div class="header"><h4>CONTACT THESE CP'S WHO HAVE SUCCESSFULLY THROWN THIS EVENT:</h4></div>
+            <% unless @fundraiser_type.fundraiser_type_experiences.size == 0 -%>
+              <a class="contact_prev" href="">
+                <img src="/images/btn_arrow_left.png" width="24" height="24" alt="" />
+              </a>
+              <ul class="external_control_carousel_1">
+                <% @fundraiser_type.fundraiser_type_experiences.in_groups_of(4, false) do |fundraiser_type_experiences_group| %>
+                <li>
+                  <div class="cp-wrapper">
+                    <%= render :partial => "fundraiser_type_experience", :collection => fundraiser_type_experiences_group %>
+                    <div class="clear"></div>
+                  </div>
+                </li>
+                <% end %>
+              </ul>
+              <a class="contact_next" href="">
+                <img src="/images/btn_arrow_right.png" width="24" height="24" alt="" />
+              </a>
+              <% end -%>
+                    </div>
+				</div>
+				<div class="component-bottom"></div>
+
+				<div class="under-copy">
+					<h1 class="inline left">Have a great idea that you don't see?</h1>
+					
+				</div>
+			</div>
+			
+			<!-- right column -->
+			<div class="twocol-right">
+
+				
+                				
+				<!-- templates and how to -->
+                <style type="text/css">
+					.templates{
+						border-bottom:1px dashed #BFB6AD;
+						padding:5px 0;
+					}
+					.templates p{
+						border-bottom:0 none;
+						font-family:Arial,Helvetica,sans-serif;
+						font-size:12px;
+						font-size-adjust:none;
+						font-stretch:normal;
+						font-style:normal;
+						font-variant:normal;
+						font-weight:normal;
+						line-height:normal;
+						margin:0;
+						padding-bottom:0;
+					}
+					.templates p.title {
+						color:#224471;
+						font-weight:bold;
+						margin-bottom:0;
+						text-decoration:underline;
+						padding-bottom:0;
+					}
+					.templates .left {
+						float:left;
+						width:64px;
+					}
+					.templates .right {
+						float:left;
+						width:229px;
+					}
+					.templates p.description{
+						font-size:10px;
+						color:#57b0e4;
+					}
+					div.last{
+						border-bottom:0 none;
+					}
+				</style>
+				<div class="box-rightcol-top"></div>
+				<div class="box-rightcol-inner">
+					<div class="header"><h4>TEMPLATES AND HOW TO'S</h4></div>
+          <% @fundraiser_type.associated_files.each do |associated_file| %>
+    				<div class="templates">
+    					<div class="left"><%= sized_image_tag associated_file, :url, :tiny_fundraiser_type_thumb %></div>
+    					<div class="right">
+   
+    						<p class="title"><%=h associated_file.original_filename.humanize %></p>
+    						<p class="link"><%= link_to image_tag("download_pdf.png"), associated_file.url %></p>
+    					</div>
+    					<div class="clear"></div>
+    				</div>
+          <% end %>
+				</div>
+				<div class="box-rightcol-bottom"></div>
+			</div>
+			<div class="clear"></div>
+            
+			
+            
+		<div class="component-header-full nopadtop">
+			<h3>OTHER FUNDRAISING IDEAS YOU MIGHT LIKE</h3>
+
+		</div> <!-- full-width carousel -->
+		<div class="box-full-top"></div>
+		<div class="box-full-middle">
+			<div class="header"><h4>POPULAR FUNDRAISING</h4></div>
+      <ul class="carousel3 jcarousel-skin-tango">
+        <% FundraiserType.other_fundraisers_you_might_like.each do |fundraiser_type| %>
+          <li>
+        		<div class="carousel">
+        			<div class="pic">
+                <%= link_to sized_image_tag(fundraiser_type.picture, :url, :standard_thumb), fundraiser_type %>
+              </div>
+        			<div class="copy">
+        				<p class="title"><%= link_to h(fundraiser_type.name), fundraiser_type %></p>
+        				<p class="description">
+        					<%=h fundraiser_type.description %>
+                  <%= link_to "visit fundraiser", fundraiser_type %>
+        				</p>
+        			</div>
+        			<div class="clear"></div>
+        		</div>
+          </li>
+        <% end %>
+      </ul>
+			<div class="clear"></div>
+		</div>
+
+		<div class="box-full-bottom"></div>
+		</div>

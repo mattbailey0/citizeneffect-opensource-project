@@ -1,0 +1,24 @@
+      <div class="people<%= last_class(object, last) -%>">
+	      <div class="left">
+          <% if object.donor && !object.anonymous -%>
+            <%= link_to image_tag(object.picture_url_thumb(:watched_project_cp), :alt => "", 
+                :width => "50", :height => "50"), object.donor %>
+          <% else -%>
+            <%= image_tag(object.picture_url_thumb(:watched_project_cp), :alt => "", :width => "50", :height => "50") %>
+          <% end -%>
+        </div>
+	      <div class="right">
+		      <p class="name">
+            <% if object.donor && !object.anonymous -%>
+              <%= link_to h(object.display_name), object.donor, :class => 'content-blue bold px12' -%>
+            <% else -%>
+              <%= object.display_name -%>
+            <% end -%>
+          </p>
+		      <p class="location"><%=h object.display_location -%></p>
+          <% if object.donor && !object.anonymous -%>
+		        <p class="link"><%= link_to "send member a message", message_user_path(object.donor) -%></p>
+          <% end -%>
+        </div>
+        <div class="clear"></div>
+      </div>

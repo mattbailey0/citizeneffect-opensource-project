@@ -1,0 +1,19 @@
+%tr
+  %td.fl= f.label :title
+  %td= f.text_field :title
+
+%tr
+  %td.no_pad= f.label :description
+  %td= f.text_area :description
+
+%tr
+  %td.fl= f.label :photo
+  %td= f.file_field :photo
+
+- unless @media_album_photo.new_record?
+  %tr
+    %td.fl Existing Picture
+    - unless @media_album_photo.photo.blank?
+      %td.no_pad= image_tag @media_album_photo.photo.url
+    - else
+      %td None

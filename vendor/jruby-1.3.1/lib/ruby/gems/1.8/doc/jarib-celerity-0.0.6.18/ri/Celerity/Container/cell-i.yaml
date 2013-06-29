@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+params: (*args)
+is_singleton: false
+block_params: 
+name: cell
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: '@return [Celerity::TableCell]'
+full_name: Celerity::Container#cell
+visibility: public
+aliases: []
+

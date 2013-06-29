@@ -1,0 +1,24 @@
+<% content_for(:page_title, "Status Update For #{@project.name}") %>
+
+<div class="clear"></div>
+
+<div class="breadcrumbs">
+  <%= link_to "&laquo; back to project", @project, :class => "breadcrumbs green" %>
+</div>
+
+<div id="wrapper-copy">
+  <div class="component-header-full nopadtop">
+    <h3><%=h @partner_project_status_update.title %></h3>
+  </div>
+  <div class="box-full-middle">
+    <div class="pad_top pad_left">
+      <p><em>Posted: <%=h @partner_project_status_update.created_at.strftime("%m/%d/%Y") %></em></p>
+      <p><%= auto_link(simple_format(h(@partner_project_status_update.field_updates || ''))) %></p>
+
+      <%= render :partial => "shared/partner_project_report_downloads", :locals => { :report => @partner_project_status_update } %>
+
+    </div>
+  </div>
+  <div class="box-full-bottom"></div>
+</div>
+<div class="clear">

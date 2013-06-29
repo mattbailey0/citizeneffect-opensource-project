@@ -1,0 +1,33 @@
+				<div id="community_member_profile_pictures_<%=h object.id %>" class="media_album_lightbox">
+					<h4><%=h object.title %></h4>
+					<br />
+					<div class="album_container">
+
+            <ul class="external_control_carousel_delayed">
+              <% object.pictures.each do |picture| %>
+                <li>
+					        <span class="bold">&nbsp;</span><hr />
+                  <%= image_tag picture.picture.url(:album_lightbox) %>
+                  <p class="pad_top"><span class="bold">Caption</span> - <%=h picture.caption %></p>
+                </li>
+              <% end %>
+            </ul>
+
+                        <div class="album_thumb_container">
+                            <ul class="album_thumbs external_control_carousel_7_delayed">
+                              <% object.pictures.each_with_index do |picture, index| %>
+                                <li class="community_member_profile_pictures_<%=h object.id %>_small_picture"><div class="<%= index == 0 ? "current" : "" %> small_item"><a href="" style="background:url(<%= picture.picture.url(:featured_project_thumb) %>); display: block;"></a></div></li>
+                              <% end %>
+                            </ul>
+                            <ul class="album_prev_next">
+                                <li><a href="" class="strong prev"><img src="/images/arrow_left_small_album.gif" /></a></li>
+                                <li class="count"><span class="bold album_lightbox_counter">1</span> of <%=h object.pictures.size %></li>
+
+                                <li><a href="" class="strong next"><img src="/images/arrow_right_small_album.gif" /></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="album_prev"><a href=""><img width="35" height="35" alt="" src="/images/btn_slideshow_left_blue.png"/></a></div>
+                    <div class="album_next"><a href=""><img width="35" height="35" alt="" src="/images/btn_slideshow_right_blue.png"/></a></div>
+					<div class="clear"></div>
+				</div>

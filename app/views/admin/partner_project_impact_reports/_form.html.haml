@@ -1,0 +1,6 @@
+= render :partial => "admin/shared/report_impact", :locals => { :f => f, :extended => true }
+= render :partial => "admin/shared/report_employment_generation", :locals => { :f => f }
+= render :partial => "project_changed_community", :locals => { :f => f }
+
+= render :partial => "admin/shared/report_footer", :locals => { :report => @partner_project_impact_report }
+ 

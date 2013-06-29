@@ -1,0 +1,24 @@
+<% content_for(:page_title, "Edit #{@project_event.name}") %>
+
+<div class="breadcrumbs">
+	<%= link_to "&laquo; back to project page", @project, :class => "breadcrumbs green" %>
+</div>
+
+<!-- main body copy -->
+<div id="wrapper-copy">
+  <div class="component-header-full nopadtop">
+	  <h3>ADD/EDIT EVENT</h3>
+  </div>
+
+  <!-- full-width component -->
+  <div class="box-full-middle social">
+    <div class="add_event_box">
+   
+      <% form_for([@project, @project_event]) do |f| %>
+        <%= render :partial => "form", :locals => { :f => f } %>
+      <!--      <%= f.submit "Add Event" %> -->       
+      <% end %>
+
+    </div>
+  </div>
+  <div class="box-full-bottom"></div>

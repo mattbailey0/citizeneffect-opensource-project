@@ -1,0 +1,13 @@
+<p>
+  <b>User:</b>
+  <%=h @partner_coordinator_association.user_id %>
+</p>
+
+<p>
+  <b>Project:</b>
+  <%=h @partner_coordinator_association.project_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_admin_partner_coordinator_association_path(@partner_coordinator_association) %> |
+<%= link_to 'Back', admin_partner_coordinator_associations_path %>

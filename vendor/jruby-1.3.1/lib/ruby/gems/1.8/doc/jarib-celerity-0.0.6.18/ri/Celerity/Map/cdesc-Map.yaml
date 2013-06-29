@@ -1,0 +1,18 @@
+--- !ruby/object:RI::ClassDescription 
+includes: []
+
+name: Map
+constants: 
+- !ruby/object:RI::Constant 
+  name: TAGS
+  value: '[ Identifier.new(''map'') ]'
+  comment: 
+comment: 
+attributes: []
+
+instance_methods: []
+
+full_name: Celerity::Map
+superclass: NonControlElement
+class_methods: []
+

@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+params: (string)
+is_singleton: false
+block_params: 
+name: normalize_text
+comment: 
+full_name: Celerity::Util#normalize_text
+visibility: public
+aliases: []
+

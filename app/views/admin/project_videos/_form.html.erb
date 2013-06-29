@@ -1,0 +1,32 @@
+<!--   <tr> -->
+<!--     <td class="form-label"><%= f.label :project_id %></td> -->
+<!--     <td><%= f.text_field :project_id %></td> -->
+<!--   </tr> -->
+  <tr>
+    <td class="form-label"><%= f.label :video %></td>
+    <td><%= f.file_field :video %></td>
+  </tr>
+<!--   <tr> -->
+<!--     <td class="form-label"><%= f.label :video_file_name %></td> -->
+<!--     <td><%= f.text_field :video_file_name %></td> -->
+<!--   </tr> -->
+<!--   <tr> -->
+<!--     <td class="form-label"><%= f.label :video_content_type %></td> -->
+<!--     <td><%= f.text_field :video_content_type %></td> -->
+<!--   </tr> -->
+<!--   <tr> -->
+<!--     <td class="form-label"><%= f.label :video_file_size %></td> -->
+<!--     <td><%= f.text_field :video_file_size %></td> -->
+<!--   </tr> -->
+<!--   <tr> -->
+<!--     <td class="form-label"><%= f.label :video_updated_at %></td> -->
+<!--     <td><%= f.text_field :video_updated_at %></td> -->
+<!--   </tr> -->
+  <tr>
+    <td class="form-label"><%= f.label :caption %></td>
+    <td><%= f.text_field :caption %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :related_project_stage %></td>
+    <td><%= f.select :related_project_stage, Project::STATES.map { |s| [s.humanize, s] } %></td>
+  </tr>

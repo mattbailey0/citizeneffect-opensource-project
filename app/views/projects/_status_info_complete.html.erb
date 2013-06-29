@@ -1,0 +1,56 @@
+				<!-- this project needs you -->
+				<div class="box-rightcol-inner-header">
+					<div class="box-rightcol-header"><h3 class="full">FUNDRAISING COMPLETED!</h3></div>
+
+				</div>
+				<div class="box-rightcol-inner pad_top">
+          <%= render :partial => "project_status_progress" %>
+
+					<div class="pad_top pad_bottom"
+               style="background:url(<%= image_path @project.type_icon_url(:project_needs_you) -%>) top right no-repeat">
+
+						<h1 class="home">Lives Impacted: <%=h number_with_delimiter(@project.combined_lives_impacted) -%></h1>
+
+						<div class="icon-wrapper pad_top">
+              <div class="impacted pad_bottom"><%=h format_dollars(@project.total_amount_raised_in_usd) %>
+	              of <%=h format_dollars(@project.total_cost_in_usd) %>
+	              raised from <%=h @project.donor_count %> donors</div>
+              <span class="progressBar">100%</span>
+              <span class="progressBar_text complete">COMPLETE</span>
+
+							<div class="clear"></div>
+              <% if current_user.andand.is_a_citizen_effect_admin? %>
+						  <br />
+              <%= link_to "Input Offline Donations", project_offline_donations_path(@project) %>
+              <% end %>
+						</div>
+						
+						<div class="dashed">
+							<p class="project-started">Project Started: <%=h @project.approved_by_citizen_effect_at.strftime("%B %e, %Y") -%></p>
+							<div class="left">
+                <a href="#<%=h share_box_id(@project) %>" rel="facebox"><%= image_tag "btn_share.png" %></a>
+                <%= render :partial => "shared/share_box", :locals => { :shareable => @project } %>
+              </div>
+							<div class="clear"></div>
+							<%= render :partial => "add_to_watchlist", :locals => { :project => @project } %>
+						</div>
+						
+						<div class="dashed">
+        			<h5><strong>COUNTRY:</strong> <%=h @project.country.andand.name %></h5>
+        			<h5><strong>STATE:</strong> <%=h @project.community_state %></h5>
+        			<h5><strong>COMMUNITY:</strong> <%=h @project.community_name %></h5>
+        		</div>
+        		<div class="dashed">
+        			<h5><strong>FIELD PARTNER:</strong> <%=h @project.partner.display_name %> </h5>
+          		<%= image_tag @project.partner.logo.blank? ? "default_partner_logo.png" : @project.partner.logo.url(:partner_logo), :width => "180", :height => "65", :alt => "" %>
+        		</div>
+						
+            <%= render :partial => "join_mailing_list" %>
+            <% if current_user_can_edit_public_project? %>
+						  <br />
+              <%= link_to "Send Message to Email List", [:new, @project.mailing_list, :mailing_list_email] %>
+            <% end %>
+						<div class="clear"></div>
+					</div>
+				</div>
+				<div class="box-rightcol-bottom"></div> <!-- social networking icons - right -->

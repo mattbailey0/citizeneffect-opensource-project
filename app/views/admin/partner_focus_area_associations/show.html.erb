@@ -1,0 +1,13 @@
+<p>
+  <b>Focus area:</b>
+  <%=h @partner_focus_area_association.focus_area.name %>
+</p>
+
+<p>
+  <b>Partner:</b>
+  <%=h @partner_focus_area_association.partner.andand.display_name %>
+</p>
+
+
+<%= link_to 'Edit', [:edit, :admin, @partner, @partner_focus_area_association] %> |
+<%= link_to 'Back', [:admin, @partner, :partner_focus_area_associations] %>

@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+params: (regexp)
+is_singleton: false
+block_params: 
+name: ignore_pattern=
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: If a request is made to an URL that matches the pattern set here, Celerity
+    will ignore the request and return an empty page with content type &quot;text/html&quot;
+    instead.
+- !ruby/struct:SM::Flow::P 
+  body: This is useful to block unwanted requests (like ads/banners).
+full_name: Celerity::Browser#ignore_pattern=
+visibility: public
+aliases: []
+

@@ -1,0 +1,14 @@
+<div class="people<%= last_class(object, last) -%>">
+	<div class="left">
+    <%= link_to image_tag(object.main_picture_url(:tiny_blog_post_thumb), :alt => "", :width => "50", :height => "50"), object %>
+  </div>
+	<div class="right">
+		<p class="name"><%= link_to h(object.name), object, :class => 'content-blue bold px12' %></p>
+		<p class="description">
+      <%=h object.watchers.size %> 
+      <%= object.watchers.size == 1 ? "PERSON" : "PEOPLE" %> WATCHING
+    </p>
+		<p class="link"><%= link_to "visit the project", object %></p>
+	</div>
+	<div class="clear"></div>
+</div>

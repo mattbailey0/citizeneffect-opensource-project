@@ -1,0 +1,117 @@
+%tr
+  %td.form-label
+    = label_tag :is_ce_admin, "Is A Citizen Effect Admin"
+  %td
+    = check_box_tag :is_ce_admin, 1, @user.is_a_citizen_effect_admin?
+%tr
+  %td.form-label
+    = label_tag :is_cp, "Is A CP"
+  %td
+    = check_box_tag :is_cp, 1, @user.is_a_cp?
+%tr
+  %td.form-label
+    = f.label :first_name
+  %td
+    = f.text_field :first_name
+%tr
+  %td.form-label
+    = f.label :last_name
+  %td
+    = f.text_field :last_name
+%tr
+  %td.form-label
+    = f.label :email
+    *
+  %td
+    = f.text_field :email
+%tr
+  %td.form-label
+    = f.label :address1, "Address"
+  %td
+    = f.text_field :address1
+%tr
+  %td.form-label
+    = f.label :address2, "Address (Line 2)"
+  %td
+    = f.text_field :address2
+%tr
+  %td.form-label
+    = f.label :city_name, "City"
+  %td
+    = f.text_field :city_name
+%tr
+  %td.form-label
+    = f.label :state_name, "State"
+  %td
+    = f.text_field :state_name
+%tr
+  %td.form-label
+    = f.label :zip, "Zipcode"
+    *
+  %td
+    = f.text_field :zip
+%tr
+  %td.form-label
+    = f.label :phone_number
+  %td
+    = f.text_field :phone_number
+%tr
+  %td.form-label
+    = f.label :password
+    - if @user.new_record?
+      *
+  %td
+    = f.password_field :password
+%tr
+  %td.form-label
+    = f.label :password_confirmation
+    - if @user.new_record?
+      *
+  %td
+    = f.password_field :password_confirmation
+- unless @user.picture_url_thumb(:profile).blank?
+  %tr
+    %td.form-label
+      = f.label :current_picture, "Current Profile Picture:"
+    %td
+      = image_tag @user.picture_url_thumb(:profile)
+%tr
+  %td.form-label
+    = f.label :picture, "Profile Picture"
+  %td
+    = f.file_field :picture
+%tr
+  %td.form-label
+    = f.label :twitter_path, "Twitter"
+  %td
+    = f.text_field :twitter_path
+%tr
+  %td.form-label
+    = f.label :linkedin_path, "LinkedIn"
+  %td
+    = f.text_field :linkedin_path
+%tr
+  %td.form-label
+    = f.label :facebook_path, "Facebook"
+  %td
+    = f.text_field :facebook_path
+%tr
+  %td.form-label
+    = f.label :myspace_path, "MySpace"
+  %td
+    = f.text_field :myspace_path
+%tr
+  %td.form-label
+    = f.label :youtube_path, "YouTube"
+  %td
+    = f.text_field :youtube_path
+%tr
+  %td.form-label
+    = f.label :blog_url, "Blog"
+  %td
+    = f.text_field :blog_url
+%tr
+  %td.form-label
+    = f.label :about_me
+  %td
+    = f.text_area :about_me

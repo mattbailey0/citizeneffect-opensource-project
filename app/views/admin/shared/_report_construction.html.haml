@@ -1,0 +1,42 @@
+- report_type = "progress" if nil == report_type
+
+%tr
+  %td{:colspan => "2"}
+    %strong Construction
+
+%tr
+  %td.fl
+    %strong= f.label :start_date, "Start Date*"
+  %td= f.date_select :start_date
+
+%tr
+  %td.fl
+    %strong= f.label :expected_completion_date, "Expected Completion Date*"
+  %td= f.date_select :expected_completion_date
+
+- unless report_type == "final"
+  %tr
+    %td.fl.no-pad
+      %strong= f.label :what_has_been_constructed, "What Has Been Constructed to Date*"
+    %td= f.text_area :what_has_been_constructed
+
+%tr
+  %td.fl.no-pad
+    %strong= f.label :what_has_been_purchased, "What Has Been Purchased for the Project*"
+  %td= f.text_area :what_has_been_purchased
+
+%tr
+  %td.fl Jobs Created During Construction
+  %td
+    %strong= f.label :number_of_construction_jobs_created, "Total # Jobs Created*"
+    = f.text_field :number_of_construction_jobs_created
+    %br
+    = f.label :construction_job_breakdown, "Description and breakdown of jobs"
+    %br
+    = f.text_area :construction_job_breakdown
+
+- if report_type == "final"
+  %tr
+    %td.fl.no-pad
+      %strong= f.label :completion_summary, "Summary of Project Completion*"
+    %td= f.text_area :completion_summary

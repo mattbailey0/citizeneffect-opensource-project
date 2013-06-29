@@ -1,0 +1,23 @@
+--- !ruby/object:RI::MethodDescription 
+params: (*args)
+is_singleton: false
+block_params: 
+name: check_box
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: 'Since finding checkboxes by value is very common, you can use this shorthand:'
+- !ruby/struct:SM::Flow::VERB 
+  body: "  browser.check_box(:name, 'a_name', '1234').set\n"
+- !ruby/struct:SM::Flow::P 
+  body: or
+- !ruby/struct:SM::Flow::VERB 
+  body: "  browser.check_box(:name =&gt; 'a_name', :value =&gt; '1234').set\n"
+- !ruby/struct:SM::Flow::P 
+  body: '@return [Celerity::CheckBox]'
+full_name: Celerity::Container#check_box
+visibility: public
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: checkbox
+- !ruby/object:RI::AliasName 
+  name: checkBox

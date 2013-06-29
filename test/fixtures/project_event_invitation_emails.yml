@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  project_event_id: 1
+  sender_id: 1
+  mail_contents: MyText
+  subject: MyString
+  sent_at: 2009-10-10 23:35:18
+
+two:
+  project_event_id: 1
+  sender_id: 1
+  mail_contents: MyText
+  subject: MyString
+  sent_at: 2009-10-10 23:35:18

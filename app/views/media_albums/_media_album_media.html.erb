@@ -1,0 +1,26 @@
+			<div id="media_album_media_<%=h object.id %>" class="photo_wrapper media_album_media">
+
+				<div class="left">
+                	<span class="disc_desc"><%=h object.has_photo? ? "Photo" : "Video" %></span><span class="disc"><%=h object.position %></span><br />
+                  <%= link_to "remove", object, :method => :delete, :confirm => "Are you sure?" %>
+				</div>
+				<div class="media_details_wrapper">
+          <%= image_tag object.media.photo.url(:watch_list), :height => "130", :width => "185" %>
+				</div>
+
+                <div class="left pad_left">
+                  <% form.fields_for :media do |media_form| %>
+                        <%= media_form.label :title, "TITLE:", :class => "bold" %>
+                        <%= media_form.text_field :title %>
+                        <%= media_form.label :description, "DESCRIPTION:", :class => "bold pad_top" %>
+                        <%= media_form.text_area :description, :rows => nil, :cols => nil %>
+                        <br/>
+						            <span class="green drag_handle">drag to reorder</span>
+                        <% if object.has_photo? %>
+                        <%= album_form.radio_button :album_cover_id, media_form.object.id %>
+                        <%= album_form.label "album_cover_id_#{h media_form.object.id}", "set as album cover", :class => "green inline" %>
+                        <% end %>
+                  <% end %>
+                 </div>
+				<div class="clear"></div>
+			</div>

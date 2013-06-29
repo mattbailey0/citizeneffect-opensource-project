@@ -1,0 +1,137 @@
+<% content_for(:page_title, "Citizen Effect's Brackets with Benefits") %>
+
+<% content_for :meta_tags do %>
+  <meta property="og:title" content="Brackets With Benefits" /> 
+  <meta property="og:url" content="http://citizeneffect.org/tourney" /> 
+  <meta property="og:image" content="http://citizeneffect.org/images/BwB-2011_Logo_Thumb.png" /> 
+  <meta property="og:site_name" content="Citizen Effect" />
+  <meta property="og:type" content="article" />
+  <meta property="og:description" content="Do some GOOD with your NCAA brackets! Citizen Effect’s Brackets with Benefits (BwB) is the NCAA tourney pool that gives back. You donate $10, fill out a bracket, and win great prizes. If you win, 100% of all BwB donations will go to the Citizen Effect community project of your choice!" />
+  <link rel="image_src" href="http://citizeneffect.org/images/BwB-2011_Logo_Thumb.png" />
+  <meta name="description" content="Do some GOOD with your NCAA brackets! Citizen Effect’s Brackets with Benefits (BwB) is the NCAA tourney pool that gives back. You donate $10, fill out a bracket, and win great prizes. If you win, 100% of all BwB donations will go to the Citizen Effect community project of your choice!" />
+<% end %>
+
+<div class="breadcrumbs" style="margin-bottom:5px;">
+	<%= render :partial => "shared/header_left_nav" %>
+</div>
+
+<!-- main body copy -->
+<div id="wrapper-copy">
+	<div class="component-header-full nopadtop">
+		<h3>BRACKETS WITH BENEFITS DONATION CONFIRMATION</h3>
+	</div>
+
+  <!-- full-width component -->
+  <style type="text/css">
+			#edit_donate .pad_left_large{
+				padding-left:30px;
+			}
+			.project_description_container{
+				width:100%;
+				background-color:#E3EEF4;
+				height:140px;
+				padding:20px 12px 0 0;
+				margin-left:-7px;
+			}
+			.project_description_container_left{
+				margin-left:20px;
+			}
+			.project_description_container .project_description_container_right {
+			  width:680px;
+        padding-left:40px;
+        padding-top:15px;
+        font-size:21pt;
+        font-weight:bold;
+			}
+      
+      .rule_listing ul{
+        list-style: disc outside none;
+        overflow: visible;
+        padding-bottom: 15px;
+        width: 455px;
+      }
+      .rule_listing li{
+        overflow: visible;
+        font-size: 13pt;
+        padding-bottom: 5px;
+      }
+      .rule_listing h6{
+        font-size: 20pt;
+        padding-bottom: 20px;
+        margin-left: -15px;
+      }
+      .rule_listing a{
+        color:#50BDEB;
+        font-size: 11pt;
+      }
+
+  </style>
+
+  <div class="box-full-middle">
+    <div class="project_description_container">
+      <div class="component">
+        <div class="project_description_container_left left">
+          <%= image_tag "BwB-2011_Logo_Thumb.png", :class => "block pad_bottom", :width => "191", :height => "200" %>
+        </div>
+        <div class="project_description_container_right left">
+          Thank you for donating to Brackets with Benefits! Follow the steps below to setup your bracket.
+        </div>
+        <div class="clear"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="edit_donate" class="box-full-middle account-info">
+    <div class="right right_column" style="padding-top:30px;float:right;width:400px;">
+      <p style="font-size:17pt;line-height:inherit;">
+        Running an office pool? Incorporate Brackets with Benefits! 
+        
+      </p>
+
+      <%= image_tag "BwB-2011_Bracket.png", :width => "400", :height => "400" %>
+
+      <p style="font-size:17pt;line-height:inherit;">
+        Each office recieves a 4x4' BwB wall bracket provided by <i>Fathead</i>.
+      </p>
+    </div>
+
+    <div class="left left_column margin_top rule_listing pad_left_large">
+      <ul>
+        <li>
+          You to register for the BwB pool.
+        </li>
+        <li>
+          Fill out the information under 'Register For This Pool' and click 'Create Account'.<br/>
+          <small style="font-size:80%">(*Note – You will not receive an email confirmation with this login information.  You can "Recover Login" through the registration page but it’s best to store this information somewhere)</small>
+        </li>
+        <li> Once you’ve created your account go to the .</li>
+        <li>Follow the instructions to fill out your bracket.</li>
+        <li>
+          If you’re in a group click the name on the right side.<br/>
+          <small style="font-size:80%">(If prompted use the access code provided by your Group BwB Manager)</small>
+        </li>
+        <li style="padding-bottom:0px;margin-bottom:-8px;">The submission window for bracket entries runs from 3/13/11 at 7pm until 3/17/11 at 12:30pm EST.</li>
+        <li>
+          Share BwB
+          
+        </li>
+        
+      </ul>
+
+      <h6 style="margin-top:0px;">Sponsors</h6>
+      <div style="margin-left:-15px;">
+        <table style="width:100%;text-align:center;">
+          <tr>
+          </tr>
+          <tr>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="clear"></div>
+  </div>
+ 
+  <div class="box-full-bottom"></div>
+
+</div>

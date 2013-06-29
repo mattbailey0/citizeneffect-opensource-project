@@ -1,0 +1,68 @@
+					<div id="info_box_community_details" class="component info_box_content" style="display:none;">
+						<p>
+							<% unless @project.community_summary_for_website.blank? %>
+                <%= auto_link(simple_format(h(@project.community_summary_for_website))) %>
+                
+                <% if !@project.brief_history_of_community.blank? || !@project.average_income_per_household.blank? || !@project.weather.blank? || !@project.major_issues.blank? || !@project.community_population.blank? %>
+                  <br/>
+      						<a href="javascript:showHideDivs('more_project_community_details_box','more_project_community_details_link')" id="more_project_community_details_link">Learn more about <%= @project.community_name.blank? ? "the community" : h(@project.community_name) %></a>
+                  <div id="more_project_community_details_box" class="hidden">
+                  
+                    <% unless @project.brief_history_of_community.blank? %>
+                      <br/><hr/><br/>
+                      <strong>History of <%= @project.community_name.blank? ? "the community" : h(@project.community_name) %></strong>
+                      <br/>	<br/>
+                      <%= auto_link(simple_format(h(@project.brief_history_of_community))) %>	
+                    <% end %>
+                  
+                    <% unless @project.average_income_per_household.blank? %>
+                      <br/><hr/><br/>
+                      <strong>Average household income</strong>
+                      <br/>	<br/>
+                      <%= auto_link(simple_format(h(@project.average_income_per_household))) %>
+                    <% end %>
+
+                    <% unless @project.community_population.blank? %>
+                      <br/><hr/><br/>
+                      <strong>Community Population:</strong>
+                      <%= number_with_delimiter(@project.community_population) %>
+                    <% end %>
+                  
+                    <% unless @project.weather.blank? %>
+                      <br/><hr/><br/>
+                      <strong>Climate</strong>
+                      <br/>	<br/>
+                      <%= auto_link(simple_format(h(@project.weather))) %>
+                    <% end %>
+                  
+                    <% unless @project.major_issues.blank? %>
+                      <br/><hr/><br/>
+                      <strong>Challenges facing <%= @project.community_name.blank? ? "the community" : h(@project.community_name) %></strong>
+                      <br/>	<br/>
+                      <%= auto_link(simple_format(h(@project.major_issues))) %>
+                    <% end %>
+                  
+                    <% unless @project.major_occupations.blank? %>
+                      <br/><hr/><br/>
+                      <strong>Main Occupations</strong>
+                      <br/>	<br/>
+                      <%= auto_link(simple_format(h(@project.major_occupations))) %>
+                    <% end %>
+                  
+                    <% unless @project.families_living_below_poverty.blank? %>
+                      <br/><hr/><br/>
+                      <strong>Families living below poverty line</strong>
+                      <br/>	<br/>
+                      <%= auto_link(simple_format(h(@project.families_living_below_poverty))) %>
+                    <% end %>
+                  
+                    <br/><br/>
+        						<a href="javascript:showHideDivs('more_project_community_details_link','more_project_community_details_box')">Hide extra community detail</a>
+                  </div>
+                <% end %>
+                
+              <% else %>
+                <em>Community details not available yet.</em>
+              <% end %>
+						</p>
+					</div>

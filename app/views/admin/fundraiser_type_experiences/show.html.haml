@@ -1,0 +1,15 @@
+%h1 Viewing Citizen Philanthropist Experience
+
+%p
+  %b CP Name
+  %br
+  = h @fundraiser_type_experience.cp_name
+
+%p
+  %b Quote
+  %br
+  = h @fundraiser_type_experience.quote
+
+= link_to 'Edit', [:edit, :admin, @fundraiser_type, @fundraiser_type_experience]
+|
+= link_to 'Back', [:admin, @fundraiser_type, :fundraiser_type_experiences]

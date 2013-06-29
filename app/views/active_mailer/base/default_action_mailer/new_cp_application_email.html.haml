@@ -1,0 +1,45 @@
+!!!
+%html
+  %head
+  %body
+    %p
+      = @cp_application.name
+      has submitted a CP Application on #{@cp_application.created_at.to_s}. 
+    
+    %p
+      Email:
+      = @cp_application.email
+    %p
+      Phone Number:
+      = @cp_application.phone_number
+    
+    %p
+      Focus Areas: 
+      = @cp_application.focus_areas.map(&:name).join(", ")
+     
+    %p
+      Regions:
+      = @cp_application.countries.map(&:name).join(", ")
+
+    - if @cp_application.fundraising_goal_range
+      %p
+        Fundraising Goal:
+        = @cp_application.fundraising_goal_range.display_name
+
+    - if @cp_application.lives_impacted_range
+      %p
+        Lives Impacted:
+        = @cp_application.lives_impacted_range.display_name
+    
+    - [:address1, :address2, :city_name, :state_code, :zip, :comment].each do |field|
+      - unless @cp_application.send(field).blank?
+        %p
+          = "#{field.to_s.titleize}:"
+          = @cp_application.send(field)
+
+    - if @cp_application.project
+      %p
+        Project:
+        = @cp_application.project.name
+
+

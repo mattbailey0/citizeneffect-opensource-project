@@ -1,0 +1,18 @@
+--- !ruby/object:RI::ClassDescription 
+includes: []
+
+name: Span
+constants: 
+- !ruby/object:RI::Constant 
+  name: TAGS
+  value: '[ Identifier.new(''span'') ]'
+  comment: 
+comment: 
+attributes: []
+
+instance_methods: []
+
+full_name: Celerity::Span
+superclass: NonControlElement
+class_methods: []
+

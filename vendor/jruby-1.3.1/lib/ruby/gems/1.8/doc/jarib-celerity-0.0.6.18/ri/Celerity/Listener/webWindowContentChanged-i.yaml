@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+params: (web_window_event)
+is_singleton: false
+block_params: 
+name: webWindowContentChanged
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: 'Alias for #webWindowClosed'
+full_name: Celerity::Listener#webWindowContentChanged
+visibility: public
+aliases: []
+

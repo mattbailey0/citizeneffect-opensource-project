@@ -1,0 +1,15 @@
+--- !ruby/object:RI::MethodDescription 
+params: (value)
+is_singleton: false
+block_params: 
+name: selected?
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Returns true if any of the selected options match the given value.
+- !ruby/struct:SM::Flow::P 
+  body: '@param [String, Regexp] value A value. @raise [Celerity::Exception::UnknownObjectException]
+    if the value does not exist. @return [true, false]'
+full_name: Celerity::SelectList#selected?
+visibility: public
+aliases: []
+

@@ -1,0 +1,8 @@
+--- 
+format: 1
+handler: 
+  commit: 94d78cca816cfc0c5b5697576cea3abde1757b09
+  branch: master
+lock: false
+repository_url: git://github.com/expectedbehavior/paperclip_with_unified_table.git
+repository_class: Piston::Git::Repository

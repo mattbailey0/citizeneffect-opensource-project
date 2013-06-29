@@ -1,0 +1,26 @@
+<% content_for(:page_title, "CP Application") %>
+
+<div class="breadcrumbs">
+  <% if @project -%>
+    <%= link_to "&laquo; back to project page", @project, :class => "breadcrumbs green" %>
+  <% else -%>
+    <%= link_to "&laquo; home", home_index_path, :class => "breadcrumbs green" %>
+  <% end -%>
+</div>
+		
+<!-- main body copy -->
+<div id="wrapper-copy">
+			
+	<div class="component-header-full nopadtop">
+		<h3>CP APPLICATION</h3>
+	</div>
+
+  <% form_for(@cp_application, :url => 
+              @project ? project_cp_applications_path(@project) : cp_applications_path) do |f| %>
+
+    <% content_for :form_errors do -%>
+      <%= f.error_messages %>
+    <% end -%>
+    <%= render :partial => "form", :locals => { :f => f } %>
+  <% end -%>
+</div>

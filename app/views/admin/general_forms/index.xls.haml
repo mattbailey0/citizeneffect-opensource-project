@@ -1,0 +1,34 @@
+%table
+  %tr{:style => "font-weight:bold;"}
+    %td ID
+    %td Source
+    %td First Name
+    %td Last Name
+    %td Email
+    %td Phone Number
+    %td Location
+    %td Location Other
+    %td Cause
+    %td Referred By
+    %td Campaign Code
+    %th User Request
+    %th User Comment
+    %th Date
+
+  - @general_forms.each do |general_form|
+    %tr
+      %td= h general_form.id
+      %td= h general_form.source.to_s
+      %td= h general_form.first_name.to_s
+      %td= h general_form.last_name.to_s
+      %td= h general_form.email
+      %td= h general_form.phone_number.to_s
+      %td= h general_form.location.to_s
+      %td= h general_form.location_other.to_s
+      %td= h general_form.cause.to_s
+      %td= h general_form.referred_by.to_s
+      %td= h general_form.campaign_code.to_s
+      %td= h general_form.request.to_s
+      %td= h general_form.comment.to_s
+      %td= h general_form.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%Y-%m-%d %H:%M %Z")
+

@@ -1,0 +1,33 @@
+--- !ruby/object:RI::ClassDescription 
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: Celerity::Exception
+name: ElementLocator
+constants: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Used internally to locate elements on the page.
+attributes: 
+- !ruby/object:RI::Attribute 
+  name: idents
+  comment: 
+  rw: RW
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: element_by_idents
+- !ruby/object:RI::MethodSummary 
+  name: elements_by_idents
+- !ruby/object:RI::MethodSummary 
+  name: find_by_conditions
+- !ruby/object:RI::MethodSummary 
+  name: find_by_id
+- !ruby/object:RI::MethodSummary 
+  name: find_by_label
+- !ruby/object:RI::MethodSummary 
+  name: find_by_xpath
+full_name: Celerity::ElementLocator
+superclass: Object
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new

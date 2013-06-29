@@ -1,0 +1,17 @@
+= f.error_messages
+= hidden_field :uploadable, :id
+= hidden_field :uploadable, :type, { :value => uploadable.class }
+= hidden_field :association_name, :value, { :value => association_name }
+
+%p
+  = f.label :content, "Filename"
+  %br
+  = f.file_field :content
+  - unless unified_upload.new_record?
+    %br
+    Current File
+    %br
+    = link_to unified_upload.content_file_name, unified_upload.url
+  
+%p
+  = f.submit unified_upload.new_record? ? 'Create' : 'Update'

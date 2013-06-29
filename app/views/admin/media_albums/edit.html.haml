@@ -1,0 +1,23 @@
+%h1
+  Editing Media Album associated with
+  = "'#{@project.name}'"
+- form_for([:admin, @project, @media_album], :html => { :multipart => true}) do |f|
+  = f.error_messages
+  %table.form-table{:border => "0", :cellspacing => "0", :cellpadding => "0"}
+    %tr
+      %td.form-label= f.label :title
+      %td= f.text_field :title
+    %tr
+      %td.form-label Photos
+      %td= link_to "Edit Media Album Photos", [:admin, @project, @media_album, :media_album_photos], :target => "_blank", :class => "edit-association"
+    %tr
+      %td.form-label Videos
+      %td= link_to "Edit Media Album Videos", [:admin, @project, @media_album, :media_album_videos], :target => "_blank", :class => "edit-association"
+
+    %tr
+      %td.form-submit{:colspan => "2"}= f.submit "Update"
+
+= link_to "Show", [:admin, @project, @media_album]
+|
+= link_to "Back", [:admin, @project, :media_albums]
+

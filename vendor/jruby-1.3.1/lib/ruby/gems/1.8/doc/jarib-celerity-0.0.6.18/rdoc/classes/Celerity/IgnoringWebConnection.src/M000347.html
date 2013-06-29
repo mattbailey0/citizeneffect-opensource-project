@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>getResponse (Celerity::IgnoringWebConnection)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/celerity/ignoring_web_connection.rb, line 9</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">getResponse</span>(<span class="ruby-identifier">request_settings</span>)
+      <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">super</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">request_settings</span>.<span class="ruby-identifier">getUrl</span>.<span class="ruby-identifier">toString</span> <span class="ruby-operator">=~</span> <span class="ruby-ivar">@pattern</span>
+      <span class="ruby-identifier">createWebResponse</span>(<span class="ruby-identifier">request_settings</span>, <span class="ruby-value str">&quot;&quot;</span>, <span class="ruby-value str">&quot;text/html&quot;</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

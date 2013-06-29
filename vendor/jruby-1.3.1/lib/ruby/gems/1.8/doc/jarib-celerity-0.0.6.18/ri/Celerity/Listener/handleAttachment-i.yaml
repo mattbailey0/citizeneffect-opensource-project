@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+params: (page)
+is_singleton: false
+block_params: 
+name: handleAttachment
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: interface AttachmentHandler
+full_name: Celerity::Listener#handleAttachment
+visibility: public
+aliases: []
+

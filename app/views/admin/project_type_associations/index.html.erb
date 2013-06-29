@@ -1,0 +1,25 @@
+<h1>
+  Project Types
+  <br/>
+  Project: <%=h @project.name %>
+</h1>
+
+<div class="new-button">
+  <%= link_to '(+) Add Type to Project', new_admin_project_project_type_association_path(@project) %>
+</div>
+
+<table cellpadding="0" cellspacing="0" class="index-list">
+  <tr class="index-list-header">
+    <th>Project type</th>
+    <th colspan="3">Actions</th>
+  </tr>
+
+<% @project_type_associations.each do |project_type_association| %>
+  <tr>
+    <td><%=h project_type_association.project_type.name %></td>
+    <td><%= link_to 'Show', [:admin, @project, project_type_association] %></td>
+    <td><%= link_to 'Edit', edit_admin_project_project_type_association_path(@project, project_type_association) %></td>
+    <td><%= link_to 'Destroy', [:admin, @project, project_type_association], :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>

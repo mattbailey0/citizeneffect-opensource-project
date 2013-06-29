@@ -1,0 +1,16 @@
+<div id="featured_projects" class="slideshow left relative" style="display:block;float:left;width:629px;height:391px;margin:5px 0 0 5px">
+	<ul id="carousel_container" class="blank relative" style="overflow: visible;">
+		<li style="position: relative; overflow: visible;">
+      <%= render :partial => "active_feature", :collection => (fps = FeaturedProject.all), :locals => { :first => fps.first } %>
+      <ul id="carousel_inner" class="jcarousel-skin-featured thumbs blank">
+        <%= render :partial => "feature", :collection => FeaturedProject.all %>
+      </ul>
+		</li>
+	</ul>
+
+	<a href="" class="prev" id="featured-thumbnail-prev"><img src="/images/arrow_left_small.png" width="24" height="24" /></a>
+	<a href="" class="next" id="featured-thumbnail-next"><img src="/images/arrow_right_small.png" width="24" height="24" /></a>
+
+	<img src="/images/mask_player_upper_left.png" alt="" width="10" height="10" id="mask_upper_left" />
+	<img src="/images/mask_arrow_full.png" alt="" width="20" height="40" id="mask_arrow" />
+</div>

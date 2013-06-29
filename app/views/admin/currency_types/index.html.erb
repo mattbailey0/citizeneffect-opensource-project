@@ -1,0 +1,30 @@
+<h1>Listing Global Currency Types</h1>
+
+<div class="new-button">
+  <%= link_to '(+) Add Global Currency Type', new_admin_currency_type_path %>
+</div>
+
+<div class="xls_link">
+  <%= link_to "Download As Excel Spreadsheet", url_for({:format => :xls}.merge(params)) %>
+</div>
+
+<table cellpadding="0" cellspacing="0" class="index-list">
+  <tr class="index-list-header">
+    <th>ID</th>
+    <th>Currency code</th>
+    <th colspan="3">Actions</th>
+  </tr>
+
+<% @currency_types.each do |currency_type| %>
+  <tr>
+    <td><%=h currency_type.id %></td>
+    <td><%=h currency_type.currency_code %></td>
+    <td><%= link_to 'Show', [:admin, currency_type] %></td>
+    <td><%= link_to 'Edit', edit_admin_currency_type_path(currency_type) %></td>
+    <td><%= link_to 'Destroy', [:admin, currency_type], :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+

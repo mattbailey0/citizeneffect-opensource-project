@@ -1,0 +1,14 @@
+				<!-- recent news -->
+				<div class="box-rightcol-top" style="display:none;"></div>
+				<div class="box-rightcol-inner news">
+					<%= image_tag "box_header_recent_news.png", :class => "block" %>
+          <div id="home_news_items">
+            <%= render_with_last :partial => "shared/news_item", :collection => NewsItem.top_5.all %>
+          </div>
+					<%= link_to_remote "view more", { :url => home_news_items_path, :with => "'page=' + ++home_news_page", :method => :get }, :id => "home_news_items_view_more", :class => "pad_top pad_left" %>
+				</div>
+				<div class="box-rightcol-bottom" /></div>
+<% javascript_tag do %>
+  home_news_page = 1;
+<% end %>
+

@@ -1,0 +1,62 @@
+<style type="text/css">
+	.twocol-right .share{
+		padding-left:20px;
+	}
+	.twocol-right .share textarea{
+		width:275px;
+	}
+	.twocol-right .share input{
+		display:block;
+		float:left;
+		margin-top:10px;
+		margin-right:5px;
+	}
+	.twocol-right .share img{
+		display:block;
+		float:left;
+		margin-right:8px;
+	}
+	.twocol-right .share input.no_margin{
+		margin:0;
+	}
+	.twocol-right .share label{
+		font-size:12px;
+		font-weight:bold;
+	}
+	.twocol-right .share span{
+		padding-left:10px;
+	}
+</style>
+<div class="box-rightcol-inner-header">
+	<div class="box-rightcol-header"><h3>SHARE CITIZEN EFFECT</h3></div>
+</div>
+<div class="box-rightcol-inner share blue pad_top" style="margin-top:0px;">
+	 <% form_tag push_status_user_path(user) do %>
+		 <% fields_for :status do |f| %>
+			 <label for="status_message">
+         TYPE IN YOUR MESSAGE HERE: <span class="normal" id="message_char_count">0 Characters</span>
+       </label>
+			 <%= f.text_area :message, 
+           {:onkeyup => "$('#message_char_count').html($(this).val().length + ' Characters')"} %>
+			 <p class="pad_top">
+				 <% if user.can_push_twitter_status? -%>
+					 <%= f.check_box :push_twitter, :checked => true, :style => "margin-left:-4px;" %>
+					 <%= image_tag("twitter_icon.png") %>
+				 <% end -%>
+				 <% if user.can_push_facebook_status? -%>
+					 <%= f.check_box :push_facebook, :checked => true %>
+					 <%= image_tag("facebook_icon.png") %>
+				 <% end -%>
+				 <% if user.can_push_myspace_status? -%>
+					 <%= f.check_box :push_myspace, :checked => true %>
+					 <%= image_tag("myspace_icon.png") %>
+				 <% end -%>
+				 
+			 <%= image_submit_tag "share.png", :class => "no_margin pad_left" %>
+			 </p>
+
+		 <% end -%>
+	 <% end -%>
+	 <div class="clear"></div>
+</div>
+<div class="box-rightcol-bottom"></div>

@@ -1,0 +1,35 @@
+#approvals
+  - form_for([:admin, @approvable_association]) do |f|
+    = f.error_messages
+    #deny
+      %h4 Deny
+      - f.fields_for :approval do |_f|
+        %p
+          %b= _f.label :denied_reason, "Why?"
+          %br
+          = _f.text_area :denied_reason
+      %p= f.submit "Deny"
+    #send_back
+      %h4 Need More Information
+      - f.fields_for :approval do |_f|
+        %p
+          %b= _f.label :whats_missing, "What's missing?"
+          %br
+          = _f.text_area :whats_missing
+      %p= f.submit "Send Back to NGO"
+    #approve
+      %h4 Approve 
+      - f.fields_for :approval do |_f|
+        %p
+          %b= _f.label :next_step, "What's the next step?"
+          %br
+          = _f.text_area :next_step
+          %br
+          %b= _f.label :due_on, "Due Date"
+          = _f.date_select :due_on
+      %p= f.submit "Approve Now"
+   
+    = hidden_field_tag 'approvable_association[approvable_id]', @approvable_association.approvable.id
+    = hidden_field_tag 'approvable_association[approvable_type]', @approvable.class.to_s
+
+.clear

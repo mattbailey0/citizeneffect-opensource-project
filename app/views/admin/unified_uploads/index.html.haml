@@ -1,0 +1,19 @@
+%h1= "Listing Files for #{@uploadable.class.name.titleize.gsub(/Partner Project/,"")}"
+
+.new-button
+  = link_to "(+) Add File", new_admin_unified_upload_path(:uploadable_id => @uploadable.id, :uploadable_type => @uploadable.class, :association_name => @association_name)
+
+%table.index-list{:cellpadding => "0", :cellspacing => "0"}
+  %tr.index-list-header
+    %th File
+    %th{:colspan => 3} Actions
+    - @unified_uploads.each do |unified_upload|
+      %tr
+        %td= link_to unified_upload.content_file_name, unified_upload.url
+        %td= link_to 'Show', admin_unified_upload_path(unified_upload, :uploadable_id => @uploadable.id, :uploadable_type => @uploadable.class, :association_name => @association_name)
+        %td= link_to 'Edit', edit_admin_unified_upload_path(unified_upload, :uploadable_id => @uploadable.id, :uploadable_type => @uploadable.class, :association_name => @association_name)
+        %td= link_to "Destroy", admin_unified_upload_path(unified_upload, :uploadable_id => @uploadable.id, :uploadable_type => @uploadable.class, :association_name => @association_name), :confirm => "Are you sure?", :method => :delete
+
+    - if @unified_uploads.blank?
+      %tr{:colspan => 4}
+        %td No Files Found

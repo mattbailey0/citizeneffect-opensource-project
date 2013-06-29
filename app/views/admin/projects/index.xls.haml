@@ -1,0 +1,64 @@
+%table
+  %tr{:style => "font-weight:bold;"}
+    %td Status
+    %td Weeks In Status
+    %td ID
+    %td Campaigns
+    %td Partner
+    %td Partner ID
+    %td Priority
+    %td Name
+    %td URL
+    %td Project Types
+    %td Focus Area(s)
+    %td District Name
+    %td Country
+    %td Total Cost
+    %td Total Raised
+    %td Total Online
+    %td Total Offline
+    %td % Raised
+    %td Next Step
+    %td CP
+    %td CP ID
+    %td CP Email
+    %td Fundraising Start Date
+    %td Expected Close Date
+    %td Actual Close Date
+    %td Email Exempt?
+  - @projects.each do |project|
+    %tr
+      %td= h project.state
+      %td= h project.state_updated_at ? ((Date.today - project.state_updated_at.to_date) / 7.0).round(1) : ""
+      %td= h project.id
+      %td 
+        - pc = ""
+        - Project.find_by_id(project.id).campaigns.each do |c| 
+          - pc=="" ? pc = c.name : pc += (", "  + c.name)
+        = pc
+      %td= h project.partner.andand.display_name
+      %td= h project.partner.andand.id
+      %td= h project.priority
+      %td= h project.name
+      %td= project.user_visible? ? "http://www.citizeneffect.org" + project_path(project) : ""
+      %td= h project.types.map(&:name).to_sentence
+      %td= h project.focus_areas.map(&:name).to_sentence
+      %td= h project.district_name
+      %td= h project.country.andand.name
+      %td= h project.total_cost_in_usd
+      %td= h project.total_amount_raised_in_usd
+      %td= h number_to_currency(project.online_donations_total_in_dollars)
+      %td= h number_to_currency(project.offline_donations_total_in_dollars)
+      %td= h project.percent_raised
+      %td= h project.next_step
+      %td= h project.cp.andand.name
+      %td= h project.cp.andand.id
+      %td= h project.cp.andand.email
+      %td= h project.fundraising_start_date ? project.fundraising_start_date : ""
+      - if project.state=="Fundraising"
+        %td= h project.estimated_close_date ? project.estimated_close_date : project.state_updated_at.to_date + 140
+      - else
+        %td= h "n/a"
+      %td=h project.actual_close_date
+      %td= ((project.email_exempt and !project.email_exempt.blank? and project.email_exempt != 0) ? "exempt" : "not exempt")
+

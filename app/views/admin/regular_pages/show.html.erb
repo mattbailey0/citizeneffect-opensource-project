@@ -1,0 +1,17 @@
+<p>
+  <b>Title:</b>
+  <%=h @regular_page.title %>
+</p>
+
+<p>
+  <b>Permalink:</b>
+  <%=h @regular_page.permalink_text %>
+</p>
+
+<p>
+  <b>Context:</b>
+  <%=h @regular_page.content %>
+</p>
+
+<%= link_to 'Edit', edit_admin_regular_page_path(@regular_page) %> |
+<%= link_to 'Back', admin_regular_pages_path %>

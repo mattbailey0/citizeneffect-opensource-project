@@ -1,0 +1,80 @@
+%table
+  %tr{:style => "font-weight:bold;"}
+    %td CP ID
+    %td CP Last
+    %td CP First
+    %td CP Phone
+    %td Email
+    %td Campaign
+    %td Partner
+    %td Project ID
+    %td Project Name
+    %td Project Page
+    %td Weeks Active
+    %td Expected Close Date
+    %td Weeks Until Expected Close Date
+    %td About Me Complete?
+    %td # CP Blog Posts
+    %td CP has uploaded media?
+    %td Date of Most Recent CP Blog Post
+    %td Total events scheduled
+
+    %td # Date of First Event
+    %td First Event Type
+    %td # Date of Most Recent Event
+    %td Most Recent Event Type
+    %td # Date of Next Event
+    %td Next Event Type
+
+
+    %td $ Raised
+    %td % Raised
+    %td $ Goal
+    %td # donations
+    %td # date of 1st donation
+    %td # date of most recent donation
+    %td Exempt from Emails?
+    %td Project Primary Objective
+    %td Project Lives Impacted (Primary + Secondary)
+    %td CP Facebook
+    %td CP Twitter
+    %td CP YouTube
+  - @active_projects.each do |p|
+    %tr
+      %td= h p.cp_id
+      %td= h p.cp.andand.last_name
+      %td= h p.cp.andand.first_name
+      %td= h p.cp.andand.phone_number
+      %td= h p.cp.andand.email
+      %td= h p.campaign.andand.name
+      %td= h p.partner.display_name
+      %td= p.id
+      %td= h p.name
+      %td= h 'http://www.citizeneffect.org/projects/' + p.permalink
+      %td= (p.fundraising_start_date ? ((Date.today - p.fundraising_start_date)/7.0).round(1) : ((Date.today - p.state_updated_at.to_date)/7.0).round(1))
+      %td= (p.estimated_close_date ? p.estimated_close_date : (p.fundraising_start_date ? (p.fundraising_start_date + 140) : (p.state_updated_at.to_date + 140)))
+      %td= (((p.estimated_close_date ? p.estimated_close_date : (p.fundraising_start_date ? (p.fundraising_start_date + 140) : (p.state_updated_at.to_date + 140))) - Date.today).to_f/7).round(2)
+      %td= ((p.cp.about_me and !p.cp.about_me.blank?) ? "yes" : "no")
+      %td= p.total_blog_posts_by_cp
+      %td= p.cp_media_albums.andand.count > 0 ? "yes" : "no"
+      %td= (p.most_recent_blog_post_by_cp ? (p.most_recent_blog_post_by_cp.updated_at ? p.most_recent_blog_post_by_cp.updated_at : p.most_recent_blog_post_by_cp.created_at) : nil).andand.in_time_zone('Eastern Time (US & Canada)').andand.strftime("%Y-%m-%d")
+      %td= p.events.count
+      %td= (p.first_event.andand.event_start_time).andand.in_time_zone('Eastern Time (US & Canada)').andand.strftime("%Y-%m-%d")
+      %td= (p.first_event ? (p.first_event.fundraiser_type.id!=15 ? p.first_event.fundraiser_type.name : "event" ) : "").downcase
+      %td= (p.most_recent_event.andand.event_start_time).andand.in_time_zone('Eastern Time (US & Canada)').andand.strftime("%Y-%m-%d")
+      %td= (p.most_recent_event ? (p.most_recent_event.fundraiser_type.id!=15 ? p.most_recent_event.fundraiser_type.name : "event") : "").downcase
+      %td= (p.next_event.andand.event_start_time).andand.in_time_zone('Eastern Time (US & Canada)').andand.strftime("%Y-%m-%d")
+      %td= (p.next_event ? (p.next_event.fundraiser_type.id!=15 ? p.next_event.fundraiser_type.name : "event" ) : "").downcase
+      %td= number_to_currency(p.total_amount_raised_in_usd)
+      %td= p.percent_raised
+      %td= "$" + p.total_cost_in_usd.to_s
+      %td= p.donations.count
+      %td= p.donations.minimum('donated_at').andand.to_date
+      %td= p.donations.maximum('donated_at').andand.to_date
+      %td= ((p.email_exempt and !p.email_exempt.blank? and p.email_exempt != 0) ? "exempt" : "not exempt")
+      %td= h p.primary_objective
+      %td= (p.primary_lives_impacted + p.secondary_lives_impacted)
+      %td= h p.cp.andand.facebook_path
+      %td= h p.cp.andand.twitter_path
+      %td= h p.cp.andand.youtube_path
+

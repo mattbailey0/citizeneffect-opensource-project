@@ -1,0 +1,18 @@
+<% events = @project.events_in_order %>
+<%# Display the box if there are events, OR if it's the CP %>
+<% if events.any? || current_user_can_edit_public_project? %>
+				<div class="box-rightcol-top"></div>
+				<div class="box-rightcol-inner">
+					<div class="header">
+            <% if current_user_can_edit_public_project? -%>
+              <%= render :partial => "add_event" %>
+            <% end -%>
+						<h4>FUNDRAISING EVENTS</h4>
+					</div>
+					<% unless events.any? %>
+					<p class="empty-events">No events yet.</p>
+					<% end %>
+          <%= render :partial => "next_event", :collection => events %>
+				</div>
+				<div class="box-rightcol-bottom"></div> <!-- our project donors -->
+<% end %>

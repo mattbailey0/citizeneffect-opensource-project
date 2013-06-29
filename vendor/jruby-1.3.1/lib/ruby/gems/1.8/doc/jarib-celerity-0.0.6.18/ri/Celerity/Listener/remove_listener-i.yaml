@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+params: (type, proc_or_index)
+is_singleton: false
+block_params: 
+name: remove_listener
+comment: 
+full_name: Celerity::Listener#remove_listener
+visibility: public
+aliases: []
+

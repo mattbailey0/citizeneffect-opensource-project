@@ -1,0 +1,19 @@
+<li>
+			<div class="carousel video cspacer">
+				<div class="copy video">
+					<p class="thumb"><%= link_to sized_image_tag(video.photo, :url, image_size_name, :alt => ""), video.media_album_media, :target => "_blank" %></p>
+					<p class="title"><%=h video.title -%></p>
+					<p class="description">
+						<%=h video.description %>
+						<% 
+						  unless @project # don't show this link on pages that are already showing the project 
+						%>
+  			      <%= link_to "visit project", [video.project], :class => 'orange underline' %>
+			      <% end %>
+            <% if logged_in? -%>
+              <%= link_to "edit media album", [:edit, video.project, video.media_album], :class => "orange underline" if current_user_can_edit_public_project? %>
+            <% end -%>
+					</p>
+				</div>
+			</div>
+</li>

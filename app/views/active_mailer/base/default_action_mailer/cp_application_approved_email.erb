@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title></title>
+</head>
+<body>
+
+<p>
+<%=h @cp_application.user.first_name %>, your application to become a Citizen Philanthropist for Citizen Effect has been approved!
+</p>
+<p>
+<%= link_to "Citizen Effect", root_url %>
+</p>
+
+<p>
+<% if @cp_application.project -%>
+  <% if @cp_application.project.cp = @cp_application.user -%>
+    Login in now, <%= link_to "visit your project", project_url(@cp_application.project) %>, and get started. Raising money is easiest when we do something we love to do.  Plan your fundraising approach – you like to run, bake, entertain, host an event?  Any way you can think of to bring your community together will work.  Import your contacts and begin reaching out. Keep them connected to the project by sending progress and impact reports you receive from your partner community.
+  <% else -%>
+    Someone else signed up for the project you wanted before you, so login in now and take on a project and get started. Raising money is easiest when we do something we love to do.  Plan your fundraising approach – you like to run, bake, entertain, host an event?  Any way you can think of to bring your community together will work.  Import your contacts and begin reaching out. Keep them connected to the project by sending progress and impact reports you receive from your partner community.
+  <% end -%>
+<% else -%>
+  Login in now and take on a project and get started. Raising money is easiest when we do something we love to do.  Plan your fundraising approach – you like to run, bake, entertain, host an event?  Any way you can think of to bring your community together will work.  Import your contacts and begin reaching out. Keep them connected to the project by sending progress and impact reports you receive from your partner community.
+<% end -%>
+</p>
+
+</body>
+</html>
+
+
+
+

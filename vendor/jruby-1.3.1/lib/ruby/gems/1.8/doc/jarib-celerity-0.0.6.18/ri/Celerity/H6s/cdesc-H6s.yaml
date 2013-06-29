@@ -1,0 +1,16 @@
+--- !ruby/object:RI::ClassDescription 
+includes: []
+
+name: H6s
+constants: []
+
+comment: 
+attributes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: element_class
+full_name: Celerity::H6s
+superclass: ElementCollection
+class_methods: []
+

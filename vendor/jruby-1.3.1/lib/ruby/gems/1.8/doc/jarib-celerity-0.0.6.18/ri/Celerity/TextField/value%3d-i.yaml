@@ -1,0 +1,13 @@
+--- !ruby/object:RI::MethodDescription 
+params: (value)
+is_singleton: false
+block_params: 
+name: value=
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: This directly sets the text field to the given value, skipping exectuion of
+    JavaScript events. Use <tt>set</tt> if you want to run events on text fields.
+full_name: Celerity::TextField#value=
+visibility: public
+aliases: []
+

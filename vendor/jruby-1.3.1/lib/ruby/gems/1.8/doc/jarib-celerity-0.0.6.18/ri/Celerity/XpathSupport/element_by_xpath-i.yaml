@@ -1,0 +1,15 @@
+--- !ruby/object:RI::MethodDescription 
+params: (xpath)
+is_singleton: false
+block_params: 
+name: element_by_xpath
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Get the first element found matching the given XPath.
+- !ruby/struct:SM::Flow::P 
+  body: '@param [String] xpath @return [Celerity::Element] An element subclass (or
+    Element if none is found)'
+full_name: Celerity::XpathSupport#element_by_xpath
+visibility: public
+aliases: []
+

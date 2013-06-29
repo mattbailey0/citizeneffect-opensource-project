@@ -1,0 +1,73 @@
+%tr
+  %td.form-label
+    = f.label :name
+  %td
+    = f.text_field :name
+
+%tr
+  %td.form-label
+    = f.label :title
+  %td
+    = f.text_field :title
+
+%tr
+  %td.form-label
+    = f.label :profile_picture, "Profile Picture"
+  %td
+    = f.file_field :profile_picture
+
+- unless f.object.new_record?
+  %tr
+    %td.form-label
+      Existing Profile Picture
+    %td
+      - unless f.object.profile_picture.blank?
+        = image_tag f.object.profile_picture.andand.url
+      - else
+        %em None
+
+%tr
+  %td.form-label
+    = f.label :biography
+  %td
+    = f.text_area :biography
+
+- unless f.object.new_record?
+  %tr
+    %td.form-label Messages
+    %td
+      %ol.message_wrapper
+        - f.object.andand.messages.each do |message|
+          %li= h(message.content)
+      = link_to "Edit messages", [:admin, f.object, :community_member_messages], :confirm => association_confirm_text, :class => "edit-association left-pad"
+  %tr
+    %td.form-label Images
+    %td
+      %ol.message_wrapper
+        - f.object.andand.pictures.each do |picture|
+          %li
+            = link_to h(picture.picture.andand.original_filename), picture.picture.andand.url, :target => "_blank"
+            %br
+            = h picture.caption
+      = link_to "Edit images", [:admin, f.object, :community_member_pictures], :confirm => association_confirm_text, :class => "edit-association left-pad"
+  %tr
+    %td.form-label Videos
+    %td
+      %ol.message_wrapper
+        - f.object.andand.videos.each do |video|
+          %li
+            = link_to h(video.url), video.url, :target => "_blank"
+            %br
+            = h video.caption
+      = link_to "Edit videos", [:admin, f.object, :community_member_videos], :confirm => association_confirm_text, :class => "edit-association left-pad"
+-#   %tr
+-#     %td.form-label Audios
+-#     %td 
+-#       %ol.message_wrapper
+-#         - f.object.andand.audios.each do |audio|
+-#           %li
+-#             = link_to h(audio.audio.andand.original_filename), audio.audio.andand.url, :target => "_blank"
+-#             %br
+-#             = h audio.caption
+-#       = link_to "Edit audios", [:admin, f.object, :community_member_audios], :confirm => association_confirm_text, :class => "edit-association left-pad"
+

@@ -1,0 +1,124 @@
+		<!-- full-width component -->
+		<div class="box-full-middle account-info blue normal">
+        	<div class="left pad_top selected_project_container">
+
+            <% if @cp_application.project %>
+              <%= image_tag @cp_application.project.main_picture_url(:watch_list), :class => "left" %>
+                <p class="right pad_left pad_top" style="width:175px">
+                    <span class="bold">SELECTED PROJECT:</span><br />
+                    <%=h "#{@cp_application.project.partner.display_name} - #{@cp_application.project.name}" %>
+                    <br />
+                    <%= f.hidden_field :project_id %>
+                    <span class="bold">NAME</span><br />
+                    <%=h current_user.name %><br />
+                </p>
+                <div class="clear"></div>
+            <% end %>
+
+                <%= f.label :address1, "ADDRESS*", :class => "pad_top" %>
+                <%= f.text_field :address1, :class => "pad_bottom small large" %>
+                <%= f.label :address2, "ADDRESS (Line 2)", :class => "pad_top" %>
+                <%= f.text_field :address2, :class => "pad_bottom small large" %>
+                <%= f.label :city_name, "CITY*", :class => "pad_top" %>
+                <%= f.text_field :city_name, :class => "pad_bottom small large" %>
+                <%= f.label :state_code, "STATE*", :class => "pad_top" %>
+                <%= f.text_field :state_code, :class => "pad_bottom small large" %>
+
+                <%= f.label :zip, "ZIP CODE*", :class => "pad_top" %>
+                <%= f.text_field :zip, :class => "pad_bottom small large" %>
+                <%= f.label :phone_number, "PHONE NUMBER*", :class => "pad_top" %>
+                <%= f.text_field :phone_number, :class => "pad_bottom small large" %>
+                <%= f.label :comment, "COMMENT(optional)", :class => "pad_top" %>
+                <%= f.text_area :comment, :rows => "6", :cols => "40" %>
+
+            </div>
+            <div id="application" class="left">
+                <h6 class="facebox">WHAT I'M INTERESTED IN <span>(optional)</span></h6>
+                <div class="form_left">
+                    <h6 class="facebox">REGION <span>(Check all that apply)</span></h6>
+                    <ul>
+                      <% Country.all.each do |c| %>
+                        <li>
+<!--                           <input type="checkbox" name="region" id="region" value="India" /> -->
+                          <%= f.check_box :country_ids, {:multiple => true, :id => "cp_application_country_id_#{c.id}"}, c.id, "" %>
+                          <%#= check_box_tag "cp_application[country_ids][]", c.id, @cp_application.country_ids.include?(c.id), {:id => "cp_application_country_id_#{c.id}"} %>
+<!--                           <label for="region">India</label> -->
+                          <%= label_tag "cp_application_country_id_#{c.id}", c.name %>
+                        </li>
+                      <% end %>
+                    </ul>
+                    <h6 class="facebox">LIVES IMPACTED</h6>
+                    <ul>
+                      <% LivesImpactedRange.all.each do |lir| %>
+                        <% f.fields_for :cp_application_lives_impacted_range_association do |cpalira_form| %>
+                        <li>
+<!--                           <input type="checkbox" name="livesImpacted" id="livesImpacted" value="0 - 500" /> -->
+                          <%= cpalira_form.radio_button :lives_impacted_range_id, lir.id %>
+                          <%#= radio_button_tag "cp_application[cp_application_lives_impacted_range_association_attributes][lives_impacted_range_id]", lir.id, (@cp_application.lives_impacted_range == (lir)) %>
+<!--                           <label for="livesImpacted">0 - 500</label> -->
+                          <%= cpalira_form.label "lives_impacted_range_id_#{lir.id}", lir.display_name %>
+                          <%#= label_tag "cp_application_cp_application_lives_impacted_range_association_attributes_lives_impacted_range_id_#{lir.id}", lir.display_name %>
+                        </li>
+                        <% end %>
+                      <% end %>
+                    </ul>
+                    <h6 class="facebox">FUNDRAISING GOAL</h6>
+                    <ul>
+                      <% FundraisingGoalRange.all.each do |fgr| %>
+                        <% f.fields_for :cp_application_fundraising_goal_range_association do |cpafgra_form| %>
+                        <li>
+                          <%= cpafgra_form.radio_button :fundraising_goal_range_id, fgr.id %>
+                          <%= cpafgra_form.label "fundraising_goal_range_id_#{fgr.id}", fgr.display_name %>
+                        </li>
+                        <% end %>
+                      <% end %>
+                    </ul>
+<!--                     <h6 class="facebox">WHO REFERRED YOU?<span>(optional)</span></h6> -->
+<!--                     <ul> -->
+<!--                         <li><input type="text" name="" /></li> -->
+
+<!--                         <li>&nbsp;</li> -->
+<!--                         <li><span class="bold">OR</span></li> -->
+<!--                         <li><input type="checkbox" name="" />Internet</li> -->
+<!--                         <li><input type="checkbox" name="" />Other Media(TV,Radio,Etc)</li> -->
+<!--                     </ul> -->
+                </div>
+                <div class="form_right">
+
+                    <h6 class="facebox">FOCUS AREA <span>(Check all that apply)</span></h6>
+                    <ul class="facebook-icons">
+                      <% FocusArea.all.each do |fa| %>
+                        <li>
+                            <div class="checkbox">
+<!--                                 <input type="checkbox" name="focusArea" id="focusArea" value="food/water/sanitation" /> -->
+                                <%#= check_box_tag "cp_application[focus_area_ids][]", fa.id, @cp_application.focus_area_ids.include?(fa.id), {:id => "focus_area_id_#{fa.id}"} %>
+                                <%= f.check_box :focus_area_ids, { :multiple => true, :id => "focus_area_id_#{fa.id}" }, fa.id, "" %>
+                            </div>
+                            <div class="icon left <%= fa.icon_css_class %>"></div>
+                            <div class="label">
+
+<!--                                 <label for="focusArea">FOOD/WATER/SANITATION</label> -->
+                                <%= label_tag "focus_area_id_#{fa.id}", fa.name %>
+                            </div>
+                        </li>
+                     <% end %>
+                    </ul>
+
+                </div>
+                <div class="clear"></div>
+                <hr class="pad_top" />
+                <div class="submit_container">
+                	<span class="block left">
+<!--                     <input type="checkbox" name="" /> -->
+                    <%= f.check_box :terms_of_service, :class => 'terms_of_service_check' %>
+                    <%= f.label :terms_of_service, "By checking this box, I agree to the" %>
+                    <%= link_to "Terms of Service", 'http://citizeneffect.org/p/cp-terms-of-service', :class => "bold blue" %>
+                  </span>
+                  <input type="image" src="/images/apply_to_be_a_cp.png" class="submit submit_application" />
+                </div>
+            </div>
+	        <div class="clear"></div>
+
+        </div>
+        <div class="clear"></div>
+		<div class="box-full-bottom"></div>

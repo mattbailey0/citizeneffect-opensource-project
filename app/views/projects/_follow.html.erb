@@ -1,0 +1,26 @@
+<div class="follow-container rightcol-wrapper">
+  <ul class="list_rightcol">
+    <li class="left">
+      <img src="/images/follow_project.png" />
+    </li>
+    <% @project.follow_urls.each do |follow_info| -%>
+      <li class="right">
+        <%= link_to image_tag("icon_#{follow_info[:type]}.png", :width => "35", :height => "37"), 
+          follow_info[:url], :class => "icon_#{follow_info[:type]}" -%>
+      </li>
+    <% end -%>
+    <% if @project.follow_urls.empty? -%>
+      <li class="right pad_top">
+        No Social Media Links Yet
+      </ii>
+    <% end -%>
+    <li class="clear"></li>
+  </ul>
+  <% if current_user_can_edit_public_project? -%>
+    <ul class="list_rightcol">
+      <li class="right">
+        <%= link_to "Edit Social Media Links", [:edit, @project] %>
+      </li>
+    </ul>
+  <% end -%>
+</div>

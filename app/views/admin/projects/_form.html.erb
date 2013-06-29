@@ -1,0 +1,554 @@
+<tr>
+  <td class="form-label"><strong><%= f.label :name %>*</strong></td>
+  <td><%= f.text_field :name %></td>
+</tr>
+<tr>
+  <td class="form-label"><strong><%= f.label :priority %>*</strong></td>
+  <td><%= f.select :priority, Project::PRIORITIES %></td>
+</tr>
+
+<% if current_user.andand.is_a_citizen_effect_admin? %>
+  <tr>
+    <td class="form-label"><%= f.label :no_credit_card_fee, "Do Not Charge 3% Credit Card Fee" %></td>
+    <td><%= f.check_box :no_credit_card_fee %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :no_tip_request, "Do Not Request Tip On Donation Page" %></td>
+    <td><%= f.check_box :no_tip_request %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :email_exempt, "Do Not Send Emails Related to this Project" %></td>
+    <td><%= f.check_box :email_exempt %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :enable_card_donation, "Enable Snapfish Card Donation" %></td>
+    <td><%= f.check_box :enable_card_donation %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :card_donation_cost_in_usd, "Snapfish Card Donation Cost" %></td>
+    <td><%= f.text_field :card_donation_cost_in_usd %> USD</td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :card_image_url, "Snapfish Card Image" %></td>
+    <td><%= f.text_field :card_image_url %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :card_snapfish_url, "Snapfish Card Link" %></td>
+    <td><%= f.text_field :card_snapfish_url %></td>
+  </tr>
+  <% unless @project.new_record? -%>
+    <tr>
+      <td class="form-label"><%= f.label :cp_id, "Citizen Philanthropist" -%></td>
+      <td><%= f.collection_select :cp_id, @project.cps_for_select, :id, :name, :include_blank => "None" -%></td>
+    </tr>
+  <% end -%>
+  <tr>
+    <td class="form-label"><%= f.label :project_status_id, "Status" %></td>
+    <td><%= f.collection_select :project_status_id, ProjectStatus.all, :id, :display_name %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :next_step %></td>
+    <td><%= f.text_field :next_step %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :due_on %></td>
+    <td><%= f.date_select :due_on, :prompt => true %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :estimated_close_date %></td>
+    <td><%= f.date_select :estimated_close_date, :prompt => true %></td>
+  </tr>
+    <tr>
+    <td class="form-label"><%= f.label :actual_close_date %></td>
+    <td><%= f.date_select :actual_close_date, :prompt => true %></td>
+  </tr>
+
+  <tr>
+    <td class="form-label"><%= f.label :whats_missing, "What\'s missing?" %></td>
+    <td><%= f.text_area :whats_missing, :rows => 2 %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :why_denied, "Why was this project denied?" %></td>
+    <td><%= f.text_area :why_denied, :rows => 2 %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :project_created_at %></td>
+    <td><%= f.datetime_select :project_created_at, :prompt => true %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :approved_by_citizen_effect_at %></td>
+    <td><%= f.datetime_select :approved_by_citizen_effect_at, :prompt => true %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :partner_id %></td>
+    <td><%= f.collection_select :partner_id, current_user.partners, :id, :display_name, :prompt => true %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :campaigns %></td>
+    <td><%= f.collection_select :campaign_ids, current_user.campaigns, :id, :name, {:selected=>@project.campaigns.map(&:id), :include_blank => true},:multiple=>true %></td>
+  </tr>
+
+<% end %>
+<tr>
+  <td class="form-label"><%= f.label :permalink, "Permalink" %></td>
+  <td>http://citizeneffect.org/projects/<%= f.text_field :permalink %></td>
+</tr>
+<% if current_user.is_an_partner_admin? -%>
+  <tr>
+    <td class="form-label"><%= f.label :partner_id -%></td>
+    <% if current_user.partners.size > 1 -%>
+      <td><%= f.collection_select :partner_id, current_user.partners, :id, :display_name, :prompt => true %></td>
+    <% else -%>
+      <td>
+        <%=h current_user.partners[0].display_name %>
+        <%= f.hidden_field :partner_id, { :value => current_user.partners[0].id } %>
+      </td>
+    <% end -%>
+  </tr>
+<% end -%>
+<tr>
+  <td class="form-label"><strong>Focus Areas*</strong></td>
+  <td>
+  <% unless @project.new_record? %>
+    <%= @project.focus_areas.map{|pfa| h(pfa.name) + '<br/>' } %>
+    <%= link_to "Edit Focus Areas", [:admin, @project, :project_focus_area_associations], :target => "_blank", :class => 'edit-association' %><br/>
+    <em>Changes will only be shown here after this page is reloaded.</em>
+  <% else %>
+    <em>Can only edit after project has been created.</em>
+  <% end %>
+  </td>
+</tr>
+
+<tr>
+  <td class="form-label"><strong>Project Types*</strong></td>
+  <td>
+  <% unless @project.new_record? %>
+    <%= @project.types.map{|pt| h(pt.name) + '<br/>' } %>
+    <%= link_to "Edit Project Types", [:admin, @project, :project_type_associations], :target => "_blank", :class => 'edit-association' %><br/>
+    <em>Changes will only be shown here after this page is reloaded.</em>
+  <% else %>
+    <em>Can only edit after project has been created.</em>
+  <% end %>
+  </td>
+</tr>
+
+<tr>
+  <td class="form-label"><strong><%= f.label :primary_objective, "Primary Objective" -%>*</strong></td>
+  <td><%= f.text_area :primary_objective, :rows => 8 %></td>
+</tr>
+<tr>
+  <td class="form-label"><strong><%= f.label :desired_construction_start_date, "Desired Construction Start Date" %>*</strong></td>
+  <td><%= f.date_select :desired_construction_start_date, :prompt => true %></td>
+</tr>
+
+
+  <tr>
+    <td colspan="2">
+      <div class="project_group_heading">
+        Dates
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td class="form-label"><%= f.label :estimated_construction_start_date %></td>
+    <td><%= f.date_select :estimated_construction_start_date, :prompt => true %></td>
+  </tr>
+  <%# REQUESTED TO BE REMOVED BY CE
+  <tr>
+    <td class="form-label">< %= f.label :actual_construction_start_date % ></td>
+    <td>< %= f.date_select :actual_construction_start_date, :prompt => true % ></td>
+  </tr>
+  %>
+  <tr>
+    <td class="form-label"><%= f.label :estimted_construction_completed_date %></td>
+    <td><%= f.date_select :estimted_construction_completed_date, :prompt => true %></td>
+  </tr>
+  <%# REQUESTED TO BE REMOVED BY CE
+  <tr>
+    <td class="form-label">< %= f.label :actual_construction_completed_date % ></td>
+    <td>< %= f.date_select :actual_construction_completed_date, :prompt => true % ></td>
+  </tr>
+  %>
+
+<% if current_user.andand.is_a_citizen_effect_admin? %>
+  <tr>
+    <td colspan="2">
+      <div class="project_group_heading">
+        Donations
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td class="form-label">Donations</td>
+    <td>
+      <% unless @project.new_record? %>
+        <%= @project.donations.map{|pd| h("#{pd.name} - #{number_to_currency(pd.net_project_amount_in_dollars)}") + '<br/>' } %>
+        <%= link_to "Edit donations", [:admin, @project, :donations], :target => '_blank', :class => 'edit-association' %><br/>
+        <em>Changes will only be shown here after this page is reloaded.</em>
+      </div>
+      <% else %>
+        <em>Can only edit after project has been created.</em>
+      <% end %>
+    </td>
+  </tr>
+
+<% end %>
+
+  <tr>
+    <td colspan="2">
+      <div class="project_group_heading">
+        Personnel Details
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td class="form-label"><strong><%= f.label :partner_coordinator_id %>*</strong></td>
+    <td><%= f.collection_select :partner_coordinator_id, Role.partner_admin.users, :id, :name_and_email, :selected => @project.new_record? ? current_user.id : @project.partner_coordinator_id, :prompt => true %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><strong><%= f.label :district_coordinator, "District Coordinator" %>*</strong></td>
+    <td><%= f.text_field :district_coordinator %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><strong><%= f.label :community_leader, "Community Leader" %>*</strong></td>
+    <td><%= f.text_field :community_leader %></td>
+  </tr>
+
+  <tr>
+    <td colspan="2">
+      <div class="project_group_heading">
+        Budget Details
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td class="form-label"><strong><%= f.label :total_cost_in_local_currency, "Total Cost in Local Currency" -%>*</strong></td>
+    <td><%= f.text_field :total_cost_in_local_currency -%></td>
+    <td><strong><%= f.label :local_currency_type_id, "Local Currency Type" -%>*</strong></td>
+    <td><%= f.collection_select :local_currency_type_id, CurrencyType.find(:all, :order => 'currency_code ASC'), :id, :currency_code, { :prompt => true } -%></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :total_cost_in_usd, "Total Cost in USD" %></td>
+    <td><%= f.text_field :total_cost_in_usd %> USD<br/><strong>This shows up as the total needed to be raised by the Citizen Philanthropist</strong></td>
+  </tr>
+  <tr>
+    <td class="form-label"><strong><%= f.label :detailed_project_budget, "Detailed Budget File" %>*</strong></td>
+    <td><%= f.file_field :detailed_project_budget %></td>
+  </tr>
+
+  <tr>
+    <td colspan="2">
+      <div class="project_group_heading">
+        Location &amp; Impact Stats
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td class="form-label"><strong><%= f.label :community_name, "Community Name" -%>*</strong></td>
+    <td><%= f.text_field :community_name %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><strong><%= f.label :district_name, "District Name" -%>*</strong></td>
+    <td><%= f.text_field :district_name %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><strong><%= f.label :community_state, "Community State" -%>*</strong></td>
+    <td><%= f.text_field :community_state %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><strong><%= f.label :country_id %>*</strong></td>
+    <td><%= f.collection_select :country_id, Country.all, :id, :name, :prompt => true %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><strong><%= f.label :community_population_required, "Community Population Required?" -%></strong></td>
+    <td><%= f.check_box :community_population_required %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><strong><%= f.label :community_population, "Community Population" -%></strong></td>
+    <td><%= f.text_field :community_population %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><strong><%= f.label :primary_lives_impacted, "Total # Lives Directly Impacted" -%>*</strong></td>
+    <td><%= f.text_field :primary_lives_impacted %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><strong><%= f.label :primary_benefits, "Direct Impact / Primary Benefits" -%>*</strong></td>
+    <td><%= f.text_area :primary_benefits %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :secondary_lives_impacted, "Total # Lives Indirectly Impacted" -%></td>
+    <td><%= f.text_field :secondary_lives_impacted %></td>
+  </tr>
+    <td class="form-label"><%= f.label :secondary_benefits, 'Community-wide Impact/Extended Benefits' %></td>
+    <td><%= f.text_area :secondary_benefits %></td>
+  </tr>
+
+  <tr>
+    <td colspan="2">
+      <div class="project_group_heading">
+        Community Details
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td class="form-label"><strong><%= f.label :community_summary_for_website %>*</strong></td>
+    <td><%= f.text_area :community_summary_for_website, :rows => 8 %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :major_communities %></td>
+    <td><%= f.text_area :major_communities, :rows => 8 %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :major_occupations %></td>
+    <td><%= f.text_area :major_occupations, :rows => 8 %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :average_income_per_household %></td>
+    <td><%= f.text_field :average_income_per_household %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :families_living_below_poverty %></td>
+    <td><%= f.text_field :families_living_below_poverty %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :brief_history_of_community %></td>
+    <td><%= f.text_area :brief_history_of_community, :rows => 8 %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :weather %></td>
+    <td><%= f.text_area :weather, :rows => 8 %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :major_issues %></td>
+    <td><%= f.text_area :major_issues, :rows => 8 %></td>
+  </tr>
+
+  <tr>
+    <td colspan="2">
+      <div class="project_group_heading">
+        Project Details
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td class="form-label"><strong><%= f.label :summary_for_website, "Summary for Website" %>*</strong></td>
+    <td><%= f.text_area :summary_for_website, :rows => 8 %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><strong><%= f.label :justification_for_project, "Justification for Project" %>*</strong></td>
+    <td><%= f.text_area :justification_for_project, :rows => 8 %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><strong><%= f.label :what_will_be_done, 'What will be done?' %>*</strong></td>
+    <td><%= f.text_area :what_will_be_done, :rows => 8 %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><strong><%= f.label :how_will_it_be_done, "How will it be done?" %>*</strong></td>
+    <td><%= f.text_area :how_will_it_be_done, :rows => 8 %></td>
+  </tr>
+
+  <tr>
+    <td colspan="2">
+      <div class="project_group_subheading">
+        Sustainability
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td class="form-label"><%= f.label :environmental_sustainability %></td>
+    <td><%= f.text_area :environmental_sustainability, :rows => 8 %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :economic_sustainability %></td>
+    <td><%= f.text_area :economic_sustainability, :rows => 8 %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :social_sustainability %></td>
+    <td><%= f.text_area :social_sustainability, :rows => 8 %></td>
+  </tr>
+
+  <tr>
+    <td colspan="2">
+      <div class="project_group_heading">
+        Project Timeline Details
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td class="form-label"><%= f.label :proposed_timeline %></td>
+    <td><%= f.text_area :proposed_timeline, :rows => 8 %></td>
+  </tr>
+
+  <tr>
+    <td colspan="2">
+      <div class="project_group_heading">
+        Community Characteristic Details
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td class="form-label"><%= f.label :agricultural_land %></td>
+    <td><%= f.text_area :agricultural_land, :rows => 8 %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :animal_husbandry %></td>
+    <td><%= f.text_area :animal_husbandry, :rows => 8 %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :water_related_infrastructure %></td>
+    <td><%= f.text_area :water_related_infrastructure, :rows => 8 %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :sanitation %></td>
+    <td><%= f.text_area :sanitation, :rows => 8 %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :healthcare_facilities %></td>
+    <td><%= f.text_area :healthcare_facilities, :rows => 8 %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :transportation %></td>
+    <td><%= f.text_area :transportation, :rows => 8 %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :commerce %></td>
+    <td><%= f.text_area :commerce, :rows => 8 %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :education %></td>
+    <td><%= f.text_area :education, :rows => 8 %></td>
+  </tr>
+
+  <tr>
+    <td colspan="2">
+      <div class="project_group_heading">
+        Media &amp; Profiles
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td class="form-label">Community Member Profiles</td>
+    <td>
+    <% unless @project.new_record? %>
+      <%= @project.community_member_profiles.map{|pcmp| h(pcmp.name) + '<br/>' } %>
+      <%= link_to "Edit community member profiles", [:admin, @project, :community_member_profiles], :target => '_blank', :class => 'edit-association' %><br/>
+      <em>Changes will only be shown here after this page is reloaded.</em>
+    <% else %>
+      <em>Can only edit after project has been created.</em>
+    <% end %>
+    </td>
+  </tr>
+
+
+  <tr>
+    <td class="form-label"><strong>Files (movies, pictures, pdf, doc, xls, etc)*</strong></td>
+    <td>
+      <% unless @project.new_record? -%>
+        <% @project.associated_files.each do |file| -%>
+          <%= link_to h(file.andand.original_filename), file.andand.url, :target => "_blank" %><br />
+        <% end -%>
+        <%= link_to "Edit uploads for proposal", admin_unified_uploads_path(:uploadable_id => @project.id, :uploadable_type => @project.class, :association_name => "associated_files"), :target => "_blank", :class => "edit-association" %><br />
+        <strong>At least 1 required in project proposal.</strong><br/>
+        <em>Changes will only be shown here after this page is reloaded.</em>
+      <% else -%>
+        <em>Can only add files after project has been created.</em>
+      <% end -%>
+    </td>
+  </tr>
+
+  <% if current_user.andand.is_a_citizen_effect_admin? %>
+    <tr>
+      <td class="form-label">Media Albums</td>
+      <td>
+        <% unless @project.new_record? -%>
+          <% @project.media_albums.each do |ma| -%>
+            <%= link_to "Edit '#{h(ma.title)}'", [:edit, @project, ma], :target => "_blank" %><br />
+          <% end -%>
+          <%= link_to "Edit media albums", [@project, :media_albums], :class=> "edit-association", :target => "_blank" %><br />
+          <em>Changes will only be shown here after this page is reloaded.</em>
+        <% else -%>
+          <em>Can only edit after project has been created.</em>
+        <% end -%>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td class="form-label">Featured Media</td>
+      <td>
+        <% unless @project.new_record? -%>
+          <%= link_to "Edit featured media", [@project, :featured_media_associations], :class=> "edit-association", :target => "_blank" %><br />
+          Existing Primary Photo:
+          <% if @project.primary_photo.blank? -%>
+            <span class="gray">None</span><br />
+          <% else %>
+            <br />
+            <%= link_to( image_tag(@project.primary_photo.url, :width => "400px" ), @project.primary_photo.url, :target => "_blank" ) %>
+            <br />
+          <% end -%>
+          <em>Changes will only be shown here after this page is reloaded.<br />
+              You can set a project's featured photo in this link.</em>
+        <% else -%>
+          <em>Can only edit after project has been created.</em>
+        <% end -%>
+      </td>
+    </tr>
+  <% end %>
+<!--   <tr> -->
+<!--     <td colspan="2"> -->
+<!--       <div class="project_group_heading"> -->
+<!--         Media -->
+<!--       </div> -->
+<!--     </td> -->
+<!--   </tr> -->
+
+<!--   <tr> -->
+<!--     <td class="form-label">Images</td> -->
+<!--     <td> -->
+<!--     <% unless @project.new_record? %>   -->
+<!--         <%#= @project.pictures.map{|pi| "#{link_to h(pi.caption), pi.picture.url} - #{pi.related_project_stage}" + '<br/>' } %> -->
+<!--         <%#= link_to "Edit Images", [:admin, @project, :project_pictures], :target => '_blank', :class => 'edit-association' %><br/> -->
+<!--         <em>Changes will only be shown here after this page is reloaded.</em> -->
+<!--     <% else %> -->
+<!--       <em>Can only edit after project has been created.</em> -->
+<!--     <% end %> -->
+<!--     </td> -->
+<!--   </tr> -->
+
+<!--   <tr> -->
+<!--     <td class="form-label">Videos</td> -->
+<!--     <td> -->
+<!--     <% unless @project.new_record? %>   -->
+<!--       <%#= @project.videos.map{|pi| "#{link_to h(pi.caption), pi.picture.url} - #{pi.related_project_stage}" + '<br/>' } %> -->
+<!--       <%#= link_to "Edit videos", [:admin, @project, :project_videos], :target => '_blank', :class => 'edit-association' %><br/> -->
+<!--       <em>Changes will only be shown here after this page is reloaded.</em> -->
+<!--     <% else %> -->
+<!--       <em>Can only edit after project has been created.</em> -->
+<!--     <% end %> -->
+<!--     </td> -->
+<!--   </tr> -->
+
+<!--   <tr> -->
+<!--     <td class="form-label">Audio</td> -->
+<!--     <td> -->
+<!--       <% unless @project.new_record? %>   -->
+<!--         <%#= @project.audios.map{|pi| "#{link_to h(pi.caption), pi.picture.url} - #{pi.related_project_stage}" + '<br/>' } %> -->
+<!--         <%#= link_to "Edit audios", [:admin, @project, :project_audios], :target => '_blank', :class => 'edit-association' %><br/> -->
+<!--         <em>Changes will only be shown here after this page is reloaded.</em> -->
+<!--       <% else %> -->
+<!--         <em>Can only edit after project has been created.</em> -->
+<!--       <% end %> -->
+<!--     </td> -->
+<!--   </tr>  -->
+

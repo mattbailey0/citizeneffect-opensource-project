@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+params: (conditions)
+is_singleton: false
+block_params: 
+name: find_by_conditions
+comment: 
+full_name: Celerity::ElementLocator#find_by_conditions
+visibility: public
+aliases: []
+

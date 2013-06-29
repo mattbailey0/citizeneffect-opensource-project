@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+params: (container, how = nil, what = nil)
+is_singleton: true
+block_params: 
+name: new
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: '@api private'
+full_name: Celerity::ElementCollection::new
+visibility: public
+aliases: []
+

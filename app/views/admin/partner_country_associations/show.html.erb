@@ -1,0 +1,13 @@
+<p>
+  <b>Country:</b>
+  <%=h @partner_country_association.country.name %>
+</p>
+
+<p>
+  <b>Partner:</b>
+  <%=h @partner_country_association.partner.andand.display_name %>
+</p>
+
+
+<%= link_to 'Edit', [:edit, :admin, @partner, @partner_country_association] %> |
+<%= link_to 'Back', [:admin, @partner, :partner_country_associations] %>

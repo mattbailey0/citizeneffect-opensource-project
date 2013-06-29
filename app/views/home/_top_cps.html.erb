@@ -1,0 +1,13 @@
+				<!-- top 5 citizen philanthropist -->
+				<div class="box-rightcol-top"></div>
+				<div class="box-rightcol-inner">
+					<%= image_tag "box_header_top_5_citizen_philanthropist.png", :class => "block" %>
+          <div id="home_top_cps">
+            <%= render_with_last :partial => "cp", :collection => User.top_cps.top_5.all %>
+          </div>
+					<%= link_to_remote "view more", { :url => home_top_cps_path, :with => "'page=' + ++home_top_cps_page", :method => :get }, :id => "home_top_cps_view_more", :class => "pad_top pad_left" %>
+				</div>
+				<div class="box-rightcol-bottom" /></div>
+<% javascript_tag do %>
+  home_top_cps_page = 1;
+<% end %>

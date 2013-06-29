@@ -1,0 +1,197 @@
+--- !ruby/object:RI::ClassDescription 
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: Container
+- !ruby/object:RI::IncludedModule 
+  name: XpathSupport
+name: Browser
+constants: []
+
+comment: 
+attributes: 
+- !ruby/object:RI::Attribute 
+  name: attach_timeout
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Added for Watir compatibility - not in use by Celerity
+  rw: RW
+- !ruby/object:RI::Attribute 
+  name: charset
+  comment: 
+  rw: RW
+- !ruby/object:RI::Attribute 
+  name: object
+  comment: 
+  rw: RW
+- !ruby/object:RI::Attribute 
+  name: options
+  comment: 
+  rw: R
+- !ruby/object:RI::Attribute 
+  name: page
+  comment: 
+  rw: RW
+- !ruby/object:RI::Attribute 
+  name: speed
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Added for Watir compatibility - not in use by Celerity
+  rw: RW
+- !ruby/object:RI::Attribute 
+  name: viewer
+  comment: 
+  rw: R
+- !ruby/object:RI::Attribute 
+  name: visible
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Added for Watir compatibility - not in use by Celerity
+  rw: RW
+- !ruby/object:RI::Attribute 
+  name: visible
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Added for Watir compatibility - not in use by Celerity
+  rw: RW
+- !ruby/object:RI::Attribute 
+  name: webclient
+  comment: 
+  rw: R
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: add_checker
+- !ruby/object:RI::MethodSummary 
+  name: add_cookie
+- !ruby/object:RI::MethodSummary 
+  name: add_listener
+- !ruby/object:RI::MethodSummary 
+  name: assert_exists
+- !ruby/object:RI::MethodSummary 
+  name: asynchronized
+- !ruby/object:RI::MethodSummary 
+  name: back
+- !ruby/object:RI::MethodSummary 
+  name: bring_to_front
+- !ruby/object:RI::MethodSummary 
+  name: clear_cache
+- !ruby/object:RI::MethodSummary 
+  name: clear_cookies
+- !ruby/object:RI::MethodSummary 
+  name: close
+- !ruby/object:RI::MethodSummary 
+  name: confirm
+- !ruby/object:RI::MethodSummary 
+  name: contains_text
+- !ruby/object:RI::MethodSummary 
+  name: content_type
+- !ruby/object:RI::MethodSummary 
+  name: cookies
+- !ruby/object:RI::MethodSummary 
+  name: credentials=
+- !ruby/object:RI::MethodSummary 
+  name: css
+- !ruby/object:RI::MethodSummary 
+  name: css=
+- !ruby/object:RI::MethodSummary 
+  name: debug_web_connection
+- !ruby/object:RI::MethodSummary 
+  name: disable_checker
+- !ruby/object:RI::MethodSummary 
+  name: disable_event_listener
+- !ruby/object:RI::MethodSummary 
+  name: document
+- !ruby/object:RI::MethodSummary 
+  name: enable_event_listener
+- !ruby/object:RI::MethodSummary 
+  name: execute_script
+- !ruby/object:RI::MethodSummary 
+  name: exist?
+- !ruby/object:RI::MethodSummary 
+  name: exists?
+- !ruby/object:RI::MethodSummary 
+  name: focused_element
+- !ruby/object:RI::MethodSummary 
+  name: forward
+- !ruby/object:RI::MethodSummary 
+  name: goto
+- !ruby/object:RI::MethodSummary 
+  name: html
+- !ruby/object:RI::MethodSummary 
+  name: ignore_pattern=
+- !ruby/object:RI::MethodSummary 
+  name: inspect
+- !ruby/object:RI::MethodSummary 
+  name: io
+- !ruby/object:RI::MethodSummary 
+  name: javascript_enabled
+- !ruby/object:RI::MethodSummary 
+  name: javascript_enabled=
+- !ruby/object:RI::MethodSummary 
+  name: javascript_exceptions
+- !ruby/object:RI::MethodSummary 
+  name: javascript_exceptions=
+- !ruby/object:RI::MethodSummary 
+  name: log_level
+- !ruby/object:RI::MethodSummary 
+  name: log_level=
+- !ruby/object:RI::MethodSummary 
+  name: page=
+- !ruby/object:RI::MethodSummary 
+  name: refresh
+- !ruby/object:RI::MethodSummary 
+  name: refresh_handler=
+- !ruby/object:RI::MethodSummary 
+  name: remove_cookie
+- !ruby/object:RI::MethodSummary 
+  name: response_headers
+- !ruby/object:RI::MethodSummary 
+  name: resynchronized
+- !ruby/object:RI::MethodSummary 
+  name: secure_ssl
+- !ruby/object:RI::MethodSummary 
+  name: secure_ssl=
+- !ruby/object:RI::MethodSummary 
+  name: send_keys
+- !ruby/object:RI::MethodSummary 
+  name: speed=
+- !ruby/object:RI::MethodSummary 
+  name: status
+- !ruby/object:RI::MethodSummary 
+  name: status_code
+- !ruby/object:RI::MethodSummary 
+  name: status_code_exceptions
+- !ruby/object:RI::MethodSummary 
+  name: status_code_exceptions=
+- !ruby/object:RI::MethodSummary 
+  name: text
+- !ruby/object:RI::MethodSummary 
+  name: title
+- !ruby/object:RI::MethodSummary 
+  name: url
+- !ruby/object:RI::MethodSummary 
+  name: wait
+- !ruby/object:RI::MethodSummary 
+  name: wait_until
+- !ruby/object:RI::MethodSummary 
+  name: wait_while
+- !ruby/object:RI::MethodSummary 
+  name: xml
+full_name: Celerity::Browser
+superclass: Object
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: attach
+- !ruby/object:RI::MethodSummary 
+  name: each
+- !ruby/object:RI::MethodSummary 
+  name: new
+- !ruby/object:RI::MethodSummary 
+  name: quit
+- !ruby/object:RI::MethodSummary 
+  name: reset_attach_timeout
+- !ruby/object:RI::MethodSummary 
+  name: set_fast_speed
+- !ruby/object:RI::MethodSummary 
+  name: set_slow_speed
+- !ruby/object:RI::MethodSummary 
+  name: start

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+params: (value)
+is_singleton: false
+block_params: 
+name: append
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Append the given value to the text in the text field.
+full_name: Celerity::TextField#append
+visibility: public
+aliases: []
+

@@ -1,0 +1,3 @@
+<p>
+  [ <%= ProjectStatus.all.map { |s| s == @project.project_status ? "<b>#{h(s.display_name)}</b>" : h(s.display_name) }.join(" | ") %> ]
+</p>

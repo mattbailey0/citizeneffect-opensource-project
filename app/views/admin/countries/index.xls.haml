@@ -1,0 +1,8 @@
+%table
+  %tr{:style => "font-weight:bold;"}
+    %td ID
+    %td Name
+  - @countries.each do |country|
+    %tr
+      %td= h country.id
+      %td= h country.name

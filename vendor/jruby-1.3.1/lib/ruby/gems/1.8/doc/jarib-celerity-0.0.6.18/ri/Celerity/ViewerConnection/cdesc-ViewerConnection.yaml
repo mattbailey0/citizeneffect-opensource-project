@@ -1,0 +1,27 @@
+--- !ruby/object:RI::ClassDescription 
+includes: []
+
+name: ViewerConnection
+constants: []
+
+comment: 
+attributes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: close
+- !ruby/object:RI::MethodSummary 
+  name: image_data
+- !ruby/object:RI::MethodSummary 
+  name: render_html
+- !ruby/object:RI::MethodSummary 
+  name: save
+- !ruby/object:RI::MethodSummary 
+  name: save_render_tree
+full_name: Celerity::ViewerConnection
+superclass: Object
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: create
+- !ruby/object:RI::MethodSummary 
+  name: new

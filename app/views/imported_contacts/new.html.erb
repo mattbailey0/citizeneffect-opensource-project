@@ -1,0 +1,47 @@
+<% content_for(:page_title, "New Contact") %>
+
+<div class="breadcrumbs">
+  <%= link_to "&laquo; back to profile", current_user, :class => "breadcrumbs green" %>
+  <%= link_to "&laquo; back to contacts", imported_contacts_path, :class => "breadcrumbs green" %>
+</div>
+		
+<!-- main body copy -->
+<div id="wrapper-copy">
+		
+	<div class="component-header-full nopadtop">
+		<h3>ADD CONTACT</h3>
+	</div>
+
+  <% form_for(@imported_contact) do |f| %>
+    <% content_for :form_errors do -%>
+      <%= f.error_messages %>
+    <% end -%>
+
+	  <!-- full-width component -->
+	  <div class="box-full-middle account-info">
+		  <div class="pad_full">
+
+			  <p class="left pad_top">
+				  <%= f.label :name, "NAME:" %>
+          <%= f.text_field :name, :class => "pad_bottom large" %>
+			  </p>
+
+			  <div class="clear"></div>
+			
+			  <p class="left">
+				  <%= f.label :email, "E-MAIL:" %>
+          <%= f.text_field :email, :class => "pad_bottom large" %>
+			  <p>
+
+			  <p class="left pad_left pad_top_small">
+          <%= check_box_tag 'invite_contact' %> 
+          <%= label_tag 'invite_contact','Send Citizen Effect Signup Invite', :style => 'display:inline;' %>
+			  </p>
+
+			  <div class="clear"></div>
+        <%= image_submit_tag "btn_add_contact.png", :class => "pad_top block add_contact" %>
+		  </div>
+	  </div>
+  <% end %>
+	<div class="box-full-bottom"></div>
+</div>

@@ -1,0 +1,28 @@
+<% blog_post = object unless defined?(blog_post) && blog_post -%>
+  <div class="blog-post">
+	    <%= image_tag blog_post_icon(blog_post), :alt => "", :width => "30", :height => "33", :class => "right",
+      :style => "margin-right:-2px" %>
+    <span class="right">
+      <a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical" data-url="<%= ONEWELL_HOST + blog_named_link(blog_post) %>">Tweet</a>
+      <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+      <iframe src="http://www.facebook.com/plugins/like.php?href=<%= CGI.escape(ONEWELL_HOST + blog_named_link(blog_post)) %>&amp;layout=box_count&amp;show_faces=true&amp;width=55&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=65" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:55px; height:62px; margin-left:10px;margin-bottom:-2px;" allowTransparency="true"></iframe>
+    </span>
+
+		<h1><%=h blog_post.title %></h1>
+		<h2>by <%=h blog_post.posted_by.display_name -%> on <%= blog_post.created_at.strftime("%B %d, %Y") -%></h2>
+    <%= link_to("leave a comment", blog_named_link(blog_post) + "#disqus_thread", :class => "blog_read_more", "data-disqus-identifier" => blog_post.id) %>
+
+    <iframe id="<%= dom_id(blog_post) %>" src="<%= iframe_blog_blog_post_path(blog_post.blog, blog_post, :excerpt => true) %>" 
+            style="width:100%;"></iframe>
+            
+    <p></p>
+	  <p class="readmore">
+      <% if blog_logged_in? && current_user.can_blog?(blog_post.blog_id) -%>
+      <%= link_to "edit", :controller => :blog_posts, :action => :edit, :blog_id => blog_post.blog_id, :id => blog_post.id %> | <%= link_to "delete", blog_named_link(blog_post, :destroy), { :method => :delete,
+              :confirm => "Are you sure you want to delete this post?" } %> | <% end -%>
+<a class="orange_bottom" href="#<%=h share_box_id(blog_post) %>" rel="facebox">share</a> | 
+<%= link_to("read more", blog_named_link(blog_post), :class => "blog_read_more") %> |
+<%= link_to("leave a comment", blog_named_link(blog_post) + "#disqus_thread", :class => "blog_read_more", "data-disqus-identifier" => blog_post.id) %>
+            </p>
+					</div>
+          <%= render :partial => "shared/share_box", :locals => { :shareable => blog_post }%>

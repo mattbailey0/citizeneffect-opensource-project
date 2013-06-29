@@ -1,0 +1,23 @@
+<!-- projects needing a -->
+<div class="component-wrapper">
+	<div class="component-header">
+		<h3>DONATE TO THtIS PROJECT!</h3>
+		<div class="component-subheader">
+      <span id="needing-donations-counter">1</span> of <%=h Project.needing_donations.size %>
+    </div>
+	</div>
+	<div class="component nopad">
+    <ul id="projects_needing_donations_carousel" class="blank relative external_control_carousel needing_donations_carousel" data-size=<%=  Project.needing_donations.count %>>
+    </ul>
+		<div class="slideshow_prev" style="position:absolute"><a href=""><img src="/images/btn_slideshow_left_blue.png" width="35" height="35" alt="" /></a></div>
+		<div class="slideshow_next" style="position:absolute"><a href=""><img src="/images/btn_slideshow_right_blue.png" width="35" height="35" alt="" /></a></div>
+  </div>
+</div>
+<div class="component-bottom"></div>
+<% @project = Project.needing_donations.first(:order => "approved_by_citizen_effect_at DESC") %>
+<% if @project %>
+<div style="display:none;" id="item1needingadonation">
+  <%= render :file => "projects/needing_donations_item.html.erb" %>
+</div>
+<% end %>
+

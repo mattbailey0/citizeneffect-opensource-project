@@ -1,0 +1,17 @@
+--- !ruby/object:RI::ClassDescription 
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: Enumerable
+name: Iterable
+constants: []
+
+comment: 
+attributes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: each
+full_name: Java::JavaLang::Iterable
+superclass: 
+class_methods: []
+

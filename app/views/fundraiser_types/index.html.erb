@@ -1,0 +1,57 @@
+<% content_for(:page_title, "Fundraiser Types") %>
+
+		<!-- breadcrumbs -->
+		<div class="breadcrumbs">
+			
+		</div>
+
+		
+		<!-- main body copy -->
+		<div id="wrapper-copy">
+		
+			<div class="component-header-full green nopadtop">
+				<h3>CITIZEN PHILANTHROPIST FUNDRAISING TOOLS</h3>
+	
+			</div>
+			
+			<!-- full-width component -->
+			<div class="box-full-middle pad_top_medium">
+				<h5 class="pad_left">Learn about a few fundraising ideas engineered by our creative Citizen Philanthropists below.</h5>
+			</div>
+			
+			<!-- left column -->
+			<div class="twocol-left">
+				
+				<div class="component-wrapper">
+					<div class="component-header">
+					  <h3>FUNDRAISING IDEAS</h3>
+					</div>	
+          <%= render :partial => "carousel" %>
+				</div>
+			  <div class="component-bottom"></div>
+
+        <%= render :partial => "find_your_perfect_fundraiser" %>
+				
+				<div class="under-copy">
+					<h1 class="inline left">Have a great idea that you don't see?</h1>
+					<div class="email-link"><a href="mailto:info@example.org">Email</a> Citizen Effect with new ideas for fundraisers.</div>
+				</div>
+			</div>
+			
+			<!-- right column -->
+			<div class="twocol-right">
+				
+				<!-- top fundraisers -->
+				<div class="box-rightcol-inner-header">
+					<div class="box-rightcol-header"><h3>TOP FUNDRAISERS</h3></div>
+				</div>
+
+        <%= render :partial => "most_popular" %>
+
+        <%= render :partial => "most_successful" %>
+
+        <%= render :partial => "shared/social_network_icons" %>
+        
+			</div>
+			<div class="clear"></div>
+		</div>

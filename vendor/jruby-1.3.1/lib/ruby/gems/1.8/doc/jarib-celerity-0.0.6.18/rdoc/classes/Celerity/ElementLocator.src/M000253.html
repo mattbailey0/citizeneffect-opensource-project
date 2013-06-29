@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>find_by_conditions (Celerity::ElementLocator)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/celerity/element_locator.rb, line 23</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">find_by_conditions</span>(<span class="ruby-identifier">conditions</span>) <span class="ruby-comment cmt"># TODO: refactor without performance hit</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@object</span> <span class="ruby-comment cmt"># probably means we're on a TextPage (content-type is &quot;text/plain&quot;)</span>
+
+      <span class="ruby-ivar">@condition_idents</span> = []
+      <span class="ruby-identifier">attributes</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">h</span>, <span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-identifier">h</span>[<span class="ruby-identifier">k</span>] = [] }
+      <span class="ruby-identifier">index</span> = <span class="ruby-value">0</span> <span class="ruby-comment cmt"># by default, return the first matching element</span>
+      <span class="ruby-identifier">text</span> = <span class="ruby-keyword kw">nil</span>
+
+      <span class="ruby-identifier">conditions</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">how</span>, <span class="ruby-identifier">what</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">how</span>
+        <span class="ruby-keyword kw">when</span> <span class="ruby-identifier">:object</span>
+          <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">what</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">HtmlUnit</span><span class="ruby-operator">::</span><span class="ruby-constant">Html</span><span class="ruby-operator">::</span><span class="ruby-constant">HtmlElement</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">what</span>.<span class="ruby-identifier">nil?</span>
+            <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;expected an HtmlUnit::Html::HtmlElement subclass, got #{what.inspect}:#{what.class}&quot;</span>
+          <span class="ruby-keyword kw">end</span>
+          <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">what</span>
+        <span class="ruby-keyword kw">when</span> <span class="ruby-identifier">:xpath</span>
+          <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">find_by_xpath</span>(<span class="ruby-identifier">what</span>)
+        <span class="ruby-keyword kw">when</span> <span class="ruby-identifier">:label</span>
+          <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">find_by_label</span>(<span class="ruby-identifier">what</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@attributes</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">:label</span>)
+        <span class="ruby-keyword kw">when</span> <span class="ruby-identifier">:class_name</span>
+          <span class="ruby-identifier">how</span> = <span class="ruby-identifier">:class</span>
+        <span class="ruby-keyword kw">when</span> <span class="ruby-identifier">:url</span>
+          <span class="ruby-identifier">how</span> = <span class="ruby-identifier">:href</span>
+        <span class="ruby-keyword kw">when</span> <span class="ruby-identifier">:caption</span>
+          <span class="ruby-identifier">how</span> = <span class="ruby-identifier">:text</span>
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">how</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">:id</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">conditions</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+          <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">what</span>)
+        <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@attributes</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">how</span> = <span class="ruby-identifier">how</span>.<span class="ruby-identifier">to_sym</span>)
+          <span class="ruby-identifier">attributes</span>[<span class="ruby-identifier">how</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">what</span>
+        <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">how</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">:index</span>
+          <span class="ruby-identifier">index</span> = <span class="ruby-identifier">what</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">-</span> <span class="ruby-constant">Celerity</span>.<span class="ruby-identifier">index_offset</span>
+        <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">how</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">:text</span>
+          <span class="ruby-identifier">text</span> = <span class="ruby-identifier">what</span>
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-identifier">raise</span> <span class="ruby-constant">MissingWayOfFindingObjectException</span>, <span class="ruby-node">&quot;No how #{how.inspect}&quot;</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-ivar">@idents</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ident</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">merged</span> = <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">ident</span>.<span class="ruby-identifier">attributes</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">v1</span>, <span class="ruby-identifier">v2</span><span class="ruby-operator">|</span> <span class="ruby-identifier">v1</span> <span class="ruby-operator">|</span> <span class="ruby-identifier">v2</span> }
+        <span class="ruby-identifier">id</span> = <span class="ruby-constant">Identifier</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">ident</span>.<span class="ruby-identifier">tag</span>, <span class="ruby-identifier">merged</span>)
+        <span class="ruby-identifier">id</span>.<span class="ruby-identifier">text</span> = <span class="ruby-identifier">ident</span>.<span class="ruby-identifier">text</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">text</span> <span class="ruby-comment cmt"># «original» identifier takes precedence for :text</span>
+        <span class="ruby-ivar">@condition_idents</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">id</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">index</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+        <span class="ruby-identifier">element_by_idents</span>(<span class="ruby-ivar">@condition_idents</span>)
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">elements_by_idents</span>(<span class="ruby-ivar">@condition_idents</span>)[<span class="ruby-identifier">index</span>]
+      <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">HtmlUnit</span><span class="ruby-operator">::</span><span class="ruby-constant">ElementNotFoundException</span>
+      <span class="ruby-keyword kw">nil</span> <span class="ruby-comment cmt"># for rcov</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

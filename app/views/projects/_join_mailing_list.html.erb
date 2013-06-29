@@ -1,0 +1,18 @@
+<% if(!current_user || !current_user.mailing_lists.include?(@project.mailing_list)) %>
+              <% form_for [@project.mailing_list, MailingListUser.new] do |f| %>
+              <%= f.label :email, "Join our email list, news and updates.", :class => "small dark" %>
+							<div class="left">
+								<div class="pad_top_small"><%= f.text_field :email, :class => "border join", :title => "email", :id => "project_mailing_list_user_email", :value => current_user.andand.email %></div>
+							</div>
+							<div class="right"><%= image_submit_tag "btn_join_now.png", :class => "project_mailing_list_join" %></div>
+							<div class="clear"></div>
+            <% end %>
+<% else %>
+<p class="small dark">You are currently subscribed to the mailing list.</p>
+<div class="left">
+	<div><%= link_to "See your subscriptions", current_user %></div>
+</div>
+<div class="right"><%= link_to "Unsubscribe", current_user.mailing_list_users.find(:first, :conditions =>
+  {:mailing_list_id => @project.mailing_list.id}), :method => :delete %></div>
+
+<% end %>

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+params: (container)
+is_singleton: false
+block_params: 
+name: container=
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Used internally to update the container object. @api private
+full_name: Celerity::Container#container=
+visibility: public
+aliases: []
+

@@ -1,0 +1,9 @@
+<% cp = object -%>
+<div class="people last">
+	<div class="left"><%= link_to image_tag(cp.picture_url_thumb(:watched_project_cp)), cp %></div>
+	<div class="right small">
+		<p class="name"><%= link_to h(cp.display_name), cp, :class => 'content-blue bold px12' %></p>
+		<p class="location"><%=h cp.display_location %></p>
+	</div>
+	<div class="clear"></div>
+</div>

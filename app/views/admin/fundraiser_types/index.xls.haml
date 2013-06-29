@@ -1,0 +1,22 @@
+%table
+  %tr{:style => "font-weight:bold;"}
+    %td ID
+    %td Name
+    %td Date Added
+    %td Last Updated
+    %td Fundraising Range
+    %td Good For
+    %td #Files
+    %td #CP Testimonials
+    %td Difficulty
+  - @fundraiser_types.each do |fundraiser_type|
+    %tr
+      %td= h fundraiser_type.id
+      %td= h fundraiser_type.name
+      %td= h fundraiser_type.created_at.strftime("%m/%d/%Y")
+      %td= h fundraiser_type.updated_at.strftime("%m/%d/%Y")
+      %td= h fundraiser_type.fundraising_range
+      %td= h fundraiser_type.good_for_tags
+      %td= h fundraiser_type.file_count
+      %td= h fundraiser_type.cp_testimonial_count
+      %td= h fundraiser_type.difficulty_text

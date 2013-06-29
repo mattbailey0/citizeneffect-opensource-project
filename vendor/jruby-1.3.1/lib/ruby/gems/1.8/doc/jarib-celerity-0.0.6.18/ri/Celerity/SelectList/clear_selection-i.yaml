@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+params: ()
+is_singleton: false
+block_params: 
+name: clear_selection
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: 'Alias for #clear'
+full_name: Celerity::SelectList#clear_selection
+visibility: public
+aliases: []
+

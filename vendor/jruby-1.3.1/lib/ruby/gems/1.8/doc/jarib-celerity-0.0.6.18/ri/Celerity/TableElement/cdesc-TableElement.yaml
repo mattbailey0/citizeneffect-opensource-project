@@ -1,0 +1,32 @@
+--- !ruby/object:RI::ClassDescription 
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: Enumerable
+- !ruby/object:RI::IncludedModule 
+  name: ClickableElement
+name: TableElement
+constants: 
+- !ruby/object:RI::Constant 
+  name: ATTRIBUTES
+  value: BASE_ATTRIBUTES | CELLHALIGN_ATTRIBUTES | CELLVALIGN_ATTRIBUTES
+  comment: 
+- !ruby/object:RI::Constant 
+  name: DEFAULT_HOW
+  value: ":id"
+  comment: 
+comment: 
+attributes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: '[]'
+- !ruby/object:RI::MethodSummary 
+  name: each
+- !ruby/object:RI::MethodSummary 
+  name: length
+- !ruby/object:RI::MethodSummary 
+  name: locate
+full_name: Celerity::TableElement
+superclass: Element
+class_methods: []
+

@@ -1,0 +1,43 @@
+<p>
+  <b>Project:</b>
+  <%=h @project_audio.project.name %>
+</p>
+
+<p>
+  <b>Audio:</b>
+  <%= link_to h(@project_audio.audio.original_filename), @project_audio.audio.url %>
+</p>
+
+<!-- <p> -->
+<!--   <b>Audio file name:</b> -->
+<!--   <%=h @project_audio.audio_file_name %> -->
+<!-- </p> -->
+
+<!-- <p> -->
+<!--   <b>Audio content type:</b> -->
+<!--   <%=h @project_audio.audio_content_type %> -->
+<!-- </p> -->
+
+<!-- <p> -->
+<!--   <b>Audio file size:</b> -->
+<!--   <%=h @project_audio.audio_file_size %> -->
+<!-- </p> -->
+
+<!-- <p> -->
+<!--   <b>Audio updated at:</b> -->
+<!--   <%=h @project_audio.audio_updated_at %> -->
+<!-- </p> -->
+
+<p>
+  <b>Caption:</b>
+  <%=h @project_audio.caption %>
+</p>
+
+<p>
+  <b>Related project stage:</b>
+  <%=h @project_audio.related_project_stage.humanize %>
+</p>
+
+
+<%= link_to 'Edit', [:edit, :admin, @project, @project_audio] %> |
+<%= link_to 'Back', [:admin, @project, :project_audios] %>

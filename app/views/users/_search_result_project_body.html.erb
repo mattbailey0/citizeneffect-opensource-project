@@ -1,0 +1,26 @@
+<% project = object -%>
+					<div class="box-half-middle nopad">
+						<div class="search-results-left">
+              <%= image_tag project.main_picture_url(:watch_list), :alt => "", :width => "185", :height => "130", :class => "block pad_bottom" %>
+							<%= link_to "read more", project %>
+						</div>
+						<div class="search-results-right" style="background-image:url(<%= image_path h(project.type_icon_url) %>); background-repeat: no-repeat;">
+							<p class="title"><%=h project.community_name %>, <%=h project.country.name %></p>
+							<p class="description">
+								<%=h project.name %>
+							</p>
+              <%= render :partial => "projects/stats_progress_small", :object => project %>
+              <% unless project.complete? %>
+							<%= link_to image_tag("btn_donate_stripped.png", :alt => "", :width => "85", :height => "33"), [:new, project, :donation], :class => "block right pad_top" %>
+							<a class="block right pad_top pad_right" href="#<%=h share_box_id(project) %>" rel="facebox">
+                <%= image_tag "btn_share_stripped.png" %>
+              </a>
+              <%= render :partial => "shared/share_box", :locals => { :shareable => project }%>
+              <% end %>
+							<div class="clear"></div>
+						</div>
+						<div class="clear"></div>
+					</div>
+					<div class="box-half-bottom blue">
+            <%= render :partial => "shared/search_result_recent_activity", :object => project %>
+					</div>

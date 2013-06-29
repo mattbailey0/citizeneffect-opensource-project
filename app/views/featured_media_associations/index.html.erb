@@ -1,0 +1,43 @@
+<% content_for(:page_title, "#{@project.name} Featured Media") %>
+
+		<div class="breadcrumbs">
+      <%= link_to "&laquo; back to project page", @project, :class => "breadcrumbs green" %>
+		</div>
+		
+		<!-- main body copy -->
+		<div id="wrapper-copy">
+		
+		
+		<div class="component-header-full nopadtop">
+			<h3>FEATURED PROJECT MEDIA</h3>
+		</div> 
+		<!-- full-width component -->
+		<div class="box-full-middle social">
+			<h5><%=h @project.name_with_location %></h5>
+
+			<%= render :partial => "primary_photo" %>
+			
+			<div class="pad_left pad_top pad_right component solid">
+				<h4 class="left">OTHER FEATURED MEDIA</h4>
+				<p class="media_other">These images show up in the photo/video slider at the top of your projects page.</p>
+				<div class="right">
+    			<%= link_to "+ add more media", "#add_media", :rel => "facebox", :class => "green" %>
+        </div>
+
+				<div class="clear"></div>
+			</div>
+
+      <div id="featured_media_associations">
+        <%= render :partial => "featured_media_association", :collection => @featured_media_associations %>
+      </div>
+      <%= sortable_element "featured_media_associations", :tag => "div", :handle => "drag_handle", :url => [:sort, @project, :featured_media_associations] %>
+
+			<%= link_to "+ add more media", "#add_media", :rel => "facebox", :class => "right green pad_top_small block pad_right" %>
+
+      <%= render :partial => "upload_media", :locals => { :container_id => "add_media" } %>
+
+			<div class="clear"></div>
+		</div>
+		<div class="box-full-bottom"></div>
+			
+		</div>

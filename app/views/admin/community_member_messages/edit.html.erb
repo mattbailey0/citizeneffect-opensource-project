@@ -1,0 +1,16 @@
+<h1>Editing Community Member Message</h1>
+
+<% form_for([:admin, @community_member_profile, @community_member_message]) do |f| %>
+  <%= f.error_messages %>
+
+<table border="0" cellspacing="0" cellpadding="0" class="form-table">
+  <%= render :partial => "form", :locals => { :f => f } %>
+
+  <tr>
+    <td class="form-submit" colspan="2"><%= f.submit 'Update' %></td>
+  </tr>
+</table>
+<% end %>
+
+<%= link_to 'Show', [:admin, @community_member_profile, @community_member_message] %> |
+<%= link_to 'Back', [:admin, @community_member_profile, :community_member_messages] %>

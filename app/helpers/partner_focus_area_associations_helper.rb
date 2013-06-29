@@ -1,0 +1,2 @@
+module PartnerFocusAreaAssociationsHelper
+end

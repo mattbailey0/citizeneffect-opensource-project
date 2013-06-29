@@ -1,0 +1,18 @@
+<h1>Editing Video of Project
+<br/>
+Project: <%=h @project.name %></h1>
+
+<% form_for([:admin, @project, @project_video], :html => { :multipart => true }) do |f| %>
+  <%= f.error_messages %>
+
+<table border="0" cellspacing="0" cellpadding="0" class="form-table">
+  <%= render :partial => "form", :locals => { :f => f } %>
+
+  <tr>
+    <td class="form-submit" colspan="2"><%= f.submit 'Update' %></td>
+  </tr>
+</table>
+<% end %>
+
+<%= link_to 'Show', [:admin, @project, @project_video] %> |
+<%= link_to 'Back', [:admin, @project, :project_videos] %>

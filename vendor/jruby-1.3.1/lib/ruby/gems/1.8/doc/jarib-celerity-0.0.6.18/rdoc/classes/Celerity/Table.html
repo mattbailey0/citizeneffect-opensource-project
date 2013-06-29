@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Celerity::Table</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Celerity::Table</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/lib/celerity/elements/table_rb.html">
+                lib/celerity/elements/table.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                <a href="Element.html">
+                Element
+               </a>
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000313">[]</a>&nbsp;&nbsp;
+      <a href="#M000310">cells</a>&nbsp;&nbsp;
+      <a href="#M000314">child_cell</a>&nbsp;&nbsp;
+      <a href="#M000312">child_row</a>&nbsp;&nbsp;
+      <a href="#M000316">column_count</a>&nbsp;&nbsp;
+      <a href="#M000318">column_values</a>&nbsp;&nbsp;
+      <a href="#M000311">each</a>&nbsp;&nbsp;
+      <a href="#M000308">locate</a>&nbsp;&nbsp;
+      <a href="#M000315">row_count</a>&nbsp;&nbsp;
+      <a href="#M000319">row_values</a>&nbsp;&nbsp;
+      <a href="#M000309">rows</a>&nbsp;&nbsp;
+      <a href="#M000317">to_a</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+    <div id="includes">
+      <h3 class="section-bar">Included Modules</h3>
+
+      <div id="includes-list">
+        <span class="include-name"><a href="ClickableElement.html">ClickableElement</a></span>
+        <span class="include-name">Enumerable</span>
+        <span class="include-name"><a href="Container.html">Container</a></span>
+      </div>
+    </div>
+
+    <div id="section">
+
+
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">TAGS</td>
+          <td>=</td>
+          <td class="context-item-value">[ Identifier.new('table') ]</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">ATTRIBUTES</td>
+          <td>=</td>
+          <td class="context-item-value">BASE_ATTRIBUTES | [:summary, :width, :border, :frame, :rules,                                     :cellspacing, :cellpadding, :align, :bgcolor]</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">DEFAULT_HOW</td>
+          <td>=</td>
+          <td class="context-item-value">:id</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000313" class="method-detail">
+        <a name="M000313"></a>
+
+        <div class="method-heading">
+          <span class="method-name">[]</span><span class="method-args">(index)</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="Table.html#M000312">child_row</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000310" class="method-detail">
+        <a name="M000310"></a>
+
+        <div class="method-heading">
+          <a href="Table.src/M000310.html" target="Code" class="method-signature"
+            onclick="popupCode('Table.src/M000310.html');return false;">
+          <span class="method-name">cells</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="TableCells.html">Celerity::TableCells</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000314" class="method-detail">
+        <a name="M000314"></a>
+
+        <div class="method-heading">
+          <a href="Table.src/M000314.html" target="Code" class="method-signature"
+            onclick="popupCode('Table.src/M000314.html');return false;">
+          <span class="method-name">child_cell</span><span class="method-args">(index)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns the <a href="TableCell.html">TableCell</a> at the given index
+(1-indexed).
+</p>
+<p>
+In a 10-column row, table.child_cell[11] will return the first cell on the
+second row.
+</p>
+<p>
+@param [Fixnum] index The index of the wanted cell, 1-indexed. @raise [<a
+href="Exception/UnknownCellException.html">Celerity::Exception::UnknownCellException</a>]
+@return [<a href="TableCell.html">Celerity::TableCell</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000312" class="method-detail">
+        <a name="M000312"></a>
+
+        <div class="method-heading">
+          <a href="Table.src/M000312.html" target="Code" class="method-signature"
+            onclick="popupCode('Table.src/M000312.html');return false;">
+          <span class="method-name">child_row</span><span class="method-args">(index)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns the <a href="TableRow.html">TableRow</a> at the given index
+(1-indexed).
+</p>
+<pre>
+  browser.table(:foo, 'bar')[1] # =&gt; #&lt;TableRow...&gt;
+  browser.table(:foo, 'bar').child_row[1] # =&gt; #&lt;TableRow...&gt;
+</pre>
+<p>
+@param [Fixnum] index The index of the wanted row, 1-indexed. @raise [<a
+href="Exception/UnknownRowException.html">Celerity::Exception::UnknownRowException</a>]
+@return [<a href="TableRow.html">Celerity::TableRow</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000316" class="method-detail">
+        <a name="M000316"></a>
+
+        <div class="method-heading">
+          <a href="Table.src/M000316.html" target="Code" class="method-signature"
+            onclick="popupCode('Table.src/M000316.html');return false;">
+          <span class="method-name">column_count</span><span class="method-args">(index = Celerity.index_offset)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns the number of columns on the row at the given index. (1-indexed)
+Default is the number of columns on the first row @param [Fixnum] index An
+index, 1-indexed (optional). @return [Fixnum]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000318" class="method-detail">
+        <a name="M000318"></a>
+
+        <div class="method-heading">
+          <a href="Table.src/M000318.html" target="Code" class="method-signature"
+            onclick="popupCode('Table.src/M000318.html');return false;">
+          <span class="method-name">column_values</span><span class="method-args">(column_number)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000311" class="method-detail">
+        <a name="M000311"></a>
+
+        <div class="method-heading">
+          <a href="Table.src/M000311.html" target="Code" class="method-signature"
+            onclick="popupCode('Table.src/M000311.html');return false;">
+          <span class="method-name">each</span><span class="method-args">() {|TableRow.new(self, :object, row) }| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Iterates through <a href="Table.html#M000311">each</a> row in the table.
+@yieldparam [<a href="TableRow.html">Celerity::TableRow</a>] row A row.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000308" class="method-detail">
+        <a name="M000308"></a>
+
+        <div class="method-heading">
+          <a href="Table.src/M000308.html" target="Code" class="method-signature"
+            onclick="popupCode('Table.src/M000308.html');return false;">
+          <span class="method-name">locate</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000315" class="method-detail">
+        <a name="M000315"></a>
+
+        <div class="method-heading">
+          <a href="Table.src/M000315.html" target="Code" class="method-signature"
+            onclick="popupCode('Table.src/M000315.html');return false;">
+          <span class="method-name">row_count</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+The number of <a href="Table.html#M000309">rows</a> in the table @return
+[Fixnum]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000319" class="method-detail">
+        <a name="M000319"></a>
+
+        <div class="method-heading">
+          <a href="Table.src/M000319.html" target="Code" class="method-signature"
+            onclick="popupCode('Table.src/M000319.html');return false;">
+          <span class="method-name">row_values</span><span class="method-args">(row_number)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000309" class="method-detail">
+        <a name="M000309"></a>
+
+        <div class="method-heading">
+          <a href="Table.src/M000309.html" target="Code" class="method-signature"
+            onclick="popupCode('Table.src/M000309.html');return false;">
+          <span class="method-name">rows</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="TableRows.html">Celerity::TableRows</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000317" class="method-detail">
+        <a name="M000317"></a>
+
+        <div class="method-heading">
+          <a href="Table.src/M000317.html" target="Code" class="method-signature"
+            onclick="popupCode('Table.src/M000317.html');return false;">
+          <span class="method-name">to_a</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns the text of <a href="Table.html#M000311">each</a> cell in the the
+table as a two-dimensional array. @return
+[Array&lt;Array&lt;String&gt;&gt;]
+</p>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

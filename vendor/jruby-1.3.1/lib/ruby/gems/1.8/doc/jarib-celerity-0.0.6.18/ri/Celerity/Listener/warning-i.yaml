@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+params: (message, url, line, column, key)
+is_singleton: false
+block_params: 
+name: warning
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: 'Alias for #error'
+full_name: Celerity::Listener#warning
+visibility: public
+aliases: []
+

@@ -1,0 +1,28 @@
+%table
+  %tr{:style => "font-weight:bold;"}
+    %td
+      ID
+    %td
+      Title
+    %td
+      Date Added
+    %td
+      Last Updated
+    %td
+      URL
+    %td
+      Status
+  - @regular_pages.each do |regular_page|
+    %tr
+      %td
+        = h regular_page.id
+      %td
+        = h regular_page.title
+      %td
+        = h regular_page.created_at.strftime('%m/%d/%Y')
+      %td
+        = h regular_page.updated_at.strftime('%m/%d/%Y')
+      %td
+        = h regular_page.url
+      %td
+        = h regular_page.status

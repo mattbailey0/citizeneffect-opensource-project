@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Celerity::Listener</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Celerity::Listener</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/lib/celerity/listener_rb.html">
+                lib/celerity/listener.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+This class is used to wrap some of the listeners available from <a
+href="../HtmlUnit.html">HtmlUnit</a>&#8216;s WebClient.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000350">add_listener</a>&nbsp;&nbsp;
+      <a href="#M000360">error</a>&nbsp;&nbsp;
+      <a href="#M000353">handleAlert</a>&nbsp;&nbsp;
+      <a href="#M000355">handleAttachment</a>&nbsp;&nbsp;
+      <a href="#M000354">handleConfirm</a>&nbsp;&nbsp;
+      <a href="#M000356">handlePrompt</a>&nbsp;&nbsp;
+      <a href="#M000349">new</a>&nbsp;&nbsp;
+      <a href="#M000362">notify</a>&nbsp;&nbsp;
+      <a href="#M000351">remove_listener</a>&nbsp;&nbsp;
+      <a href="#M000352">statusMessageChanged</a>&nbsp;&nbsp;
+      <a href="#M000361">warning</a>&nbsp;&nbsp;
+      <a href="#M000357">webWindowClosed</a>&nbsp;&nbsp;
+      <a href="#M000359">webWindowContentChanged</a>&nbsp;&nbsp;
+      <a href="#M000358">webWindowOpened</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000349" class="method-detail">
+        <a name="M000349"></a>
+
+        <div class="method-heading">
+          <a href="Listener.src/M000349.html" target="Code" class="method-signature"
+            onclick="popupCode('Listener.src/M000349.html');return false;">
+          <span class="method-name">new</span><span class="method-args">(webclient)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000350" class="method-detail">
+        <a name="M000350"></a>
+
+        <div class="method-heading">
+          <a href="Listener.src/M000350.html" target="Code" class="method-signature"
+            onclick="popupCode('Listener.src/M000350.html');return false;">
+          <span class="method-name">add_listener</span><span class="method-args">(type, &amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Add a listener block for one of the available types. @see <a
+href="Browser.html#M000143">Celerity::Browser#add_listener</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000360" class="method-detail">
+        <a name="M000360"></a>
+
+        <div class="method-heading">
+          <a href="Listener.src/M000360.html" target="Code" class="method-signature"
+            onclick="popupCode('Listener.src/M000360.html');return false;">
+          <span class="method-name">error</span><span class="method-args">(message, url, line, column, key)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+interface HTMLParserListener
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000353" class="method-detail">
+        <a name="M000353"></a>
+
+        <div class="method-heading">
+          <a href="Listener.src/M000353.html" target="Code" class="method-signature"
+            onclick="popupCode('Listener.src/M000353.html');return false;">
+          <span class="method-name">handleAlert</span><span class="method-args">(page, message)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+interface AlertHandler
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000355" class="method-detail">
+        <a name="M000355"></a>
+
+        <div class="method-heading">
+          <a href="Listener.src/M000355.html" target="Code" class="method-signature"
+            onclick="popupCode('Listener.src/M000355.html');return false;">
+          <span class="method-name">handleAttachment</span><span class="method-args">(page)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+interface AttachmentHandler
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000354" class="method-detail">
+        <a name="M000354"></a>
+
+        <div class="method-heading">
+          <a href="Listener.src/M000354.html" target="Code" class="method-signature"
+            onclick="popupCode('Listener.src/M000354.html');return false;">
+          <span class="method-name">handleConfirm</span><span class="method-args">(page, message)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+interface ConfirmHandler
+</p>
+<p>
+The returned value is determined by the last registered :confirm listener
+proc. If it is nil, return true, otherwise return that value as a boolean.
+</p>
+<p>
+@see <a href="Browser.html#M000144">Browser#confirm</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000356" class="method-detail">
+        <a name="M000356"></a>
+
+        <div class="method-heading">
+          <a href="Listener.src/M000356.html" target="Code" class="method-signature"
+            onclick="popupCode('Listener.src/M000356.html');return false;">
+          <span class="method-name">handlePrompt</span><span class="method-args">(page, message)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+interface PromptHandler
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000362" class="method-detail">
+        <a name="M000362"></a>
+
+        <div class="method-heading">
+          <a href="Listener.src/M000362.html" target="Code" class="method-signature"
+            onclick="popupCode('Listener.src/M000362.html');return false;">
+          <span class="method-name">notify</span><span class="method-args">(message, origin)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+interface IncorrectnessListener
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000351" class="method-detail">
+        <a name="M000351"></a>
+
+        <div class="method-heading">
+          <a href="Listener.src/M000351.html" target="Code" class="method-signature"
+            onclick="popupCode('Listener.src/M000351.html');return false;">
+          <span class="method-name">remove_listener</span><span class="method-args">(type, proc_or_index)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000352" class="method-detail">
+        <a name="M000352"></a>
+
+        <div class="method-heading">
+          <a href="Listener.src/M000352.html" target="Code" class="method-signature"
+            onclick="popupCode('Listener.src/M000352.html');return false;">
+          <span class="method-name">statusMessageChanged</span><span class="method-args">(page, message)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+interface StatusHandler
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000361" class="method-detail">
+        <a name="M000361"></a>
+
+        <div class="method-heading">
+          <span class="method-name">warning</span><span class="method-args">(message, url, line, column, key)</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="Listener.html#M000360">error</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000357" class="method-detail">
+        <a name="M000357"></a>
+
+        <div class="method-heading">
+          <a href="Listener.src/M000357.html" target="Code" class="method-signature"
+            onclick="popupCode('Listener.src/M000357.html');return false;">
+          <span class="method-name">webWindowClosed</span><span class="method-args">(web_window_event)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+interface WebWindowListener
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000359" class="method-detail">
+        <a name="M000359"></a>
+
+        <div class="method-heading">
+          <span class="method-name">webWindowContentChanged</span><span class="method-args">(web_window_event)</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="Listener.html#M000357">webWindowClosed</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000358" class="method-detail">
+        <a name="M000358"></a>
+
+        <div class="method-heading">
+          <span class="method-name">webWindowOpened</span><span class="method-args">(web_window_event)</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="Listener.html#M000357">webWindowClosed</a>
+</p>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

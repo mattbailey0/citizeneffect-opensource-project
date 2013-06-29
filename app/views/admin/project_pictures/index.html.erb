@@ -1,0 +1,33 @@
+<h1>
+  Listing Project Pictures
+<br/>
+Project: <%=h @project.name %>
+</h1>
+
+<div class="new-button">
+  <%= link_to '(+) Add Picture to Project', [:new, :admin, @project, :project_picture] %>
+</div>
+
+<table cellpadding="0" cellspacing="0" class="index-list">
+  <tr class="index-list-header">
+    <th>Picture file name</th>
+    <th>Caption</th>
+    <th>Related project stage</th>
+    <th colspan="3">Actions</th>
+  </tr>
+
+<% @project_pictures.each do |project_picture| %>
+  <tr>
+    <td><%=h project_picture.picture_file_name %></td>
+    <td><%=h project_picture.caption %></td>
+    <td><%=h project_picture.related_project_stage %></td>
+    <td><%= link_to 'Show', [:admin, @project, project_picture] %></td>
+    <td><%= link_to 'Edit', [:edit, :admin, @project, project_picture] %></td>
+    <td><%= link_to 'Destroy', [:admin, @project, project_picture], :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+

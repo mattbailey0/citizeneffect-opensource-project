@@ -1,0 +1,43 @@
+<p>
+  <b>Project:</b>
+  <%=h @project_video.project.name %>
+</p>
+
+<p>
+  <b>Video:</b>
+  <%= link_to h(@project_video.video.original_filename), @project_video.video.url %>
+</p>
+
+<!-- <p> -->
+<!--   <b>Video file name:</b> -->
+<!--   <%=h @project_video.video_file_name %> -->
+<!-- </p> -->
+
+<!-- <p> -->
+<!--   <b>Video content type:</b> -->
+<!--   <%=h @project_video.video_content_type %> -->
+<!-- </p> -->
+
+<!-- <p> -->
+<!--   <b>Video file size:</b> -->
+<!--   <%=h @project_video.video_file_size %> -->
+<!-- </p> -->
+
+<!-- <p> -->
+<!--   <b>Video updated at:</b> -->
+<!--   <%=h @project_video.video_updated_at %> -->
+<!-- </p> -->
+
+<p>
+  <b>Caption:</b>
+  <%=h @project_video.caption %>
+</p>
+
+<p>
+  <b>Related project stage:</b>
+  <%=h @project_video.related_project_stage.humanize %>
+</p>
+
+
+<%= link_to 'Edit', [:edit, :admin, @project, @project_video] %> |
+<%= link_to 'Back', [:admin, @project, :project_videos] %>

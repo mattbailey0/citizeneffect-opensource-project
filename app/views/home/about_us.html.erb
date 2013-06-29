@@ -1,0 +1,96 @@
+<% content_for(:page_title, "About Us") %>
+
+<!-- breadcrumbs -->
+<div class="breadcrumbs">
+</div>
+
+<!-- main body copy -->
+<div id="wrapper-copy">
+
+  <!-- left column -->
+  <div class="twocol-left">
+    <div class="component-wrapper">
+
+      <div class="component-header">
+        <h3>ABOUT US</h3>
+      </div>
+
+      <div class="about_team_content small_pad_left">
+
+        <div class="tabs">
+          <a href="" onclick="return false;" id="btn_get_to_know_us" style="cursor:default;"></a>
+
+          <%= # no spaces between links
+          switch = "$('.tabs a').removeClass('active'); $(this).addClass('active'); $('.about_box_content').hide();"
+          rf = "return false;"
+          link_to("", "#", :onclick => "#{switch} $('#about_box_details').show(); #{rf}", :id => "btn_about", :class => "active") +
+          link_to("", "#", :onclick => "#{switch} $('#about_box_press').show(); #{rf}", :id => "btn_press") +
+          link_to("", "#", :onclick => "#{switch} $('#about_box_team').show(); #{rf}", :id => "btn_team") +
+          link_to("", "#",
+          :onclick => "#{switch} $('#about_box_partners').show(); $('#about_box_partners_extra').css({ left: '0px', top:'0px',position:'relative'}); $('#about_box_partners_extra').show(); #{rf}", :id => "btn_partners")
+          %>
+          <div class="clear"></div>
+        </div>
+
+        <%= render :partial => "about_box_about" %>
+        <%= render :partial => "about_box_press" %>
+        <%= render :partial => "about_box_team" %>
+        <%= render :partial => "about_box_partners" %>
+
+      </div>
+    </div>
+    <div class="component-bottom"></div>
+
+    <%= render :partial => "about_box_partners_extra" %>
+
+  </div>
+
+  <!-- right column -->
+  <div class="twocol-right">
+
+    <!-- data grid -->
+    <div class="box-rightcol-inner-header">
+      <div class="box-rightcol-header green"><h3>PRESS KIT &amp; CONTACT</h3></div>
+    </div>
+    <ul id="press-kit" class="chart-wrapper white">
+      <li class="align_center pad_bottom_large">
+        <%= image_tag("press_kit_logo.png", :class => "pad_bottom") %>
+        <p class="pad_top_large">A quick Summary of Citizen Effect's story.</p>
+        
+      </li>
+      <li class="alt">
+        <p class="pad_top pad_bottom center">
+
+        </p>
+      </li>
+    </ul>
+
+    <!-- find your perfect project -->
+    <div class="box-rightcol-inner-header">
+      <div class="box-rightcol-header"><h3 class="full">HOW DO I GET INVOLVED?</h3></div>
+    </div>
+
+    <div class="box-rightcol-inner">
+      <div class="pad_top pad_bottom">
+
+        <p class="pad_top pad_left pad_right">
+          Now that you know how Citizen Effect works, become a Citizen Philanthropist today! Choose your project, and get started!
+        </p>
+
+        <h1 class="home">
+          Answer a few simple<br />
+          questions below, and find<br />
+          your perfect project!
+        </h1>
+      </div>
+      <%= render :partial => "shared/find_your_perfect_project_inner" %>
+    </div>
+
+    <div class="box-rightcol-bottom"></div>
+
+
+  </div>
+
+  <div class="clear"></div>
+</div>
+

@@ -1,0 +1,34 @@
+- extended = false if nil == extended
+
+%p
+  %strong Lives directly impacted:
+  = report.lives_directly_impacted
+
+%p
+  %strong Direct impact/primary benefits:
+  = h report.primary_benefits_summary
+
+%p
+  %strong Lives indirectly impacted:
+  = report.lives_indirectly_impacted
+
+%p
+  %strong Indirect impact/community benefits:
+  = h report.extended_benefits_summary
+
+- if extended
+  %p
+    %strong Education & Nutrition:
+    = h report.education_and_nutrition
+   
+  %p
+    %strong Improved health:
+    = h report.improved_health
+   
+  %p
+    %strong Agriculture and food:
+    = h report.agriculture_and_food
+   
+  %p
+    %strong Clean energy:
+    = h report.clean_energy

@@ -1,0 +1,18 @@
+<!-- blog posts -->
+<div class="component-wrapper">
+	<div class="component-header">
+		<h3>CITIZEN EFFECT BLOG</h3>
+		<div class="component-subheader">
+			<div class="right pad_top_medium">
+				<%= link_to image_tag("rss-icon.gif"), [:feed, Blog.main_blog], :width => "24px", :height => "22px", :class => "rss_link_picture" %>
+			</div>
+		</div>
+	</div>
+	<div class="component">
+		<div class="blog-posts">
+			<%= render :partial => 'blog_posts/excerpt', :collection => @blog_posts %>
+			<%= link_to "view more blog posts", [Blog.main_blog, :blog_posts], :class => "green" %>
+		</div>
+	</div>
+</div>
+<div class="component-bottom"></div>

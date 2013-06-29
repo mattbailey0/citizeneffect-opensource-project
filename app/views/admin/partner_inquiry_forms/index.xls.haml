@@ -1,0 +1,28 @@
+%table
+  %tr{:style => "font-weight:bold;"}
+    %th ID
+    %th Submission Date
+    %th Source
+    %th Submitter Name
+    %th Submitter Email
+    %th Organization
+    %th Organization Phone
+    %th Website
+    %th Contact Name
+    %th Contact Email
+    %th Description
+
+
+  - @partner_inquiry_forms.each do |partner_inquiry_form|
+    %tr
+      %td= h partner_inquiry_form.id
+      %td= h partner_inquiry_form.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%Y-%m-%d %H:%M %Z")
+      %td= h partner_inquiry_form.submitter_name
+      %td= h partner_inquiry_form.submitter_email
+      %td= h partner_inquiry_form.organization
+      %td= h partner_inquiry_form.organization_phone_number
+      %td= h partner_inquiry_form.organization_website
+      %td= h partner_inquiry_form.contact_name
+      %td= h partner_inquiry_form.contact_email
+      %td= h partner_inquiry_form.description
+

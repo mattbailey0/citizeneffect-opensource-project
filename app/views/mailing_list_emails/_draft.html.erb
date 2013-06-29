@@ -1,0 +1,5 @@
+					<p>
+
+						DATE SAVED: <%=h draft.updated_at.strftime("%m.%d.%y") %>
+            <%= link_to h(draft.subject.blank? ? "(no subject)" : draft.subject), [:edit, @mailing_list, draft], :class => "blue block" %>
+					</p>

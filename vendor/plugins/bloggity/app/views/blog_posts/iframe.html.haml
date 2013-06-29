@@ -1,0 +1,30 @@
+!!! 
+
+%html{ :xmlns => "http://www.w3.org/1999/xhtml" }
+  %head
+    = javascript_include_tag 'jquery'
+    %style{:type => "text/css", :media => "screen"}
+      :plain
+        a {
+          color: #F27549;
+        }
+  %body{ :style => "margin:0px;" }
+    %div
+      %div{:style => "clear:both; margin:0px !important; padding:0px !important; height: 1px; font-size: 1px; line-height: 1px;"}
+      - if @blog_post
+        - if @blog_post.fck_created
+          = @blog_post.excerpt
+          = @blog_post.body unless params[:excerpt]
+        - else
+          = simple_format(auto_link(@blog_post.excerpt))
+          = simple_format(auto_link(@blog_post.body)) unless params[:excerpt]
+      %div{:style => "clear:both; margin:0px !important; padding:0px !important; height: 1px; font-size: 1px; line-height: 1px;"}
+    :javascript
+      setHeight = function(){ 
+        outer = window.top.$("##{dom_id(@blog_post)}").height();
+        inner = $(document.body).height();
+        if(inner > outer){ window.top.$("##{dom_id(@blog_post)}").height(inner); }
+      }
+      setInterval(setHeight, 100);
+      $(document).ready( function(){ $("a[target!='_blank']").attr("target", "_top"); });
+

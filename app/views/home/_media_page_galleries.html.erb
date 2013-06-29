@@ -1,0 +1,74 @@
+<% albums = @albums %>
+<% videos = @videos %>
+
+<% if !albums.blank? || !videos.blank? || current_user_can_edit_public_project? -%>
+		<div class="component-header">
+			<h3>MEDIA GALLERY</h3>
+		</div> 
+
+    <% if !albums.blank? || current_user_can_edit_public_project? -%>
+    <!-- project photo albums -->
+<!-- 		<div class="component-top"></div> -->
+		<div class="component-wrapper">
+			<div class="component thinpad">
+				<div class="header">
+					<h4>PROJECT PHOTOS</h4>
+          <%#= link_to("add photos", [:new, @project, :media_album], :class => "pad_top subheader green")  if
+          current_user_can_edit_public_project? %>
+				</div>
+
+        <% unless albums.blank? -%>
+        <div class="carousel_padder">
+    			<div class="prev video fluid">
+            <a href=""><img src="/images/btn_arrow_left.png" width="24" height="24" alt="" /></a>
+          </div>
+          <ul id="video-gallery-carousel" class="external_control_carousel_3 media_carousel_with_cp">
+          <%= render :partial => "projects/photo", :collection => albums, 
+          :locals => { :image_size_name => :carousel_3, :lightbox => false } %>
+          </ul>
+    			<div class="next video fluid">
+            <a href=""><img src="/images/btn_arrow_right.png" width="24" height="24" alt="" /></a>
+          </div>
+			  </div>
+        <% else -%>
+          <div class="no-album">No photos have been uploaded for this project</div>
+        <% end -%>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="component-bottom"></div> 
+    <% end %>
+
+    <% if !videos.blank? || current_user_can_edit_public_project? -%>
+    <!-- project videos -->
+		<div class="component-top"></div>
+		<div class="component-wrapper">
+			<div class="component thinpad">
+				<div class="header">
+					<h4>PROJECT VIDEOS</h4>
+          <%#= link_to("add videos", [:new, @project, :media_album], :class => "pad_top subheader green")  if
+          current_user_can_edit_public_project? %>
+				</div>
+        <% unless videos.blank? -%>
+        <div class="carousel_padder">
+    			<div class="prev video fluid">
+            <a href=""><img src="/images/btn_arrow_left.png" width="24" height="24" alt="" /></a>
+          </div>
+          <ul class="external_control_carousel_3 media_carousel_with_cp">
+          <%= render :partial => "projects/video", :collection => videos, 
+          :locals => { :image_size_name => :carousel_3 } %>
+          </ul>
+    			<div class="next video fluid"><a href="">
+              <img src="/images/btn_arrow_right.png" width="24" height="24" alt="" /></a>
+          </div>
+        </div>
+        <% else -%>
+          <div class="no-album">No videos have been uploaded for this project</div>
+        <% end -%>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="component-bottom"></div>
+    <% end -%>
+
+<% end -%>

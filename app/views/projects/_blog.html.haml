@@ -1,0 +1,17 @@
+.component-wrapper
+  .component-header
+    %h3= "#{header_text(@project.name, :length => 43)} BLOG"
+    .component-subheader
+      .right.pad_top_medium
+        = link_to image_tag("rss-icon.gif"), [:feed, @project.blog], :width => "24px", :height => "22px", :class => "rss_link_picture"
+  .component
+    - if blog_logged_in? && current_user.can_blog?(@project.blog.id)
+      %p
+        = link_to "(+) Add Blog Post", { :controller => 'blog_posts', :action => :new, :blog_id => @project.blog.id }
+        = " or "
+        = link_to "see pending posts", blog_named_link(nil, :pending, { :blog => @project.blog })
+
+    = render :partial => "blog_posts/excerpt", :collection => @blog_posts
+    %p.right
+      = link_to "read previous entries", [@project.blog, :blog_posts], :class => "green"
+.component-bottom

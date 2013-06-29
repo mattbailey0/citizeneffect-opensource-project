@@ -1,0 +1,30 @@
+			<div id="featured_media_association_<%=h object.id %>" class="media_wrapper">
+				<div class="left">
+          <%= image_tag object.featured_media.photo.url(:edit_featured_media_thumb), :height => "50", :width => "50" %>
+				</div>
+				<div class="media_details_wrapper">
+					<span class="media_title" style="font-weight:bold;"><%=h object.featured_media.title.upcase %></span>
+
+					<p class="media_date">Posted - <%=h object.featured_media.created_at.strftime("%B %e, %Y") %></p>
+					<p class="media_desc">
+						<%=h object.featured_media.description %>
+					</p>
+					<div class="pad_top">
+            <%= link_to "drag to reorder", "#", :onclick => "return false;", :class => "green drag_handle" %>
+            |
+            <%= link_to "delete", [object.project, object], :method => :delete, :confirm => "Are you sure?" %>
+          </div>
+				</div>
+				<div class="right">
+
+					<span class="disc_desc">
+            <% if photo_media?(object.featured_media) %>
+              photo
+            <% else %>
+              video
+            <% end %>
+          </span> 
+					<span class="disc"><%=h object.position %></span>
+				</div>
+				<div class="clear"></div>
+			</div>

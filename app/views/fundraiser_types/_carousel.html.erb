@@ -1,0 +1,21 @@
+					<div class="component fundraiser_types_index_carousel">
+						<div class="prev video fluid"><a href=""><img src="/images/btn_arrow_left.png" width="24" height="24" alt="" /></a></div>
+
+            <ul class="external_control_carousel_1">
+            <% (FundraiserType.find(:all, :conditions => 'active = true')).in_groups_of(6, false) do |fundraiser_type_group| %>
+            <li>
+
+						<ul>
+
+              <%= render :partial => "carousel_row", :collection => fundraiser_type_group.in_groups_of(3, false) %>
+
+						</ul>
+
+            </li>
+            <% end %>
+            </ul>
+
+						<div class="next video fluid"><a href=""><img src="/images/btn_arrow_right.png" width="24" height="24" alt="" /></a></div>
+						<div class="clear"></div>
+					</div>
+

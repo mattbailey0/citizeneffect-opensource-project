@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+params: (html, url)
+is_singleton: false
+block_params: 
+name: render_html
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Tells the viewer to render the given HTML, with the given URL as base url.
+full_name: Celerity::ViewerConnection#render_html
+visibility: public
+aliases: []
+

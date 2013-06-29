@@ -1,0 +1,21 @@
+%h2 After Completion
+%br
+
+- if @project.partner_project_final_reports.blank?
+  = link_to "(+) Add Final Report", [:new, :admin, @project, :partner_project_final_report]
+- else
+  = link_to "(&#x2713;) Complete Final Report", [:edit, :admin, @project, @project.partner_project_final_reports.first]
+%br
+%span.small Completion Report (1 per project)
+%br
+%br
+
+= link_to "(+) New Status Update", new_admin_project_partner_project_status_update_path(@project)
+%br
+%span.small Ongoing updates feature community profiles and media
+%br
+%br
+
+= link_to "(+) New Impact Report", [:new, :admin, @project, :partner_project_impact_report]
+%br
+%span.small Ongoing updates after completion providing follow up about community

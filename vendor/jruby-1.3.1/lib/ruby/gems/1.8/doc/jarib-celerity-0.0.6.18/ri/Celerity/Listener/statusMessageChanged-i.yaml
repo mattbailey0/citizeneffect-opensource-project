@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+params: (page, message)
+is_singleton: false
+block_params: 
+name: statusMessageChanged
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: interface StatusHandler
+full_name: Celerity::Listener#statusMessageChanged
+visibility: public
+aliases: []
+

@@ -1,0 +1,2 @@
+module ProjectFocusAreaAssociationsHelper
+end

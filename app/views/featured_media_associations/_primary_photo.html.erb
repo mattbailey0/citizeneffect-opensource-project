@@ -1,0 +1,31 @@
+			<div class="pad_full bg_ltblue margin_top">
+				<div class="primary_pic_wrapper">
+          <%= image_tag @project.main_picture_url(:album), :height => "111", :width => "182" %>
+					<p class="primary_text">
+						This is the first image that shows up
+						on the top left of the page, and shows
+						up in project thumbnails around the site.
+					</p>
+				</div>
+				<div class="primary_content_wrapper">
+					<h1><%=h @project.primary_photo.andand.title %></h1>
+
+          <% if @project.user_visible? -%>
+					  <h1>Posted: <%=h @project.approved_by_citizen_effect_at.strftime("%B %e, %Y") %></h1>
+          <% else -%>
+            <h1>Draft Project added on <%= @project.created_at.strftime("%B %e, %Y") -%></h1>
+          <% end -%>
+					<p class="pad_top">
+						<%=h @project.primary_photo.andand.description %>
+					</p>
+					<p><%= link_to image_tag("btn_change.png", :alt => "", :width => "85", :height => "33"), "#upload_pic", :rel => "facebox" , :class => "change_primary_photo" %></p>
+				</div>
+				<div class="right">
+					<span class="disc_desc">primary photo</span> 
+<!-- 					<span class="disc">33</span> -->
+
+				</div>
+				<div class="clear"></div>
+			</div>
+
+      <%= render :partial => "upload_pic", :locals => { :container_id => "upload_pic" } %>

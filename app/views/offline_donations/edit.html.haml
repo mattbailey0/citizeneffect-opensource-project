@@ -1,0 +1,60 @@
+- content_for(:page_title, "Edit Offline Donation")
+
+%div.breadcrumbs
+  = link_to "&laquo; back to project page", @project, :class => "breadcrumbs green"
+  = link_to "&laquo; back to donations", project_offline_donations_path(@project), :class => "breadcrumbs green"
+
+%div#wrapper-copy
+  %div.component-header-full.nopadtop
+    %h3= "ADD/EDIT OFFLINE DONATION"
+  %div.box-full-middle.account-info
+    %div.pad_full
+      %p.title= @project.name
+      %div.donate_form_container
+        - form_for(@donation, :url => @donation.new_record? ?  project_offline_donations_path(@project) : project_offline_donation_path(@project, @donation)) do |f|
+          - content_for :form_errors do
+            = f.error_messages
+          - if @donation.new_record?
+            %p
+              = f.label :amount_in_dollars, "Amount*"
+              = f.text_field :amount_in_dollars, :length => nil
+          - else
+            %p
+              = f.label :amount_in_dollars, "Amount"
+              = @donation.amount_in_dollars            
+          %p
+            = f.label :donated_at, "Donated at*", :for => "datetimeStart"
+            = f.text_field :donated_at, :id => "datetimeStart"
+          %p.left.pad_right
+            = f.label :first_name, "First Name*"
+            = f.text_field :first_name, :length => nil
+          %p.left
+            = f.label :last_name, "Last Name*"
+            = f.text_field :last_name, :length => nil
+          %div.clear
+          %p
+            = f.label :email, "Email*"
+            = f.text_field :email, :class => "large"
+          %p 
+            = f.label :address1, "Address*"
+            = f.text_field :address1, :class => "large"
+            %br
+            = f.text_field :address2, :class => "large"
+          %p.pad_right
+            = f.label :city, "City*"
+            = f.text_field :city, :class => "large"
+          %p.pad_right
+            = f.label :state, "State/Province/Region*"
+            = f.text_field :state, :class => "large"
+          %p.pad_right
+            = f.label :country, "Country*"
+            = country_select("donation", "country", ["United States"])
+          %p
+            = f.label :zip, "Zip*"
+            = f.text_field :zip, :class => "large"
+          %p
+            = f.label :phone_number
+            = f.text_field :phone_number, :class => "large"
+          %p
+            = image_submit_tag "btn_save.png", :class => "offline_save"
+  %div.box-full-bottom

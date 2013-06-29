@@ -1,0 +1,19 @@
+%table
+  %tr{:style => "font-weight:bold;"}
+    %td ID
+    %td Partner name
+    %td Date added
+    %td # projects
+    %td Partner Admins
+    %td Countries
+    %td Focus areas
+  - @partners.each do |partner|
+    %tr
+      %td= h partner.id
+      %td= h partner.display_name
+      %td= h partner.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%Y-%m-%d %H:%M %Z")
+      %td= h partner.projects.size
+      %td= h partner.admins.map(&:name).to_sentence
+      %td= h partner.countries.map(&:name).to_sentence
+      %td= h partner.focus_areas.map(&:name).to_sentence
+

@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+params: (checker = nil, &block)
+is_singleton: false
+block_params: 
+name: add_checker
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Add a 'checker' proc that will be run on every page load
+- !ruby/struct:SM::Flow::P 
+  body: '@param [Proc] checker The proc to be run (can also be given as a block) @yieldparam
+    [Celerity::Browser] browser The current browser object. @raise [ArgumentError]
+    if no Proc or block was given.'
+full_name: Celerity::Browser#add_checker
+visibility: public
+aliases: []
+

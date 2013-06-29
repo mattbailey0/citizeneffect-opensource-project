@@ -1,0 +1,19 @@
+					<div id="info_box_impact" class="component info_box_content" style="display:none;">
+						<% if !@project.primary_benefits.blank? || !@project.secondary_benefits.blank? %>
+  						<% unless @project.primary_benefits.blank? %>
+    						<p>
+    						  <strong>Direct Impact of Your Project</strong><br />
+                  <%= auto_link(simple_format(h(@project.primary_benefits))) %>
+    						</p>
+  						<% end %>
+						
+  						<% unless @project.secondary_benefits.blank? %>
+    						<p>
+    						  <strong>Extended Impact on Your Partner Community</strong><br />
+                  <%= auto_link(simple_format(h(@project.secondary_benefits))) %>
+    						</p>
+  						<% end %>
+						<% else %>
+              <p><em>Project impact details not available yet.</em></p>
+						<% end %>
+					</div>

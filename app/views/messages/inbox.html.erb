@@ -1,0 +1,28 @@
+<% content_for(:page_title, "Inbox") %>
+
+<div class="breadcrumbs">
+  <%= link_to "&laquo; back to profile", @user, :class => "breadcrumbs green" %>
+</div>
+
+<!-- main body copy -->
+<div id="wrapper-copy">
+			
+	<div class="component-header-full nopadtop">
+		<h3>MESSAGES - INBOX</h3>
+	</div> 
+
+	<!-- full-width component -->
+  <div class="box-full-middle">
+		<div class="message_links">
+      <%= link_to "INBOX " + (@user.unread_messages? ? "(#{@user.unread_message_count}) " : "") + "&laquo;", 
+          user_messages_path(@user) %>
+
+      <%= link_to "SENT MESSAGES", user_messages_path(@user, :mailbox => "sent") %>
+		</div>
+
+		<%= render :partial => "messages", :locals => { :messages => @messages, :user_symbol => :sender } %>
+
+    <div class="clear"></div>
+  </div>
+	<div class="box-full-bottom"></div>
+</div>

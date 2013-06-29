@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+params: (s)
+is_singleton: false
+block_params: 
+name: speed=
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Added for Watir compatibility - not in use by Celerity
+full_name: Celerity::Browser#speed=
+visibility: public
+aliases: []
+

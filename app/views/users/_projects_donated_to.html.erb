@@ -1,0 +1,42 @@
+<!-- projects donated to -->
+<div class="component-header">
+  <h3>
+    PROJECTS <%=h @user.first_name.upcase %> HAS DONATED TO (<%=h @user.projects_with_a_cp_donated_to.size %>)
+  </h3>
+</div>
+<div id="projects_donated_to">
+  <%= render :partial => "project_donated_to", :collection => @user.projects_with_a_cp_donated_to.top_2 %>
+</div>
+
+<%= link_to_remote "view more", { :url => projects_donated_to_user_path(@user), :with => "'page=' + ++projects_donated_to_page", :method => :get }, :id => "projects_donated_to_view_more", :class => "back_to_project" %>
+
+<% javascript_tag do %>
+  projects_donated_to_page = 1;
+<% end %>
+
+
+<% if current_user == @user -%>
+  <% anonymous_donations_size = @user.projects_with_a_cp_donated_to_anonymously.size -%>
+  <% if anonymous_donations_size > 0 %>
+    <div class="component-header">
+      <h3>
+        ANONYMOUS DONATIONS (<%=h anonymous_donations_size %>)
+      </h3>
+    </div>
+    
+    <p class="pad_top pad_left pad_right">Note: Your anonymous donations are not visible to anyone else, and don't contribute to your donation stats.</p>
+    
+    <div id="projects_donated_to_anonymously">
+      <%= render :partial => "project_donated_to", 
+      :collection => @user.projects_with_a_cp_donated_to_anonymously.top_2 %>
+    </div>
+
+    <%= link_to_remote "view more", { :url => projects_donated_to_user_path(@user), :with => "'anonymous=true&page=' + ++projects_donated_to_anonymously_page", :method => :get }, :id => "projects_donated_to_anonymously_view_more", :class => "back_to_project" %>
+
+    <% javascript_tag do %>
+      projects_donated_to_anonymously_page = 1;
+    <% end %>
+  <% end -%>
+<% end -%>
+
+

@@ -1,0 +1,35 @@
+.jcarousel-skin-featured .jcarousel-container {
+    position:absolute;
+    height: 67px;
+    width: 629px;
+    top: 314px;
+    left: 0;
+}
+
+.jcarousel-skin-featured .jcarousel-container-horizontal {
+    width: 629px;
+}
+
+.jcarousel-skin-featured .jcarousel-clip-horizontal {
+    width:  540px;
+    height: 67px;
+    left: 64px;
+}
+
+.jcarousel-skin-featured .jcarousel-item {
+    width: 67px;
+    height: 67px;
+}
+
+.jcarousel-skin-featured .jcarousel-item-horizontal {
+    margin-right: 10px;
+}
+
+.jcarousel-skin-featured .jcarousel-item-vertical {
+    margin-bottom: 10px;
+}
+
+.jcarousel-skin-featured .jcarousel-item-placeholder {
+    background: #fff;
+    color: #000;
+}

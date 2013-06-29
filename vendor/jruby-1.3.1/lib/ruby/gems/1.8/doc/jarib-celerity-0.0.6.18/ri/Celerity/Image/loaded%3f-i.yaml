@@ -1,0 +1,15 @@
+--- !ruby/object:RI::MethodDescription 
+params: ()
+is_singleton: false
+block_params: 
+name: loaded?
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: returns true if the image is loaded
+full_name: Celerity::Image#loaded?
+visibility: public
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: hasLoaded?
+- !ruby/object:RI::AliasName 
+  name: has_loaded?

@@ -1,0 +1,77 @@
+<% content_for(:page_title, "Thanks For Donating") %>
+
+<div class="breadcrumbs">
+  <% if @donation.project -%>
+    <%= link_to "&laquo; back to project page", @donation.project, :class => "breadcrumbs green" %>
+  <% else -%>
+    <%= link_to "&laquo; home", home_index_path, :class => "breadcrumbs green" %>
+  <% end -%>
+</div>
+
+		<!-- main body copy -->
+		<div id="wrapper-copy">
+			<div class="component-header-full nopadtop">
+				<h3>
+          <% if @donation.project %>
+            THANK YOU FOR YOUR DONATION!
+          <% else %>
+            DONATION TO CITIZEN EFFECT
+          <% end %>
+        </h3>
+			</div>
+			<!-- full-width component -->
+			<div class="box-full-middle social">
+
+				<div class="donation-fin">
+					<div class="donation-project">
+						<div class="project-image">
+              <%= image_tag @project.main_picture_url(:watch_list), :width => "185", :height => "130" %>
+            </div>
+						<div class="project-info">
+							<div class="project-text">Thank you for your contribution to the Holiday Harvest! Your <%=h number_to_currency(@donation.actual_amount_in_dollars) %> donation will put food on the table for a family in need.</div>
+              
+							<div class="project-donation-buttons">
+							</div>
+						</div>
+  				  <div class="clear"></div>
+            <div style="font-size:120%;margin:40px;"> 
+            <center>
+              <p>
+                Now share your generocity with friends and family on Facebook & Twitter to encourage 
+                them to join you!
+              </p>
+              <a href="#<%=h share_box_id(@donation.project) %>" rel="facebox">
+                <%= image_tag "btn_share_stripped_right.png" %>
+              </a>
+              <%= render :partial => "shared/share_box", :locals => { :shareable => @donation.project }%>
+              <p style="margin-top:20px;">
+                You will receive an email with your donation receipt and instructions on redeeming your 
+                Holiday Card.
+              </p>
+              <p style="font-weight:bold;font-size:130%;">Promo Code: <%= Donation::SNAPFISH_PROMO_CODE %></p>
+              <p>Click the link below and use your Promo Code to redeem your Holiday Card.</p>
+              <% link_to snapfish_card_project_path(@donation.project) do %>
+                <p style="font-weight:bold;font-size:122%;padding-top:20px;">Redeem your Holiday Card</p>
+                <center>
+                  <%= image_tag "snapfish_logo.png", :alt => "Redeem your Holiday Card", :width => "227" %>
+                </center>
+              <% end %>
+
+              <div style="width:230px;overflow:hidden;margin-top:60px;">
+                <%= link_to image_tag("btn_return_project.png"), @donation.project, 
+                    :class => "return-button" %>
+              </div>
+            </center>
+            </div>
+					</div>
+	  			<div class="donation-arrow"><%= image_tag "large_arrow.png", :alt => "", :width => "35", :height => "250" -%></div>
+
+          <%= render :partial => "signup" %>
+  				<div class="clear"></div>
+        </div>
+      </div>
+		  <div class="box-full-bottom"></div>
+
+      <%= render :partial => "other_projects_you_might_like" unless @donation.project %>
+
+    </div>

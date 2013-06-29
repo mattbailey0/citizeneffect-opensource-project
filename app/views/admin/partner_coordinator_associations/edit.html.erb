@@ -1,0 +1,22 @@
+<h1>Editing partner_coordinator_association</h1>
+
+<% form_for([:admin, @partner_coordinator_association]) do |f| %>
+  <%= f.error_messages %>
+
+<table border="0" cellspacing="0" cellpadding="0" class="form-table">
+  <tr>
+    <td class="form-label"><%= f.label :user_id %></td>
+    <td><%= f.text_field :user_id %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :project_id %></td>
+    <td><%= f.text_field :project_id %></td>
+  </tr>
+  <tr>
+    <td class="form-submit" colspan="2"><%= f.submit 'Update' %></td>
+  </tr>
+</table>
+<% end %>
+
+<%= link_to 'Show', [:admin, @partner_coordinator_association] %> |
+<%= link_to 'Back', admin_partner_coordinator_associations_path %>

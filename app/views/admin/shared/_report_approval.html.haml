@@ -1,0 +1,4 @@
+= render :partial => "admin/shared/report_show_approval"
+
+- if !@approvable.has_approval_status? || !Approval::NON_PENDING_STATUSES.include?(@approvable.approval_status)
+  = render :partial => "admin/shared/report_set_approval"

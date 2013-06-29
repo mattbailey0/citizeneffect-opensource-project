@@ -1,0 +1,16 @@
+--- !ruby/object:RI::ClassDescription 
+includes: []
+
+name: H3s
+constants: []
+
+comment: 
+attributes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: element_class
+full_name: Celerity::H3s
+superclass: ElementCollection
+class_methods: []
+

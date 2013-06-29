@@ -1,0 +1,32 @@
+<p class="<%= last_class(status_update, last) %>">
+  <span class="text">
+    
+    <% if status_update.is_a?(PartnerProjectStatusUpdate) %>
+
+      <%=link_to status_update.title, project_status_update_path(@project, status_update) %> 
+      <%=h "- #{time_ago_in_words(status_update.created_at)} ago" %>
+      <%= link_to "read more", project_status_update_path(@project, status_update) %>
+      
+    <% elsif status_update.is_a?(PartnerProjectImpactReport) %>
+      
+      <%=link_to "Impact Report (#{status_update.created_at.strftime("%m/%d/%Y")})", project_impact_report_path(@project, status_update) %> 
+      <%=h "- #{time_ago_in_words(status_update.created_at)} ago" %>
+      <%= link_to "read more", project_impact_report_path(@project, status_update) %>      
+    
+    <% elsif status_update.is_a?(PartnerProjectFinalReport) %>
+    
+      <%=link_to "Final Report*", project_final_report_path(@project, status_update) %> 
+      <%=h "- #{time_ago_in_words(status_update.created_at)} ago" %>
+      <%= link_to "read more", project_final_report_path(@project, status_update) %>
+    
+    <% elsif status_update.is_a?(PartnerProjectProgressReport) %>
+    
+      <%=link_to "Progress Report*", project_progress_report_path(@project, status_update) %> 
+      <%=h "- #{time_ago_in_words(status_update.created_at)} ago" %>
+      <%= link_to "read more", project_progress_report_path(@project, status_update) %>
+    
+    <% end %>
+    
+  </span>
+  <span class="clear"></span>
+</p>

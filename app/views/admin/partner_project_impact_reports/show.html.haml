@@ -1,0 +1,16 @@
+- report = @partner_project_impact_report
+= link_to '&laquo; Back to the Project Page', [:partner_view, :admin, @project]
+
+%h1 Viewing Partner Project Impact Report
+
+= render :partial => "admin/shared/report_owner_show", :locals => { :report => report }
+
+= render :partial => "admin/shared/report_impact_show", :locals => { :report => report, :extended => true }
+
+= render :partial => "admin/shared/report_employment_generation_show", :locals => { :report => report }
+
+= render :partial => "project_changed_community_show", :locals => { :report => report }
+
+= render :partial => "admin/shared/report_approval" if current_user.is_a_citizen_effect_admin?
+
+= link_to 'Edit Impact Report', [:edit, :admin, @project, report]

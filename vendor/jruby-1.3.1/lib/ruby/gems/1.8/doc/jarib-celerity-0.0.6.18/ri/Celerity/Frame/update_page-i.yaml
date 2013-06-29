@@ -1,0 +1,15 @@
+--- !ruby/object:RI::MethodDescription 
+params: (value)
+is_singleton: false
+block_params: 
+name: update_page
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Updates the brwoser page with the page from this frame's top window. Used
+    internally.
+- !ruby/struct:SM::Flow::P 
+  body: '@api private'
+full_name: Celerity::Frame#update_page
+visibility: public
+aliases: []
+

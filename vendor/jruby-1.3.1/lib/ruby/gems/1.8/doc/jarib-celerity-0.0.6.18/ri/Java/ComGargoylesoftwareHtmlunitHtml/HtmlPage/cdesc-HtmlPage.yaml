@@ -1,0 +1,16 @@
+--- !ruby/object:RI::ClassDescription 
+includes: []
+
+name: HtmlPage
+constants: []
+
+comment: 
+attributes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: inspect
+full_name: Java::ComGargoylesoftwareHtmlunitHtml::HtmlPage
+superclass: Object
+class_methods: []
+

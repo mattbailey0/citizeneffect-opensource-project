@@ -1,0 +1,18 @@
+<tr>
+  <td>Community member profile:</td>
+  <td><%=h @community_member_picture.community_member_profile.name %></td>
+</tr>
+<tr>
+  <td class="form-label"><%= f.label :picture, "Picture:" %></td>
+  <td><%= f.file_field :picture %></td>
+</tr>
+<% unless @community_member_picture.new_record? -%>
+<tr>
+  <td class="form-label">Existing Picture:</td>
+  <td><%= image_tag @community_member_picture.picture.andand.url -%>
+</tr>
+<% end %>
+<tr>
+  <td class="form-label"><%= f.label :caption, "Caption:" %></td>
+  <td><%= f.text_field :caption %></td>
+</tr>

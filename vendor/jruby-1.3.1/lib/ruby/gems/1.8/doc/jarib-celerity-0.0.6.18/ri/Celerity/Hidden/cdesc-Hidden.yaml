@@ -1,0 +1,27 @@
+--- !ruby/object:RI::ClassDescription 
+includes: []
+
+name: Hidden
+constants: 
+- !ruby/object:RI::Constant 
+  name: TAGS
+  value: '[ Identifier.new(''input'', :type => %w[hidden]) ]'
+  comment: 
+- !ruby/object:RI::Constant 
+  name: DEFAULT_HOW
+  value: ":name"
+  comment: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: This class can be used to access hidden field objects Normally a user would
+    not need to create this object as it is returned by the Celerity::Container#hidden
+    method
+attributes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: visible?
+full_name: Celerity::Hidden
+superclass: TextField
+class_methods: []
+

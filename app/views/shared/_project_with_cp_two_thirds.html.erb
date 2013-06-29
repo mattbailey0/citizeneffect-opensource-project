@@ -1,0 +1,28 @@
+<% project = project_with_cp_two_thirds %>
+<div class="component donated">
+	<div class="left">
+    <%= image_tag project.main_picture_url(:profile_project), :alt => "", :width => "182", 
+                  :height => "111", :class => "block pad_bottom" %>
+  	<%= link_to "read more", project %> &nbsp; 
+    <%= render :partial => "projects/add_to_watchlist", :locals => { :project => project } %>
+	</div>
+	<div class="right">
+		<div class="icon water" 
+         style="background-image:url(<%= image_path h(project.type_icon_url) %>); background-repeat: no-repeat;">
+			<div class="project"><%=h project.display_location %></div>
+      <div class="project_description"><%=h project.name %></div>
+      <%= render :partial => "shared/search_result_cp_info", :object => project.cp %>
+		</div>
+    <% if project.in_progress? -%>
+      <%= link_to image_tag("btn_donate_stripped.png", :alt => "Donate", :width => "85", :height => "33"),
+                  [:new, project, :donation], :class => "donate" %>
+    <% end -%>
+    <a class="share" href="#<%=h share_box_id(project) %>" rel="facebox">
+      <%= image_tag "btn_share_stripped.png" %>
+    </a>
+    <%= render :partial => "shared/share_box", :locals => { :shareable => project }%>
+    <%= render :partial => "projects/stats_progress_small", :object => project %>
+		<div class="clear"></div>
+	</div>
+	<div class="clear"></div>
+</div>

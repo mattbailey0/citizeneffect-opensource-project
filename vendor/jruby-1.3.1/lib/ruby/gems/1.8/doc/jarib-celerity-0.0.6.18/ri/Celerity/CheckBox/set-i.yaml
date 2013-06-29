@@ -1,0 +1,15 @@
+--- !ruby/object:RI::MethodDescription 
+params: (value = true)
+is_singleton: false
+block_params: 
+name: set
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Set the checkbox to the given value.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  checkbox.set?         #=&gt; false\n  checkbox.set\n  checkbox.set?    \
+    \     #=&gt; true\n  checkbox.set(false)\n  checkbox.set?         #=&gt; false\n"
+full_name: Celerity::CheckBox#set
+visibility: public
+aliases: []
+

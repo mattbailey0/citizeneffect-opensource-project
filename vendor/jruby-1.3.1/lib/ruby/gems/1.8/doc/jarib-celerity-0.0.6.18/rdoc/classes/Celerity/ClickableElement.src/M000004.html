@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>click_and_attach (Celerity::ClickableElement)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/celerity/clickable_element.rb, line 38</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">click_and_attach</span>
+      <span class="ruby-identifier">assert_exists_and_enabled</span>
+      <span class="ruby-identifier">browser</span> = <span class="ruby-constant">Browser</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@browser</span>.<span class="ruby-identifier">options</span>.<span class="ruby-identifier">dup</span>)
+      <span class="ruby-identifier">browser</span>.<span class="ruby-identifier">webclient</span>.<span class="ruby-identifier">set_cookie_manager</span>(
+        <span class="ruby-ivar">@browser</span>.<span class="ruby-identifier">webclient</span>.<span class="ruby-identifier">get_cookie_manager</span>
+      ) <span class="ruby-comment cmt"># hirobumi: we do want cookies as well.</span>
+
+      <span class="ruby-ivar">@browser</span>.<span class="ruby-identifier">disable_event_listener</span> <span class="ruby-keyword kw">do</span>
+        <span class="ruby-identifier">rescue_status_code_exception</span> { <span class="ruby-identifier">browser</span>.<span class="ruby-identifier">page</span> = <span class="ruby-ivar">@object</span>.<span class="ruby-identifier">click</span> }
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">browser</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

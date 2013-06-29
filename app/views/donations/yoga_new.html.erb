@@ -1,0 +1,257 @@
+<% content_for(:page_title, "Signup | Yoga Challenge") %>
+
+<% content_for :meta_tags do %>
+  <meta property="og:title" content="Yoga Challenge" /> 
+  <meta property="og:url" content="http://citizeneffect.org/yogachallenge" /> 
+  <meta property="og:site_name" content="Citizen Effect" />
+  <meta property="og:type" content="article" />
+  <meta property="og:description" content="I just joined Citizen Effect's Yoga Challenge! Help me end domestic violence in DC with Becky's Fund." />
+  <meta name="description" content="Join the movement and help support DC based Becky’s Fund in their efforts to combat domestic violence in our community. The Challenge begins August 1st." />
+  <link rel="image_src" href="http://citizeneffect.org/images/yoga_challenge_2011/logo.gif" />
+  <meta property="og:image" content="http://citizeneffect.org/images/yoga_challenge_2011/logo.gif" /> 
+<% end %>
+
+<!-- main body copy -->
+<% form_for(@donation, :url => donations_path()) do |f| %>
+<%= f.hidden_field :campaign_code %>
+
+<% content_for :form_errors do -%>
+  <%= f.error_messages %>
+<% end -%>
+
+<div id="wrapper-copy">
+
+  <div class="component-header-full nopadtop">
+	  <h3>JOIN THE YOGA CHALLENGE</h3>
+  </div> 		
+		
+  <!-- full-width component -->
+  <style type="text/css">
+			#edit_donate .pad_left_large{
+				padding-left:80px;
+			}
+			.project_description_container{
+				width:100%;
+				background-color:#DDEAF2;
+				height:140px;
+				padding:20px 12px 0 0;
+				margin-left:-7px;
+			}
+			.project_description_container_left{
+				margin-left:10px;
+			}
+			.project_description_container .project_description_container_right {
+			  width:700px;
+        padding-left:20px;
+        padding-top:0px;
+        font-size:16pt;
+        margin-top:-5px;
+			}
+      
+      .rule_listing ul{
+        list-style: disc outside none;
+        overflow: visible;
+        padding-bottom: 15px;
+        margin-left: 15px;
+      }
+      .rule_listing li{
+        overflow: visible;
+        font-size: 11pt;
+      }
+      .rule_listing h6{
+        font-size: 15pt;
+        padding-bottom: 10px;
+      }
+      .rule_listing a{
+        color:#50BDEB;
+        font-size: 11pt;
+      }
+
+      #edit_donate .right_column{ width: 410px; }
+
+  </style>
+
+  <div class="box-full-middle">
+    <div class="project_description_container">
+      <div class="component">
+        <div class="project_description_container_left left">
+          <%= image_tag "CE_Yoga-Challenge_Logo_Final.png", :class => "block pad_bottom" %>
+        </div>
+        <div class="project_description_container_right left">
+          <span style="font-size:110%;">Impact the DC community through Citizen Effect's Yoga Challenge!</span>
+          <br/><br/>
+          Pledge to fundraise during your challenge, and join the effort to raise<br/>
+          $20,000 to help Becky's Fund address domestic abuse in DC.
+        </div>
+        <div class="clear"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="edit_donate" class="box-full-middle account-info">
+    <div class="left left_column pad_left_large" style="padding-top:30px;">
+      <%= f.label :select_box_amount_in_dollars, "<p class='left pad_right bold donate'>DONATION AMOUNT</p>" %>
+      <%= f.select :select_box_amount_in_dollars, [25].map{|v| [number_to_currency(v), v]} + 
+          [Donation::OTHER], {}, :class => "left" %>
+
+      <span id="other_amount_span" style="display:none;">
+        <%= f.label :other_amount_in_dollars, "<p class='left margin_left bold donate'>$</p>" %>
+        <%= f.text_field :other_amount_in_dollars, :style => "width:50px;margin-top:-2px;margin-left:2px;", 
+            :class => "left" %>
+      </span>
+        
+      <div class="clear"></div>
+        
+      <p style="width:360px;">
+        Citizen Effect is a nonprofit organization. Donations are tax-deductible, but please consult with your tax professional when filing your taxes.
+      </p>
+      <ul id="cc_info">
+        <li>
+          <%= f.label :public_credit_card_type, "Credit Card Type", :class => "left pad_right" %>
+          <%= f.select :public_credit_card_type, Donation::PUBLIC_CREDIT_CARD_TYPES_HASH.keys, {},
+              :class => "credit_card_box left margin_bottom margin_bottom" %>
+        </li>
+        <li>
+          <%= f.label :credit_card_number, "Credit Card Number", :class => "left pad_right" %>
+          <%= f.text_field :credit_card_number, :class => "margin_bottom" %>
+        </li>
+        <li>
+          <%= f.label :expiration_month, "Expiration Date (mm) (yyyy)", :class => "left pad_right" %>
+          <%= f.text_field :expiration_month, :class => "left margin_right margin_bottom", 
+                           :style => "width:35px;"%>
+          <%= f.text_field :expiration_year, :class => "left margin_bottom", :style => "width:50px;" %>
+        </li>
+        <li>
+          <%= f.label :credit_card_cvv, "Security Code", :class => "left pad_right" %>
+          <%= f.text_field :credit_card_cvv, :class => "margin_bottom margin_right", :style => "width:25px" %>
+        </li>
+      </ul>
+
+      <div class="clear"></div>
+
+      <h5 style="margin:0px;">Billing Information</h5>
+      <% unless current_user -%>
+        <p class="already_container">
+          Already have an account? 
+          <%= link_to "Log in", login_path, :class => "blue" %>
+        </p>
+        <div class="or_container">
+          <hr class="or_left" /><p>OR</p><hr class="or_right" /><div class="clear"></div>
+        </div>
+      <% else -%>
+        <br />
+      <% end -%>
+      <div class="donate_form_container">
+        <p class="left pad_right">
+          <%= f.label :first_name %>
+          <%= f.text_field :first_name, :style => "width:172px;", :size => nil %>
+        </p>
+        <p class="left">
+          <%= f.label :last_name %>
+          <%= f.text_field :last_name, :style => "width:172px;", :size => nil %>
+        </p>
+        <div class="clear"></div>
+        <p>
+          <%= f.label :address1, "Address" %>
+          <%= f.text_field :address1, :class => "xlarge" %> <br />
+          <%= f.text_field :address2, :class => "xlarge" %>
+        </p>
+        <p class="left pad_right">
+          <%= f.label :city %>
+          <%= f.text_field :city, :style => "width:172px;", :size => nil %>
+        </p>
+        <p class="left pad_right">
+          <%= f.label :state, "State/Province/Region" %>
+          <%= f.text_field :state, :style => "width:172px;", :size => nil %>
+        </p>
+        <div class="clear"></div>
+        <p class="left pad_right">
+          <%= f.label :country, "Country" %>
+          <%= country_select("donation", "country", ["United States"]) %>
+        </p>
+        <p class="left">
+          <%= f.label :zip, "ZIP/Postal Code" %>
+          <%= f.text_field :zip, :class => "xsmall" %>
+        </p>
+        <div class="clear"></div>
+        <p>
+          <%= f.label :email %>
+          <%= f.text_field :email, :class => "xlarge" %>
+        </p>
+        <p>
+          <%= f.label :phone_number %>
+          <%= f.text_field :phone_number, :class => "xlarge" %>
+        </p>
+        <p>
+          <%= f.label :referred_by, "Were you referred by a studio? If so, which one?" %>
+          <%= f.text_field :referred_by, :class => "xlarge" %>
+        </p>
+        <% unless current_user -%>
+        <p class="left pad_right">
+          <%= f.label :password %>
+          <%= f.password_field :password, :style => "width:172px;", :size => nil %>
+        </p>
+        <p class="left">
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation, :style => "width:172px;", :size => nil %>
+        </p>
+        <div class="clear"></div>
+        <% end %>
+      </div>
+
+      <div class="clear"></div>
+      <%= f.check_box :fundraise_commitment, :class => "margin_right left" %>
+      <%= f.label :fundraise_commitment, 
+          "I understand that joining the Yoga Challenge includes the commitment<br/> to fund-raise a minimum of $250 for the recipient organization", 
+          :class => "left pad_top_sm" %>
+
+      <div class="clear"></div>
+      <%= f.check_box :agree_tos, :class => "margin_right left" %>
+      <%= f.label :agree_tos, 
+          "I agree to the #{link_to 'Terms of Service', '/p/terms-of-use', :target => '_blank'}", 
+          :class => "left pad_top_sm" %>
+
+      <div class="clear"></div>
+	    <div class="center">
+        <%= image_submit_tag "confirm_donate.png", :class => "pad_top confirm_donate", :onclick => "$(this).hide(); $('#donating_now').show();" %>
+        <span id="donating_now" style="display: none;">Donating now...</span>
+      </div>
+    </div>
+
+
+    <div class="right right_column margin_top rule_listing">
+      <h6>How It Works</h6>
+      <ol>
+        <li>
+          <ul>
+            <li>
+              Pledge a fundraising goal of $250 or more to support Becky's Fund.
+            </li>
+          </ul>
+          <ul>
+            <li>
+              Make a $25 donation to join and receive studio discounts and great gifts from our sponsors.
+            </li>
+          </ul>
+          <ul>
+            <li>
+              That $25 goes directly to your project fundraising goal to get you started off on the right foot.
+            </li>
+          </ul>
+          <ul>
+            <li>
+              After signing up our Citizen Philanthropist team will be in contact to walk you through your new dedicated project page on CitizenEffect.org and best practices for reaching your fundraising goal.  We're here to help you along your way to have as big an impact as possible.
+            </li>
+          </ul>
+        </li>
+      </ol>
+
+    </div>
+  
+    <div class="clear"></div>
+  </div>
+ 
+  <div class="box-full-bottom"></div>
+
+</div>
+<% end -%>

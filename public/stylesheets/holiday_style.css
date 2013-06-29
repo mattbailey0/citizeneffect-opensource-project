@@ -1,0 +1,11 @@
+body {
+    background: url("/images/bg_body_holiday.png") repeat-x scroll 0 0 #EEECE9;
+    font: 11px Arial,sans-serif;
+    margin: 0;
+}
+
+#wrapper-outer {
+    background: url("/images/bg_main_holiday.png") no-repeat scroll 0 0 transparent;
+    margin: 0 auto;
+    width: 1206px;
+}

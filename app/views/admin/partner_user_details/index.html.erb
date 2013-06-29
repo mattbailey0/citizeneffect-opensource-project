@@ -1,0 +1,22 @@
+<h1>Listing partner_user_details</h1>
+
+<div class="new-button">
+  <%= link_to '(+) Add User to Partner', new_admin_partner_user_detail_path %>
+</div>
+
+<table cellpadding="0" cellspacing="0" class="index-list">
+  <tr class="index-list-header">
+    <th>Necessary</th>
+    <th colspan="3">Actions</th>
+  </tr>
+
+<% @partner_user_details.each do |partner_user_detail| %>
+  <tr>
+    <td><%=h partner_user_detail.necessary %></td>
+    <td><%= link_to 'Show', [:admin, partner_user_detail] %></td>
+    <td><%= link_to 'Edit', edit_admin_partner_user_detail_path(partner_user_detail) %></td>
+    <td><%= link_to 'Destroy', [:admin, partner_user_detail], :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+

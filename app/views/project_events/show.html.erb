@@ -1,0 +1,232 @@
+<% content_for(:page_title, @project_event.name) %>
+
+<!-- <p> -->
+<!--   <b>picture:</b> -->
+<!--   <%= image_tag @project_event.fundraiser_type.picture.url %> -->
+<!-- </p> -->
+
+
+
+<!-- <div style="margin-top:1em;"> -->
+<!--   <%= link_to 'Edit Fundraiser', [:edit, @project, @project_event] %> | -->
+<!--   <%= link_to "View Fundraisers for <em>#{h(@project.name)}</em>", [@project, :project_events] %> -->
+<!-- </div> -->
+
+
+<div class="breadcrumbs">
+	<%= link_to "&laquo; back to project", @project, :class => "breadcrumbs green" %>
+</div>
+
+<div class="component-header-full nopadtop">
+	<h3><%= header_text(@project_event.project.name_with_location, :length => 75) %></h3>
+</div>
+
+<style type="text/css">
+	.table_normal td {font:normal 12px/18px Arial, Helvetica, sans-serif; color:#224470; padding:3px 0 3px 0}
+	.table_normal .first {font-weight:bold; padding-right:5px; text-align:right}
+	.table_normal .cal {line-height:20px}
+
+</style>
+		<!-- full-width component -->
+		<div class="box-full-middle pad_top">
+			<div style="float:left; width:598px; margin-right:9px; border-right:1px solid #dfdad6">
+				<div class="pad_left pad_bottom">
+          <% if current_user_can_edit_public_project?(@project_event.project) %>
+            <div style="float: right; padding-right: 10px;">
+              <%= link_to "edit event", [:edit, @project, @project_event], :class => "green" %>
+            </div>
+          <% end %>
+					<p class="title_lrg nopad">
+            Event: <%=h @project_event.name %>
+          </p>
+					<p class="text strong nopad">
+            <%=h @project_event.short_description %>
+          </p>
+					<br />
+
+					<p><%= link_to h(@project_event.project.name_with_location), @project_event.project, :class => "big" %></p>
+					<br />
+					<table cellspacing="0" cellpadding="0" border="0" class="table_normal">
+						<tr>
+							<td class="first">Type of fundraiser:</td>
+							<td>
+								<p><%=h @project_event.fundraiser_type.name %></p>
+							</td>
+						</tr>
+		<% if @project_event.public %>
+						<tr>
+						  <td colspan=2><h2>This event is open to public!</h2></td>
+						</tr>
+						<tr>
+							<td class="first">Start Time:</td>
+							<td><%=h @project_event.event_start_time.strftime("%B %e, %Y at %l:%M%p") %></td>
+						</tr>
+						<tr>
+							<td class="first">End Time:</td>
+							<td><%=h @project_event.event_end_time.strftime("%B %e, %Y at %l:%M%p") %></td>
+						</tr>
+
+						<tr>
+							<td></td>
+							<td>
+                <%= render :partial => "ical_export", :locals => {:event => @project_event} -%>
+						</tr>
+
+						<% if !@project_event.long_location.blank? %>
+						<tr>
+							<td class="first">Location:</td>
+							<td valign="middle">
+								<%=h @project_event.address1 %><br />
+								<%= "#{h(@project_event.address2)}<br />" unless @project_event.address2.blank? %>
+								<%=h @project_event.city %>, <%=h @project_event.state %> <%=h @project_event.zip %>
+                <%= link_to "view map", "http://maps.google.com/?q=#{h(@project_event.long_location)}", :class => "green block margin_top", :target => "_blank" %>
+							</td>
+						</tr>
+						<% end %>
+	    <% else %>
+	        <tr>
+						  <td colspan=2><h2>This event has been marked private.  Please contact the project's Citizen Philanthropist if you'd like to attend or learn more.</h2></td>
+				  </tr>
+	<% end %>
+      </table>
+<% if current_user_can_edit_public_project?(@project_event.project) %>
+      <hr><br>
+		  <table cellspacing="0" cellpadding="0" border="0" class="table_normal">
+						<tr class="event_next_step_intro">
+						  <td class="first"></td>
+						  <td valign="middle"><h2>You've created your event ..so what now?</h2>Now it's time to take it to the next level!  Use the tools below to promote your event and connect with your network.</td>
+						</tr>
+            <tr>
+          		<td colspan=2>
+          		  <div class="event_next_step_icon"><%= image_tag("number_large_1.png", :alt => "", :height => "30") %>
+						    </div>
+						    <div class = "event_next_step_text">
+						      PLAN: Read our step-by-step guide to planning your event on Citizen Effect's Citizen Philanthropy Resource Kit.
+						    </div>
+						    <div class = "event_next_step_link">
+						    <%= link_to image_tag("CPKit_WebGraphic_02.png", :alt => "", :height => "33", :target=>"_blank"), "http://resources.citizeneffect.org/resource-kit/have-an-event", :target => "_blank", :class => "pad_bottom block" %>
+						    </div>
+						  </td>
+			      </tr>
+            <tr>
+					    <td colspan=2>
+						    <div class="event_next_step_icon"><%= image_tag("number_large_2.png", :alt => "", :height => "30", :target=>"_blank") %>
+						    </div>
+						    <div class = "event_next_step_text">INVITE: Create an event page on Eventbrite and use it to email your network, collect RSVPs, and even sell tickets.
+						    </div>
+						    <div class = "event_next_step_link">
+						    <%= link_to image_tag("eventbrite_logo.png", :alt => "", :height => "40"), "https://www.eventbrite.com/signup?referrer=%2Fcreate", :target => "_blank", :class => "pad_bottom block" %>
+						    </div>
+						 </td>
+            </tr>
+            <tr>
+						  <td colspan=2>
+						     <div class="event_next_step_icon">
+						        <%= image_tag("number_large_3.png", :alt => "", :height => "30", :target=>"_blank") %>
+						      </div>
+						      <div class = "event_next_step_text">
+						       PUBLICIZE: Read up on how to use social media to promote your event - and your project.
+						      </div>
+                  <div class = "event_next_step_link">
+    						    <%= link_to image_tag("CPKit_WebGraphic_02.png", :alt => "", :height => "33"), "http://resources.citizeneffect.org/resource-kit/spread-the-word", :target => "_blank", :class => "pad_bottom block" %>
+  						    </div>
+						  </td>
+					  </tr>
+					</table>
+<% end %>
+					<br />
+				</div>
+				<div class="bg_ltblue media_wrapper last margin_right">
+					<p class="left">PHOTO ALBUMS:</p>
+
+					<div class="right">
+            <%= link_to("(+) add another album", new_project_media_album_path(@project, :media_album => {
+            :project_event_ids => [@project_event.id]}), :class => "green", :target => "_blank") if current_user_can_edit_public_project? %>
+          </div>
+					<div class="clear"></div>
+
+          <% @project_event.media_albums.with_cover.each do |media_album| %>
+          <div class="project_event_media_album_small">
+					<div class="left">
+            <%= link_to sized_image_tag(media_album.album_cover.photo, :url, :edit_featured_media_thumb, :alt => ""), "#media_album_#{h media_album.id}", :rel => "facebox" %>
+					</div>
+					<div class="media_details_wrapper">
+            <%= link_to h(media_album.title), "#media_album_#{h media_album.id}", :rel => "facebox", :class => "media_title" %>
+						<p class="media_desc">Project photo album</p>
+
+						<div class="pad_top">
+              <%= link_to "view images", "#media_album_#{h media_album.id}", :rel => "facebox" %>
+						</div>
+					</div>
+					<div class="clear"></div>
+          </div>
+          <%= render :partial => "projects/album_lightbox", :object => media_album %>
+          <% end %>
+
+				</div>
+			</div>
+			<div class="show_page_right_col pad_bottom" style="float:left; width:312px; margin-left:9px">
+				<div class="image">
+          <%= image_tag @project_event.fundraiser_type.picture.url, :width => "312px" unless @project_event.fundraiser_type.picture.blank? %>
+          <div class="clear"></div>
+				</div>
+                <div class="rsvp pad_top blue bold">
+                    	<div class="left">
+
+
+<% if @event_attendance_response %>
+                        	YOUR RSVP<br />
+<!--                         	(login required)<br /> -->
+
+  <% form_for [@project_event, @event_attendance_response] do |form| %>
+    <% EventAttendanceResponse::VALID_CUSTOMER_RESPONSES.each do |state| %>
+      <%= form.radio_button :response, state %>
+      <%= form.label "response_#{state}", h(EventAttendanceResponse::RESPONSE_TEXT[state]), :class => "inline" %>
+      <br/>
+    <% end %>
+    <%= form.submit "Submit" %>
+  <% end %>
+<% end %>
+
+
+                        </div>
+<% if logged_in? && @project_event.project.cp == current_user %>
+  <%= link_to image_tag("invite_more.png"), [:new, @project_event, :project_event_invitation_email], :class => "right invite_more_guests" %>
+
+                        <div class="clear"></div>
+                        <div class="pad_top pad_bottom">
+
+                        	<%=h @project_event.event_attendance_responses.yes.size %> Confirmed <span class="normal">Guests</span>,
+                          <%=h @project_event.event_attendance_responses.maybe.size %> People Maybe <span class="normal">Attending</span><br /><br />
+                            <%= link_to "VIEW GUEST LIST &raquo;", "#", :class => "green", :onclick => "$('.project_event_responses_box').show(); return false;" %>
+                        </div>
+                        <div class="project_event_responses_box pad_top light_blue_bg normal smaller_font center_text" style="display: none;">
+                          <% EventAttendanceResponse::VALID_CUSTOMER_RESPONSES.each_with_index do |resp, index| %>
+                          <% unless index == 0 %> | <% end %>
+                          <%= link_to "#{h EventAttendanceResponse::RESPONSE_TEXT[resp]} (#{h @project_event.event_attendance_responses.yes.size})", "#", :class => "blue #{ index == 0 ? "active" : ""}",
+                                      :onclick => "$('.response_group').hide();
+                                                   $('#response_#{h resp}').show();
+                                                   $('.project_event_responses_box a.active').removeClass('active');
+                                                   $(this).addClass('active');
+                                                   return false;" %>
+                          <% end %>
+
+                            <hr />
+                            <% @project_event.event_attendance_responses.valid_customer_responses.group_by(&:response).each_with_index do |state_and_rsvps, index| %>
+                              <ul id="response_<%=h state_and_rsvps[0] %>" class="response_group pad_top pad_left pad_bottom left_text" style="<%=h index == 0 ? "" : "display: none;" %>">
+                                <% state_and_rsvps[1].each do |rsvp| %>
+                            	    <li>
+                                    <%=h (rsvp.user.andand.name || rsvp.email) %>
+                                  </li>
+                                <% end %>
+                              </ul>
+                            <% end %>
+
+                        </div>
+<% end %>
+                </div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="box-full-bottom"></div>
+

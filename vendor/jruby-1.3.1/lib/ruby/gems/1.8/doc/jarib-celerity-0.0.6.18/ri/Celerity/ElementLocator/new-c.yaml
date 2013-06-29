@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+params: (container, element_class)
+is_singleton: true
+block_params: 
+name: new
+comment: 
+full_name: Celerity::ElementLocator::new
+visibility: public
+aliases: []
+

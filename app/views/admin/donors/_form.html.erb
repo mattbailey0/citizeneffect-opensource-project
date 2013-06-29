@@ -1,0 +1,36 @@
+  <tr>
+    <td class="form-label"><%= f.label :user_id %></td>
+    <td><%= f.collection_select :user_id, User.all, :id, :name_and_email, :include_blank => true %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :name %></td>
+    <td><%= f.text_field :name %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :address1 %></td>
+    <td><%= f.text_field :address1 %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :address2 %></td>
+    <td><%= f.text_field :address2 %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :city %></td>
+    <td><%= f.text_field :city %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :state %></td>
+    <td><%= f.text_field :state %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :zip %></td>
+    <td><%= f.text_field :zip %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :email %></td>
+    <td><%= f.text_field :email %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :phone_number %></td>
+    <td><%= f.text_field :phone_number %></td>
+  </tr>

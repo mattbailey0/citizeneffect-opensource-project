@@ -1,0 +1,45 @@
+#account-information.component-header-full.nopadtop
+  %h3 ACCOUNT INFORMATION
+
+.box-full-middle.account-info
+  .border_right.left
+    - form_for @user do |form|
+     
+      = form.label :first_name, "FIRST NAME:", :class => "inlined first-name"
+      = form.label :last_name, "LAST NAME:", :class => "inlined"
+      %br
+      = form.text_field :first_name, :class => "pad_bottom small"
+      = form.text_field :last_name, :class => "pad_bottom small"
+     
+      = form.label :zip, "ZIPCODE:"
+      = form.text_field :zip, :class => "pad_bottom small"
+     
+      = form.label :email, "E-MAIL:"
+      = form.text_field :email, :class => "pad_bottom large"
+      
+      = form.label :password, "NEW PASSWORD:"
+      = form.password_field :password, :class => "pad_bottom large"
+     
+      = form.label :password_confirmation, "CONFIRM NEW PASSWORD:"
+      = form.password_field :password_confirmation, :class => "pad_bottom large"
+     
+      = image_submit_tag "btn_save_changes.png", :class => "pad_top block update_account_info", :name => "commit", :value => "account-information"
+
+  .left.social_network_container.pad_left
+    %label{:style => "padding-top:5px;"}= "SOCIAL NETWORK CONNECTIONS"
+    %ul.social_network_list
+      %li
+        = link_to image_tag("facebook_connect.png", :class => "social_network_icon"), [:link_to_facebook, @user]
+        - if @user.can_push_facebook_status?
+          = image_tag "connected.png", :class => "right pad_left"
+      %li
+        = link_to image_tag("sign_in_twitter.png", :class => "social_network_icon"), [:link_to_twitter, @user]
+        - if @user.can_push_twitter_status?
+          = image_tag "connected.png", :class => "right pad_left"
+      %li
+        = link_to image_tag("myspace_id.png", :class => "social_network_icon"), [:link_to_myspace, @user]
+        - if @user.can_push_myspace_status?
+          = image_tag "connected.png", :class => "right pad_left"
+  .clear
+
+.box-full-bottom

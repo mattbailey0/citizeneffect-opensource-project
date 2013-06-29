@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+params: (bool)
+is_singleton: false
+block_params: 
+name: javascript_enabled=
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Turn on/off JavaScript execution
+- !ruby/struct:SM::Flow::P 
+  body: '@param [Bool]'
+full_name: Celerity::Browser#javascript_enabled=
+visibility: public
+aliases: []
+

@@ -1,0 +1,23 @@
+%table
+  %tr{:style => "font-weight:bold;"}
+    %td Mailing List Name
+    %td Email
+    %td Zip
+    %td First Name
+    %td Last Name
+    %td Tracking Code
+    %td Sign Up Date
+    %td CE Profile Link
+
+  - @mailing_lists.each do |mailing_list|
+    - next if mailing_list.project_id && mailing_list.project.nil?
+    - mailing_list.subscribers.each do |subscriber|
+      %tr
+        %td= h mailing_list.name
+        %td= h subscriber.email
+        %td= h subscriber.zip
+        %td= h subscriber.first_name
+        %td= h subscriber.last_name
+        %td= h subscriber.tracking_code
+        %td= h subscriber.created_at.to_date
+        %td= h (subscriber.user.nil? ? '' : ONEWELL_HOST + url_for(subscriber.user))

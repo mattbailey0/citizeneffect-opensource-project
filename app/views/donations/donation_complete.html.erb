@@ -1,0 +1,41 @@
+<% content_for(:page_title, "Thanks For Donating") %>
+
+<div class="breadcrumbs">
+  <% if @donation.project -%>
+    <%= link_to "&laquo; back to project page", @donation.project, :class => "breadcrumbs green" %>
+  <% else -%>
+    <%= link_to "&laquo; home", home_index_path, :class => "breadcrumbs green" %>
+  <% end -%>
+</div>
+
+		<!-- main body copy -->
+		<div id="wrapper-copy">
+			<div class="component-header-full nopadtop">
+				<h3>
+          <% if @donation.project %>
+            THANK YOU FOR YOUR DONATION!
+          <% else %>
+            DONATION TO CITIZEN EFFECT
+          <% end %>
+        </h3>
+			</div>
+			<!-- full-width component -->
+			<div class="box-full-middle social">
+
+				<div class="donation-fin">
+          <% if @donation.project %>
+            <%= render :partial => "thanks_project" %>
+          <% else %>
+            <%= render :partial => "thanks_ce" %>
+          <% end %>
+	  			<div class="donation-arrow"><%= image_tag "large_arrow.png", :alt => "", :width => "35", :height => "250" -%></div>
+
+          <%= render :partial => "signup" %>
+  				<div class="clear"></div>
+        </div>
+      </div>
+		  <div class="box-full-bottom"></div>
+
+      <%= render :partial => "other_projects_you_might_like" unless @donation.project %>
+
+    </div>

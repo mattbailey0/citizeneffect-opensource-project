@@ -1,0 +1,127 @@
+<% content_for(:page_title, "#{@user.display_name}") %>
+
+    <% if !@user.is_a_cp? %>
+
+    <!-- breadcrumbs -->
+		<div class="breadcrumbs">
+		</div>
+
+    <% else %>
+
+		<!-- buttons -->
+		<div class="filter">
+			<div class="left">Filter <%=h @user.first_name %>'s:</div>
+
+			<div class="buttons"><%= link_to "", [:show_projects, @user], :id => "projects", :class => show_projects? ?
+			"active" : "" %><%= link_to "", [:show_donations, @user], :id => "donations", :class => show_projects? ? "" : "active" %></div>
+			<div class="right">&nbsp;</div>
+			<div class="clear"></div>
+		</div>
+
+    <% end %>
+		
+		<!-- main body copy -->
+		<div id="wrapper-copy" class="user_show">
+		
+			<!-- left column -->
+			<div class="twocol-left">
+				
+				<!-- member profile -->
+				<div class="component-wrapper">
+					<div class="component-header"><h3>MEMBER PROFILE</h3></div>
+					<div class="component">
+						<div class="profile">
+							<ul class='<%= @user == current_user ? "main_with_space_for_edit_link" : "main" -%>'>
+								<li class="pic">
+                  <%= image_tag @user.picture_url_thumb(:profile), :alt => "", :width => "113", :height => "112" %>
+                  <%= link_to "Edit My Picture", edit_user_path(@user, :anchor => "picture") if @user == current_user -%>
+                </li>
+								<li class="summary" style="width:200px;">
+									<p class="name"><%=h @user.display_name %></p>
+									<p class="location"><%=h @user.display_location %></p>
+                  <% if !show_projects? -%>
+									<p class="stats">Total Donated: <%=h format_dollars(@user.donation_total_in_usd) %></p>
+									<p class="stats">Lives Impacted: <%=h number_with_delimiter(@user.lives_impacted_as_donor) %></p>
+                  <p class="stats"># Projects Donated: <%=h @user.projects_donated_to.size %></p>
+                  <% else -%>
+									<p class="stats_small">Donors Recruited: <%=h @user.users_recruited_count %></p>
+									<p class="stats_small">Total Raised: <%=h format_dollars(@user.money_raised_in_usd) %></p>
+									<p class="stats_small">Lives Impacted (as a CP): <%=h number_with_delimiter(@user.lives_impacted_as_cp) %></p>
+									<p class="stats_small">Projects in Progress: <%=h @user.projects_in_progress.size %></p>
+									<p class="stats_small"># Projects Completed: <%=h @user.projects_completed.size %></p>
+                  <% end -%>
+									
+								</li>
+							  <li class="contact" style="width:260px">
+                  <p class="send_message"><%= link_to image_tag("btn_send_a_message.png", :alt => "", :width => "162", :height => "33"), message_user_path(@user) %></p>
+                  <%= render :partial => "follow" %>
+							  </li>
+								<li class="clear"></li>
+							</ul>
+							<div class="about_me">
+								<strong>ABOUT ME</strong><br />
+                <%= auto_link(simple_format(h(@user.about_me))) %>
+                <%= link_to "Edit About Me", edit_user_path(@user, :anchor => "about-me") if @user == current_user -%>
+							</div>
+              <%= render :partial => "achievements" %>
+						</div>
+					</div>
+				</div>
+				<div class="component-bottom"></div>
+				
+        <% unless show_projects? %>
+				<%= render :partial => "projects_donated_to" %>
+        <% end %>
+
+			</div>
+			
+			<!-- right column -->
+			<div class="twocol-right">
+
+        <% if(@user == current_user && @user.show_todo_list?) %>
+          <!-- data grid -->
+	        <div class="box-rightcol-inner-header">
+					  <div class="box-rightcol-header green"><h3>MY PROFILE TO DO LIST:</h3></div>
+				  </div>
+
+				  <ul id="todo-list" class="chart-wrapper">
+            <% alt_class = false %>
+            <% User::PROFILE_TODO_LIST.each do |todo_item| %>
+              <% if @user.send(todo_item[:attribute]) -%>
+					      <li <%= alt_class ? "class='alt'" : "" %>>
+                  <% alt_class = !alt_class %>
+                  <%= link_to todo_item[:text] ? todo_item[:text] : 
+                        image_tag(todo_item[:image], :class => "social_network_icon"), 
+                      todo_item[:link].call(@user, self), :class => "block left dark-green" %>
+                  <span class="right">
+                    <%= link_to "remove", user_path(@user, :commit => "todo-item", 
+                        :user => {todo_item[:attribute] => 0}), :method => :put, :class => "white" %>
+                  </span>
+                  <div class="clear"></div>
+                </li>
+              <% end -%>
+            <% end -%>
+          </ul>
+
+        <% end -%>
+
+        <% if @user == current_user && @user.can_push_any_status? -%>
+          <%= render :partial => "small_status_box", :locals => { :user => @user } %>
+        <% end %> 
+			
+        <%= render :partial => "news_items" %>
+				
+        <% unless show_projects? %>
+        <%= render :partial => "cps_supported" %>
+        <% end %>
+			</div>
+			<div class="clear"></div>
+		</div>
+		
+    <% if show_projects? %>
+    <%= render :partial => "projects_in_progress" %>
+    <%= render :partial => "projects_completed" %>
+    <% else %>
+    <%= render :partial => "events" %>
+    <%= render :partial => "mailing_lists" %>
+    <% end %>

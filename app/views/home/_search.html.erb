@@ -1,0 +1,33 @@
+<div class="component-wrapper">
+	<div class="component-header"><h3>SEARCH PROJECTS</h3></div>
+	<div class="component">
+		<p>
+		  Find the project you are looking for by searching by project name, Citizen Philanthropist name, or use the advanced search to find your perfect project.
+    </p>
+		
+		<% form_tag search_path, :method => :get do %>
+			<div class="left"><img src="/images/label_search_for.png" width="108" height="26" alt="Search For" /></div>
+			<div class="left">
+        <a href="#info" rel="facebox" id="blueBox" class="selectBoxBlue">Advanced Search</a>
+			</div>
+			<div class="right pad_bottom">
+				<select name="with[project_status_id][]" id="blueBox2">
+          <option value="All">All Projects</option>
+          <option value="All">All Projects</option>
+		  	  <option value="<%= ProjectStatus.awaiting_cp.id %>">Projects Needing A CP</option>
+	  		  <option value="<%= ProjectStatus.fundraising.id %>">Projects Needing Donations</option>
+  			  <option value="Completed">Completed Projects</option>
+				  <option value="Users">Person's Name</option>
+				</select>
+			</div>
+			<div class="clear"></div>
+			<div class="left">
+        <img src="/images/label_type_here_to_search.png" width="185" height="26" alt="Type here to search" />
+      </div>
+			<div class="left"><%= text_field_tag "q", params[:q], :id => "searchbox_projects" %></div>
+			<div class="right"><%= image_submit_tag "btn_search_blue.png" %></div>
+			<div class="clear"></div>
+		<% end -%>
+	</div>
+</div>
+<div class="component-bottom"></div>

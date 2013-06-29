@@ -1,0 +1,4 @@
+%p{ :class => "status"}
+  %b
+    Status
+  %strong{ :class => "#{cp_application.approval_status.andand.dasherize.andand.downcase}" }= "CP Application is #{cp_application.approval_status}"

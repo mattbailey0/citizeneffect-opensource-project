@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+params: (event_name)
+is_singleton: false
+block_params: 
+name: fire_event
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Fires the given event for this element
+full_name: Celerity::Element#fire_event
+visibility: public
+aliases: []
+

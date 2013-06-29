@@ -1,0 +1,12 @@
+#about-me.component-header-full.nopadtop
+  %h3 ABOUT ME
+/ full-width component
+.box-full-middle.account-info
+  - form_for @user do |form|
+
+    = form.label :about_me, "ABOUT ME:"  
+    = form.text_area :about_me, :class => "pad_bottom small"
+
+    = image_submit_tag "btn_save_changes.png", :class => "pad_top block update_about_me", :name => "commit", :value => "about-me"
+
+.box-full-bottom

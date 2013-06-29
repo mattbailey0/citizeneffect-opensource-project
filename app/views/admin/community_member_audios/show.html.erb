@@ -1,0 +1,20 @@
+<h1>Viewing Community Member Audio</h1>
+
+<p>
+  <b>Community member profile:</b>
+  <%=h @community_member_audio.community_member_profile.name %>
+</p>
+
+<p>
+  <b>Audio:</b>
+  <%= link_to h(@community_member_audio.audio.andand.original_filename), @community_member_audio.audio.andand.url, :target => "_blank" %>
+</p>
+
+<p>
+  <b>Caption:</b>
+  <%=h @community_member_audio.caption %>
+</p>
+
+
+<%= link_to 'Edit', [:edit, :admin, @community_member_profile, @community_member_audio] %> |
+<%= link_to 'Back', [:admin, @community_member_profile, :community_member_audios] %>

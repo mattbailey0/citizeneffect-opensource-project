@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  use_on_homepage: false
+  automatically_calculated: true
+  total_lives_impacted: 1
+  total_unique_donors: 1
+  total_citizen_philanthropists: 1
+  total_dollars_donated: 1
+  total_completed_projects: 1
+  total_projects_in_progress: 1
+
+two:
+  use_on_homepage: true
+  automatically_calculated: false
+  total_lives_impacted: 1
+  total_unique_donors: 1
+  total_citizen_philanthropists: 1
+  total_dollars_donated: 1
+  total_completed_projects: 1
+  total_projects_in_progress: 1

@@ -1,0 +1,13 @@
+--- !ruby/object:RI::MethodDescription 
+params: (source)
+is_singleton: false
+block_params: 
+name: execute_script
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Execute the given JavaScript on the current page. @return [Object] The resulting
+    Object
+full_name: Celerity::Browser#execute_script
+visibility: public
+aliases: []
+

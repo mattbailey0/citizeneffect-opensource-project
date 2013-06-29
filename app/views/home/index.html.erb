@@ -1,0 +1,35 @@
+<% cache(:key => "home_page_index_#{Time.now.to_i/22.minutes.to_i}_#{current_user.andand.is_a_citizen_effect_admin?}") do -%>
+
+<div class="breadcrumbs">
+
+</div>
+
+<div class="clear"></div>
+
+<!-- slideshow -->
+<div id="player">
+  <%= render :partial => "features" %>
+  <%= render :partial => "partner" %>
+  <div class="clear"></div>
+</div>
+
+<!-- main body copy -->
+<div id="wrapper-copy">
+	<!-- left column -->
+	<div class="twocol-left">
+    <% #= render :partial => "search" %>
+    <%= render :partial => "blog" %>
+  </div>
+
+	<!-- right column -->
+	<div class="twocol-right">
+    <%#= render :partial => "shared/social_network_icons" %>
+    <%#= render :partial => "top_cps" %>
+    <%#= render :partial => "top_networkers" %>
+    <%= render :partial => "news_items" %>
+  </div>
+	<div class="clear"></div>
+</div>
+
+<% end -%>
+

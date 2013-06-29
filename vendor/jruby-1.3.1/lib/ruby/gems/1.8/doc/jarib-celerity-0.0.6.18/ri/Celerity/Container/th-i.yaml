@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+params: (*args)
+is_singleton: false
+block_params: 
+name: th
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Watir's cells() won't find &lt;th&gt; elements. This is a workaround.
+- !ruby/struct:SM::Flow::P 
+  body: '@return [Celerity::Th]'
+full_name: Celerity::Container#th
+visibility: public
+aliases: []
+

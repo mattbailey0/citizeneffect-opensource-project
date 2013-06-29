@@ -1,0 +1,15 @@
+--- !ruby/object:RI::MethodDescription 
+params: (name, &blk) {|| ...}
+is_singleton: false
+block_params: ""
+name: debug_web_connection
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Start or stop HtmlUnit's DebuggingWebConnection. (Celerity only) The output \
+    will go to /tmp/\xc2\xabname\xc2\xbb"
+- !ruby/struct:SM::Flow::P 
+  body: '@param [String] name directory name @param [block] blk block to execute'
+full_name: Celerity::Browser#debug_web_connection
+visibility: public
+aliases: []
+

@@ -1,0 +1,75 @@
+<div class="pad_full about_box_content" id="about_box_partners"  style="display:none;">
+  <div class="bg_ltblue margin_right margin_bottom margin_top margin_left">
+    <h2 class="press">OUR FIELD PARTNERS</h2>
+  </div>
+  <p>Simply put, our field partners make our work possible. All of our partners unique—they’re all over the world, in different countries and on different continents.  Some have more than a million members, and others are much smaller.  But they all have one thing in common: they know what’s needed in their communities and how to make it happen. Our field partners have worked in their local communities for many years. They use local labor, from construction workers to engineers, in their projects, which makes them sustainable. And most of all, they love the experience that Citizen Effect gives them: the opportunity to work with you, our Citizen Philanthropists, and connect to a community across the world.  All of our partners undergo a rigorous screening process, so we only work with the very best.
+  </p>
+</div>
+
+<!-- can't be invisible to start because of sifr -->
+<div class="about_box_content" id="about_box_partners_extra" style="position:fixed;left:-100000px;top:-100000px">
+  <div>
+		<div class="pad_full">
+		  <div class="pad_about_map">
+  		  <div id="map" class="block" style="width:500px;height:500px;"></div>
+        <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=<%=h Geokit::Geocoders::google %>" type="text/javascript"></script>
+        <script type="text/javascript">
+            function showMarker(marker){
+             //marker.openInfoWindowHtml(marker.InfoWindowHtml);
+              GEvent.trigger(marker,'click');
+            }
+
+            if (GBrowserIsCompatible()) {
+              var map = new GMap2(document.getElementById("map"));
+              map.setMapType(G_HYBRID_MAP);
+              map.setCenter(new GLatLng(0,0), 1);
+              map.addControl(new GSmallMapControl());
+              map.addControl(new GMapTypeControl());
+              <% Partner.all.each do |p| %>
+                <% if p.id != 18 && p.projects.count > 0 && p.lat.present? && p.lng.present? %>  //18 => Citizen Effect
+                  ll_<%= p.id %> = new GLatLng(<%= p.lat %>,<%= p.lng %>);
+                  marker_<%= p.id %> = new GMarker(ll_<%= p.id %>);
+                  marker_icon = "";
+                  <% if p.logo.present? %>
+                    marker_icon = "<img src='" + "<%= p.logo_url %>" + "' height='25px'/>";
+                  <% end %>
+                  marker_<%= p.id %>.bindInfoWindowHtml(marker_icon + '<div><strong><%= p.full_name %></strong><br/><a href="/search?q=<%= p.full_name %>">Browse Projects for this Partner</a><% if p.url.present? %><br/>More info at: <a href="<%= p.url %>"><%= p.url %></a><% end %></div>');
+                  map.addOverlay(marker_<%= p.id %>);
+                <% end %>
+              <% end %>
+            }
+        </script>
+      </div>
+      <div class="pad_about_logos">
+        <% Partner.all.each do |p|  %>
+          <% if p.id != 18 && p.projects.count > 0 && p.logo.present? %>
+            <% if p.lat.present? && p.lng.present?  %>
+              <a href="javascript:showMarker(marker_<%= p.id %>);">
+                <div class="about_partner_logo_wrap" ><%= image_tag p.logo_url, :height=>"50", :alt=>p.full_name %>
+                </div>
+              </a>
+            <% else %>
+                <div class="about_partner_logo_wrap" ><%= image_tag p.logo_url, :height=>"50", :alt=>p.full_name %>
+                </div>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+	    <div class="pad_left pad_top" style="clear:left;">
+        <div class="bg_ltblue margin_right margin_bottom margin_top">
+          <h2 class="press">WHY DO WE WORK WITH PARTNERS?</h2>
+        </div>
+      	<p>
+      	  There are over 1 billion people in the world today living in poverty, and it’s impossible to help them all.  But with the help of our partners, we can start to. Our partners link us to communities in need. They’re respected and they have a huge presence in the areas where the work. They aren’t imported—they’re local organizations with deep roots.  They understand local communities and what they need, and they have contacts and relationships within the region.  Because of them, Citizen Effect knows exactly what projects are needed where, and what’s needed most.  Through their updates, we know exactly how our projects are impacting communities- like what kinds of toys children are playing with in the new childcare center and how much money their mothers can now make.
+      	  <br/>&nbsp;
+      	</p>
+        <div class="bg_ltblue margin_right margin_bottom margin_top">
+          <h2 class="press">WHY DO OUR PARTNERS WORK WITH US?</h2>
+        </div>
+  	    <p>Our partners work with us because we have acces s to a very special resource—you. With the help of Citizen Effect, Citizen Philanthropists have the tools to mobilize their entire community’s to support a project.  CP’s also make Citizen Effect “the gift that keeps on giving”-  Many CP’s find the experience so rewarding that they sign on for another project.  Also, our partner organizations receive 100% of funds raised by CP’s- Citizen Effect doesn’t take a cent.  Most importantly, though, organizations choose to work with Citizen Effect because of the personal connection Citizen Effect forges between a partner community and a community in need. Through Citizen Effect, CP’s and their partner communities can send pictures, videos and emails back and forth- some CP’s even visit their projects. You can see this need for a personal connection in the expressions of CP’s opening letters from their partner communities and on the faces of children watching footage of the event that funded their new childcare center.  Organizations partner with Citizen Effect because of the experience Citizen Effect provides.  While projects themselves may be finished within months, the bonds created in the process last indefinitely.
+  	    </p>
+	    </div>
+    </div>
+  </div>
+</div>
+

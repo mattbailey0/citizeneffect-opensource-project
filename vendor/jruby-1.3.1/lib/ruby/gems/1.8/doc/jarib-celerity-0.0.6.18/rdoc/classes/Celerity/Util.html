@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: Celerity::Util</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">Celerity::Util</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/lib/celerity/util_rb.html">
+                lib/celerity/util.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000102">content_type_for</a>&nbsp;&nbsp;
+      <a href="#M000101">htmlunit2celerity</a>&nbsp;&nbsp;
+      <a href="#M000104">logger_for</a>&nbsp;&nbsp;
+      <a href="#M000103">normalize_text</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">HtmlUnit2CelerityElement</td>
+          <td>=</td>
+          <td class="context-item-value">{       HtmlUnit::Html::HtmlAnchor                =&gt; Celerity::Link,       HtmlUnit::Html::HtmlArea                  =&gt; Celerity::Area,       HtmlUnit::Html::HtmlButton                =&gt; Celerity::Button,       HtmlUnit::Html::HtmlSubmitInput           =&gt; Celerity::Button,       HtmlUnit::Html::HtmlResetInput            =&gt; Celerity::Button,       HtmlUnit::Html::HtmlImageInput            =&gt; Celerity::Button,       HtmlUnit::Html::HtmlButtonInput           =&gt; Celerity::Button,       HtmlUnit::Html::HtmlCaption               =&gt; Celerity::Button, # ?       HtmlUnit::Html::HtmlCheckBoxInput         =&gt; Celerity::CheckBox,       HtmlUnit::Html::HtmlDefinitionDescription =&gt; Celerity::Dd,       HtmlUnit::Html::HtmlDefinitionList        =&gt; Celerity::Dl,       HtmlUnit::Html::HtmlDefinitionTerm        =&gt; Celerity::Dt,       HtmlUnit::Html::HtmlDivision              =&gt; Celerity::Div,       HtmlUnit::Html::HtmlFileInput             =&gt; Celerity::FileField,       HtmlUnit::Html::HtmlForm                  =&gt; Celerity::Form,       HtmlUnit::Html::HtmlFrame                 =&gt; Celerity::Frame,       HtmlUnit::Html::HtmlHeading1              =&gt; Celerity::H1,       HtmlUnit::Html::HtmlHeading2              =&gt; Celerity::H2,       HtmlUnit::Html::HtmlHeading3              =&gt; Celerity::H3,       HtmlUnit::Html::HtmlHeading4              =&gt; Celerity::H4,       HtmlUnit::Html::HtmlHeading5              =&gt; Celerity::H5,       HtmlUnit::Html::HtmlHeading6              =&gt; Celerity::H6,       HtmlUnit::Html::HtmlHiddenInput           =&gt; Celerity::Hidden,       HtmlUnit::Html::HtmlImage                 =&gt; Celerity::Image,       HtmlUnit::Html::HtmlLabel                 =&gt; Celerity::Label,       HtmlUnit::Html::HtmlListItem              =&gt; Celerity::Li,       HtmlUnit::Html::HtmlMap                   =&gt; Celerity::Map,       HtmlUnit::Html::HtmlOption                =&gt; Celerity::Option,       HtmlUnit::Html::HtmlOrderedList           =&gt; Celerity::Ol,       HtmlUnit::Html::HtmlParagraph             =&gt; Celerity::P,       HtmlUnit::Html::HtmlPasswordInput         =&gt; Celerity::TextField,       HtmlUnit::Html::HtmlPreformattedText      =&gt; Celerity::Pre,       HtmlUnit::Html::HtmlRadioButtonInput      =&gt; Celerity::Radio,       HtmlUnit::Html::HtmlSelect                =&gt; Celerity::SelectList,       HtmlUnit::Html::HtmlSpan                  =&gt; Celerity::Span,       HtmlUnit::Html::HtmlTable                 =&gt; Celerity::Table,       HtmlUnit::Html::HtmlTableBody             =&gt; Celerity::TableBody,       HtmlUnit::Html::HtmlTableCell             =&gt; Celerity::TableCell,       HtmlUnit::Html::HtmlTableFooter           =&gt; Celerity::TableFooter,       HtmlUnit::Html::HtmlTableHeader           =&gt; Celerity::TableHeader,       HtmlUnit::Html::HtmlTableRow              =&gt; Celerity::TableRow,       HtmlUnit::Html::HtmlTextArea              =&gt; Celerity::TextField,       HtmlUnit::Html::HtmlTextInput             =&gt; Celerity::TextField,       HtmlUnit::Html::HtmlUnorderedList         =&gt; Celerity::Ul</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">ContentTypes</td>
+          <td>=</td>
+          <td class="context-item-value">{       &quot;.bmp&quot; =&gt; &quot;image/x-ms-bmp&quot;,       &quot;.doc&quot; =&gt; &quot;application/msword&quot;,       &quot;.odg&quot; =&gt; &quot;application/vnd.oasis.opendocument.graphics&quot;,       &quot;.odp&quot; =&gt; &quot;application/vnd.oasis.opendocument.presentation&quot;,       &quot;.ods&quot; =&gt; &quot;application/vnd.oasis.opendocument.spreadsheet&quot;,       &quot;.odt&quot; =&gt; &quot;application/vnd.oasis.opendocument.text&quot;,       &quot;.ppt&quot; =&gt; &quot;application/vnd.ms-powerpoint&quot;,       &quot;.xls&quot; =&gt; &quot;application/vnd.ms-excel&quot;,     }</td>
+          <td width="3em">&nbsp;</td>
+          <td class="context-item-desc">
+<a href="../HtmlUnit.html">HtmlUnit</a> will recognize most common file
+types, but custom ones can be added here. Used for <a
+href="FileField.html">FileField</a> uploads.
+
+</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000102" class="method-detail">
+        <a name="M000102"></a>
+
+        <div class="method-heading">
+          <a href="Util.src/M000102.html" target="Code" class="method-signature"
+            onclick="popupCode('Util.src/M000102.html');return false;">
+          <span class="method-name">content_type_for</span><span class="method-args">(path)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000101" class="method-detail">
+        <a name="M000101"></a>
+
+        <div class="method-heading">
+          <a href="Util.src/M000101.html" target="Code" class="method-signature"
+            onclick="popupCode('Util.src/M000101.html');return false;">
+          <span class="method-name">htmlunit2celerity</span><span class="method-args">(klass)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000104" class="method-detail">
+        <a name="M000104"></a>
+
+        <div class="method-heading">
+          <a href="Util.src/M000104.html" target="Code" class="method-signature"
+            onclick="popupCode('Util.src/M000104.html');return false;">
+          <span class="method-name">logger_for</span><span class="method-args">(package_string)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000103" class="method-detail">
+        <a name="M000103"></a>
+
+        <div class="method-heading">
+          <a href="Util.src/M000103.html" target="Code" class="method-signature"
+            onclick="popupCode('Util.src/M000103.html');return false;">
+          <span class="method-name">normalize_text</span><span class="method-args">(string)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<h1>Log a Refund</h1>
+
+<% form_for([:admin, @donation, @refund].compact) do |f| %>
+  <%= f.error_messages %>
+
+<table border="0" cellspacing="0" cellpadding="0" class="form-table">
+	<% if @project %>
+	<tr>
+			<td class="form-label">Project:</td> 
+			<td><%=h @project.name %></td>
+	</tr>		
+	<% end %>
+	<% if @donation %>
+	<tr>
+		<td class="form-label">Donor</td>
+		<td><%= @donation.name %></td>
+	</tr>
+	<tr>
+		<td class="form-label">Gross Donation Amount</td>
+		<td><%= number_to_currency(@donation.amount_in_dollars) %></td>
+	</tr>
+	<tr>
+		<td class="form-label">Tip Percentage</td>
+		<td><%= number_to_percentage(@donation.tip_percentage, :precision => 0) %></td>
+	</tr>
+	<tr>
+		<td class="form-label">Amount Charged (incl. tip, fees)</td>
+		<td><%= number_to_currency(@donation.actual_amount_in_dollars) %></td> 			
+	</tr>
+	<tr>
+		<td class="form-label">Total Refunded Amount</td>
+		<td>(<%= number_to_currency(@donation.refunded_amount_in_dollars) %>)</td>
+	</tr>
+	<tr>
+		<td class="form-label"><b>Net Amount Charged (incl. refunds, tip, fees)</b></td>
+		<td><b><%= number_to_currency(@donation.net_actual_amount_in_dollars) %> </b> (maximum refund - net loss for Citizen Effect)</td>
+	</tr>
+	<tr>
+		<td class="form-label"><b>Credit Card Fee</b></td>
+		<td>(<%= number_to_currency(@donation.fee_amount_in_dollars) %>) (unrecoverable expense out of net amount charged)</td>
+	</tr>
+	
+	<tr>
+		<td class="form-label"><b>Net Charge Less Fee</b></td>
+		<td><b><%= number_to_currency(@donation.net_actual_amount_in_dollars - @donation.fee_amount_in_dollars) %></b></td>
+	</tr>
+	<% end %>
+	
+  <%= render :partial => "form", :locals => { :f => f } %>
+
+  <tr>
+    <td class="form-submit" colspan="2"><%= f.submit 'Create' %></td>
+  </tr>
+</table>
+<% end %>
+
+<%= link_to 'Back', admin_donations_path(:project_id => @project.andand.id) %>

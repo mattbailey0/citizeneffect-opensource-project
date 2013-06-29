@@ -1,0 +1,176 @@
+%h1
+  Fundraising Management Dashboard
+
+.xls_link
+  = link_to "Download All As Excel Spreadsheet", url_for({:format => :xls}.merge(params))
+
+- form_tag request.path, :method => 'get' do
+  = text_field_tag :search, params[:search]
+  = submit_tag "Search", :name=>nil
+
+%div= will_paginate(@active_projects_paginated)
+
+%table.index-list.sortable{:cellpadding => "0", :cellspacing => "0" }
+  %thead
+    %tr.index-list-header
+      %th
+        .sort-icon
+        CP
+      %th
+        .sort-icon
+        CP Phone
+      %th
+        .sort-icon
+        Email
+      %th
+        .sort-icon
+        Campaign
+      %th
+        .sort-icon
+        Partner
+      %th
+        .sort-icon
+        Project
+      %th
+        .sort-icon
+        Weeks Active
+      %th
+        .sort-icon
+        Expected Close Date
+      %th
+        .sort-icon
+        Weeks Until Expected Close Date
+      %th
+        .sort-icon
+        About Me Complete?
+      %th
+        .sort-icon
+        \# CP Blog Posts
+      %th
+        .sort-icon
+        CP has uploaded media?
+      %th
+        .sort-icon
+        Date of Most Recent CP Blog Post
+      %th
+        .sort-icon
+        Total events scheduled
+      %th
+        .sort-icon
+        \# Date of First Event
+      %th
+        .sort-icon
+        First Event Type
+      %th
+        .sort-icon
+        \# Date of Most Recent Event
+      %th
+        .sort-icon
+        Most Recent Event Type
+      %th
+        .sort-icon
+        \# Date of Next Event
+      %th
+        .sort-icon
+        Next Event Type
+      %th
+        .sort-icon
+        $ Raised
+      %th
+        .sort-icon
+        \% Raised
+      %th
+        .sort-icon
+        $ Goal
+      %th
+        .sort-icon
+        \# donations
+      %th
+        .sort-icon
+        Date of 1st Donation
+      %th
+        .sort-icon
+        Date of Most Recent Donation
+      %th
+        .sort-icon
+        Exempt from Emails?
+      %th
+        .sort-icon
+        Project Lives Impacted (Primary + Secondary)
+      %th
+        .sort-icon
+        CP Facebook
+      %th
+        .sort-icon
+        CP Twitter
+      %th
+        .sort-icon
+        CP YouTube
+  %tbody
+    - @active_projects_paginated.each do |p|
+      %tr
+        %td
+          = link_to(((p.cp.andand.last_name.blank? ? "" : (p.cp.andand.last_name + ", ")) + p.cp.andand.first_name), ('/users/' + p.cp_id.to_s))
+        %td
+          = p.cp.andand.phone_number
+        %td
+          = p.cp.andand.email
+        %td
+          = (p.campaign.andand.name && p.campaign.andand.url ? link_to(p.campaign.andand.name, p.campaign.andand.url) : p.campaign.andand.name)
+        %td
+          = p.partner.display_name
+        %td
+          = link_to(p.name, [:admin, p])
+        %td
+          = (p.fundraising_start_date ? ((Date.today - p.fundraising_start_date)/7.0).round(1) : ((Date.today - p.state_updated_at.to_date)/7.0).round(1))
+        %td
+          = (p.estimated_close_date ? p.estimated_close_date : (p.fundraising_start_date ? (p.fundraising_start_date + 140) : (p.state_updated_at.to_date + 140)))
+        %td
+          = (((p.estimated_close_date ? p.estimated_close_date : (p.fundraising_start_date ? (p.fundraising_start_date + 140) : (p.state_updated_at.to_date + 140))) - Date.today).to_f/7).round(2)
+        %td
+          = ((p.cp.about_me and !p.cp.about_me.blank?) ? "yes" : "no")
+        %td
+          = p.total_blog_posts_by_cp
+        %td
+          = p.cp_media_albums.andand.count > 0 ? "yes" : "no"
+        %td
+          = (p.most_recent_blog_post_by_cp ? (p.most_recent_blog_post_by_cp.updated_at ? p.most_recent_blog_post_by_cp.updated_at : p.most_recent_blog_post_by_cp.created_at) : nil).andand.in_time_zone('Eastern Time (US & Canada)').andand.strftime("%Y-%m-%d")
+        %td
+          = p.events.count
+        %td
+          = (p.first_event.andand.event_start_time).andand.in_time_zone('Eastern Time (US & Canada)').andand.strftime("%Y-%m-%d")
+        %td
+          = (p.first_event ? (p.first_event.fundraiser_type.id!=15 ? p.first_event.fundraiser_type.name : "event" ) : "").downcase
+        %td
+          = (p.most_recent_event.andand.event_start_time).andand.in_time_zone('Eastern Time (US & Canada)').andand.strftime("%Y-%m-%d")
+        %td
+          = (p.most_recent_event ? (p.most_recent_event.fundraiser_type.id!=15 ? p.most_recent_event.fundraiser_type.name : "event") : "").downcase
+        %td
+          = (p.next_event.andand.event_start_time).andand.in_time_zone('Eastern Time (US & Canada)').andand.strftime("%Y-%m-%d")
+        %td
+          = (p.next_event ? (p.next_event.fundraiser_type.id!=15 ? p.next_event.fundraiser_type.name : "event" ) : "").downcase
+        %td
+          =h number_to_currency(p.total_amount_raised_in_usd)
+        %td
+          =h p.percent_raised
+          \%
+        %td
+          =h "$" + p.total_cost_in_usd.to_s
+        %td
+          = p.donations.count
+        %td
+          = p.donations.minimum('donated_at').andand.to_date
+        %td
+          = p.donations.maximum('donated_at').andand.to_date
+        %td
+          = ((p.email_exempt and !p.email_exempt.blank? and p.email_exempt != 0) ? "exempt" : "not exempt")
+        %td
+          = (p.primary_lives_impacted + p.secondary_lives_impacted)
+        %td
+          = p.cp.andand.facebook_path
+        %td
+          = p.cp.andand.twitter_path
+        %td
+          = p.cp.andand.youtube_path
+%div= will_paginate(@active_projects_paginated)
+

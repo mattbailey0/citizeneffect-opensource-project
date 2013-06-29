@@ -1,0 +1,37 @@
+<% content_for(:page_title, "Active Projects") %>
+
+		<div class="breadcrumbs">
+			
+		</div>
+
+		
+		<!-- main body copy -->
+		<div id="wrapper-copy">
+		
+			<!-- left column -->
+			<div class="twocol-left">
+				
+				<!-- projects donated to -->
+				<div class="component-header">
+          <h3>MY ACTIVE PROJECTS (<%= @projects.size %>)</h3>
+        </div>
+				
+        <% @projects.each do |project| %>
+				<% unless project == @projects.first -%>
+          <div class="component-top margin_top"></div>
+        <% end -%>
+				<div class="component-wrapper">
+          <%= render :partial => "shared/project_with_cp_two_thirds", :object => project %>
+				</div>
+				<div class="component-bottom"></div>
+        <% end %>
+				
+			</div>
+			
+			<!-- right column -->
+			<div class="twocol-right">
+				<%= render :partial => "active_projects_news_items" %>
+			</div>
+
+			<div class="clear"></div>
+		</div>

@@ -1,0 +1,15 @@
+--- !ruby/object:RI::MethodDescription 
+params: (value = true)
+is_singleton: false
+block_params: 
+name: set
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Set the radio button to the given value.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  radio.set?        #=&gt; false\n  radio.set\n  radio.set?        #=&gt; \
+    true\n  radio.set(false)\n  radio.set?        #=&gt; false\n"
+full_name: Celerity::Radio#set
+visibility: public
+aliases: []
+

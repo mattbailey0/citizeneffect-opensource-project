@@ -1,0 +1,15 @@
+<h1>Add Type to Project</h1>
+
+<% form_for([:admin, @project, @project_type_association]) do |f| %>
+  <%= f.error_messages %>
+
+<table border="0" cellspacing="0" cellpadding="0" class="form-table">
+  <%= render :partial => "form", :locals => { :f => f } %>
+
+  <tr>
+    <td class="form-submit" colspan="2"><%= f.submit 'Create' %></td>
+  </tr>
+</table>
+<% end %>
+
+<%= link_to 'Back', admin_project_project_type_associations_path(@project) %>

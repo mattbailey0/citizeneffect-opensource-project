@@ -1,0 +1,21 @@
+<!-- projects needing a cp -->
+<div class="component-wrapper">
+	<div class="component-header green">
+		<h3>BECOME THE CITIZEN PHILANTHROPIST FOR THIS PROJECT</h3>	
+		<div class="component-subheader"><span id="needing-a-cp-counter">1</span> of <%=h Project.needing_a_cp.size %></div>
+	</div>
+
+	<div class="component nopad">
+    <ul id="projects_needing_a_cp_carousel" class="blank relative external_control_carousel needing_a_cp_carousel" style="overflow:hidden" data-size=<%=  Project.needing_a_cp.count %>>
+    </ul>
+		<div class="slideshow_prev" style="position:absolute"><a href=""><img src="/images/btn_slideshow_left_blue.png" width="35" height="35" alt="" /></a></div>
+		<div class="slideshow_next" style="position:absolute"><a href=""><img src="/images/btn_slideshow_right_blue.png" width="35" height="35" alt="" /></a></div>
+  </div>
+</div>
+<div class="component-bottom"></div>
+<% @project = Project.needing_a_cp.first(:order => "approved_by_citizen_effect_at DESC") %>
+<% if @project %>
+<div style="display:none;" id="item1needingacp">
+  <%= render :file => "projects/needing_a_cp_item.html.erb" %>
+</div>
+<% end %>

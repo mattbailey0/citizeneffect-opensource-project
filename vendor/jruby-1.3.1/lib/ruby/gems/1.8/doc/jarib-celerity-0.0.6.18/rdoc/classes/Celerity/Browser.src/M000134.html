@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>add_cookie (Celerity::Browser)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/celerity/browser.rb, line 340</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add_cookie</span>(<span class="ruby-identifier">domain</span>, <span class="ruby-identifier">name</span>, <span class="ruby-identifier">value</span>, <span class="ruby-identifier">opts</span> = {})
+      <span class="ruby-identifier">path</span>    = <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:path</span>) <span class="ruby-operator">||</span> <span class="ruby-value str">&quot;/&quot;</span>
+      <span class="ruby-identifier">max_age</span> = <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:max_age</span>) <span class="ruby-operator">||</span> (<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span> <span class="ruby-operator">+</span> <span class="ruby-value">60</span><span class="ruby-operator">*</span><span class="ruby-value">60</span><span class="ruby-operator">*</span><span class="ruby-value">24</span>) <span class="ruby-comment cmt"># not sure if this is correct</span>
+      <span class="ruby-identifier">secure</span>  = <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:secure</span>) <span class="ruby-operator">||</span> <span class="ruby-keyword kw">false</span>
+
+      <span class="ruby-identifier">raise</span>(<span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;unknown option: #{opts.inspect}&quot;</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">empty?</span>
+
+      <span class="ruby-identifier">cookie</span> = <span class="ruby-constant">Cookie</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">domain</span>, <span class="ruby-identifier">name</span>, <span class="ruby-identifier">value</span>, <span class="ruby-identifier">path</span>, <span class="ruby-identifier">max_age</span>, <span class="ruby-identifier">secure</span>)
+      <span class="ruby-ivar">@webclient</span>.<span class="ruby-identifier">getCookieManager</span>.<span class="ruby-identifier">addCookie</span>(<span class="ruby-identifier">cookie</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

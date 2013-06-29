@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+params: ()
+is_singleton: false
+block_params: 
+name: attribute_string
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: '@return [String] A string representation of the element''s attributes.'
+full_name: Celerity::Element#attribute_string
+visibility: public
+aliases: []
+

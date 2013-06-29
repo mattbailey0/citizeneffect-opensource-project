@@ -1,0 +1,5 @@
+= render :partial => "admin/shared/report_construction", :locals => { :f => f, :report_type => "progress" }
+
+= render :partial => "admin/shared/report_impact", :locals => { :f => f, :extended => false }
+
+= render :partial => "admin/shared/report_footer", :locals => { :report => @partner_project_progress_report }

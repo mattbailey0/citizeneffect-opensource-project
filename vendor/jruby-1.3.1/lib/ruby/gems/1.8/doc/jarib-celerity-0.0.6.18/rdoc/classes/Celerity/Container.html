@@ -1,0 +1,1814 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: Celerity::Container</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">Celerity::Container</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/lib/celerity/container_rb.html">
+                lib/celerity/container.rb
+                </a>
+        <br />
+                <a href="../../files/lib/celerity/watir_compatibility_rb.html">
+                lib/celerity/watir_compatibility.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+This class contains methods for accessing elements inside a container,
+usually the <a href="Browser.html">Browser</a> object, meaning the current
+page. The most common syntax is
+</p>
+<pre>
+  browser.elem(:attribute, 'value')
+</pre>
+<p>
+Note that the element is located lazily, so no exceptions will be raised if
+the element doesn&#8216;t exist until you call a method on the resulting
+object. To do this you would normally use <a
+href="Element.html#M000241">Element#exists</a>? or an action method, like
+<a href="ClickableElement.html#M000001">ClickableElement#click</a>. You can
+also pass in a hash:
+</p>
+<pre>
+  browser.link(:index =&gt; 1).click
+</pre>
+<p>
+All elements support multiple attributes identification using the hash
+syntax (though this might not always be compatible with Watir):
+</p>
+<pre>
+  browser.span(:class_name =&gt; 'product', :index =&gt; 5).text
+</pre>
+<p>
+Checkboxes and <a href="Container.html#M000067">radio</a> <a
+href="Container.html#M000013">buttons</a> support a special three-argument
+syntax:
+</p>
+<pre>
+  browser.check_box(:name, 'a_name', '1234').set
+</pre>
+<p>
+You can also get all the elements of a certain type by using the plural <a
+href="Container.html#M000030">form</a> (@see <a
+href="ElementCollection.html">Celerity::ElementCollection</a>):
+</p>
+<pre>
+  browser.links # =&gt; #&lt;Celerity::Links:0x7a1c2da2 ...&gt;
+</pre>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000010">area</a>&nbsp;&nbsp;
+      <a href="#M000011">areas</a>&nbsp;&nbsp;
+      <a href="#M000095">bodies</a>&nbsp;&nbsp;
+      <a href="#M000094">body</a>&nbsp;&nbsp;
+      <a href="#M000012">button</a>&nbsp;&nbsp;
+      <a href="#M000013">buttons</a>&nbsp;&nbsp;
+      <a href="#M000014">cell</a>&nbsp;&nbsp;
+      <a href="#M000015">cells</a>&nbsp;&nbsp;
+      <a href="#M000093">checkBox</a>&nbsp;&nbsp;
+      <a href="#M000016">check_box</a>&nbsp;&nbsp;
+      <a href="#M000092">checkbox</a>&nbsp;&nbsp;
+      <a href="#M000017">checkboxes</a>&nbsp;&nbsp;
+      <a href="#M000009">container=</a>&nbsp;&nbsp;
+      <a href="#M000007">contains_text</a>&nbsp;&nbsp;
+      <a href="#M000018">dd</a>&nbsp;&nbsp;
+      <a href="#M000019">dds</a>&nbsp;&nbsp;
+      <a href="#M000020">div</a>&nbsp;&nbsp;
+      <a href="#M000021">divs</a>&nbsp;&nbsp;
+      <a href="#M000022">dl</a>&nbsp;&nbsp;
+      <a href="#M000023">dls</a>&nbsp;&nbsp;
+      <a href="#M000024">dt</a>&nbsp;&nbsp;
+      <a href="#M000025">dts</a>&nbsp;&nbsp;
+      <a href="#M000026">em</a>&nbsp;&nbsp;
+      <a href="#M000027">ems</a>&nbsp;&nbsp;
+      <a href="#M000028">file_field</a>&nbsp;&nbsp;
+      <a href="#M000029">file_fields</a>&nbsp;&nbsp;
+      <a href="#M000030">form</a>&nbsp;&nbsp;
+      <a href="#M000031">forms</a>&nbsp;&nbsp;
+      <a href="#M000032">frame</a>&nbsp;&nbsp;
+      <a href="#M000033">frames</a>&nbsp;&nbsp;
+      <a href="#M000034">h1</a>&nbsp;&nbsp;
+      <a href="#M000035">h1s</a>&nbsp;&nbsp;
+      <a href="#M000036">h2</a>&nbsp;&nbsp;
+      <a href="#M000037">h2s</a>&nbsp;&nbsp;
+      <a href="#M000038">h3</a>&nbsp;&nbsp;
+      <a href="#M000039">h3s</a>&nbsp;&nbsp;
+      <a href="#M000040">h4</a>&nbsp;&nbsp;
+      <a href="#M000041">h4s</a>&nbsp;&nbsp;
+      <a href="#M000042">h5</a>&nbsp;&nbsp;
+      <a href="#M000043">h5s</a>&nbsp;&nbsp;
+      <a href="#M000044">h6</a>&nbsp;&nbsp;
+      <a href="#M000045">h6s</a>&nbsp;&nbsp;
+      <a href="#M000046">hidden</a>&nbsp;&nbsp;
+      <a href="#M000047">hiddens</a>&nbsp;&nbsp;
+      <a href="#M000048">image</a>&nbsp;&nbsp;
+      <a href="#M000049">images</a>&nbsp;&nbsp;
+      <a href="#M000008">inspect</a>&nbsp;&nbsp;
+      <a href="#M000050">label</a>&nbsp;&nbsp;
+      <a href="#M000051">labels</a>&nbsp;&nbsp;
+      <a href="#M000052">li</a>&nbsp;&nbsp;
+      <a href="#M000054">link</a>&nbsp;&nbsp;
+      <a href="#M000055">links</a>&nbsp;&nbsp;
+      <a href="#M000053">lis</a>&nbsp;&nbsp;
+      <a href="#M000056">map</a>&nbsp;&nbsp;
+      <a href="#M000057">maps</a>&nbsp;&nbsp;
+      <a href="#M000058">meta</a>&nbsp;&nbsp;
+      <a href="#M000059">metas</a>&nbsp;&nbsp;
+      <a href="#M000060">ol</a>&nbsp;&nbsp;
+      <a href="#M000061">ols</a>&nbsp;&nbsp;
+      <a href="#M000062">option</a>&nbsp;&nbsp;
+      <a href="#M000063">p</a>&nbsp;&nbsp;
+      <a href="#M000065">pre</a>&nbsp;&nbsp;
+      <a href="#M000066">pres</a>&nbsp;&nbsp;
+      <a href="#M000064">ps</a>&nbsp;&nbsp;
+      <a href="#M000067">radio</a>&nbsp;&nbsp;
+      <a href="#M000068">radios</a>&nbsp;&nbsp;
+      <a href="#M000069">row</a>&nbsp;&nbsp;
+      <a href="#M000070">rows</a>&nbsp;&nbsp;
+      <a href="#M000071">select_list</a>&nbsp;&nbsp;
+      <a href="#M000072">select_lists</a>&nbsp;&nbsp;
+      <a href="#M000073">span</a>&nbsp;&nbsp;
+      <a href="#M000074">spans</a>&nbsp;&nbsp;
+      <a href="#M000075">strong</a>&nbsp;&nbsp;
+      <a href="#M000076">strongs</a>&nbsp;&nbsp;
+      <a href="#M000077">table</a>&nbsp;&nbsp;
+      <a href="#M000078">tables</a>&nbsp;&nbsp;
+      <a href="#M000080">tbodies</a>&nbsp;&nbsp;
+      <a href="#M000079">tbody</a>&nbsp;&nbsp;
+      <a href="#M000081">text_field</a>&nbsp;&nbsp;
+      <a href="#M000082">text_fields</a>&nbsp;&nbsp;
+      <a href="#M000085">tfeet</a>&nbsp;&nbsp;
+      <a href="#M000083">tfoot</a>&nbsp;&nbsp;
+      <a href="#M000084">tfoots</a>&nbsp;&nbsp;
+      <a href="#M000086">th</a>&nbsp;&nbsp;
+      <a href="#M000088">thead</a>&nbsp;&nbsp;
+      <a href="#M000089">theads</a>&nbsp;&nbsp;
+      <a href="#M000087">ths</a>&nbsp;&nbsp;
+      <a href="#M000090">ul</a>&nbsp;&nbsp;
+      <a href="#M000091">uls</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+    <div id="includes">
+      <h3 class="section-bar">Included Modules</h3>
+
+      <div id="includes-list">
+        <span class="include-name"><a href="Exception.html">Celerity::Exception</a></span>
+        <span class="include-name"><a href="ShortInspect.html">Celerity::ShortInspect</a></span>
+      </div>
+    </div>
+
+    <div id="section">
+
+
+
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">browser</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc">
+Points back to the <a href="Browser.html">Browser</a> instance that
+contains this element
+
+</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000010" class="method-detail">
+        <a name="M000010"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000010.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000010.html');return false;">
+          <span class="method-name">area</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="Area.html">Celerity::Area</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000011" class="method-detail">
+        <a name="M000011"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000011.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000011.html');return false;">
+          <span class="method-name">areas</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="Areas.html">Celerity::Areas</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000095" class="method-detail">
+        <a name="M000095"></a>
+
+        <div class="method-heading">
+          <span class="method-name">bodies</span><span class="method-args">()</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="Container.html#M000080">tbodies</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000094" class="method-detail">
+        <a name="M000094"></a>
+
+        <div class="method-heading">
+          <span class="method-name">body</span><span class="method-args">(*args)</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="Container.html#M000079">tbody</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000012" class="method-detail">
+        <a name="M000012"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000012.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000012.html');return false;">
+          <span class="method-name">button</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="Button.html">Celerity::Button</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000013" class="method-detail">
+        <a name="M000013"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000013.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000013.html');return false;">
+          <span class="method-name">buttons</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="Buttons.html">Celerity::Buttons</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000014" class="method-detail">
+        <a name="M000014"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000014.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000014.html');return false;">
+          <span class="method-name">cell</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="TableCell.html">Celerity::TableCell</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000015" class="method-detail">
+        <a name="M000015"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000015.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000015.html');return false;">
+          <span class="method-name">cells</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="TableCells.html">Celerity::TableCells</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000093" class="method-detail">
+        <a name="M000093"></a>
+
+        <div class="method-heading">
+          <span class="method-name">checkBox</span><span class="method-args">(*args)</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="Container.html#M000016">check_box</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000016" class="method-detail">
+        <a name="M000016"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000016.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000016.html');return false;">
+          <span class="method-name">check_box</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Since finding <a href="Container.html#M000017">checkboxes</a> by value is
+very common, you can use this shorthand:
+</p>
+<pre>
+  browser.check_box(:name, 'a_name', '1234').set
+</pre>
+<p>
+or
+</p>
+<pre>
+  browser.check_box(:name =&gt; 'a_name', :value =&gt; '1234').set
+</pre>
+<p>
+@return [<a href="CheckBox.html">Celerity::CheckBox</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000092" class="method-detail">
+        <a name="M000092"></a>
+
+        <div class="method-heading">
+          <span class="method-name">checkbox</span><span class="method-args">(*args)</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="Container.html#M000016">check_box</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000017" class="method-detail">
+        <a name="M000017"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000017.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000017.html');return false;">
+          <span class="method-name">checkboxes</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="CheckBoxes.html">Celerity::CheckBoxes</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000009" class="method-detail">
+        <a name="M000009"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000009.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000009.html');return false;">
+          <span class="method-name">container=</span><span class="method-args">(container)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Used internally to update the container object. @api private
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000007" class="method-detail">
+        <a name="M000007"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000007.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000007.html');return false;">
+          <span class="method-name">contains_text</span><span class="method-args">(expected_text)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Check if the element contains the given text.
+</p>
+<p>
+@param [String, Regexp] expected_text The text to look for. @return
+[Fixnum, nil] The index of the matched text, or nil if it doesn&#8216;t
+match.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000018" class="method-detail">
+        <a name="M000018"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000018.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000018.html');return false;">
+          <span class="method-name">dd</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="Dd.html">Celerity::Dd</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000019" class="method-detail">
+        <a name="M000019"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000019.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000019.html');return false;">
+          <span class="method-name">dds</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="Dds.html">Celerity::Dds</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000020" class="method-detail">
+        <a name="M000020"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000020.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000020.html');return false;">
+          <span class="method-name">div</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="Div.html">Celerity::Div</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000021" class="method-detail">
+        <a name="M000021"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000021.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000021.html');return false;">
+          <span class="method-name">divs</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="Divs.html">Celerity::Divs</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000022" class="method-detail">
+        <a name="M000022"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000022.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000022.html');return false;">
+          <span class="method-name">dl</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="Dl.html">Celerity::Dl</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000023" class="method-detail">
+        <a name="M000023"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000023.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000023.html');return false;">
+          <span class="method-name">dls</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="Dls.html">Celerity::Dls</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000024" class="method-detail">
+        <a name="M000024"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000024.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000024.html');return false;">
+          <span class="method-name">dt</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="Dt.html">Celerity::Dt</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000025" class="method-detail">
+        <a name="M000025"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000025.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000025.html');return false;">
+          <span class="method-name">dts</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="Dts.html">Celerity::Dts</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000026" class="method-detail">
+        <a name="M000026"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000026.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000026.html');return false;">
+          <span class="method-name">em</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="Em.html">Celerity::Em</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000027" class="method-detail">
+        <a name="M000027"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000027.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000027.html');return false;">
+          <span class="method-name">ems</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="Ems.html">Celerity::Ems</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000028" class="method-detail">
+        <a name="M000028"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000028.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000028.html');return false;">
+          <span class="method-name">file_field</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="FileField.html">Celerity::FileField</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000029" class="method-detail">
+        <a name="M000029"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000029.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000029.html');return false;">
+          <span class="method-name">file_fields</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="FileFields.html">Celerity::FileFields</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000030" class="method-detail">
+        <a name="M000030"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000030.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000030.html');return false;">
+          <span class="method-name">form</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="Form.html">Celerity::Form</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000031" class="method-detail">
+        <a name="M000031"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000031.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000031.html');return false;">
+          <span class="method-name">forms</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="Forms.html">Celerity::Forms</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000032" class="method-detail">
+        <a name="M000032"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000032.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000032.html');return false;">
+          <span class="method-name">frame</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="Frame.html">Celerity::Frame</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000033" class="method-detail">
+        <a name="M000033"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000033.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000033.html');return false;">
+          <span class="method-name">frames</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="Frames.html">Celerity::Frames</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000034" class="method-detail">
+        <a name="M000034"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000034.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000034.html');return false;">
+          <span class="method-name">h1</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="H1.html">Celerity::H1</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000035" class="method-detail">
+        <a name="M000035"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000035.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000035.html');return false;">
+          <span class="method-name">h1s</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="H1s.html">Celerity::H1s</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000036" class="method-detail">
+        <a name="M000036"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000036.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000036.html');return false;">
+          <span class="method-name">h2</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="H2.html">Celerity::H2</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000037" class="method-detail">
+        <a name="M000037"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000037.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000037.html');return false;">
+          <span class="method-name">h2s</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="H2s.html">Celerity::H2s</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000038" class="method-detail">
+        <a name="M000038"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000038.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000038.html');return false;">
+          <span class="method-name">h3</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="H3.html">Celerity::H3</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000039" class="method-detail">
+        <a name="M000039"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000039.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000039.html');return false;">
+          <span class="method-name">h3s</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="H3s.html">Celerity::H3s</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000040" class="method-detail">
+        <a name="M000040"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000040.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000040.html');return false;">
+          <span class="method-name">h4</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="H4.html">Celerity::H4</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000041" class="method-detail">
+        <a name="M000041"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000041.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000041.html');return false;">
+          <span class="method-name">h4s</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="H4s.html">Celerity::H4s</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000042" class="method-detail">
+        <a name="M000042"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000042.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000042.html');return false;">
+          <span class="method-name">h5</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="H5.html">Celerity::H5</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000043" class="method-detail">
+        <a name="M000043"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000043.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000043.html');return false;">
+          <span class="method-name">h5s</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="H5s.html">Celerity::H5s</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000044" class="method-detail">
+        <a name="M000044"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000044.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000044.html');return false;">
+          <span class="method-name">h6</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="H6.html">Celerity::H6</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000045" class="method-detail">
+        <a name="M000045"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000045.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000045.html');return false;">
+          <span class="method-name">h6s</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="H6s.html">Celerity::H6s</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000046" class="method-detail">
+        <a name="M000046"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000046.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000046.html');return false;">
+          <span class="method-name">hidden</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="Hidden.html">Celerity::Hidden</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000047" class="method-detail">
+        <a name="M000047"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000047.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000047.html');return false;">
+          <span class="method-name">hiddens</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="Hiddens.html">Celerity::Hiddens</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000048" class="method-detail">
+        <a name="M000048"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000048.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000048.html');return false;">
+          <span class="method-name">image</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="Image.html">Celerity::Image</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000049" class="method-detail">
+        <a name="M000049"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000049.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000049.html');return false;">
+          <span class="method-name">images</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="Images.html">Celerity::Images</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000008" class="method-detail">
+        <a name="M000008"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000008.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000008.html');return false;">
+          <span class="method-name">inspect</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Override <a href="Container.html#M000008">inspect</a> for readability
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000050" class="method-detail">
+        <a name="M000050"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000050.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000050.html');return false;">
+          <span class="method-name">label</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="Label.html">Celerity::Label</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000051" class="method-detail">
+        <a name="M000051"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000051.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000051.html');return false;">
+          <span class="method-name">labels</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="Labels.html">Celerity::Labels</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000052" class="method-detail">
+        <a name="M000052"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000052.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000052.html');return false;">
+          <span class="method-name">li</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="Li.html">Celerity::Li</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000054" class="method-detail">
+        <a name="M000054"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000054.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000054.html');return false;">
+          <span class="method-name">link</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="Link.html">Celerity::Link</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000055" class="method-detail">
+        <a name="M000055"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000055.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000055.html');return false;">
+          <span class="method-name">links</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="Links.html">Celerity::Links</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000053" class="method-detail">
+        <a name="M000053"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000053.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000053.html');return false;">
+          <span class="method-name">lis</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="Lis.html">Celerity::Lis</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000056" class="method-detail">
+        <a name="M000056"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000056.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000056.html');return false;">
+          <span class="method-name">map</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="Map.html">Celerity::Map</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000057" class="method-detail">
+        <a name="M000057"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000057.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000057.html');return false;">
+          <span class="method-name">maps</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="Maps.html">Celerity::Maps</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000058" class="method-detail">
+        <a name="M000058"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000058.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000058.html');return false;">
+          <span class="method-name">meta</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="Meta.html">Celerity::Meta</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000059" class="method-detail">
+        <a name="M000059"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000059.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000059.html');return false;">
+          <span class="method-name">metas</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="Metas.html">Celerity::Metas</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000060" class="method-detail">
+        <a name="M000060"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000060.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000060.html');return false;">
+          <span class="method-name">ol</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="Ol.html">Celerity::Ol</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000061" class="method-detail">
+        <a name="M000061"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000061.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000061.html');return false;">
+          <span class="method-name">ols</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="Ols.html">Celerity::Ols</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000062" class="method-detail">
+        <a name="M000062"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000062.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000062.html');return false;">
+          <span class="method-name">option</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="Option.html">Celerity::Option</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000063" class="method-detail">
+        <a name="M000063"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000063.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000063.html');return false;">
+          <span class="method-name">p</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="P.html">Celerity::P</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000065" class="method-detail">
+        <a name="M000065"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000065.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000065.html');return false;">
+          <span class="method-name">pre</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="Pre.html">Celerity::Pre</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000066" class="method-detail">
+        <a name="M000066"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000066.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000066.html');return false;">
+          <span class="method-name">pres</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="Pres.html">Celerity::Pres</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000064" class="method-detail">
+        <a name="M000064"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000064.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000064.html');return false;">
+          <span class="method-name">ps</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="Ps.html">Celerity::Ps</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000067" class="method-detail">
+        <a name="M000067"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000067.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000067.html');return false;">
+          <span class="method-name">radio</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Since finding <a href="Container.html#M000068">radios</a> by value is very
+common, you can use this shorthand:
+</p>
+<pre>
+  browser.radio(:name, 'a_name', '1234').set
+</pre>
+<p>
+or
+</p>
+<pre>
+  browser.radio(:name =&gt; 'a_name', :value =&gt; '1234').set
+</pre>
+<p>
+@return [<a href="Radio.html">Celerity::Radio</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000068" class="method-detail">
+        <a name="M000068"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000068.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000068.html');return false;">
+          <span class="method-name">radios</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="Radios.html">Celerity::Radios</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000069" class="method-detail">
+        <a name="M000069"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000069.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000069.html');return false;">
+          <span class="method-name">row</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="TableRow.html">Celerity::TableRow</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000070" class="method-detail">
+        <a name="M000070"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000070.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000070.html');return false;">
+          <span class="method-name">rows</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="TableRows.html">Celerity::TableRows</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000071" class="method-detail">
+        <a name="M000071"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000071.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000071.html');return false;">
+          <span class="method-name">select_list</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="SelectList.html">Celerity::SelectList</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000072" class="method-detail">
+        <a name="M000072"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000072.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000072.html');return false;">
+          <span class="method-name">select_lists</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="SelectLists.html">Celerity::SelectLists</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000073" class="method-detail">
+        <a name="M000073"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000073.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000073.html');return false;">
+          <span class="method-name">span</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="Span.html">Celerity::Span</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000074" class="method-detail">
+        <a name="M000074"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000074.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000074.html');return false;">
+          <span class="method-name">spans</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="Spans.html">Celerity::Spans</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000075" class="method-detail">
+        <a name="M000075"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000075.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000075.html');return false;">
+          <span class="method-name">strong</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="Spans.html">Celerity::Spans</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000076" class="method-detail">
+        <a name="M000076"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000076.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000076.html');return false;">
+          <span class="method-name">strongs</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="Strongs.html">Celerity::Strongs</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000077" class="method-detail">
+        <a name="M000077"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000077.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000077.html');return false;">
+          <span class="method-name">table</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="Table.html">Celerity::Table</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000078" class="method-detail">
+        <a name="M000078"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000078.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000078.html');return false;">
+          <span class="method-name">tables</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="Tables.html">Celerity::Tables</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000080" class="method-detail">
+        <a name="M000080"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000080.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000080.html');return false;">
+          <span class="method-name">tbodies</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="TableBodies.html">Celerity::TableBodies</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000079" class="method-detail">
+        <a name="M000079"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000079.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000079.html');return false;">
+          <span class="method-name">tbody</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="TableBody.html">Celerity::TableBody</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000081" class="method-detail">
+        <a name="M000081"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000081.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000081.html');return false;">
+          <span class="method-name">text_field</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="TextField.html">Celerity::TextField</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000082" class="method-detail">
+        <a name="M000082"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000082.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000082.html');return false;">
+          <span class="method-name">text_fields</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="TextFields.html">Celerity::TextFields</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000085" class="method-detail">
+        <a name="M000085"></a>
+
+        <div class="method-heading">
+          <span class="method-name">tfeet</span><span class="method-args">()</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="Container.html#M000084">tfoots</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000083" class="method-detail">
+        <a name="M000083"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000083.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000083.html');return false;">
+          <span class="method-name">tfoot</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="TableFooter.html">Celerity::TableFooter</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000084" class="method-detail">
+        <a name="M000084"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000084.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000084.html');return false;">
+          <span class="method-name">tfoots</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="TableFooters.html">Celerity::TableFooters</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000086" class="method-detail">
+        <a name="M000086"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000086.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000086.html');return false;">
+          <span class="method-name">th</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Watir&#8216;s <a href="Container.html#M000015">cells</a>() won&#8216;t find
+&lt;<a href="Container.html#M000086">th</a>&gt; elements. This is a
+workaround.
+</p>
+<p>
+@return [<a href="Th.html">Celerity::Th</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000088" class="method-detail">
+        <a name="M000088"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000088.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000088.html');return false;">
+          <span class="method-name">thead</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="TableHeader.html">Celerity::TableHeader</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000089" class="method-detail">
+        <a name="M000089"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000089.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000089.html');return false;">
+          <span class="method-name">theads</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="TableHeaders.html">Celerity::TableHeaders</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000087" class="method-detail">
+        <a name="M000087"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000087.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000087.html');return false;">
+          <span class="method-name">ths</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+FIXME: implement or change api, @see <a
+href="Container.html#M000086">th</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000090" class="method-detail">
+        <a name="M000090"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000090.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000090.html');return false;">
+          <span class="method-name">ul</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="Ul.html">Celerity::Ul</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000091" class="method-detail">
+        <a name="M000091"></a>
+
+        <div class="method-heading">
+          <a href="Container.src/M000091.html" target="Code" class="method-signature"
+            onclick="popupCode('Container.src/M000091.html');return false;">
+          <span class="method-name">uls</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [<a href="Uls.html">Celerity::Uls</a>]
+</p>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

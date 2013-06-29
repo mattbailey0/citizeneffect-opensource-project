@@ -1,0 +1,51 @@
+<% content_for(:page_title, "Edit #{@project.name}") %>
+
+<div class="breadcrumbs">
+  <%= link_to "&laquo; back to project page", @project, :class => "breadcrumbs green" %>
+</div>
+		
+<!-- main body copy -->
+<div id="wrapper-copy">
+			
+			
+	<div class="component-header-full nopadtop">
+		<h3>EDIT SOCIAL MEDIA LINKS</h3>
+	</div> 
+	<!-- full-width component -->
+	<div class="box-full-middle social">
+		<h5><%=h @project.name %> - <%=h @project.community_name %>, <%=h @project.country.name %></h5>
+    
+		<div class="banner">
+      Many CP’s find it helpful to create
+      <%= link_to "Twitter accounts", "http://twitter.com/", :target => "_blank" %>,
+      <%= link_to "Facebook accounts", "http://www.facebook.com/", :target => "_blank" %>,
+      <%= link_to "MySpace accounts", "http://www.myspace.com/", :target => "_blank" %>,
+      and
+      <%= link_to "YouTube channels", "http://www.youtube.com/", :target => "_blank" %>
+      for their projects.
+    </div>
+			
+		<div class="social_pad">
+      <% form_for @project do |form| %>
+
+        <% content_for :form_errors do -%>
+          <%= form.error_messages %>
+        <% end -%>
+          
+        <% Project.valid_follow_url_types.each do |follow_url_type| %>
+    	   	<label>PROJECT’S <%=h Project::FOLLOW_URL_NAMES[follow_url_type].upcase %> USERNAME</label>
+    		  <ul class="blank">
+    			  <li>
+              <%= image_tag h("icon_#{follow_url_type}_large.png"), :width => "34", :height => "34", :alt => "" %>
+            </li>
+    			  <li class="url"><%=h Project::FOLLOW_URL_BASES[follow_url_type] %></li>
+    			  <li class="input"><%= form.text_field "#{follow_url_type}_path", :class => "input_long" %></li>
+    		  </ul>
+        <% end %>
+
+  		  <input type="image" src="/images/btn_save_details.png" class="pad_top" name="save_details" />
+      <% end %>
+		</div>
+	</div>
+	<div class="box-full-bottom"></div>			
+</div>

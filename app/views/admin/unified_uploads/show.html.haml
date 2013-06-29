@@ -1,0 +1,10 @@
+%h1 Viewing File
+
+%p
+  %b Filename
+  %br
+  = link_to @unified_upload.content_file_name, @unified_upload.url
+
+= link_to 'Edit', edit_admin_unified_upload_path(@unified_upload, :uploadable_id => @uploadable.id, :uploadable_type => @uploadable.class, :association_name => @association_name)
+|
+= link_to 'Back', admin_unified_uploads_path(:uploadable_id => @uploadable.id, :uploadable_type => @uploadable.class, :association_name => @association_name)

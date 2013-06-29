@@ -1,0 +1,225 @@
+<% content_for(:page_title, "Citizen Effect's Brackets with Benefits") %>
+
+<% content_for :meta_tags do %>
+  <meta property="og:title" content="Brackets With Benefits" /> 
+  <meta property="og:url" content="http://citizeneffect.org/tourney" /> 
+  <meta property="og:image" content="http://citizeneffect.org/images/BwB-2011_Logo_Thumb.png" /> 
+  <meta property="og:site_name" content="Citizen Effect" />
+  <meta property="og:type" content="article" />
+  <meta property="og:description" content="Do some GOOD with your NCAA brackets! Citizen Effect’s Brackets with Benefits (BwB) is the NCAA tourney pool that gives back. You donate $10, fill out a bracket, and win great prizes. If you win, 100% of all BwB donations will go to the Citizen Effect community project of your choice!" />
+  <link rel="image_src" href="http://citizeneffect.org/images/BwB-2011_Logo_Thumb.png" />
+  <meta name="description" content="Do some GOOD with your NCAA brackets! Citizen Effect’s Brackets with Benefits (BwB) is the NCAA tourney pool that gives back. You donate $10, fill out a bracket, and win great prizes. If you win, 100% of all BwB donations will go to the Citizen Effect community project of your choice!" />
+<% end %>
+
+<!-- main body copy -->
+<% form_for(@donation, :url => donations_path()) do |f| %>
+<%= f.hidden_field :campaign_code %>
+
+<% content_for :form_errors do -%>
+  <%= f.error_messages %>
+<% end -%>
+
+<div id="wrapper-copy">
+
+  <div class="component-header-full nopadtop">
+	  <h3>JOIN BRACKETS WITH BENEFITS</h3>
+  </div> 		
+		
+  <!-- full-width component -->
+  <style type="text/css">
+			#edit_donate .pad_left_large{
+				padding-left:40px;
+			}
+			.project_description_container{
+				width:100%;
+				background-color:#E3EEF4;
+				height:140px;
+				padding:20px 12px 0 0;
+				margin-left:-7px;
+			}
+			.project_description_container_left{
+				margin-left:20px;
+			}
+			.project_description_container .project_description_container_right {
+			  width:680px;
+        padding-left:40px;
+        padding-top:15px;
+        font-size:24pt;
+        font-weight:bold;
+			}
+      
+      .rule_listing ul{
+        list-style: disc outside none;
+        overflow: visible;
+        padding-bottom: 15px;
+      }
+      .rule_listing li{
+        overflow: visible;
+        font-size: 12pt;
+        padding-bottom: 15px;
+      }
+      .rule_listing h6{
+        font-size: 20pt;
+        padding-bottom: 20px;
+        margin-left: -15px;
+      }
+      .rule_listing a{
+        color:#50BDEB;
+        font-size: 11pt;
+      }
+
+  </style>
+
+  <div class="box-full-middle">
+    <div class="project_description_container">
+      <div class="component">
+        <div class="project_description_container_left left">
+          <%= image_tag "BwB-2011_Logo_Thumb.png", :class => "block pad_bottom", :width => "191", :height => "200" %>
+        </div>
+        <div class="project_description_container_right left">
+          Make a $10 donation and participate in Citizen Effect’s Brackets with Benefits!
+        </div>
+        <div class="clear"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="edit_donate" class="box-full-middle account-info">
+    <div class="right right_column" style="padding-top:30px;float:right;width:400px;">
+      <%= f.label :select_box_amount_in_dollars, "<p class='left pad_right bold donate'>DONATION AMOUNT</p>" %>
+      <%= f.select :select_box_amount_in_dollars, [10,20,30,40,50,250].map{|v| [number_to_currency(v), v]} + 
+          [Donation::OTHER], {}, :class => "left" %>
+
+      <span id="other_amount_span" style="display:none;">
+        <%= f.label :other_amount_in_dollars, "<p class='left margin_left bold donate'>$</p>" %>
+        <%= f.text_field :other_amount_in_dollars, :style => "width:50px;margin-top:-2px;margin-left:2px;", 
+            :class => "left" %>
+      </span>
+        
+      <div class="clear"></div>
+      <br/>
+
+      <%= f.label :extra_ten, "<p class='left pad_right bold donate' style='margin-bottom:5px;'>DOUBLE YOUR IMPACT</p>" %>
+      <%= f.check_box :extra_ten %>
+      <%= f.label :extra_ten, "+ $10.00", :style => "display:inline;font-weight:bold;" %>
+      <div class="clear"></div>
+      <%= f.label :extra_ten, "<p class='left pad_right donate'><small>Make a donation to Citizen Effect</small></p>" %>
+
+      <div class="clear"></div>
+      <p style="width:400px;">
+        Citizen Effect is a nonprofit organization. Donations are tax deductible, but please consult with your tax professional when filing your taxes. 
+      </p>
+      <ul id="cc_info">
+        <li>
+          <%= f.label :public_credit_card_type, "Credit Card Type", :class => "left pad_right" %>
+          <%= f.select :public_credit_card_type, Donation::PUBLIC_CREDIT_CARD_TYPES_HASH.keys, {},
+              :class => "credit_card_box left margin_bottom margin_bottom" %>
+        </li>
+        <li>
+          <%= f.label :credit_card_number, "Credit Card Number", :class => "left pad_right" %>
+          <%= f.text_field :credit_card_number, :class => "margin_bottom" %>
+        </li>
+        <li>
+          <%= f.label :expiration_month, "Expiration Date (mm) (yyyy)", :class => "left pad_right" %>
+          <%= f.text_field :expiration_month, :class => "left margin_right margin_bottom", 
+                           :style => "width:35px;"%>
+          <%= f.text_field :expiration_year, :class => "left margin_bottom", :style => "width:50px;" %>
+        </li>
+        <li>
+          <%= f.label :credit_card_cvv, "Security Code", :class => "left pad_right" %>
+          <%= f.text_field :credit_card_cvv, :class => "margin_bottom margin_right", :style => "width:25px" %>
+        </li>
+      </ul>
+
+      <div class="clear"></div>
+
+      <h5>Billing Information</h5><br/>
+      <div class="donate_form_container">
+        <p class="left pad_right">
+          <%= f.label :first_name %>
+          <%= f.text_field :first_name, :style => "width:172px;", :size => nil %>
+        </p>
+        <p class="left">
+          <%= f.label :last_name %>
+          <%= f.text_field :last_name, :style => "width:172px;", :size => nil %>
+        </p>
+        <div class="clear"></div>
+        <p>
+          <%= f.label :address1, "Address" %>
+          <%= f.text_field :address1, :class => "xlarge" %> <br />
+          <%= f.text_field :address2, :class => "xlarge" %>
+        </p>
+        <p class="left pad_right">
+          <%= f.label :city %>
+          <%= f.text_field :city, :style => "width:172px;", :size => nil %>
+        </p>
+        <p class="left pad_right">
+          <%= f.label :state, "State/Province/Region" %>
+          <%= f.text_field :state, :style => "width:172px;", :size => nil %>
+        </p>
+        <div class="clear"></div>
+        <p class="left pad_right">
+          <%= f.label :country, "Country" %>
+          <%= country_select("donation", "country", ["United States"]) %>
+        </p>
+        <p class="left">
+          <%= f.label :zip, "ZIP/Postal Code" %>
+          <%= f.text_field :zip, :class => "xsmall" %>
+        </p>
+        <div class="clear"></div>
+        <p>
+          <%= f.label :email %>
+          <%= f.text_field :email, :class => "xlarge" %>
+        </p>
+        <p>
+          <%= f.label :phone_number %>
+          <%= f.text_field :phone_number, :class => "xlarge" %>
+        </p>
+      </div>
+
+      <div class="clear"></div>
+      <%= f.check_box :agree_tos, :class => "margin_right left" %>
+      <%= f.label :agree_tos, 
+          "I agree to the #{link_to 'Terms of Service', '/p/terms-of-use', :target => '_blank'}", 
+          :class => "left pad_top_sm" %>
+      <div class="clear"></div>
+
+	    <div class="center">
+        <%= image_submit_tag "confirm_donate.png", :class => "pad_top confirm_donate", :onclick => "$(this).hide(); $('#donating_now').show();" %>
+        <span id="donating_now" style="display: none;">Donating now...</span>
+      </div>
+    </div>
+  
+    <div class="left left_column margin_top rule_listing pad_left_large">
+      <h6>How It Works</h6>
+      <ul>
+        <li>Donate $10 per bracket (up to 5 brackets @ $10 each).</li>
+        <li>All donations go to support a Citizen Effect project<br/>
+          that will be selected by the BwB champion.</li>
+        <li>Help Citizen Effect underwrite BwB by making an<br/>
+          additional $10 donation (click DOUBLE YOUR IMPACT).</li>
+        <li>Setup your bracket by following the steps provided on the<br/>
+          purchase conﬁrmation page or in your conﬁrmation email.</li>
+        <li>On Selection Sunday (3.13.11) you can log on to your<br/>
+          bracket and make your picks.</li>
+      </ul>
+      
+      <h6 style="margin-top:275px;">Sponsors</h6>
+      <div style="margin-left:-15px;">
+        <table style="width:100%;text-align:center;">
+          <tr>
+          </tr>
+          <tr>
+            
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="clear"></div>
+  </div>
+ 
+  <div class="box-full-bottom"></div>
+
+</div>
+<% end -%>

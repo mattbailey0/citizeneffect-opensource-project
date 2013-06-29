@@ -1,0 +1,15 @@
+<div class="slideshow">
+	<div class="pic">
+		<%= link_to image_tag(object.main_picture_url(:project_featured_media_jpg), :width => "634", :height => "258", :alt => ""), object %>
+		<div class="screen">
+		</div>
+		<div class="copy">
+			<div class="right"><%= render(:partial => "add_to_watchlist", :locals => { :project => object, :css_class => "watchlist #{color}" }) if object.is_a?(Project) -%></div>
+			<h6 class="active_project_index_project_name"><%=h truncate(object.main_picture_title, :length => 66) %></h6>
+			<span class="active_project_index_project_caption">
+				<%=h truncate(object.main_picture_caption, :length => 80) %>
+			</span>
+		</div>
+	</div>
+</div>
+                

@@ -1,0 +1,5 @@
+<% watched_project = watched_project_association.project -%>
+				<div class="box-half-<%=h watched_project_association_counter == 0 ? "left" : "right" %>">
+					<div class="box-half-top"><%= link_to image_tag("icon_close.png", :alt => "close"), [current_user, watched_project_association], :method => :delete, :class => "close stop_watching_project_#{watched_project.id}", :confirm => "Are you sure?" %></div>
+          <%= render :partial => "shared/search_result_project_body", :object => watched_project %>
+				</div>

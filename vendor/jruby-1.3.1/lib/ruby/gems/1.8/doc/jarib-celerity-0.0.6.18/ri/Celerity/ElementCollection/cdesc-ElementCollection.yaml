@@ -1,0 +1,34 @@
+--- !ruby/object:RI::ClassDescription 
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: Enumerable
+name: ElementCollection
+constants: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: This class is the superclass for the iterator classes (Buttons, Links, Spans
+    etc.) It would normally only be accessed by the iterator methods (Browser#spans,
+    Browser#links, ...).
+attributes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: '[]'
+- !ruby/object:RI::MethodSummary 
+  name: each
+- !ruby/object:RI::MethodSummary 
+  name: first
+- !ruby/object:RI::MethodSummary 
+  name: last
+- !ruby/object:RI::MethodSummary 
+  name: length
+- !ruby/object:RI::MethodSummary 
+  name: size
+- !ruby/object:RI::MethodSummary 
+  name: to_s
+full_name: Celerity::ElementCollection
+superclass: Object
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new

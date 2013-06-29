@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+params: (obj)
+is_singleton: false
+block_params: 
+name: element_from_dom_node
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Convert the given HtmlUnit DomNode to a Celerity object
+full_name: Celerity::XpathSupport#element_from_dom_node
+visibility: public
+aliases: []
+

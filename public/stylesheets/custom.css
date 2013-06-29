@@ -1,0 +1,607 @@
+	/* blog post */
+	.blog-post {margin-bottom:13px; padding-bottom:10px; border-bottom:1px dashed #ccc}
+
+	form.edit_blog_post { background-color: #DDD; border: 1px dotted #999; }
+  form.edit_blog_post > p { margin: 1em; }
+  .twocol-left div.component-wrapper > div.component > div.blog-posts > div.blog-post > h1,
+  .twocol-left div.component-wrapper > div.component > div.blog-posts > div.blog-post > h2,
+  .twocol-left div.component-wrapper > div.component > div.blog-posts > div.blog-post > p {padding-right: 23px; line-height:13px;}
+  .twocol-left div.component-wrapper > div.component > div.blog-posts > div.blog-post > h1 {padding-bottom:1px;}
+  .twocol-left div.component-wrapper > div.component > div.blog-posts > div.blog-post > h2 {padding-bottom:14px;}
+  .twocol-left div.component-wrapper > div.component > div.blog-posts { margin-top: 8px; }
+  .twocol-left div.component-wrapper > div.component > div.blog-posts > div.blog-post > p.readmore {margin-top:14px;margin-bottom:2px;}
+
+/* search bar */
+#searchbar #searchbox {border:0; background:url(/images/bg_input.png) no-repeat; width:276px; height:20px; margin:1px 5px 0 3px}
+
+/* player */
+#player #slideshow-right #pad {padding:9px 0 11px 11px}
+#player #mask_upper_left {position:absolute; top:-5px; left:-5px}
+#player #mask_arrow {position:absolute; top:259px; left:-5px}
+#player .copy p, #player .copy h6.active_feature_title {font:normal 12px "Courier New", Courier, monospace; color:white;}
+#player #slideshow-right .links {padding-top:27px;}
+#player ul p {padding:0; margin:0;font-size:11px;}
+#player ul li.outer > ul, #player p.readmore {margin-left:10px;}
+#player p.readmore, #player p.readmore a {font-size:11px;font-weight:bold;}
+#player .thumbs {top:auto; left:auto; position:auto; height:67px; width:499px}
+
+/* data chart */
+.chart {width:306px; margin-left:1px; padding: 4px 4px 4px 5px;}
+/* .selectbox { margin: 0 0 8px 0; padding-top:6px; padding-left:3px; display: block; text-align: left; cursor: pointer; color: #333; text-transform:uppercase; color:#021126; font-weight:bold; font-size:10px; font-family:Arial,Helvetica,sans-serif;} */
+/* .selectBoxGray { background: url(/images/select_gray.png) 0 0 no-repeat; min-width:216px; height:20px; width:auto !important; width:216px} */
+/* .selectBoxBlue { background: url(/images/select_blue.png) 0 0 no-repeat; min-width:245px; height:20px; width:auto !important; width:245px; color:#fff} */
+
+/* layout */
+.watermark {color: #999999}
+
+.people.education {background:url(/images/icon_education.gif) right 3px no-repeat}
+
+.older_posts a {font:bold 12px Arial, Helvetica, sans-serif; color:#f4784c}
+
+
+.mailing_lists .carousel_edit, .padded_albums_carousel .carousel {overflow: visible; margin-top: 6px; margin-left: 7px;}
+
+
+
+.user_show .box-rightcol-inner.news span.icon {display:block; float:left; min-height:45px; width:22px; background-position:center center}
+.user_show .box-rightcol-inner.news span.text {display:block; float:left; width:238px; padding:7px 0 7px 12px}
+.user_show .box-rightcol-inner.news.icons p {padding:0 7px 0 7px}
+.box-rightcol-inner a.orange_bottom {display:inline;}
+
+
+
+input.join {color: #000}
+
+
+.slideshow_prev, .slideshow_next, .prev, .next, .contact_prev, .contact_next, .album_next, .album_prev {z-index: 10;}
+/*  position: relative; */
+
+/* .event_carousel_padder {padding-top: 5px; padding-left: 7px;} */
+.carousel.video.event.blue {margin-top: 7px; margin-left: 15px;}
+
+	.media_album_lightbox .small_item{border:#BCD7E6 solid 2px}
+	.media_album_lightbox .small_item.current{border:#fff solid 2px}
+
+	.album_thumb_container ul.album_thumbs li{display:block;float:left;height:71px;width:71px;background-attachment:scroll;background-color:transparent;background-position:0 0;background-repeat:repeat;margin:8px}
+
+
+ul.fundraiser_type_list {
+
+}
+
+ul.fundraiser_type_list input.event-radio {
+    float: left;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.fundraiser_type_list_img {
+    float:left;
+}
+
+.fundraiser_type_list_img img{
+    width: 50px;
+}
+
+.fundraiser_type_list_content {
+    float: left;
+    width: 75%;
+    padding-bottom: 10px;
+    padding-left: 5px;
+}
+
+.fundraiser_type_list_content .copy.video {
+    float: left;
+    width: 75%;
+}
+
+.project_featured_media .jcarousel-clip { width: 635px; }
+
+
+.donation_complete_project_carousel .jcarousel-skin-tango .jcarousel-prev-horizontal,
+.donation_complete_project_carousel .jcarousel-skin-tango .jcarousel-next-horizontal { top:90px; }
+
+
+.project_edit_links a {color: white;}
+
+.project_event_media_album_small {padding: 5px 0px;}
+
+.project_event_responses_box a.active {font-weight: bold;}
+
+
+.event-block,
+.event-field {
+    padding: 0 0 5px 0;
+}
+
+.event-field-title h2 {
+    padding-bottom: 0;
+}
+.event-field-intro {
+    padding: 0 10px;
+}
+
+.event-section-intro{
+    padding-bottom: 10px;
+}
+
+.fundraiser_type_list_content .event-field-title,
+.fundraiser_type_list_content .event-field-description {
+    padding-left: 60px;
+}
+
+.event-field-section {
+    padding: 30px 15px 0 15px;
+}
+
+.event_next_step_intro {
+    padding-bottom: 10px;
+}
+
+.event_next_step_icon {
+    float: left;
+    padding-left: 10px;
+}
+
+.event_next_step_text {
+    padding: 2px 0 0 50px;
+    font-weight: bold;
+    line-height: 100%;
+}
+
+.event_next_step_link {
+    clear: left;
+    padding-left: 30px;
+    padding: 5px 0 10px 50px;
+}
+
+#facebox .media_album_lightbox {position: relative; left: 0px;}
+
+
+ul.album_thumbs { margin-left:0px; }
+
+
+#add_blog .right_column li { height: auto; padding-top:10px; padding-bottom: 10px; }
+
+.uploaded_asset {padding: 5px 0px;}
+
+.mapDiv
+{
+  width:266px;
+  height:266px;
+  float:left;
+  overflow:hidden;
+  border: 1px solid gray;
+}
+
+.image .mapDiv
+{
+  width:312px;
+  height:161px;
+  float:right;
+  overflow:hidden;
+}
+
+.mapDiv a
+{
+  background-image:none;
+}
+
+
+/* .jcarousel-list li, */
+/* .jcarousel-item { */
+/*     height: 100%; */
+/* } */
+
+
+/* .jcarousel-list li, */
+/* .jcarousel-item { */
+/*     float: left; */
+/*     list-style: none; */
+/*     /\* We set the width/height explicitly. No width/height causes infinite loops. *\/ */
+/*     width: 75px; */
+/*     height: 75px; */
+/* } */
+
+/* .jcarousel-skin-tango .jcarousel-item { height: 100%; } */
+.jcarousel-skin-tango .jcarousel-item { height: 80px; }
+
+.external_control_carousel_3 .jcarousel-list li,
+.external_control_carousel_3 .jcarousel-item {
+    height: 240px;
+}
+
+.media_page .external_control_carousel_3 .jcarousel-list li,
+.media_page .external_control_carousel_3 .jcarousel-item {
+    height: 225px;
+}
+
+.project_featured_media .jcarousel-list li,
+.project_featured_media .jcarousel-item {
+    height: 258px;
+}
+
+.project_show_media_gallery_without_cp .jcarousel-list li,
+.project_show_media_gallery_without_cp .jcarousel-item {
+    height: 195px;
+}
+
+.add_event_box .jcarousel-list li,
+.add_event_box .jcarousel-item {
+    height: 198px;
+}
+
+.donation_complete_project_carousel .jcarousel-list li,
+.donation_complete_project_carousel .jcarousel-item {
+    height: 207px;
+}
+
+.needing_donations_carousel .jcarousel-list li,
+.needing_donations_carousel .jcarousel-item,
+.needing_a_cp_carousel .jcarousel-list li,
+.needing_a_cp_carousel .jcarousel-item {
+    height: 322px;
+}
+
+.media_album_lightbox .jcarousel-list li,
+.media_album_lightbox .jcarousel-item {
+    height: 375px;
+}
+
+.fundraiser_types_index_carousel .jcarousel-list li,
+.fundraiser_types_index_carousel .jcarousel-item {
+    height: 356px;
+}
+
+html body .component .jcarousel-list li li.row { height: 176px;} /* specifically set these for fundraiser types since they'll look weird if they go over */
+html body .component .jcarousel-list li li { /* LI's within LI's get borked, specifically fundraiser_types index page */
+/*     float: none; */
+    list-style: auto;
+    /* We set the width/height explicitly. No width/height causes infinite loops. */
+/*     width: 75px; */
+/*     height: 75px; */
+    width: auto;
+    height: auto;
+}
+
+.event-carousel { /* fixes event new/edit pages */
+    padding-left:20px;
+    padding-right:20px;
+}
+
+.carousel_padder {
+    padding: 0px 30px;
+}
+
+.drag_handle { cursor: move; }
+
+div ul.media_carousel_with_cp {
+    float:left;
+    padding-left:0;
+}
+
+.project_show_media_gallery_without_cp .prev,
+.project_show_media_gallery_without_cp .next { position: relative; }
+
+.fundraiser_types_index_carousel.component ul {
+    padding-left:9px;
+}
+
+
+form.edit_blog_post {background-color: transparent; border: 0px transparent;}
+
+
+/* .updnWatermark { */
+/*     color: #999; */
+/*     font-family: Sans-Serif; */
+/*     font-size: small; */
+/*     font-style: italic; */
+/*     padding: 2px; */
+/* } */
+
+
+label
+{
+        vertical-align: middle;
+}
+
+
+/* watermark positioning container */
+.updnWatermark
+{
+        position: relative;     /* positioning container */
+        width: 0;
+        height: 1.25em; /* must specify height for consistent vertical alignment */
+        vertical-align: middle;
+}
+/* IE7/6 hasLayout hack */
+.updnWatermark
+{
+        *zoom: 1;
+}
+/* watermark label styling */
+.updnWatermark label
+{
+        position: absolute;
+        left: 0;
+        top: 0;
+        white-space: nowrap;
+        color: #999;
+        padding-left: 4px;
+        height: 1.25em; /* must specify height for consistent vertical alignment */
+        vertical-align: middle;
+}
+
+div#import_popup { width: 600px; position:relative; top:-12px; }
+div#import_popup p.contact { padding: 0; margin: 0; }
+div#import_popup h4 { padding-bottom: 10px; }
+div#import_popup input.inlined, div#import_popup label.inlined { display: inline; }
+
+.component-header .headerlinks { padding-top: 10px; padding-right: 14px; }
+.component-header .headerlinks, .component-header .headerlinks a { color: white; }
+
+#signup a.on {
+   font-weight: bold;
+}
+
+#signup form input.field_left, #signup form input.field_right {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 9pt;
+}
+
+
+div#signed_in {background:url(/images/bg_signup.png) no-repeat; width:312px; height:49px; text-align:left; color:white; }
+div#signed_in div.stuff {padding-top: 7px; padding-left: 10px;}
+div#signed_in a {color:#fff; height:16px;}
+
+.box-full-middle.account-info form, .box-full-middle.picture form, .box-full-middle.social-media-links form { padding-top: 4px; }
+
+.box-full-middle.picture form img.pad_bottom { padding-bottom: 12px; }
+
+.profile ul.main_with_space_for_edit_link {height:130px}
+
+form input.inlined, form label.inlined { display: inline; }
+
+.box-full-middle.account-info form label.first-name { padding-right: 96px; }
+
+p.watching { margin-top: 5px; margin-bottom: 5px; }
+
+div.no-album { padding-left:7px; margin-left:5px; padding-top:5px; }
+
+#wrapper-footer-images { margin-left: 5px; padding: 5px 0 5px 0; width:953px; text-align: center; border-bottom: none;}
+
+#wrapper-footer-images a { text-decoration: none;}
+
+
+.box-rightcol-inner.status_updates p {clear:both; border-bottom:1px dashed #BFB6AD; display:block; padding:7px; margin:0; font:normal 11px Arial, Helvetica, sans-serif; color:#5086c6}
+
+.box-rightcol-inner.status_updates p.last {border-bottom:none}
+
+.box-full-middle .carousel { height: 100%; }
+
+.box-full-middle .carousel p.title { font-size: 11px; }
+
+.box-full-middle .carousel p.description { line-height: 1.2 }
+
+.jcarousel-skin-tango .jcarousel-container-horizontal { padding: 0 40px; }
+
+.jcarousel-skin-tango .jcarousel-prev-horizontal { top: 20px; }
+.jcarousel-skin-tango .jcarousel-next-horizontal { top: 20px; right: 12px; }
+
+.jcarousel-skin-tango .jcarousel-item-horizontal { margin-right: 0; }
+
+.donated .share { width: auto; margin-top: 0; margin-right: 6px;}
+
+.profile div.about_me {padding:8px 0 8px 0; border-bottom:1px dashed #BFB6AD}
+
+div.date-container.cal { float: left; margin-right: 12px; }
+
+div.date { width: 41px; }
+
+div.ics-menu { padding:3px 0 6px 28px; }
+
+div#add_to_calendar a.cal { padding-top: 5px; }
+div#add_to_calendar a.cal-image { cursor: pointer; }
+
+p.empty-events { margin: 0 0 0 7px; }
+
+div.follow-container.rightcol-wrapper { padding: 0 12px 0 0; }
+
+
+.selectBoxBlue {float:left; background:url(/images/select_blue.png) 0 0 no-repeat; width:245px; height:20px;
+                margin-top:0px; text-indent:4px; color:#fff; font:normal 11px/22px Arial, Helvetica, sans-serif;
+                text-decoration:none; width:auto !important; min-width:245px;}
+a.selectBoxBlue { line-height:normal; padding-top:6px; text-indent: 6px; }
+input#blueBox2_input { line-height:normal; padding-top: 6px; text-indent: 2px; float:none; }
+
+
+#player ul li.outer { height: 56px; }
+
+#player #slideshow-right .links { padding-top: 15px; }
+
+
+.completed_project_status { color:black; }
+.current_project_status { color:blue; font-weight:bold; }
+.future_project_status { color:#999999; }
+
+.tabs a#btn_project_details { width: 180px; }
+.tabs a#btn_impact { width: 119px; }
+
+#todo-list li{margin:0;height:50px;}
+#todo-list a img{margin:-11px 0 0 0px;}
+#todo-list span{margin:21px 10px 0 0;}
+#todo-list a{margin:21px 0 0 10px;}
+.white{color:#fff;}
+.dark-green {color:#152900;}
+
+div.wrapper-copy .box-full-middle.padtop { padding-top: 10px; }
+
+.success{
+		background-color:#88b843;
+		border:1px solid #ccc;
+}
+
+.error, .errorExplanation{
+		background-color:#ee101b;
+		border:1px solid #ccc;
+}
+
+.general{
+		background-color:#ffde00;
+		border: 1px solid #ccc;
+}
+
+.message, .errorExplanation{
+		display:block;
+		color:#000;
+		width:928px;
+		margin-left:5px;
+		padding:12px;
+    margin-top:10px;
+}
+
+#info label {
+	display:inline;
+}
+
+.percentage {color:#1d3602}
+
+.slideshow .copy h6.active_project_name,
+#player .copy h6.active_feature_title { font-size: 16px; color:#fff; }
+
+.twocol-left .component-subheader	a.rss_link_picture { text-decoration: none; }
+
+#facebox .content p.facebox_text_only { margin-bottom: 0; padding-top: 35px; }
+
+
+#player ul li.outer { height: 63px; }
+
+.spacer_progress { padding:2px; }
+
+
+.slideshow .copy h6.active_project_name, #player .copy h6.active_feature_title { font-size: 16px; color:#fff; }
+
+.twocol-left .component-subheader	a.rss_link_picture { text-decoration: none; }
+.twocol-left .component-subheader { text-decoration: none; }
+
+.selectbox-wrapper ul { padding-left: 0px; margin: -18px 0px 0px }
+.component .selectbox-wrapper ul { padding-left: 0px; }
+
+#blueBox2_container { width: 245px !important; }
+#grayBox2_container { width: 214px !important; margin-top: -3px; margin-left: 1px; }
+#grayBox3_container { width: 296px !important; }
+#grayBox4_container { width: 296px !important; }
+#grayBox5_container { width: 296px !important; }
+.selectBoxGrayLarge { height: 20px; line-height: 20px; }
+
+#grayBox2_input { padding-top: 0; font-size:9pt;}
+
+body { word-wrap: break-word; }
+
+#player #slideshow-right h4 a.content-blue { font-family: "Courier New", Courier, monospace; text-decoration: none; }
+#player #slideshow-right h4 a.content-blue:hover { text-decoration: underline; }
+
+#facebox li.jcarousel-item.full-size { height: 380px; }
+
+#project_featured_media .slideshow .pic .copy,
+#projects_needing_a_cp_carousel .slideshow .pic .copy,
+#projects_needing_donations_carousel .slideshow .pic .copy {height:52px}
+#project_featured_media .slideshow .pic .copy h6,
+#project_featured_media .slideshow .pic .copy p,
+#projects_needing_a_cp_carousel .slideshow .pic .copy h6,
+#projects_needing_a_cp_carousel .slideshow .pic .copy span,
+#projects_needing_donations_carousel .slideshow .pic .copy h6,
+#projects_needing_donations_carousel .slideshow .pic .copy span,
+#player .copy p.active_feature_caption,
+#player .copy h6.active_feature_title {letter-spacing:0.01em;font-family:Cambria, Georgia, serif;}
+#project_featured_media .slideshow .pic .copy h6,
+#projects_needing_a_cp_carousel .slideshow .pic .copy h6,
+#projects_needing_donations_carousel .slideshow .pic .copy h6,
+#player .copy h6.active_feature_title {font-size:16px;}
+#project_featured_media .slideshow .pic .copy p,
+#projects_needing_a_cp_carousel .slideshow .pic .copy span,
+#projects_needing_donations_carousel .slideshow .pic .copy spanm
+#player .copy p.active_feature_caption {font-size: 12px;}
+
+#project_featured_media .slideshow .pic .copy h6,
+.slideshow .copy h6.active_project_index_project_name {color:#ffffff;}
+
+.slideshow .pic .copy p, #player .copy p, .slideshow .copy h6.active_project_name, h1.home, #player h4, h1.larger, h1.inline, #fundraising h1, .box-rightcol-inner h4, .profile ul li.contact .follow, .box-full-middle h4, .component h4, h1.search, .slideshow .copy h6.active_project_index_project_name {font-family:Courier New, monospace;}
+
+#player h4, .box-rightcol-inner h4,.box-full-middle h4, .component h4 {font-weight:bold;}
+
+.mailing_list_users_layout .wrapper-footer-text {border-top:8px solid #5086C6; padding-top: 10px;}
+.mailing_list_users_layout .component-header-full.nopad {margin-top: 0px;}
+.mailing_list_users_layout .box-full-middle {
+  padding:0 13px 5px 5px;
+  width:953px;
+}
+
+.mailing_list_users_layout .top_section {
+  background-color: #dceaf2;
+  padding: 30px 0px 30px 20px;
+  color: #214373;
+}
+.mailing_list_users_layout .top_section .heading {
+  font-size: 1.2em;
+}
+.mailing_list_users_layout .image {float: right; padding: 20px 15px 0px 0px;}
+.mailing_list_users_layout .copy {
+  padding: 20px 520px 30px 60px;
+  color: #62a1c6;
+}
+.mailing_list_users_layout .form {
+  padding-left: 60px;
+}
+.mailing_list_users_layout label {font-weight: bold;}
+.mailing_list_users_layout .form div {
+  float: left;
+}
+.mailing_list_users_layout .join_button {clear: left; padding: 30px 0px 20px 50px;}
+
+.mailing_list_users_layout .copy td {padding-bottom: 15px; font-size: 1.2em; color: #5672a7; vertical-align: top;}
+.mailing_list_users_layout .copy td a {color: #214373; font-weight: bold; font-size: 1.1em;}
+.mailing_list_users_layout .copy td.number {font-size: 2.0em; font-weight: bold; padding-right: 15px; padding-bottom: 5px;}
+
+
+.blog-post ul, .blog_article ul { list-style-type: disc; }
+.blog-post ul, .blog_article li, .blog-post ul, .blog_article li { overflow: visible; }
+
+.twocol-left .component.blog_article { padding-top: 0px; }
+
+.pagination {
+margin:1em 0em 2em 0em;
+padding:1em;
+}
+.pagination a, .pagination span {
+background:none repeat scroll 0 0 #FFFFFF;
+border:1px solid #FFFFFF;
+display:block;
+float:left;
+margin-right:0.1em;
+padding:0.2em 0.5em;
+font-size:8pt;
+}
+.pagination span.current {
+background:none repeat scroll 0 0 #2E6AB1;
+border:1px solid #2E6AB1;
+color:#FFFFFF;
+font-weight:bold;
+}
+.pagination a {
+border:1px solid #9AAFE5;
+text-decoration:none;
+}
+.pagination a:hover {
+border-color:#2E6AB1;
+}
+.pagination a.prev_page, .pagination a.next_page {
+font-weight:bold;
+}
+.pagination span.prev_page, .pagination span.next_page {
+border:1px solid #DDDDDD;
+color:#999999;
+}
+

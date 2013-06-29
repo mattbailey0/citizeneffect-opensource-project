@@ -1,0 +1,14 @@
+= f.error_messages
+
+%p
+  = f.label :user_id, "CP Name"
+  %br
+  = f.collection_select :user_id, Role.cp.users, :id, :name
+
+%p
+  = f.label :quote
+  %br
+  = f.text_area :quote
+
+%p
+  = f.submit fundraiser_type_experience.new_record? ? 'Create' : 'Update'

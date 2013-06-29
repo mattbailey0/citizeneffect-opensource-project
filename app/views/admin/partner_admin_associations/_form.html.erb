@@ -1,0 +1,8 @@
+  <tr>
+    <td class="form-label"><%= f.label :user_id %></td>
+    <td><%= f.collection_select :user_id, User.all, :id, :name_and_email, :prompt => true %></td>
+  </tr>
+<!--   <tr> -->
+<!--     <td class="form-label"><%= f.label :partner_id %></td> -->
+<!--     <td><%= f.text_field :partner_id %></td> -->
+<!--   </tr> -->

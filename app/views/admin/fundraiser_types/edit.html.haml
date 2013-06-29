@@ -1,0 +1,11 @@
+%h1
+  = h 'Editing Fundraiser Type: ' + @fundraiser_type.name
+- form_for([:admin, @fundraiser_type], :html => { :multipart => true }) do |f|
+  = f.error_messages
+
+  = render :partial => "form", :locals => { :fundraiser_type => @fundraiser_type, :f => f }
+
+= link_to 'Show', [:admin, @fundraiser_type]
+|
+= link_to 'Back', admin_fundraiser_types_path
+

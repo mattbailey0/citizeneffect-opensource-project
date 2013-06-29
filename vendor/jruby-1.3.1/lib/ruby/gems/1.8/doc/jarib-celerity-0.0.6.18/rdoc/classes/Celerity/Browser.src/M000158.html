@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>refresh_handler= (Celerity::Browser)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/celerity/browser.rb, line 663</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">refresh_handler=</span>(<span class="ruby-identifier">symbol</span>)
+      <span class="ruby-identifier">handler</span> = <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">symbol</span>
+                <span class="ruby-keyword kw">when</span> <span class="ruby-identifier">:waiting</span>
+                  <span class="ruby-constant">HtmlUnit</span><span class="ruby-operator">::</span><span class="ruby-constant">WaitingRefreshHandler</span>.<span class="ruby-identifier">new</span>
+                <span class="ruby-keyword kw">when</span> <span class="ruby-identifier">:threaded</span>
+                  <span class="ruby-constant">HtmlUnit</span><span class="ruby-operator">::</span><span class="ruby-constant">ThreadedRefreshHandler</span>.<span class="ruby-identifier">new</span>
+                <span class="ruby-keyword kw">when</span> <span class="ruby-identifier">:immediate</span>
+                  <span class="ruby-constant">HtmlUnit</span><span class="ruby-operator">::</span><span class="ruby-constant">ImmediateRefreshHandler</span>.<span class="ruby-identifier">new</span>
+                <span class="ruby-keyword kw">else</span>
+                  <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-value str">&quot;expected :waiting, :threaded or :immediate&quot;</span>
+                <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-ivar">@webclient</span>.<span class="ruby-identifier">setRefreshHandler</span> <span class="ruby-identifier">handler</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,1627 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Celerity::Browser</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Celerity::Browser</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/lib/celerity/browser_rb.html">
+                lib/celerity/browser.rb
+                </a>
+        <br />
+                <a href="../../files/lib/celerity/watir_compatibility_rb.html">
+                lib/celerity/watir_compatibility.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000145">add_checker</a>&nbsp;&nbsp;
+      <a href="#M000134">add_cookie</a>&nbsp;&nbsp;
+      <a href="#M000143">add_listener</a>&nbsp;&nbsp;
+      <a href="#M000164">assert_exists</a>&nbsp;&nbsp;
+      <a href="#M000141">asynchronized</a>&nbsp;&nbsp;
+      <a href="#M000109">attach</a>&nbsp;&nbsp;
+      <a href="#M000127">back</a>&nbsp;&nbsp;
+      <a href="#M000173">bring_to_front</a>&nbsp;&nbsp;
+      <a href="#M000132">clear_cache</a>&nbsp;&nbsp;
+      <a href="#M000131">clear_cookies</a>&nbsp;&nbsp;
+      <a href="#M000114">close</a>&nbsp;&nbsp;
+      <a href="#M000144">confirm</a>&nbsp;&nbsp;
+      <a href="#M000125">contains_text</a>&nbsp;&nbsp;
+      <a href="#M000123">content_type</a>&nbsp;&nbsp;
+      <a href="#M000133">cookies</a>&nbsp;&nbsp;
+      <a href="#M000113">credentials=</a>&nbsp;&nbsp;
+      <a href="#M000157">css</a>&nbsp;&nbsp;
+      <a href="#M000156">css=</a>&nbsp;&nbsp;
+      <a href="#M000142">debug_web_connection</a>&nbsp;&nbsp;
+      <a href="#M000146">disable_checker</a>&nbsp;&nbsp;
+      <a href="#M000167">disable_event_listener</a>&nbsp;&nbsp;
+      <a href="#M000126">document</a>&nbsp;&nbsp;
+      <a href="#M000169">each</a>&nbsp;&nbsp;
+      <a href="#M000166">enable_event_listener</a>&nbsp;&nbsp;
+      <a href="#M000136">execute_script</a>&nbsp;&nbsp;
+      <a href="#M000150">exist?</a>&nbsp;&nbsp;
+      <a href="#M000151">exists?</a>&nbsp;&nbsp;
+      <a href="#M000165">focused_element</a>&nbsp;&nbsp;
+      <a href="#M000128">forward</a>&nbsp;&nbsp;
+      <a href="#M000112">goto</a>&nbsp;&nbsp;
+      <a href="#M000118">html</a>&nbsp;&nbsp;
+      <a href="#M000149">ignore_pattern=</a>&nbsp;&nbsp;
+      <a href="#M000111">inspect</a>&nbsp;&nbsp;
+      <a href="#M000124">io</a>&nbsp;&nbsp;
+      <a href="#M000162">javascript_enabled</a>&nbsp;&nbsp;
+      <a href="#M000161">javascript_enabled=</a>&nbsp;&nbsp;
+      <a href="#M000153">javascript_exceptions</a>&nbsp;&nbsp;
+      <a href="#M000152">javascript_exceptions=</a>&nbsp;&nbsp;
+      <a href="#M000147">log_level</a>&nbsp;&nbsp;
+      <a href="#M000148">log_level=</a>&nbsp;&nbsp;
+      <a href="#M000110">new</a>&nbsp;&nbsp;
+      <a href="#M000163">page=</a>&nbsp;&nbsp;
+      <a href="#M000170">quit</a>&nbsp;&nbsp;
+      <a href="#M000130">refresh</a>&nbsp;&nbsp;
+      <a href="#M000158">refresh_handler=</a>&nbsp;&nbsp;
+      <a href="#M000135">remove_cookie</a>&nbsp;&nbsp;
+      <a href="#M000168">reset_attach_timeout</a>&nbsp;&nbsp;
+      <a href="#M000121">response_headers</a>&nbsp;&nbsp;
+      <a href="#M000140">resynchronized</a>&nbsp;&nbsp;
+      <a href="#M000160">secure_ssl</a>&nbsp;&nbsp;
+      <a href="#M000159">secure_ssl=</a>&nbsp;&nbsp;
+      <a href="#M000137">send_keys</a>&nbsp;&nbsp;
+      <a href="#M000171">set_fast_speed</a>&nbsp;&nbsp;
+      <a href="#M000172">set_slow_speed</a>&nbsp;&nbsp;
+      <a href="#M000174">speed=</a>&nbsp;&nbsp;
+      <a href="#M000108">start</a>&nbsp;&nbsp;
+      <a href="#M000117">status</a>&nbsp;&nbsp;
+      <a href="#M000122">status_code</a>&nbsp;&nbsp;
+      <a href="#M000155">status_code_exceptions</a>&nbsp;&nbsp;
+      <a href="#M000154">status_code_exceptions=</a>&nbsp;&nbsp;
+      <a href="#M000120">text</a>&nbsp;&nbsp;
+      <a href="#M000116">title</a>&nbsp;&nbsp;
+      <a href="#M000115">url</a>&nbsp;&nbsp;
+      <a href="#M000129">wait</a>&nbsp;&nbsp;
+      <a href="#M000138">wait_until</a>&nbsp;&nbsp;
+      <a href="#M000139">wait_while</a>&nbsp;&nbsp;
+      <a href="#M000119">xml</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+    <div id="includes">
+      <h3 class="section-bar">Included Modules</h3>
+
+      <div id="includes-list">
+        <span class="include-name"><a href="Container.html">Container</a></span>
+        <span class="include-name"><a href="XpathSupport.html">XpathSupport</a></span>
+      </div>
+    </div>
+
+    <div id="section">
+
+
+
+    <div id="aliases-list">
+      <h3 class="section-bar">External Aliases</h3>
+
+      <div class="name-list">
+                        <table summary="aliases">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">start</td>
+          <td>-&gt;</td>
+          <td class="context-item-value">start_window</td>
+        </tr>
+      <tr class="top-aligned-row context-row">
+        <td>&nbsp;</td>
+        <td colspan="2" class="context-item-desc">
+Added for Watir compatibility - not in use by Celerity
+
+</td>
+      </tr>
+                        </table>
+      </div>
+    </div>
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">attach_timeout</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc">
+Added for Watir compatibility - not in use by Celerity
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">charset</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">object</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">options</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">page</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">speed</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc">
+Added for Watir compatibility - not in use by Celerity
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">viewer</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">visible</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc">
+Added for Watir compatibility - not in use by Celerity
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">visible</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc">
+Added for Watir compatibility - not in use by Celerity
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">webclient</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000109" class="method-detail">
+        <a name="M000109"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000109.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000109.html');return false;">
+          <span class="method-name">attach</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Not implemented. Use <a
+href="ClickableElement.html#M000004">ClickableElement#click_and_attach</a>
+instead.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000169" class="method-detail">
+        <a name="M000169"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000169.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000169.html');return false;">
+          <span class="method-name">each</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Added for Watir compatibility - not in use by Celerity
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000110" class="method-detail">
+        <a name="M000110"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000110.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000110.html');return false;">
+          <span class="method-name">new</span><span class="method-args">(opts = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Creates a browser object.
+</p>
+<p>
+@see <a href="Container.html">Celerity::Container</a> for an introduction
+to the main API.
+</p>
+<p>
+@option opts :<a href="Browser.html#M000147">log_level</a> [Symbol]
+(:warning) @see <a href="Browser.html#M000148">log_level=</a> @option opts
+:browser [:internet_explorer, :firefox, :firefox3] (:firefox) Set the
+BrowserVersion used by <a href="../HtmlUnit.html">HtmlUnit</a>. Defaults to
+Firefox 2. @option opts :<a href="Browser.html#M000157">css</a> [Boolean]
+(false) Enable CSS. Disabled by default. @option opts :<a
+href="Browser.html#M000160">secure_ssl</a> [Boolean] (true) Enable/disable
+secure SSL. Enabled by default. @option opts :<a
+href="Browser.html#M000162">javascript_enabled</a> [Boolean] (true)
+Enable/disable JavaScript evaluation. Enabled by default. @option opts
+:resynchronize [Boolean] (false) Use
+HtmlUnit::NicelyResynchronizingAjaxController to resynchronize Ajax calls.
+@option opts :<a href="Browser.html#M000153">javascript_exceptions</a>
+[Boolean] (false) Raise exceptions on script errors. Disabled by default.
+@option opts :<a href="Browser.html#M000155">status_code_exceptions</a>
+[Boolean] (false) Raise exceptions on failing <a
+href="Browser.html#M000117">status</a> codes (404 etc.). Disabled by
+default. @option opts :charset [String] (&quot;UTF-8&quot;) Specify the
+charset that webclient will use for requests, and those where texts are
+getting gibberished, like <a href="Browser.html#M000118">Browser#html</a>.
+@option opts :proxy [String] (nil) Proxy server to use, in address:port
+format. @option opts :user_agent [String] Override the User-Agent set by
+the :browser option @option opts :ignore_pattern [Regexp] See
+Browser#ignore_pattern= @option opts :viewer [Boolean] (true) Connect to a
+CelerityViewer on port 6429 if available. @option opts :render [:<a
+href="Browser.html#M000118">html</a>, :<a
+href="Browser.html#M000119">xml</a>] (:<a
+href="Browser.html#M000118">html</a>) What DOM representation to send to
+connected viewers. @option opts :refresh_handler [:immediat, :waiting,
+:threaded] (:immediate) Set <a href="../HtmlUnit.html">HtmlUnit</a>&#8216;s
+<a href="Browser.html#M000130">refresh</a> handler.
+</p>
+<p>
+@return [<a href="Browser.html">Celerity::Browser</a>] An instance of the
+browser.
+</p>
+<p>
+@api public
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000170" class="method-detail">
+        <a name="M000170"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000170.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000170.html');return false;">
+          <span class="method-name">quit</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Added for Watir compatibility - not in use by Celerity
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000168" class="method-detail">
+        <a name="M000168"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000168.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000168.html');return false;">
+          <span class="method-name">reset_attach_timeout</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Added for Watir compatibility - not in use by Celerity
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000171" class="method-detail">
+        <a name="M000171"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000171.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000171.html');return false;">
+          <span class="method-name">set_fast_speed</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Added for Watir compatibility - not in use by Celerity
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000172" class="method-detail">
+        <a name="M000172"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000172.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000172.html');return false;">
+          <span class="method-name">set_slow_speed</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Added for Watir compatibility - not in use by Celerity
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000108" class="method-detail">
+        <a name="M000108"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000108.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000108.html');return false;">
+          <span class="method-name">start</span><span class="method-args">(uri)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Initialize a browser and go to the given URL
+</p>
+<p>
+@param [String] uri The URL to go to. @return [<a
+href="Browser.html">Celerity::Browser</a>] instance.
+</p>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000145" class="method-detail">
+        <a name="M000145"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000145.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000145.html');return false;">
+          <span class="method-name">add_checker</span><span class="method-args">(checker = nil, &amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Add a &#8216;checker&#8217; proc that will be run on every page load
+</p>
+<p>
+@param [Proc] checker The proc to be run (can also be given as a block)
+@yieldparam [<a href="Browser.html">Celerity::Browser</a>] browser The
+current browser object. @raise [ArgumentError] if no Proc or block was
+given.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000134" class="method-detail">
+        <a name="M000134"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000134.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000134.html');return false;">
+          <span class="method-name">add_cookie</span><span class="method-args">(domain, name, value, opts = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Add a cookie with the given parameters (Celerity only)
+</p>
+<p>
+@param [String] domain @param [String] name @param [String] value
+</p>
+<p>
+@option opts :path [String] (&quot;/&quot;) A path @option opts :max_age
+[Fixnum] (??) A max age @option opts :secure [Boolean] (false)
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000143" class="method-detail">
+        <a name="M000143"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000143.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000143.html');return false;">
+          <span class="method-name">add_listener</span><span class="method-args">(type, &amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Add a listener block for one of the available types. (Celerity only) Types
+map to <a href="../HtmlUnit.html">HtmlUnit</a> interfaces like this:
+</p>
+<pre>
+  :status           =&gt; StatusHandler
+  :alert            =&gt; AlertHandler  ( window.alert() )
+  :web_window_event =&gt; WebWindowListener
+  :html_parser      =&gt; HTMLParserListener
+  :incorrectness    =&gt; IncorrectnessListener
+  :confirm          =&gt; ConfirmHandler ( window.confirm() )
+  :prompt           =&gt; PromptHandler ( window.prompt() )
+</pre>
+<p>
+Examples:
+</p>
+<pre>
+  browser.add_listener(:status) { |page, message| ... }
+  browser.add_listener(:alert) { |page, message| ... }
+  browser.add_listener(:web_window_event) { |web_window_event| ... }
+  browser.add_listener(:html_parser) { |message, url, line, column, key| ... }
+  browser.add_listener(:incorrectness) { |message, origin| ... }
+  browser.add_listener(:confirm) { |page, message| ...; true }
+  browser.add_listener(:prompt) { |page, message| ... }
+</pre>
+<p>
+@param [Symbol] type One of the above symbols. @param [Proc] block A block
+to be executed for events of this type.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000164" class="method-detail">
+        <a name="M000164"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000164.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000164.html');return false;">
+          <span class="method-name">assert_exists</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Check that we have a @page object.
+</p>
+<p>
+@raise [UnknownObjectException] if no page is loaded. @api private
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000141" class="method-detail">
+        <a name="M000141"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000141.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000141.html');return false;">
+          <span class="method-name">asynchronized</span><span class="method-args">() {|self| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Allows you to temporarliy switch to <a
+href="../HtmlUnit.html">HtmlUnit</a>&#8216;s default AjaxController, so
+ajax calls are performed asynchronously. This is useful if you have created
+the <a href="Browser.html">Browser</a> with :resynchronize =&gt; true, but
+want to switch it off temporarily.
+</p>
+<p>
+@yieldparam [<a href="Browser.html">Celerity::Browser</a>] browser The
+current browser object. @see <a
+href="Browser.html#M000110">Celerity::Browser#new</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000127" class="method-detail">
+        <a name="M000127"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000127.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000127.html');return false;">
+          <span class="method-name">back</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Goto <a href="Browser.html#M000127">back</a> one history item @return
+[String] The <a href="Browser.html#M000115">url</a> of the resulting page.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000173" class="method-detail">
+        <a name="M000173"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000173.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000173.html');return false;">
+          <span class="method-name">bring_to_front</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Added for Watir compatibility - not in use by Celerity
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000132" class="method-detail">
+        <a name="M000132"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000132.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000132.html');return false;">
+          <span class="method-name">clear_cache</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Clears the cache of &quot;compiled JavaScript files and parsed CSS
+snippets&quot;
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000131" class="method-detail">
+        <a name="M000131"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000131.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000131.html');return false;">
+          <span class="method-name">clear_cookies</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Clears all <a href="Browser.html#M000133">cookies</a>. (Celerity only)
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000114" class="method-detail">
+        <a name="M000114"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000114.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000114.html');return false;">
+          <span class="method-name">close</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Unsets the current page / closes all windows
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000144" class="method-detail">
+        <a name="M000144"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000144.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000144.html');return false;">
+          <span class="method-name">confirm</span><span class="method-args">(bool) {|| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Specify a boolean value to click either &#8216;OK&#8217; or
+&#8216;Cancel&#8217; in any <a href="Browser.html#M000144">confirm</a>
+dialogs that might show up during the duration of the given block.
+</p>
+<p>
+(Celerity only)
+</p>
+<p>
+@param [Boolean] bool true to click &#8216;OK&#8217;, false to click
+&#8216;cancel&#8217; @param [Proc] block A block that will trigger the <a
+href="Browser.html#M000144">confirm</a>() call(s).
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000125" class="method-detail">
+        <a name="M000125"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000125.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000125.html');return false;">
+          <span class="method-name">contains_text</span><span class="method-args">(expected_text)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Check if the current page contains the given <a
+href="Browser.html#M000120">text</a>.
+</p>
+<p>
+@param [String, Regexp] expected_text The <a
+href="Browser.html#M000120">text</a> to look for. @return [Numeric, nil]
+The index of the matched <a href="Browser.html#M000120">text</a>, or nil if
+it isn&#8216;t found. @raise [TypeError]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000123" class="method-detail">
+        <a name="M000123"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000123.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000123.html');return false;">
+          <span class="method-name">content_type</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [String] content-type as in &#8216;text/html&#8216;
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000133" class="method-detail">
+        <a name="M000133"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000133.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000133.html');return false;">
+          <span class="method-name">cookies</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Get the <a href="Browser.html#M000133">cookies</a> for this session.
+(Celerity only)
+</p>
+<p>
+@return [Hash&lt;domain, Hash&lt;name, value&gt;&gt;]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000113" class="method-detail">
+        <a name="M000113"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000113.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000113.html');return false;">
+          <span class="method-name">credentials=</span><span class="method-args">(string)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Set the credentials used for basic HTTP authentication. (Celerity only)
+</p>
+<p>
+Example:
+</p>
+<pre>
+  browser.credentials = &quot;username:password&quot;
+</pre>
+<p>
+@param [String] A string with username / password, separated by a colon
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000157" class="method-detail">
+        <a name="M000157"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000157.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000157.html');return false;">
+          <span class="method-name">css</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000156" class="method-detail">
+        <a name="M000156"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000156.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000156.html');return false;">
+          <span class="method-name">css=</span><span class="method-args">(bool)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Turn on/off CSS loading
+</p>
+<p>
+@param [Bool]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000142" class="method-detail">
+        <a name="M000142"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000142.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000142.html');return false;">
+          <span class="method-name">debug_web_connection</span><span class="method-args">(name) {|| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Start or stop <a href="../HtmlUnit.html">HtmlUnit</a>&#8216;s
+DebuggingWebConnection. (Celerity only) The output will go to /tmp/«name»
+</p>
+<p>
+@param [String] name directory name @param [block] blk block to execute
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000146" class="method-detail">
+        <a name="M000146"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000146.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000146.html');return false;">
+          <span class="method-name">disable_checker</span><span class="method-args">(checker)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Remove the given checker from the list of checkers @param [Proc] checker
+The Proc to disable.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000167" class="method-detail">
+        <a name="M000167"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000167.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000167.html');return false;">
+          <span class="method-name">disable_event_listener</span><span class="method-args">() {|| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Disable Celerity&#8216;s internal WebWindowEventListener
+</p>
+<p>
+@api private
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000126" class="method-detail">
+        <a name="M000126"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000126.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000126.html');return false;">
+          <span class="method-name">document</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [HtmlUnit::HtmlHtml] the underlying <a
+href="../HtmlUnit.html">HtmlUnit</a> <a
+href="Browser.html#M000126">document</a>.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000166" class="method-detail">
+        <a name="M000166"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000166.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000166.html');return false;">
+          <span class="method-name">enable_event_listener</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Enable Celerity&#8216;s internal WebWindowEventListener
+</p>
+<p>
+@api private
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000136" class="method-detail">
+        <a name="M000136"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000136.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000136.html');return false;">
+          <span class="method-name">execute_script</span><span class="method-args">(source)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Execute the given JavaScript on the current page. @return [Object] The
+resulting Object
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000150" class="method-detail">
+        <a name="M000150"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000150.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000150.html');return false;">
+          <span class="method-name">exist?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Checks if we have a page currently loaded. @return [true, false]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000151" class="method-detail">
+        <a name="M000151"></a>
+
+        <div class="method-heading">
+          <span class="method-name">exists?</span><span class="method-args">()</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for exist?
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000165" class="method-detail">
+        <a name="M000165"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000165.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000165.html');return false;">
+          <span class="method-name">focused_element</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns the element that currently has the focus (Celerity only)
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000128" class="method-detail">
+        <a name="M000128"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000128.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000128.html');return false;">
+          <span class="method-name">forward</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Go <a href="Browser.html#M000128">forward</a> one history item @return
+[String] The <a href="Browser.html#M000115">url</a> of the resulting page.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000112" class="method-detail">
+        <a name="M000112"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000112.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000112.html');return false;">
+          <span class="method-name">goto</span><span class="method-args">(uri)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Goto the given URL
+</p>
+<p>
+@param [String] uri The <a href="Browser.html#M000115">url</a>. @return
+[String] The <a href="Browser.html#M000115">url</a>.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000118" class="method-detail">
+        <a name="M000118"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000118.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000118.html');return false;">
+          <span class="method-name">html</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [String] the HTML content of the current page
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000149" class="method-detail">
+        <a name="M000149"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000149.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000149.html');return false;">
+          <span class="method-name">ignore_pattern=</span><span class="method-args">(regexp)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+If a request is made to an URL that matches the pattern set here, Celerity
+will ignore the request and return an empty page with content type
+&quot;text/html&quot; instead.
+</p>
+<p>
+This is useful to block unwanted requests (like ads/banners).
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000111" class="method-detail">
+        <a name="M000111"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000111.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000111.html');return false;">
+          <span class="method-name">inspect</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000124" class="method-detail">
+        <a name="M000124"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000124.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000124.html');return false;">
+          <span class="method-name">io</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [IO, nil] page contents as an IO, returns nil if no page is loaded.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000162" class="method-detail">
+        <a name="M000162"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000162.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000162.html');return false;">
+          <span class="method-name">javascript_enabled</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000161" class="method-detail">
+        <a name="M000161"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000161.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000161.html');return false;">
+          <span class="method-name">javascript_enabled=</span><span class="method-args">(bool)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Turn on/off JavaScript execution
+</p>
+<p>
+@param [Bool]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000153" class="method-detail">
+        <a name="M000153"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000153.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000153.html');return false;">
+          <span class="method-name">javascript_exceptions</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000152" class="method-detail">
+        <a name="M000152"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000152.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000152.html');return false;">
+          <span class="method-name">javascript_exceptions=</span><span class="method-args">(bool)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Turn on/off javascript exceptions
+</p>
+<p>
+@param [Bool]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000147" class="method-detail">
+        <a name="M000147"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000147.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000147.html');return false;">
+          <span class="method-name">log_level</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+:finest, :finer, :fine, :config, :info, :warning, :severe, or :off, :all
+</p>
+<p>
+@return [Symbol] the current log level
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000148" class="method-detail">
+        <a name="M000148"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000148.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000148.html');return false;">
+          <span class="method-name">log_level=</span><span class="method-args">(level)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Set <a href="../Java.html">Java</a> log level (default is :warning, can be
+any of :all, :finest, :finer, :fine, :config, :info, :warning, :severe,
+:off)
+</p>
+<p>
+@param [Symbol] level The <a href="Browser.html#M000110">new</a> log level.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000163" class="method-detail">
+        <a name="M000163"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000163.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000163.html');return false;">
+          <span class="method-name">page=</span><span class="method-args">(value)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Sets the current page object for the browser
+</p>
+<p>
+@param [HtmlUnit::HtmlPage] value The page to set. @api private
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000130" class="method-detail">
+        <a name="M000130"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000130.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000130.html');return false;">
+          <span class="method-name">refresh</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Refresh the current page
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000158" class="method-detail">
+        <a name="M000158"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000158.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000158.html');return false;">
+          <span class="method-name">refresh_handler=</span><span class="method-args">(symbol)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000135" class="method-detail">
+        <a name="M000135"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000135.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000135.html');return false;">
+          <span class="method-name">remove_cookie</span><span class="method-args">(domain, name)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Remove the cookie with the given domain and name (Celerity only)
+</p>
+<p>
+@param [String] domain @param [String] name
+</p>
+<p>
+@raise [CookieNotFoundError] if the cookie doesn&#8216;t exist
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000121" class="method-detail">
+        <a name="M000121"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000121.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000121.html');return false;">
+          <span class="method-name">response_headers</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [Hash] response headers as a hash
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000140" class="method-detail">
+        <a name="M000140"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000140.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000140.html');return false;">
+          <span class="method-name">resynchronized</span><span class="method-args">() {|self| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Allows you to temporarily switch to <a
+href="../HtmlUnit.html">HtmlUnit</a>&#8216;s
+NicelyResynchronizingAjaxController to resynchronize ajax calls.
+</p>
+<pre>
+  @browser.resynchronized do |b|
+    b.link(:id, 'trigger_ajax_call').click
+  end
+</pre>
+<p>
+@yieldparam [<a href="Browser.html">Celerity::Browser</a>] browser The
+current browser object. @see <a
+href="Browser.html#M000110">Celerity::Browser#new</a> for how to configure
+the browser to always use this.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000160" class="method-detail">
+        <a name="M000160"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000160.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000160.html');return false;">
+          <span class="method-name">secure_ssl</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000159" class="method-detail">
+        <a name="M000159"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000159.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000159.html');return false;">
+          <span class="method-name">secure_ssl=</span><span class="method-args">(bool)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Turn on/off secure SSL
+</p>
+<p>
+@param [Bool]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000137" class="method-detail">
+        <a name="M000137"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000137.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000137.html');return false;">
+          <span class="method-name">send_keys</span><span class="method-args">(keys)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+experimental - should be removed?
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000174" class="method-detail">
+        <a name="M000174"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000174.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000174.html');return false;">
+          <span class="method-name">speed=</span><span class="method-args">(s)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Added for Watir compatibility - not in use by Celerity
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000117" class="method-detail">
+        <a name="M000117"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000117.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000117.html');return false;">
+          <span class="method-name">status</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [String] the value of window.status
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000122" class="method-detail">
+        <a name="M000122"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000122.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000122.html');return false;">
+          <span class="method-name">status_code</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [Fixnum] <a href="Browser.html#M000117">status</a> code of the last
+request
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000155" class="method-detail">
+        <a name="M000155"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000155.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000155.html');return false;">
+          <span class="method-name">status_code_exceptions</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000154" class="method-detail">
+        <a name="M000154"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000154.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000154.html');return false;">
+          <span class="method-name">status_code_exceptions=</span><span class="method-args">(bool)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Turn on/off <a href="Browser.html#M000117">status</a> code exceptions
+</p>
+<p>
+@param [Bool]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000120" class="method-detail">
+        <a name="M000120"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000120.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000120.html');return false;">
+          <span class="method-name">text</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [String] a <a href="Browser.html#M000120">text</a> representation
+of the current page
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000116" class="method-detail">
+        <a name="M000116"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000116.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000116.html');return false;">
+          <span class="method-name">title</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [String] the <a href="Browser.html#M000116">title</a> of the
+current page
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000115" class="method-detail">
+        <a name="M000115"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000115.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000115.html');return false;">
+          <span class="method-name">url</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [String] the URL of the current page
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000129" class="method-detail">
+        <a name="M000129"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000129.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000129.html');return false;">
+          <span class="method-name">wait</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Wait for javascript jobs to finish
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000138" class="method-detail">
+        <a name="M000138"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000138.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000138.html');return false;">
+          <span class="method-name">wait_until</span><span class="method-args">(timeout = 30, &amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Wait until the given block evaluates to true (Celerity only)
+</p>
+<p>
+@param [Fixnum] timeout Number of seconds to <a
+href="Browser.html#M000129">wait</a> before timing out (default: 30).
+@yieldparam [<a href="Browser.html">Celerity::Browser</a>] browser The
+browser instance. @see <a
+href="Browser.html#M000140">Celerity::Browser#resynchronized</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000139" class="method-detail">
+        <a name="M000139"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000139.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000139.html');return false;">
+          <span class="method-name">wait_while</span><span class="method-args">(timeout = 30, &amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Wait while the given block evaluates to true (Celerity only)
+</p>
+<p>
+@param [Fixnum] timeout Number of seconds to <a
+href="Browser.html#M000129">wait</a> before timing out (default: 30).
+@yieldparam [<a href="Browser.html">Celerity::Browser</a>] browser The
+browser instance. @see <a
+href="Browser.html#M000140">Celerity::Browser#resynchronized</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000119" class="method-detail">
+        <a name="M000119"></a>
+
+        <div class="method-heading">
+          <a href="Browser.src/M000119.html" target="Code" class="method-signature"
+            onclick="popupCode('Browser.src/M000119.html');return false;">
+          <span class="method-name">xml</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [String] the XML representation of the DOM
+</p>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

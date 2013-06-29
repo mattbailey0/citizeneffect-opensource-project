@@ -1,0 +1,9 @@
+					<div class="people<%= last_class(object, last) -%>">
+						<div class="left"><%= link_to image_tag(cp.picture_url_thumb), cp %></div>
+						<div class="right">
+							<p class="name"><%= link_to h(cp.display_name), cp, :class => 'content-blue bold px12' -%></p>
+							<p class="location"><%=h cp.display_location -%></p>
+							<p class="description"><%=h cp.lives_impacted_as_cp -%> LIVES IMPACTED</p>
+						</div>
+						<div class="clear"></div>
+					</div>

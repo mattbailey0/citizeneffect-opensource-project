@@ -1,0 +1,24 @@
+<% form_tag search_path, :method => :get do %>
+<% fields_for :with do |f| %>
+
+<p class="light">What region of the world are you most interested in helping?</p>
+<%= f.collection_select :country_id, Country.alphabetical, :id, :name, {:prompt => "CHOOSE OPTION"}, 
+    :class => "selectBoxGray", :id => "grayBox3" %>
+
+<p class="light pad_top">What would you like to improve in other peoples' lives?</p>
+<%= f.collection_select :focus_area_ids, FocusArea.alphabetical, :id, :name, {:prompt => "CHOOSE OPTION"}, 
+    :class => "selectBoxGray", :id => "grayBox4" %>
+		
+<p class="light pad_top">What is a big part of your life?</p>
+<%= f.collection_select :fundraiser_tag_id, FundraiserTag.alphabetical, :id, :name, 
+    {:prompt => "CHOOSE OPTION"}, :class => "selectBoxGray", :id => "grayBox5" %>
+
+<%= f.hidden_field :project_status_id, {:value => ProjectStatus.awaiting_cp.id} %>
+
+<div class="right pad_top">
+  <%= image_submit_tag "btn_submit.png", :name => "find_your_perfect_project" %>
+</div>
+
+<% end -%>
+<% end -%>
+<div class="clear"></div>

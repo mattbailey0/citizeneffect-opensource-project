@@ -1,0 +1,17 @@
+--- !ruby/object:RI::MethodDescription 
+params: (domain, name, value, opts = {})
+is_singleton: false
+block_params: 
+name: add_cookie
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Add a cookie with the given parameters (Celerity only)
+- !ruby/struct:SM::Flow::P 
+  body: '@param [String] domain @param [String] name @param [String] value'
+- !ruby/struct:SM::Flow::P 
+  body: '@option opts :path [String] (&quot;/&quot;) A path @option opts :max_age
+    [Fixnum] (??) A max age @option opts :secure [Boolean] (false)'
+full_name: Celerity::Browser#add_cookie
+visibility: public
+aliases: []
+

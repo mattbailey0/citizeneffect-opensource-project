@@ -1,0 +1,26 @@
+<h1>Viewing Community Member Profile</h1>
+<h3>Project: <%=h @project.name %></h3>
+
+<p>
+  <b>Name:</b>
+  <%=h @community_member_profile.name %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%=h @community_member_profile.title %>
+</p>
+
+<p>
+  <b>Biography:</b>
+  <%=h @community_member_profile.biography %>
+</p>
+
+<p>
+  <b>Profile picture:</b>
+  <%= link_to h(@community_member_profile.profile_picture.original_filename), @community_member_profile.profile_picture.url -%><br />
+  <%= image_tag @community_member_profile.andand.profile_picture.url -%>
+</p>
+
+<%= link_to 'Edit', edit_admin_project_community_member_profile_path(@project, @community_member_profile) %> |
+<%= link_to 'Back', admin_project_community_member_profiles_path(@project) %>

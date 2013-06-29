@@ -1,0 +1,47 @@
+--- !ruby/object:RI::ClassDescription 
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: ClickableElement
+name: Image
+constants: 
+- !ruby/object:RI::Constant 
+  name: TAGS
+  value: '[ Identifier.new(''img'') ]'
+  comment: 
+- !ruby/object:RI::Constant 
+  name: ATTRIBUTES
+  value: BASE_ATTRIBUTES | [:src, :alt, :longdesc, :name, :height, :width, :usemap,
+    :ismap, :align, :border, :hspace, :vspace]
+  comment: 
+- !ruby/object:RI::Constant 
+  name: DEFAULT_HOW
+  value: ":src"
+  comment: 
+comment: 
+attributes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: fileCreatedDate
+- !ruby/object:RI::MethodSummary 
+  name: fileSize
+- !ruby/object:RI::MethodSummary 
+  name: file_created_date
+- !ruby/object:RI::MethodSummary 
+  name: file_size
+- !ruby/object:RI::MethodSummary 
+  name: hasLoaded?
+- !ruby/object:RI::MethodSummary 
+  name: has_loaded?
+- !ruby/object:RI::MethodSummary 
+  name: height
+- !ruby/object:RI::MethodSummary 
+  name: loaded?
+- !ruby/object:RI::MethodSummary 
+  name: save
+- !ruby/object:RI::MethodSummary 
+  name: width
+full_name: Celerity::Image
+superclass: Element
+class_methods: []
+

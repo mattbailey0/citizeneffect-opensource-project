@@ -1,0 +1,39 @@
+<% network_impact = NetworkImpact.find_by_use_on_homepage(true) -%>
+
+					<!-- data grid -->
+					<%= image_tag "header_citizen_effect_impact.gif", :alt => "Citizen Effect Impact", :width => "309", :height => "33", :class => "block" -%>
+					<div style="background:url(<%= image_path "bg_chart_data.png" -%>) repeat-y">
+						<table cellpadding="0" cellspacing="0" border="0" class="chart">
+							<colgroup>
+								<col width="178" />
+								<col width="50" />
+							</colgroup>
+							<tbody>
+								<tr>
+									<td><span>Lives&nbsp;Impacted</span></td>
+									<td><span><%= network_impact ? number_with_delimiter(network_impact.total_lives_impacted) : '-' %></span></td>
+								</tr>
+								<tr class="alt">
+									<td><span>Donors</span></td>
+									<td><span><%= network_impact ? number_with_delimiter(network_impact.total_unique_donors) : '-' %></span></td>
+								</tr>
+								<tr>
+									<td><span>Citizen&nbsp;Philanthropists</span></td>
+									<td><span><%= network_impact ? number_with_delimiter(network_impact.total_citizen_philanthropists) : '-' %></span></td>
+								</tr>
+								<tr class="alt">
+									<td><span>Dollars&nbsp;Donated</span></td>
+									<td><span><%= network_impact ? number_with_delimiter(network_impact.total_dollars_donated) : '-' %></span></td>
+								</tr>
+								<tr>
+									<td><span>Completed&nbsp;Projects</span></td>
+									<td><span><%= network_impact ? number_with_delimiter(network_impact.total_completed_projects) : '-' %></span></td>
+								</tr>
+								<tr class="alt">
+									<td><span>Projects&nbsp;In&nbsp;Progress</span></td>
+									<td><span><%= network_impact ? number_with_delimiter(network_impact.total_projects_in_progress) : '-' %></span></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<%= image_tag "footer_chart_data.png", :alt => "", :width => "309", :height => "2", :class => "block" %>

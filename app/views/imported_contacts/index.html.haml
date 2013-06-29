@@ -1,0 +1,74 @@
+- content_for(:page_title, "Contacts")
+
+.breadcrumbs
+  = link_to "&laquo; back to profile", @user, :class => "breadcrumbs green"
+
+#wrapper-copy
+  .component-header-full.nopadtop
+    %h3= "IMPORTED CONTACTS"
+  .box-full-middle
+    .difference_container
+      %p.difference.pad_left.margin_left.left
+        %span.bold.large_text
+          ADD MORE CONTACTS
+        %br
+        Import your contacts to make raising money easier.
+      %p.right.pad_right.margin_right
+        = link_to image_tag("btn_import_from_address_book.png", :class => "middle"), new_from_import_imported_contact_path, :class => "import_from_address_book"
+        %strong
+          \- OR -
+        = link_to image_tag("btn_add_single_contact.png", :class => "middle"), new_imported_contact_path, :class => "add_single_contact"
+      .clear
+    - form_tag(new_invite_imported_contacts_path) do |f|
+      .left.pad_bottom.pad_top_large
+        = submit_tag "Invite selected to Citizen Effect"
+      .right.pad_bottom.pad_top_large
+        -# %input.large{ :type => "text" }
+        -# %input{ :type => "button", :value => "Search Contacts" }
+      .clear
+      %table.grid{ :cellspacing => "0", :border => "0", :cellpadding => "0" }
+        %colgroup
+          %col{ :width => "30" }
+          %col{ :width => "146" }
+          %col{ :width => "193" }
+          %col{ :width => "24" }
+          %col{ :width => "179" }
+          %col{ :width => "324" }
+          %col{ :width => "28" }
+        %tr.light
+          %td
+            %input#contact_select_all{:type => "checkbox", :onclick => "var old_val = !this.checked; $(this).closest('form').find(':checkbox').each(function(){this.checked = !old_val;});" }
+          %td
+            %label{ :for => "contact_select_all" }
+              Select All/None
+          %td
+          %td
+          %td
+          %td
+          %td{ :align => "right" }
+        - @imported_contacts.each do |ic|
+          %tr
+            %td
+              - unless ic.user
+                = check_box_tag "invited_contact_ids[]", ic.id, false, :id => "invited_contact_id_#{ic.id}"
+            %td
+              = label_tag "invited_contact_id_#{ic.id}", h(ic.name)
+            %td
+              = h ic.email
+            %td
+              - if ic.user
+                - image_tag ic.user.picture_url_thumb(:imported_contact_thumb)
+            - if ic.user
+              %td
+                = link_to "Citizen Effect Profile", ic.user, :class => "blue"
+            - else
+              %td.no_profile
+                = "no citizen effect profile"
+            %td.referred.ltblue
+              - if ic.user && ic.recruited
+                = "Referred by you!"
+            %td{ :align => "right" }
+              = link_to "<span class='disc'>X</span>", ic, :confirm => "Click OK to delete this contact from your list.", :method => :delete, :class => "remove_contact"
+      .pad_bottom.pad_top_large
+        = submit_tag "Invite selected to Citizen Effect"
+  .box-full-bottom

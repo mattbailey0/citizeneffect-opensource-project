@@ -1,0 +1,39 @@
+<% content_for(:page_title, "New Email") %>
+
+		<div class="breadcrumbs">
+      <%= link_to "&laquo; back to project page", @mailing_list.project, :class => "breadcrumbs green" if @mailing_list.project %>
+
+		</div>
+
+
+
+		<!-- main body copy -->
+		<div id="wrapper-copy">
+		
+			<!-- left column -->
+			<div class="twocol-left">
+				
+				
+				<!-- edit emails -->
+				<div class="component-wrapper">
+					<div class="component-header"><h3>CREATE A NEW EMAIL</h3></div>
+
+					<div class="component editform">
+            <% form_for([@mailing_list, @mailing_list_email], :html => { :multipart => true }) do |f| %>
+              <%= render :partial => "form", :locals => { :f => f } %>
+            <% end %>
+<!-- 						<form action="javascript:;" method="post"> -->
+<!-- 						</form> -->
+					</div>
+				</div>
+				<div class="component-bottom"></div>
+			</div>
+
+			
+			<!-- right column -->
+			<div class="twocol-right">
+				<%= render :partial => "drafts" %>
+			</div>
+			<div class="clear"></div>
+			
+		</div>

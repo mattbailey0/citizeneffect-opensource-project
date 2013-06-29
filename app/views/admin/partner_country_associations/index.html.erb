@@ -1,0 +1,23 @@
+<h1>Countries Served by Partner
+  <br/>Partner: <%=h @partner.andand.display_name %></h1>
+
+<div class="new-button">
+  <%= link_to '(+) Add Country Served by Partner', [:new, :admin, @partner, :partner_country_association] %>
+</div>
+
+<table cellpadding="0" cellspacing="0" class="index-list">
+  <tr class="index-list-header">
+    <th>Country</th>
+    <th colspan="3">Actions</th>
+  </tr>
+
+<% @partner_country_associations.each do |partner_country_association| %>
+  <tr>
+    <td><%=h partner_country_association.country.name %></td>
+    <td><%= link_to 'Show', [:admin, @partner, partner_country_association] %></td>
+    <td><%= link_to 'Edit', [:edit, :admin, @partner, partner_country_association] %></td>
+    <td><%= link_to 'Destroy', [:admin, @partner, partner_country_association], :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+

@@ -1,0 +1,22 @@
+# bucket names are for attachment_fu (bloggity), we have the bucket set in PAPERCLIP_OPTIONS for paperclip
+
+development:
+  access_key_id: 
+  secret_access_key: 
+  bucket_name: 
+
+test:
+  access_key_id: 
+  secret_access_key: 
+  bucket_name: 
+
+production:
+  access_key_id: 
+  secret_access_key: 
+  bucket_name: 
+
+staging:
+  access_key_id: 
+  secret_access_key: 
+  bucket_name: 
+

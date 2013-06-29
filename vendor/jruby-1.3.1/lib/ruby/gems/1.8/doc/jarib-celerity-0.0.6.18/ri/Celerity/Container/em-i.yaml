@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+params: (*args)
+is_singleton: false
+block_params: 
+name: em
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: '@return [Celerity::Em]'
+full_name: Celerity::Container#em
+visibility: public
+aliases: []
+

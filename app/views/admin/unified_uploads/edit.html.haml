@@ -1,0 +1,9 @@
+%h1
+  Editing File
+
+- form_for([:admin, @unified_upload], :html => { :multipart => true }) do |f|
+
+  = render :partial => "form", :locals => { :unified_upload => @unified_upload, :f => f, :uploadable => @uploadable, :association_name => @association_name }
+
+= link_to 'Show', admin_unified_upload_path(@unified_upload, :uploadable_id => @uploadable.id, :uploadable_type => @uploadable.class, :association_name => @association_name)
+= link_to 'Back', admin_unified_uploads_path(:uploadable_id => @uploadable.id, :uploadable_type => @uploadable.class, :association_name => @association_name)

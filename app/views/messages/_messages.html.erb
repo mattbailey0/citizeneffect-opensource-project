@@ -1,0 +1,50 @@
+<div class="message_list">
+
+	<table cellpadding="0" cellspacing="0" border="0" class="grid-email">
+		<colgroup>
+			<col width="50" />
+			<col width="63" />
+			<col width="180" />
+			<col width="420" />
+			<col width="42" />
+		</colgroup>
+    <% if messages.count == 0 -%>
+    <tr height="15">
+      <td colspan="5">
+        <b>No Messages</b>
+      </td>
+    </tr>
+    <% end -%>
+
+    <% messages.each do |message| %>
+		  <tr <%= "class='bg_ltblue'" unless message.read? -%>>
+			  <td align="center">
+          <%= image_tag("btn_dot.png", :width => "15", :height => "15") unless message.read? %>
+        </td>
+        <td>
+          <%= image_tag message.send(user_symbol).picture_url_thumb(:tiny_blog_post_thumb), 
+              :width => "50", :height => "50" %>
+        </td>
+			  <td>
+          <p>
+            <%= link_to message.send(user_symbol).display_name, message.send(user_symbol), :class => "cename" %>
+            <br />
+            <span class="small"><%= message.created_at.to_s(:long) %></span>
+          </p>
+        </td>
+			  <td>
+          <p>
+            <%= link_to h(message.subject), user_message_path(@user, message) %>
+            <br />
+            <span class="small"><%=h truncate(message.body, :length => 50) %></span>
+          </p>
+        </td>
+        <td>
+          <%= link_to "<span class='disc'>X</span>", user_message_path(@user, message),
+              :confirm => 'Are you sure?', :method => :delete, :class => "delete_message" %>
+        </td>
+      </tr>
+    <% end -%>
+  </table>
+
+</div>

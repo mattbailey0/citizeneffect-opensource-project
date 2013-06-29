@@ -1,0 +1,12 @@
+<li>
+  <%= render :partial => "carousel_1", :object => @project, :locals => { :color => "green", :visible_callback => "itemVisibleInCallbackAfterAnimationNeedingCP" } %>
+  <div class="component">
+		<div class="icon-wrapper">
+      <%= image_tag @project.type_icon_url, :width => "30", :style => "float:right;" %>
+			<%= render :partial => "stats_progress_small", :object => @project %>
+		</div>
+		<%= link_to image_tag("btn_be_the_cp.png", :alt => "Be the Citizen Philanthropist", 
+    :height => "33", :width => "113"), [:new, @project, :cp_application], 
+    :class => "btn_right" %>
+	</div>
+</li>

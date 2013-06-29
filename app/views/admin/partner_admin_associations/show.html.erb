@@ -1,0 +1,13 @@
+<p>
+  <b>User:</b>
+  <%=h @partner_admin_association.user.name_and_email %>
+</p>
+
+<p>
+  <b>Partner:</b>
+  <%=h @partner_admin_association.partner.andand.display_name %>
+</p>
+
+
+<%= link_to 'Edit', [:edit, :admin, @partner, @partner_admin_association] %> |
+<%= link_to 'Back', [:admin, @partner, :partner_admin_associations] %>

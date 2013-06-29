@@ -1,0 +1,41 @@
+%table.index-list{ :cellpadding =>"0", :cellspacing => "0"}
+  %tr.index-list-header
+    %th Item
+    %th Date Submitted
+    %th Status
+    %th Next Step
+    %th Actions
+
+    %tr
+      %td Proposal
+      %td= @project.created_at.strftime('%m/%d/%Y')
+      %td{:class => "status #{@project.state.to_s.downcase.gsub(/ /, '-')}"}= @project.state
+      %td= @project.next_step
+      %td.actions
+        - if current_user.is_a_citizen_effect_admin?
+          = link_to "Show / Approve / Deny", [:admin, @project]
+        - else
+          = link_to "Show", [:admin, @project]
+        |
+        = link_to "Edit", [:edit, :admin, @project]
+
+    - @project.project_reports.each do |report|
+      %tr
+        %td= report.class.to_s.titleize
+        %td= report.created_at.strftime('%m/%d/%Y')
+        - if report.respond_to?("approval")
+          %td{:class => "status #{report.approval_status.downcase.gsub(/ /, '-')}"}= report.approval.andand.status
+          %td= report.approval.andand.next_step
+        -else
+          %td.status -
+          %td
+        %td.actions
+          - if current_user.is_a_citizen_effect_admin? && report.respond_to?("approval")
+            = link_to "Show / Approve / Deny", [:admin, @project, report], :class => "report_link"
+          - else
+            = link_to "Show", [:admin, @project, report]
+          |
+          = link_to "Edit", [:edit, :admin, @project, report], :class => "report_edit"
+          |
+          = link_to "Destroy", [:admin, @project, report], :confirm => 'Are you sure?', :method => :delete
+

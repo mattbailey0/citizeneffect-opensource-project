@@ -1,0 +1,15 @@
+--- !ruby/object:RI::ClassDescription 
+includes: []
+
+name: Html
+constants: []
+
+comment: 
+attributes: []
+
+instance_methods: []
+
+full_name: HtmlUnit::Html
+superclass: 
+class_methods: []
+

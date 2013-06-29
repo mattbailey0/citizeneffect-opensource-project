@@ -1,0 +1,29 @@
+<h1>Listing Basic User Details</h1>
+
+<div class="new-button">
+  <%= link_to '(+) Add Details to User', new_admin_basic_user_detail_path %>
+</div>
+
+<table cellpadding="0" cellspacing="0" class="index-list">
+  <tr class="index-list-header">
+    <th>First name</th>
+    <th>Last name</th>
+    <th>Zip</th>
+    <th>Phone number</th>
+    <th>Skype username</th>
+    <th colspan="3">Actions</th>
+  </tr>
+
+<% @basic_user_details.each do |basic_user_detail| %>
+  <tr>
+    <td><%=h basic_user_detail.first_name %></td>
+    <td><%=h basic_user_detail.last_name %></td>
+    <td><%=h basic_user_detail.zip %></td>
+    <td><%=h basic_user_detail.phone_number %></td>
+    <td><%=h basic_user_detail.skype_username %></td>
+    <td><%= link_to 'Show', [:admin, basic_user_detail] %></td>
+    <td><%= link_to 'Edit', edit_admin_basic_user_detail_path(basic_user_detail) %></td>
+    <td><%= link_to 'Destroy', [:admin, basic_user_detail], :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>

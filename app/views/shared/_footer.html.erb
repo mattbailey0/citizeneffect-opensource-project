@@ -1,0 +1,79 @@
+<!-- footer - graphical -->
+<!-- NOTE: must not have space between ul and li elements including end tags -->
+<ul id="wrapper-footer-images">
+  <li>
+    <%= image_tag "logo_citizen_effect_no_text.png", :width => "60", :alt => "" %>
+  </li>
+<!--
+  <li>
+    <%= image_tag "footer_follow_us.png", :width => "80", :height => "37", :alt => "" %>
+  </li>
+  <li>
+    <a href="http://www.youtube.com/CitizenEffect">
+      <%= image_tag "icon_youtube.png", :width => "34", :height => "37", :alt => "Youtube" %>
+    </a>
+  </li>
+  <li>
+  
+  </li>
+  <li>
+   
+  </li>
+  <li><%= image_tag "footer_spacer_1.gif", :width => "40", :height => "37", :alt => "" %></li>
+  <li>
+    <%= image_tag "footer_learn_about_us.png", :width => "153", :height => "37", :alt => "" %>
+  </li>
+  <li>
+   
+  </li>
+  <li>
+    
+  </li>
+  <li><%= image_tag "footer_spacer_2.gif", :width => "40", :height => "37", :alt => "" %></li>
+  <li>
+      <%= link_to image_tag("btn_start_a_project.png", :height => "37", :alt => "Be a Citizen Philanthropist"), new_cp_application_path %>
+  </li>-->
+</ul>
+
+<!-- footer - text -->
+<ul class="wrapper-footer-text narrow">
+	<li>Citizen Effect</li>
+</ul>
+<ul class="wrapper-footer-text narrow">
+
+	<li>
+   
+  </li>
+</ul>
+<ul class="wrapper-footer-text">
+	<li><%= link_to "About Citizen Effect", [:about_us] %></li>
+	<li class="spacer">|</li>
+<!--	<li>
+    <%= link_to "Projects in Progress",
+          search_path(:with => {:project_status_id => ProjectStatus.fundraising.id}) %>
+  </li>
+	<li class="spacer">|</li>
+	<li>
+    <%= link_to "Available Projects",
+          search_path(:with => {:project_status_id => ProjectStatus.awaiting_cp.id}) %>
+  </li>
+	<li class="spacer">|</li>
+	<li>
+    <%= link_to "Project Successes",
+          search_path(:with => {:project_status_id => ProjectStatus.statuses_that_count_as_completed.map(&:id)}) %>
+  </li>
+	<li class="spacer">|</li>
+	<li><%= link_to "Be a CP", [:how_it_works] %></li>
+	<li class="spacer">|</li>-->
+	<li></li>
+	<li class="spacer">|</li>
+	<li><%= link_to "Terms of Use", '/p/terms-of-use' %></li>
+	<li class="spacer">|</li>
+	<li><%= link_to "Privacy Policy", '/p/privacy-policy' %></li>
+</ul>
+<ul class="wrapper-footer-text narrow">
+
+	<li>&copy; <%= Time.now.year %></li>
+</ul>
+<%#= render :partial => "shared/footer_last_line" %>
+

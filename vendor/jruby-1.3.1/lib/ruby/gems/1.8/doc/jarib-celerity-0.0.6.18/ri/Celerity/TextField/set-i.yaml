@@ -1,0 +1,13 @@
+--- !ruby/object:RI::MethodDescription 
+params: (value)
+is_singleton: false
+block_params: 
+name: set
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Set the text field to the given value. This ensures execution of JavaScript
+    events (onkeypress etc.), but is slower than +value=+
+full_name: Celerity::TextField#set
+visibility: public
+aliases: []
+

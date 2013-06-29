@@ -1,0 +1,34 @@
+--- !ruby/object:RI::ClassDescription 
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: Enumerable
+- !ruby/object:RI::IncludedModule 
+  name: ClickableElement
+name: TableRow
+constants: 
+- !ruby/object:RI::Constant 
+  name: TAGS
+  value: '[ Identifier.new(''tr'') ]'
+  comment: 
+- !ruby/object:RI::Constant 
+  name: DEFAULT_HOW
+  value: ":id"
+  comment: 
+comment: 
+attributes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: '[]'
+- !ruby/object:RI::MethodSummary 
+  name: child_cell
+- !ruby/object:RI::MethodSummary 
+  name: column_count
+- !ruby/object:RI::MethodSummary 
+  name: each
+- !ruby/object:RI::MethodSummary 
+  name: locate
+full_name: Celerity::TableRow
+superclass: Element
+class_methods: []
+

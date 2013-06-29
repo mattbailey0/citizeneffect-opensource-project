@@ -1,0 +1,29 @@
+<h1>
+  Listing Videos of Project
+<br/>
+Project: <%=h @project.name %>
+</h1>
+
+<div class="new-button">
+  <%= link_to '(+) Add Video to Project', [:new, :admin, @project, :project_video] %>
+</div>
+
+<table cellpadding="0" cellspacing="0" class="index-list">
+  <tr class="index-list-header">
+    <th>Video file name</th>
+    <th>Caption</th>
+    <th>Related project stage</th>
+    <th colspan="3">Actions</th>
+  </tr>
+
+<% @project_videos.each do |project_video| %>
+  <tr>
+    <td><%=h project_video.video_file_name %></td>
+    <td><%=h project_video.caption %></td>
+    <td><%=h project_video.related_project_stage %></td>
+    <td><%= link_to 'Show', [:admin, @project, project_video] %></td>
+    <td><%= link_to 'Edit', [:edit, :admin, @project, project_video] %></td>
+    <td><%= link_to 'Destroy', [:admin, @project, project_video], :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>

@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+params: (path = nil)
+is_singleton: true
+block_params: 
+name: save
+comment: 
+full_name: Celerity::DefaultViewer::save
+visibility: public
+aliases: []
+

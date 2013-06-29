@@ -1,0 +1,8 @@
+%h1
+  New Citizen Philanthropist Experience
+
+- form_for([:admin, @fundraiser_type, @fundraiser_type_experience]) do |f|
+
+  = render :partial => "form", :locals => { :fundraiser_type_experience => @fundraiser_type_experience, :f => f }
+
+= link_to 'Back', admin_fundraiser_type_fundraiser_type_experiences_path

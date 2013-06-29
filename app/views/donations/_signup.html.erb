@@ -1,0 +1,33 @@
+				<div class="account-create">
+          <% form_for(@user, :url => {:controller => :users, :action => :create}) do |uf| %>
+            <%= hidden_field_tag "user[donation_ids][]", @donation.id, {:id => "user_donation_ids_"} %>
+            <%= @user.attributes.keys.map { |attr| uf.hidden_field attr.to_sym }.join %>
+  					<div class="account-create-text">If you don't have an account, please create one to make future donations much easier!</div>
+  					<div class="account-create-fields">
+  						<ul class="account-create-left">
+  							<li><%= uf.label :password %></li>
+  							<li><%= uf.label :password_confirmation, "Confirm Password" %></li>
+  							<li class="account-info-bold top">NAME:</li>
+  
+  							<li class="account-info-bold">EMAIL:</li>
+  							<li class="account-info-bold">ZIPCODE:</li>
+  						</ul>
+  						<ul class="account-create-right">
+  							<li><%= uf.password_field :password, :class => "account-password" %></li>
+  							<li><%= uf.password_field :password_confirmation, :class => "account-password" %></li>
+  							<li class="top"><%=h @user.name %></li>
+  
+  							<li><%=h @user.email %></li>
+  							<li><%=h @user.zip %></li>
+  						</ul>
+  						<div class="clear"></div>
+  					</div>
+  					<div class="account-create-button center">
+              <p class="center pad_bottom">
+                By clicking "Create Account" below, you are agreeing to the <a href="http://citizeneffect.org/p/account-terms-of-service">Citizen Effect Terms of Service</a>.
+              </p>
+            
+              <%= image_submit_tag "btn_create_account.png", :alt => 'Create Account', :class => "create_account" %>
+            </div>
+          <% end %>
+				</div>

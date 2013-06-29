@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+params: ()
+is_singleton: false
+block_params: 
+name: assert_exists
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Check that we have a @page object.
+- !ruby/struct:SM::Flow::P 
+  body: '@raise [UnknownObjectException] if no page is loaded. @api private'
+full_name: Celerity::Browser#assert_exists
+visibility: public
+aliases: []
+

@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+params: (uri)
+is_singleton: true
+block_params: 
+name: start
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Initialize a browser and go to the given URL
+- !ruby/struct:SM::Flow::P 
+  body: '@param [String] uri The URL to go to. @return [Celerity::Browser] instance.'
+full_name: Celerity::Browser::start
+visibility: public
+aliases: []
+

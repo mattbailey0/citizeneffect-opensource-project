@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="<%= feed_blog_url(Blog.main_blog) %>" />
+  <link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
+
+  <title>
+    <%= (page_title = yield(:page_title)).blank? ? "Citizen Effect" : "#{h page_title} | Citizen Effect" %>
+  </title>
+  <meta name="keywords" content="<%= (meta_keywords = yield(:meta_keywords)).blank? ? %Q{citizen effect} : %Q{h meta_keywords} -%>" />
+<% unless(yield(:meta_description).blank?) -%>
+   <meta name="description" content="<%= %Q{#{yield(:meta_description)}} -%>" />
+<% end -%>
+
+<%= stylesheet_link_tag 'skins/featured/skin.css', 'skins/tango/skin.css', 'cupertino/jquery-ui-1.7.2.custom.css' %>
+<%= stylesheet_link_tag 'reset', 'screen', 'sifr', 'jquery.jcarousel', 'skins/featured/skin.css', 'skins/tango/skin.css',
+    'facebox', 'cupertino/jquery-ui-1.7.2.custom.css', 'custom', :cache => true, :concat => true %>
+
+<%= javascript_include_tag 'application', 'sifr', 'sifr-config', 'jquery', 'ui.core', 'ui.draggable', 'ui.sortable',
+    'jquery.selectbox', 'jquery.livequery', 'jquery.progressbar', 'lowpro.jquery', 'jquery.jcarousel', 'behaviors',
+    'jquery.watermark', 'jquery.updnWatermark', 'jquery.effects.core.js', 'jquery.effects.highlight.js', 'facebox',
+    'bloggity/jquery-form', 'bloggity/fckeditor/fckeditor', 'ui.slider', 'ui.datepicker', 'timepicker', 'custom', :cache => true, :concat => true %>
+
+</head>
+<body>
+
+<div id="wrapper-outer" class="mailing_list_users_layout">
+	<div id="wrapper-inner">
+
+    <%= render :partial => "header" %>
+
+    <% if flash[:notice] -%>
+    <div class="success message"><%= flash[:notice] %></div>
+    <% end -%>
+
+    <% if flash[:error] -%>
+    <div class="error message"><%= flash[:error] %></div>
+    <% end -%>
+
+    <%= yield :form_errors %>
+
+    <% if flash[:info] -%>
+    <div class="general message"><%= flash[:info] %></div>
+    <% end -%>
+
+    <%= yield %>
+
+    <%= render :partial => "shared/footer_last_line" %>
+
+	</div>
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title></title>
+</head>
+<body>
+
+<p>
+Dear <%=h @cp_application.user.first_name %>,
+</p>
+
+<p>
+Now that your account is activated, you can start making an impact on a community in need.
+</p>
+
+<p>
+Here are three things you can do right now:
+</p>
+<p>
+1) <%= link_to "Support a project", "http://citizeneffect.org/search?with[project_status_id]=7" %> that interests you.
+</p>
+<p>
+2) Share the Citizen Effect movement 
+</p>
+<p>
+3) <%= link_to "Become a Citizen Philanthropist and start your own project!", "http://citizeneffect.org/cp_applications/new" %>
+</p>
+
+<p>
+Warmly,
+</p>
+<p>
+The Citizen Effect Team
+</p>
+
+</body>
+</html>

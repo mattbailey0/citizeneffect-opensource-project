@@ -1,0 +1,35 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  project_id: 1
+  host: MyString
+  name: MyString
+  short_description: MyString
+  long_description: MyText
+  event_start_time: 2009-10-08 19:10:44
+  event_end_time: 2009-10-08 19:10:44
+  address1: MyString
+  address2: MyString
+  city: MyString
+  state: MyString
+  zip: MyString
+  country: MyString
+  lat: 1.5
+  lng: 1.5
+
+two:
+  project_id: 1
+  host: MyString
+  name: MyString
+  short_description: MyString
+  long_description: MyText
+  event_start_time: 2009-10-08 19:10:44
+  event_end_time: 2009-10-08 19:10:44
+  address1: MyString
+  address2: MyString
+  city: MyString
+  state: MyString
+  zip: MyString
+  country: MyString
+  lat: 1.5
+  lng: 1.5

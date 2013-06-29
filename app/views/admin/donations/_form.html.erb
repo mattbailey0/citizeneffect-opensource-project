@@ -1,0 +1,190 @@
+<tr>
+  <td class="form-label"><%= f.label :anonymous, "Donor is/requests to be anonymous:" %></td>
+  <td><%= f.check_box :anonymous %></td>
+</tr>
+<tr>
+  <td class="form-label"><%= f.label :first_name %></td>
+  <td><%= f.text_field :first_name %></td>
+</tr>
+<tr>
+  <td class="form-label"><%= f.label :last_name %></td>
+  <td><%= f.text_field :last_name %></td>
+</tr>
+<tr>
+  <td class="form-label"><%= f.label :address1 %></td>
+  <td><%= f.text_field :address1 %></td>
+</tr>
+<tr>
+  <td class="form-label"><%= f.label :address2 %></td>
+  <td><%= f.text_field :address2 %></td>
+</tr>
+<tr>
+  <td class="form-label"><%= f.label :city %></td>
+  <td><%= f.text_field :city %></td>
+</tr>
+<tr>
+  <td class="form-label"><%= f.label :state %></td>
+  <td><%= f.text_field :state %></td>
+</tr>
+<tr>
+  <td class="form-label"><%= f.label :zip %></td>
+  <td><%= f.text_field :zip %></td>
+</tr>
+<tr>
+  <td class="form-label"><%= f.label :country %></td>
+  <td><%= country_select("donation", "country", ["United States"]) %></td>
+</tr>
+<tr>
+  <td class="form-label"><%= f.label :email %></td>
+  <td><%= f.text_field :email %></td>
+</tr>
+<tr>
+  <td class="form-label"><%= f.label :phone_number %></td>
+  <td><%= f.text_field :phone_number %></td>
+</tr>
+<tr>
+  <td class="form-label"><%= f.label :amount_in_dollars, "Gross Donation Amount" %></td>
+  <td>
+    <% if @donation.new_record? %>
+      <%= f.text_field :amount_in_dollars %>
+    <% else %>
+      <%= number_to_currency(@donation.amount_in_dollars) %>
+    <% end %>
+  </td>
+</tr>
+<tr>
+  <td class="form-label"><%= f.label :tip_percentage, "Tip Percentage" %></td>
+  <td>
+    <% if @donation.new_record? %>
+    	<%= f.select :tip_percentage, Donation::TIP_OPTIONS.map{|v| ["#{v}%", v]}  %>
+	<% else %>
+      <%= @donation.current_tip_percentage %>% 
+		<% if @donation.revised_tip_percentage && @donation.revised_tip_percentage != @donation.tip_percentage %>
+			<%= "(originally " + @donation.tip_percentage.to_s + "%)" %>
+		<% end %>
+    <% end %>
+  </td>
+</tr>
+<% if !@donation.new_record? %>
+<tr>
+  <td class="form-label">Amount Charged (incl. tip, fees)</td>
+  <td>
+      <%= number_to_currency(@donation.actual_amount_in_dollars) %>
+  </td>
+</tr>
+
+<tr>
+  <td class="form-label"><%= (@donation.fee_percentage.to_f * 100).to_s %>% Transaction Fee</td>
+  <td>
+      (<%= number_to_currency(@donation.fee_amount_in_dollars) %>)
+  </td>
+</tr>
+<% end %>
+<% if @donation.project %>
+<tr>
+
+  <td class="form-label">Project Amount (gross donation less fee)</td>
+  <td>
+    <% if @donation.new_record? %>
+      $0
+    <% else %>
+      <%= number_to_currency(@donation.project_amount_in_dollars) %>
+    <% end %>
+  </td>
+</tr>
+<% end %>
+<% if !@donation.new_record? %>
+<tr>
+	<td class="form-label">
+	</td>
+	<td>
+		___
+	</td>
+</tr>
+<tr>
+	<td class="form-label">
+		Total Refunded Amount
+	</td>
+	<td>
+		(<%= number_to_currency(@donation.refunded_amount_in_dollars) %>)
+	</td>
+</tr>
+<tr>
+	<td class="form-label">
+		Net Amount Charged (less refunds, incl. tip, fees)
+	</td>
+	<td>
+		<%= number_to_currency(@donation.net_actual_amount_in_dollars) %>
+	</td>
+</tr>
+<tr>
+  <td class="form-label">Transaction Fee</td>
+  <td>
+      (<%= number_to_currency(@donation.fee_amount_in_dollars) %>)
+  </td>
+</tr>
+<tr>
+	<td class="form-label">
+		Net Project Amount
+	</td>
+	<td>
+		<%= number_to_currency(@donation.net_project_amount_in_dollars) %>
+	</td>
+</tr>
+<tr>
+	<td class="form-label">
+		Net Citizen Effect Amount
+	</td>
+	<td>
+		<%= number_to_currency(@donation.net_ce_amount_in_dollars) %>
+	</td>
+</tr>
+
+
+<tr>
+	<td class="form-label"><b>Refunds</b></td>
+	<td>
+	Refunds that have been issued for this donation:
+	<% 
+	@donation.refunds.each do |r|
+	%>
+	<%=
+	"<p>" + r.updated_at.in_time_zone('Eastern Time (US & Canada)').strftime("%Y-%m-%d") + " - " + number_to_currency(r.amount_in_dollars) + " - " + r.comment + "</p>"
+	%>
+	<%
+	end
+	%>
+	<%= if @donation.refunds.count == 0
+			"<p>-No refunds have been issued.</p>"
+		end
+	%>
+	<% if @donation.net_amount_in_dollars > 0 %>
+	<%= link_to "add new refund", new_admin_refund_path(:donation_id => @donation.andand.id, :project_id => @project.andand.id) %>
+	<% end %>
+
+	</td>
+</tr>
+<% end %>
+
+
+
+<tr>
+  <td class="form-label"><%= f.label :donated_at %></td>
+  <td><%= f.datetime_select :donated_at, :prompt => true %></td>
+</tr>
+<tr>
+  <td class="form-label"><%= f.label :project_id, "Project" %></td>
+  <td>
+    <%= f.collection_select :project_id, Project.user_visible_projects.sort_by(&:name), :id, :name, :include_blank => true %>
+    <br/>
+    <small>Set to blank to be a general CE donation.</small><br/>
+  </td>
+</tr>
+<tr>
+  <td class="form-label"><%= f.label :donation_attribution_id, "Donation Attributed to CP" %></td>
+  <td>
+    <%= f.collection_select :donation_attribution_id, Role.cp.users.sort_by(&:name_and_email), :id, :name_and_email, :include_blank => true %>
+    <br/>
+    <small>If left bank, will default to the CP of the project selected in the previous dropdown.</small>
+  </td>
+</tr>

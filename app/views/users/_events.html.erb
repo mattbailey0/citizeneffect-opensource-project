@@ -1,0 +1,18 @@
+<% events = @user.event_attendance_responses.map(&:project_event) %>
+<% if events.any? %>
+  <!-- full-width carousel -->
+	<div class="box-full-top"></div>
+	<div class="box-full-middle">
+		<div class="header">
+      <h4>
+        UPCOMING EVENTS
+        (<%=h events.size %>)
+      </h4>
+    </div>
+    <ul class="carousel3 jcarousel-skin-tango">
+      <%= render :partial => "projects/event", :collection => events %>
+    </ul>
+		<div class="clear"></div>
+	</div>
+	<div class="box-full-bottom"></div>
+<% end %>

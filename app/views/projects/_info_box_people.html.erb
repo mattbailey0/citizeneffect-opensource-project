@@ -1,0 +1,41 @@
+<div id="info_box_people" class="component info_box_content" style="display:none;">
+
+  
+	<% if @project.community_member_profiles.any? %>
+	
+		<p><strong>Meet your partner community, and read their messages and profiles.</strong></p>
+		
+  	<% @project.community_member_profiles.latest[0, 2].each do |profile| %>
+  		<div class="people community-member noborder">
+  			<div class="left"><%= image_tag profile.picture_url_thumb(:carousel_3), :alt => "" %></div>
+  			<div class="right full">
+
+  				<p class="name"><%=h profile.name %></p>
+  				<p>
+            <%= auto_link(simple_format(h(profile.biography))) %>
+          </p>
+  			</div>
+  			<div class="clear"></div>
+  			<p>
+          <% if !profile.pictures.empty? %>
+          <%= link_to "pictures", "#community_member_profile_pictures_#{h profile.id}", :class => "green", :rel => "facebox" %>
+          <% end %>
+          <% if !profile.pictures.empty? and profile.latest_video %>
+          |
+          <% end %>
+          <% if profile.latest_video %>
+          <%= link_to "video", profile.latest_video.url, :class => "green", :target => "_blank" %>
+          <% end %>
+        </p>
+  		</div>
+
+      <div style="display: none;">
+        <%= render :partial => "community_member_picture_lightbox", :object => profile unless profile.pictures.empty? %>
+      </div>
+      
+    <% end %>
+  <% else %>  
+      <p><em>Community member details not available yet.</em></p>
+  <% end %>
+
+</div>

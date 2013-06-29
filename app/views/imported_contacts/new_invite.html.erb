@@ -1,0 +1,38 @@
+<% content_for(:page_title, "Invite Contact") %>
+
+<div class="breadcrumbs">
+	<%= link_to "&laquo; back to contacts page", imported_contacts_path, :class => "breadcrumbs green" %>
+</div>
+
+
+		<!-- main body copy -->
+		<div id="wrapper-copy">
+			
+			
+		<div class="component-header-full nopadtop">
+			<h3>SEND INVITATIONS</h3>
+		</div> 	
+		<!-- full-width component -->
+		<div class="box-full-middle">
+
+			
+			<!-- buttons -->
+			<div class="filter pad_bottom">
+				<div class="left large">&nbsp;</div>
+        <div class="buttons large">
+          <%= link_to "", new_invite_imported_contacts_path, :id => "email_contacts_left", :class => "active" %>
+          <%= link_to "", share_imported_contacts_path, :id => "social_networks" %>
+        </div>
+				<div class="right large">&nbsp;</div>
+				<div class="clear"></div>
+			</div>
+		
+				<% form_tag invite_imported_contacts_path do %>
+        <% fields_for :email do |f| %>
+					<%= render :partial => "form", :locals => { :f => f } %>
+				<% end %>
+				<% end %>
+
+		</div>
+		<div class="box-full-bottom"></div>
+		</div>

@@ -1,0 +1,13 @@
+<tr>
+  <td class="form-label"><%= f.label :url, "Youtube URL" %></td>
+  <td><%= f.text_field :url %></td>
+</tr>
+<% unless @community_member_video.new_record? -%>
+<tr>
+  <td class="form-label">Existing Video</td>
+  <td><%= @community_member_video.embedded_html %></td>
+<% end -%>
+<tr>
+  <td class="form-label"><%= f.label :caption %></td>
+  <td><%= f.text_field :caption %></td>
+</tr>

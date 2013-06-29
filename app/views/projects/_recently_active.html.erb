@@ -1,0 +1,9 @@
+<!-- recently active projects -->
+<div class="box-rightcol-top"></div>
+<div class="box-rightcol-inner">
+	<div class="header"><h4>RECENTLY ACTIVE PROJECTS</h4></div>
+	<%= render_with_last :partial => "projects/recently_active_project", :collection => Project.recently_active.top_5.all %>
+	<%= link_to "see all active projects", projects_path, :class => "right pad_top pad_bottom" %>
+	<div class="clear"></div>
+</div>
+<div class="box-rightcol-bottom"></div>

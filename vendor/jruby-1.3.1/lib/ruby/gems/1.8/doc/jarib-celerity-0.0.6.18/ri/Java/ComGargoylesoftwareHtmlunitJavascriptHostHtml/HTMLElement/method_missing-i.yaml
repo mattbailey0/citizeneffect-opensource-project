@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+params: (meth, *args, &blk)
+is_singleton: false
+block_params: 
+name: method_missing
+comment: 
+full_name: Java::ComGargoylesoftwareHtmlunitJavascriptHostHtml::HTMLElement#method_missing
+visibility: public
+aliases: []
+

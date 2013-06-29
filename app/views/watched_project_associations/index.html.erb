@@ -1,0 +1,47 @@
+<% content_for(:page_title, "Watch List") %>
+
+    <!-- breadcrumbs -->
+		<div class="breadcrumbs">
+		</div>
+
+		<!-- main body copy -->
+		<div id="wrapper-copy">
+			
+			
+		<div class="component-header-full nopadtop">
+			<h3>WATCHED PROJECT NEWS FEED</h3>
+
+		</div> 
+		<!-- full-width component -->
+		<div class="box-full-middle watched">
+      <% @news_items.in_groups_of(3, false) do |news_item_group| %>
+			<ul class="full_3col <%=h news_item_group.last == @news_items.last ? "lastrow" : "" %>">
+        <%= render :partial => "watch_list_news_item", :collection => news_item_group, :locals => { :last => news_item_group.last } %>
+				<li class="clear"></li>
+			</ul>
+      <% end %>
+		</div> 
+		<div class="component-header-full">
+			<h3>MY WATCH LIST</h3>
+		</div> <div class="clear"></div>
+
+			<div class="user_watchlist">
+        <% @watched_project_associations.in_groups_of(2, false) do |entry_group| %>
+  		    <!-- --------------------------- -->
+  		    <!-- begin row of search results -->
+  		    <!-- --------------------------- -->
+  		    <div class="search-results">
+            <%= render :partial => "watched_project_association", :collection => entry_group %>
+  		    	<div class="clear"></div>
+  		    </div>
+  		    <!-- ------------------------- -->
+  		    <!-- end row of search results -->
+  		    <!-- ------------------------- -->
+        <% end %>
+			</div>
+      <%= link_to "find more projects &raquo;", projects_path, :class => "back_to_project" %>
+
+      <%= render :partial => "projects/similar" %>
+		
+			<div class="clear"></div>
+		</div>

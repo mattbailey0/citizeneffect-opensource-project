@@ -1,0 +1,19 @@
+--- !ruby/object:RI::MethodDescription 
+params: (n)
+is_singleton: false
+block_params: 
+name: '[]'
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Get the element at the given index. By default, this is 1-indexed to keep
+    compatibility with Watir.
+- !ruby/struct:SM::Flow::P 
+  body: Also note that because of Watir's lazy loading, this will return an Element
+    instance even if the index is out of bounds.
+- !ruby/struct:SM::Flow::P 
+  body: '@param [Fixnum] n Index of wanted element, 1-indexed unless Celerity.index_offset
+    is changed. @return [Celerity::Element] Returns a subclass of Celerity::Element'
+full_name: Celerity::ElementCollection#[]
+visibility: public
+aliases: []
+

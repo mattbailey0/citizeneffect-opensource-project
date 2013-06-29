@@ -1,0 +1,13 @@
+<p>
+  <b>Project:</b>
+  <%=h @project_focus_area_association.project_id %>
+</p>
+
+<p>
+  <b>Focus area:</b>
+  <%=h @project_focus_area_association.focus_area_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_admin_project_project_focus_area_association_path(@project, @project_focus_area_association) %> |
+<%= link_to 'Back', admin_project_project_focus_area_associations_path(@project) %>

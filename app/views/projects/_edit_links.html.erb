@@ -1,0 +1,29 @@
+				<!-- data grid -->
+				<div class="box-rightcol-inner-header">
+					<div class="box-rightcol-header green"><h3>TAKE ACTION</h3></div>
+				</div>
+				<div class="chart-wrapper big-chart project_edit_links">
+					<div>Get started fundraising on your project!  Here are a few steps to start off with.</div>
+
+					<div class="alt">
+					  <%= link_to "CREATE A FUNDRAISER", [:new, @project, :project_event], :class => 'bold px14' %><br />
+						Add and organize events — small or large — that can raise the money. We have some fundraising ideas that can help.
+					</div>
+					<div>
+					  <%= link_to "MANAGE BLOG", [@project.blog, :blog_posts], :class => 'bold px14' %><br />
+						Introduce yourself, and post periodic updates about the project.
+					</div>
+					<div class="alt">
+					  <%= link_to "SEND E-MAILS", [:new, @project.mailing_list, :mailing_list_email], :class => 'bold px14' %><br />
+						Send out periodic news and updates to your project's email list and your friends.
+					</div>
+					<div>
+					  <%= link_to "EDIT SOCIAL MEDIA LINKS", [:edit, @project], :class => 'bold px14' %><br />
+						If you'd like, you can create a Facebook Page, Twitter Account, and YouTube Channel for your project to get your friends involved.
+					</div>
+					<div class="alt">
+					  <%= link_to "ADD PICTURES &amp; VIDEOS", [:new, @project, :media_album], :class => 'bold px14' %><br />
+						Take pictures at your fundraisers, put together a video, and post them to your project page.
+					</div>
+
+				</div> <!-- meet the CP -->

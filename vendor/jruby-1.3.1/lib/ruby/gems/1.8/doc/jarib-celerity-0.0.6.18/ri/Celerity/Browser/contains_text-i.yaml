@@ -1,0 +1,15 @@
+--- !ruby/object:RI::MethodDescription 
+params: (expected_text)
+is_singleton: false
+block_params: 
+name: contains_text
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Check if the current page contains the given text.
+- !ruby/struct:SM::Flow::P 
+  body: '@param [String, Regexp] expected_text The text to look for. @return [Numeric,
+    nil] The index of the matched text, or nil if it isn''t found. @raise [TypeError]'
+full_name: Celerity::Browser#contains_text
+visibility: public
+aliases: []
+

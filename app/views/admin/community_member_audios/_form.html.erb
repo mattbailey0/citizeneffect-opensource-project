@@ -1,0 +1,20 @@
+<tr>
+  <td class="form-label">Community Member</td>
+  <td><%= @community_member_audio.community_member_profile.name %></td>
+</tr>
+
+<tr>
+  <td class="form-label"><%= f.label :audio %></td>
+  <td><%= f.file_field :audio %></td>
+</tr>
+
+<% unless @community_member_audio.new_record? -%>
+<tr>
+  <td class="form-label">Existing Audio</td>
+  <td><%= link_to h(@community_member_audio.audio.andand.original_filename), @community_member_audio.audio.andand.url, :target => "_blank" %></td>
+</tr>
+<% end -%>
+<tr>
+  <td class="form-label"><%= f.label :caption %></td>
+  <td><%= f.text_field :caption %></td>
+</tr>

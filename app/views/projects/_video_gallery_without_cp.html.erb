@@ -1,0 +1,27 @@
+<% unless @project.videos.blank? -%>
+<!-- project videos -->
+<div class="box-full-top"></div>
+
+<div class="box-full-middle">
+	<div class="header">
+		<h4>PROJECT VIDEOS</h4>
+		<%#= link_to "view more project videos", [@project, :media_albums], :class => "subheader" %>
+	</div>
+
+  <% unless @project.videos.blank? -%>
+  <div class="project_show_media_gallery_without_cp">
+    <div class="prev video"><a href=""><%= image_tag "btn_arrow_left.png", :width => "24", :height => "24", :alt => "" %></a></div>
+    <div class="next video"><a href=""><%= image_tag "btn_arrow_right.png", :width => "24", :height => "24", :alt => "" %></a></div>
+    <ul class="external_control_carousel_4">
+    <%= render :partial => "projects/video", :collection => @project.videos, :locals => { :image_size_name => :album } %>
+    </ul>
+  </div>
+  <% else -%>
+
+    <div class="no-album">No videos have been uploaded for this project</div>
+
+  <% end -%>
+	<div class="clear"></div>
+</div>
+<div class="box-full-bottom"></div>
+<% end %>

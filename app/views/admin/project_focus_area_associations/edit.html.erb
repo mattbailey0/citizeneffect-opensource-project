@@ -1,0 +1,22 @@
+<h1>Edit Focus Area of Project</h1>
+
+<% form_for([:admin, @project, @project_focus_area_association]) do |f| %>
+  <%= f.error_messages %>
+
+<table border="0" cellspacing="0" cellpadding="0" class="form-table">
+  <tr>
+    <td class="form-label"><%= f.label :project_id %></td>
+    <td><%=h @project.name %><%= f.hidden_field :project_id %></td>
+  </tr>
+  <tr>
+    <td class="form-label"><%= f.label :focus_area_id %></td>
+    <td><%= f.collection_select :focus_area_id, FocusArea.all, :id, :name, :prompt => true %></td>
+  </tr>
+  <tr>
+    <td class="form-submit" colspan="2"><%= f.submit 'Update' %></td>
+  </tr>
+</table>
+<% end %>
+
+<%= link_to 'Show', [:admin, @project, @project_focus_area_association] %> |
+<%= link_to 'Back', admin_project_project_focus_area_associations_path(@project) %>

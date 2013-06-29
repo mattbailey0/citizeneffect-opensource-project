@@ -1,0 +1,87 @@
+<!-- share box --><!-- shareable may be nil -->
+<div id="share_container_<%=h share_box_id(shareable) %>" style="display:none;">
+<style type="text/css">
+	#<%=h share_box_id(shareable) %> .share{width:<%= current_user.andand.can_push_any_status? ? "605" : "350" -%>px;margin-top:10px;}
+</style>
+<div id="<%=h share_box_id(shareable) %>" 
+     style="width:<%= current_user.andand.can_push_any_status? ? '605' : '350' -%>px;"
+     class="project_share_box">
+  <h4 class="project_share_title"><%= share_box_title(shareable) %></h4>
+  <div class="share blue">
+    <% if current_user && current_user.can_push_any_status? -%>
+	    <% form_tag push_status_user_path(current_user) do %>
+  		  <% fields_for :status do |f| %>
+        <% default_text = default_share_box_text(shareable) %>
+        <label>  
+          TYPE IN YOUR MESSAGE HERE 
+          <span id='<%=h "message_char_count_#{share_box_id(shareable)}" %>'>
+            <%= default_text.length.to_s %> Characters
+          </span>
+        </label>
+        <%= f.text_area :message, :id => h("#{share_box_id(shareable)}_message"),
+             :onkeyup => 
+             "$('#message_char_count_#{h(share_box_id(shareable))}').html($(this).val().length + ' Characters')",
+             :value => default_text %>
+        <div class="share-icon-container">
+          <div class="post-to-container pad_top">
+            <label>POST TO:</label>
+       
+		    	  <% if current_user.can_push_twitter_status? -%>
+		    		  <%= f.check_box :push_twitter, :checked => true, :style => "margin-left:-4px;" %>
+		    		  <%= image_tag("icon_twitter_large.png") %>
+              <span>Twitter</span>
+		    	  <% end -%>
+		    	  <% if current_user.can_push_facebook_status? -%>
+		    		  <%= f.check_box :push_facebook, :checked => true %>
+		    		  <%= image_tag("icon_facebook_large.png") %>
+              <span>Facebook</span>
+		    	  <% end -%>
+		    	  <% if current_user.can_push_myspace_status? -%>
+		    		  <%= f.check_box :push_myspace, :checked => true %>
+		    		  <%= image_tag("icon_myspace_large.png", :class => "extra_margin") %>
+              <span>MySpace</span>
+		    	  <% end -%>
+          
+            <%= image_submit_tag "share.png", :style => "float:right;margin-right:22px;margin-top:0px" %>
+          </div>
+          <div class="clear"></div>
+        </div>
+        <% end -%>
+      <% end -%>
+        <div class="share-icon-container">
+          <div class="share-on-other-container">
+            <label>OR SHARE ON OTHER NETWORKS -</label>
+    <% else -%>
+        <div class="share-icon-container">
+          <div class="share-on-other-container">
+    <% end -%>
+            <% share_info_array(shareable).each do |value| %>
+              <p>
+                <%= image_tag(value[:icon]) %> 
+                <span><%= link_to value[:name], value[:url], :target => "_blank" %></span>
+              </p>
+            <% end -%>
+          </div>
+        </div>
+
+  </div>
+</div>
+</div>
+
+ <% javascript_tag do -%>
+
+  $(document).bind('afterReveal.facebox', function() { 
+    if($('#facebox .content #<%=h share_box_id(shareable) %>').size() != 0)
+      $('#share_container_<%=h share_box_id(shareable) %> > #<%=h share_box_id(shareable) %>').remove(); 
+  });
+  
+  $(document).bind('beforeClose.facebox', function() {  
+    content = $('#facebox .content #<%=h share_box_id(shareable) %>');
+    if(content.size() != 0)
+    { 
+      $('#share_container_<%=h share_box_id(shareable) %>').append(content);
+      $('#facebox .content #<%=h share_box_id(shareable) %>').remove(); 
+    }
+  });
+
+  <% end -%>

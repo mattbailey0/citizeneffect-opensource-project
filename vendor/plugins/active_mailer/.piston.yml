@@ -1,0 +1,8 @@
+--- 
+format: 1
+handler: 
+  commit: ab03a860a975b9e7b5bff4670f8c31f3023690cd
+  branch: master
+lock: false
+repository_url: git://github.com/expectedbehavior/active_mailer.git
+repository_class: Piston::Git::Repository

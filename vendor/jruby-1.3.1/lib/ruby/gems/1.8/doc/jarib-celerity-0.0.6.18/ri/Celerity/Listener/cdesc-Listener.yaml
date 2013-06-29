@@ -1,0 +1,44 @@
+--- !ruby/object:RI::ClassDescription 
+includes: []
+
+name: Listener
+constants: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: This class is used to wrap some of the listeners available from HtmlUnit's
+    WebClient.
+attributes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: add_listener
+- !ruby/object:RI::MethodSummary 
+  name: error
+- !ruby/object:RI::MethodSummary 
+  name: handleAlert
+- !ruby/object:RI::MethodSummary 
+  name: handleAttachment
+- !ruby/object:RI::MethodSummary 
+  name: handleConfirm
+- !ruby/object:RI::MethodSummary 
+  name: handlePrompt
+- !ruby/object:RI::MethodSummary 
+  name: notify
+- !ruby/object:RI::MethodSummary 
+  name: remove_listener
+- !ruby/object:RI::MethodSummary 
+  name: statusMessageChanged
+- !ruby/object:RI::MethodSummary 
+  name: warning
+- !ruby/object:RI::MethodSummary 
+  name: webWindowClosed
+- !ruby/object:RI::MethodSummary 
+  name: webWindowContentChanged
+- !ruby/object:RI::MethodSummary 
+  name: webWindowOpened
+full_name: Celerity::Listener
+superclass: Object
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new

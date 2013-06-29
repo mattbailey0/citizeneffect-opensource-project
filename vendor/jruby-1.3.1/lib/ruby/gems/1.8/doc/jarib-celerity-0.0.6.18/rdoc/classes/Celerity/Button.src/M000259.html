@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>locate (Celerity::Button)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/celerity/elements/button.rb, line 24</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">locate</span>
+      <span class="ruby-comment cmt"># We want the :value attribute to point to the inner HTML for &lt;button&gt; elements,</span>
+      <span class="ruby-comment cmt"># and to the value attribute for &lt;input type=&quot;button&quot;&gt; elements.</span>
+
+      <span class="ruby-keyword kw">if</span> (<span class="ruby-identifier">val</span> = <span class="ruby-ivar">@conditions</span>[<span class="ruby-identifier">:value</span>])
+        <span class="ruby-identifier">button_ident</span>      = <span class="ruby-constant">Identifier</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">'button'</span>)
+        <span class="ruby-identifier">button_ident</span>.<span class="ruby-identifier">text</span> = <span class="ruby-identifier">val</span>
+        <span class="ruby-identifier">input_ident</span>       = <span class="ruby-constant">Identifier</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">'input'</span>, <span class="ruby-identifier">:type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">%w[submit reset image button]</span>, <span class="ruby-identifier">:value</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-identifier">val</span>])
+
+        <span class="ruby-identifier">locator</span>        = <span class="ruby-constant">ElementLocator</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@container</span>, <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>)
+        <span class="ruby-identifier">locator</span>.<span class="ruby-identifier">idents</span> = [<span class="ruby-identifier">button_ident</span>, <span class="ruby-identifier">input_ident</span>]
+
+        <span class="ruby-identifier">conditions</span> = <span class="ruby-ivar">@conditions</span>.<span class="ruby-identifier">dup</span>
+        <span class="ruby-identifier">conditions</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:value</span>)
+        <span class="ruby-ivar">@object</span> = <span class="ruby-identifier">locator</span>.<span class="ruby-identifier">find_by_conditions</span>(<span class="ruby-identifier">conditions</span>)
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-keyword kw">super</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

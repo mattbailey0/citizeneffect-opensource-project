@@ -1,0 +1,13 @@
+				<!-- top 5 networkers -->
+				<div class="box-rightcol-top"></div>
+				<div class="box-rightcol-inner">
+					<%= image_tag "box_header_top_5_networkers.png", :class => "box" %>
+          <div id="home_top_networkers">
+            <%= render_with_last :partial => "networker", :collection => User.top_networkers.top_5.all %>
+          </div>
+					<%= link_to_remote "view more", { :url => home_top_networkers_path, :with => "'page=' + ++home_top_networkers_page", :method => :get }, :id => "home_top_networkers_view_more", :class => "pad_top pad_left" %>
+				</div>
+				<div class="box-rightcol-bottom" /></div>
+<% javascript_tag do %>
+  home_top_networkers_page = 1;
+<% end %>

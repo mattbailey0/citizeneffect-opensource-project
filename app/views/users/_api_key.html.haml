@@ -1,0 +1,18 @@
+#api-access.component-header-full.nopadtop
+  %h3 API ACCESS
+/ full-width component
+.box-full-middle
+  %br
+  - if @user.api_is_enabled?
+    %p
+      Here is your API Key:
+      %br
+      %strong= @user.api_key
+    %p
+      If you need to generate a new key, press the button below.  Please note that any applications using the old key would need to be updated with the new key.
+  - else
+    %p Click the button below to generate an API key.
+  %p
+    = button_to "Generate New API Key", generate_api_key_user_path(@user), :method => :put, :confirm => "Are you sure?"
+
+.box-full-bottom

@@ -1,0 +1,100 @@
+<% content_for(:page_title, @project.name) %>
+
+    <!-- breadcrumbs -->
+		<div class="breadcrumbs">
+		</div>
+
+		<!-- main body copy -->
+		<div id="wrapper-copy">
+
+			<!-- left column -->
+			<div class="twocol-left">
+
+				<!-- project details -->
+				<div class="component-wrapper">
+					<div class="component-header">
+						<!-- Removal Requested By CE
+                <div class="right headerlinks">
+                  added <%#=h @project.approved_by_citizen_effect_at.strftime("%b %e, %Y") %>
+                </div>
+            -->
+						<h3><%= header_text(@project.name, :length => 48) %></h3>
+					</div>
+					<div class="component nopad project_featured_media">
+
+
+
+						<ul id="project_featured_media" class="blank relative external_control_carousel_1">
+              <% @project.primary_photo_and_featured_medias.each do |media| %>
+							<li>
+								<div class="slideshow" style="position: relative;">
+									<div class="pic">
+										<%= image_tag media.photo.url(:project_featured_media_jpg), :width => "634", :height => "258", :alt => "" %>
+										<div class="screen">
+										</div>
+										<div class="copy">
+											<div class="right">
+                        <%= render :partial => "add_to_watchlist", :locals => { :project => @project, :css_class => "watchlist green" } %>
+                      </div>
+                      <h6 class="active_feature_title"><%=h media.title %></h6>
+											<p>
+												<%=h truncate(media.description, :length => 93) %>
+											</p>
+										</div>
+									</div>
+								</div>
+							</li>
+              <% end %>
+						</ul>
+
+
+
+
+            <%#= render :partial => "carousel_1", :object => @project, :locals => { :color => "blue" } %>
+
+            <%= render :partial => "project_info_box" %>
+						<% unless @project.primary_photo_and_featured_medias.blank? -%>
+              <div class="slideshow_prev"><a href=""><img src="/images/btn_slideshow_left_blue.png" width="35" height="35" alt="" /></a></div>
+						  <div class="slideshow_next"><a href=""><img src="/images/btn_slideshow_right_blue.png" width="35" height="35" alt="" /></a></div>
+            <% end -%>
+					</div>
+				</div>
+				<div class="component-bottom"></div>
+
+        <%= render :partial => "blog" if @project.cp %>
+
+        <%= render :partial => "media_gallery_with_cp" if @project.cp %>
+			</div>
+
+			<!-- right column -->
+			<div class="twocol-right">
+
+
+        <% unless @project.cp %>
+        <%= render :partial => "status_info_without_cp" %>
+        <% else %>
+        <%= render :partial => "edit_links" if current_user_can_edit_public_project? %>
+        <%= render :partial => "blog_posts/meet_the_cp" %>
+        <% #= render :partial => "campaign_widget" %>
+        <% if @project.project_status == ProjectStatus.fundraising %>
+          <%= render :partial => "status_info_with_cp" %>
+        <% else %>
+          <%= render :partial => "status_info_complete" %>
+        <% end %>
+        <%= render :partial => "follow" %>
+        <%= render :partial => "status_updates" %>
+        <%= render :partial => "next_events" %>
+        <%= render :partial => "donors" %>
+        <%= render :partial => "blog_posts/news_feed" %>
+        <% end %>
+
+			</div>
+			<div class="clear"></div>
+		</div>
+
+
+    <%= render :partial => "media_gallery_without_cp" unless @project.cp %>
+
+
+    <%= render :partial => "similar" %>
+

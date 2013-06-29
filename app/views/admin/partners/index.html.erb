@@ -1,0 +1,42 @@
+<h1>Listing Partners</h1>
+
+<div class="new-button">
+  <%= link_to '(+) Add Partner', new_admin_partner_path %>
+</div>
+
+<div class="xls_link">
+  <%= link_to "Download All As Excel Spreadsheet", url_for({:format => :xls}.merge(params)) %>
+</div>
+
+<%= will_paginate(@partners_paginated) %>
+
+<table cellpadding="0" cellspacing="0" class="index-list">
+  <tr class="index-list-header">
+    <th>ID</th>
+    <th>Partner name</th>
+    <th>Date added</th>
+    <th># projects</th>
+    <th>Partner Admins</th>
+    <th>Countries</th>
+    <th>Focus areas</th>
+    <th colspan="3">Actions</th>
+  </tr>
+
+<% @partners_paginated.each do |partner| %>
+  <tr>
+    <td><%=h partner.id %></td>
+    <td><%=h partner.display_name %></td>
+    <td><%=h partner.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%Y-%m-%d %H:%M %Z") %></td>
+    <td><%=h partner.projects.size %></td>
+    <td><%=h partner.admins.map(&:name).to_sentence %></td>
+    <td><%=h partner.countries.map(&:name).to_sentence %></td>
+    <td><%=h partner.focus_areas.map(&:name).to_sentence %></td>
+    <td><%= link_to 'Show', [:admin, partner] %></td>
+    <td><%= link_to 'Edit', edit_admin_partner_path(partner) %></td>
+    <td><%= link_to 'Destroy', [:admin, partner], :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= will_paginate(@partners_paginated) %>
+

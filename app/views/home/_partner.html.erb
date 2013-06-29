@@ -1,0 +1,51 @@
+<div id="slideshow-right">
+	<div id="pad">
+		<h1 class="home">How it Works</h1>
+		<p>&nbsp;</p>
+		<ul>
+			<li class="outer">
+				<ul>
+					<li class="number"><img src="/images/number_large_1.png" alt="" width="50" height="50" /></li>
+					<li class="content">
+						<h4><%= link_to "CHOOSE YOUR PROJECT", [:projects], :class => "content-blue bold px14" -%></h4>
+						<p>What interests you? A certain issue? A certain part of the world? Find a project you connect with and make a real impact.</p>
+					</li>
+					<li class="clear"></li>
+				</ul>
+			</li>
+			<li class="outer">
+				<ul>
+					<li class="number"><img src="/images/number_large_2.png" alt="" width="50" height="50" /></li>
+					<li class="content">
+						<h4><%= link_to "CHOOSE YOUR APPROACH", [:fundraiser_types], :class => "content-blue bold px14" -%></h4>
+						<p>What do you like to do? Run, bake, host parties? Do something you enjoy to raise the money for your project.</p>
+					</li>
+					<li class="clear"></li>
+				</ul>
+			</li>
+			<li class="outer">
+				<ul>
+					<li class="number"><img src="/images/number_large_3.png" alt="" width="50" height="50" /></li>
+					<li class="content">
+						<h4><a href="#<%=h share_box_id %>" rel="facebox" class="content-blue bold px14">ENGAGE YOUR NETWORK</a></h4>
+						<p>Now tell your friends and family about your project and ask them to help you reach your goal.</p>
+					</li>
+					<li class="clear"></li>
+				</ul>
+			</li>
+			<li class="outer last">
+				<ul>
+					<li class="number"><img src="/images/number_large_4.png" alt="" width="50" height="50" /></li>
+					<li class="content">
+						<h4><%= link_to "SEE YOUR IMPACT", search_path(:with => {:project_status_id => ProjectStatus.statuses_that_count_as_completed.map(&:id)}), :class => "content-blue bold px14" -%></h4>
+						<p>Once the project is done, the community sends you photos and videos about the impact you have had on their lives.</p>
+					</li>
+					<li class="clear"></li>
+				</ul>
+			</li>
+		</ul>
+		<p class="readmore links">
+			<%= link_to_unless_current "read more", :controller => "home", :action => "how_it_works"-%>&nbsp;&nbsp;|&nbsp;&nbsp;<%= link_to "view more projects", projects_path -%>&nbsp;&nbsp;|&nbsp;&nbsp;<%= link_to "be a CP", new_cp_application_path -%>
+		</p>
+	</div>
+</div>

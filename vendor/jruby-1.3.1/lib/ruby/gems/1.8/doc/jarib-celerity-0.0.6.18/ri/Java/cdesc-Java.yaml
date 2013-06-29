@@ -1,0 +1,15 @@
+--- !ruby/object:RI::ClassDescription 
+includes: []
+
+name: Java
+constants: []
+
+comment: 
+attributes: []
+
+instance_methods: []
+
+full_name: Java
+superclass: 
+class_methods: []
+

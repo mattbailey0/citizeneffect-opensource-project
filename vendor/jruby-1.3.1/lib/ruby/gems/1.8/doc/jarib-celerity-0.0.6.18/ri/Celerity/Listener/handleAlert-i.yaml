@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+params: (page, message)
+is_singleton: false
+block_params: 
+name: handleAlert
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: interface AlertHandler
+full_name: Celerity::Listener#handleAlert
+visibility: public
+aliases: []
+

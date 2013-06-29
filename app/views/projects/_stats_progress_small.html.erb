@@ -1,0 +1,10 @@
+<div class="impacted stacked">LIVES IMPACTED: <%=h object.combined_lives_impacted %></div>
+<div class="impacted_description"><%=h format_dollars(object.total_amount_raised_in_usd) %>
+	of <%=h format_dollars(object.total_cost_in_usd) %>
+	raised from <%=h object.donor_count %> donors</div>
+<span class="progressBar"><%=h object.percent_raised %>%</span>
+<% if object.complete? -%>
+<span class="progressBar_text complete">COMPLETE</span>
+<% else -%>
+<span class="progressBar_text">'til complete</span>
+<% end -%>

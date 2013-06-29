@@ -1,0 +1,30 @@
+<% content_for(:page_title, "Media Albums For #{@project.name}") %>
+
+<div class="component-header-full nopad">
+	<h3><%= header_text(@project.name, :length => 73) -%></h3>
+</div> 
+<!-- full-width component -->
+<div class="box-full-middle nobg project-summary">
+	<p class="title"><%=h @project.display_location -%></p>
+	<p class="text"><%= h @project.summary_for_website -%></p>
+
+	<table cellspacing="0" cellpadding="0" border="0">
+		<tr>
+      <% if @project.cp && @project.in_progress? %>
+  			<td class="vamiddle"><%= link_to image_tag("btn_donate.png"), [:new, @project, :donation] %></td>
+      <% end %>
+			<td class="vamiddle"><%= link_to "read more", @project, :class => "green" %></td>
+			<td class="vamiddle"> | </td>
+			<td class="vamiddle"><%= link_to "go to project page", @project %></td>
+      <% if current_user_can_edit_public_project? -%>
+        <td class="vamiddle"> | </td>
+        <td class="vamiddle"><%= link_to "(+) New Media Album", [:new, @project, :media_album] -%></td>
+      <% end -%>
+		</tr>
+
+	</table>
+</div> 
+
+<%= render :partial => "projects/media_gallery_without_cp" %>
+
+

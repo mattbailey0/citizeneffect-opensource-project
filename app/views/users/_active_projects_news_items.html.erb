@@ -1,0 +1,14 @@
+				<!-- project news feed -->
+				<div class="box-rightcol-inner-header">
+					<div class="box-rightcol-header"><h3>PROJECT NEWS FEED</h3></div>
+				</div>
+				<div class="box-rightcol-inner news icons">
+          <div id="news_items">
+            <%= render_with_last :partial => "shared/news_item", :collection => @user.news_feed_for_active_projects.top_12.all %>
+          </div>
+					<%= link_to_remote "view more", { :url => projects_news_items_user_path(@user), :with => "'page=' + ++news_items_page", :method => :get }, :id => "home_top_cps_view_more", :class => "pad_top pad_left" %>
+				</div>
+				<div class="box-rightcol-bottom"></div>
+<% javascript_tag do %>
+  news_items_page = 1;
+<% end %>

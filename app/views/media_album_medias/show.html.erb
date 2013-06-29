@@ -1,0 +1,30 @@
+<% content_for(:page_title, h("Media - #{@media_album_media.media.title} - #{@project ? @project.name : ''}")) %>
+
+<div class="clear"></div>
+
+<% if @project %>
+<div class="breadcrumbs">
+  <%= link_to "&laquo; back to project", @project, :class => "breadcrumbs green" %>
+</div>
+<% end %>
+
+<div id="wrapper-copy">
+  <div class="component-header-full nopadtop">
+    <h3><%=h @media_album_media.media.title %></h3>
+  </div>
+  <div class="box-full-middle">
+    <div class="pad_top pad_left">
+      
+      <div style="text-align:center;padding:25px 5px;">
+      <% if @media_album_media.has_video? %>
+        <object width="560" height="340"><param name="movie" value="http://www.youtube.com/v/<%= @media_album_media.media.youtube_video_id %>&amp;hl=en&amp;fs=1&amp;autoplay=1"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/<%= @media_album_media.media.youtube_video_id %>&amp;hl=en&amp;fs=1&amp;autoplay=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="560" height="340"></embed></object>
+      <% else %>
+        <%= image_tag @media_album_media.media.url %>
+      <% end %>
+      </div>
+
+    </div>
+  </div>
+  <div class="box-full-bottom"></div>
+</div>
+<div class="clear">

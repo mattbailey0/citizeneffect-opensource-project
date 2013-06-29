@@ -1,0 +1,19 @@
+<% mailing_list = object.mailing_list -%>
+<li>
+			<div class="carousel <%=h @user == current_user ? "carousel_edit" : "" %>">
+        <% if @user == current_user %>
+        <%= link_to image_tag("icon_close.png", :alt => "close"), mailing_list_user_path(object, :return_to => "user"), :method => :delete, :confirm => "Are you sure?", :class => "close_top_left" %>
+        <% end %>
+				<div class="pic"><%= image_tag mailing_list.main_picture_url(:standard_thumb), :alt => "", :width => "50", :height => "49" %></div>
+				<div class="copy">
+					<p class="title"><%=h mailing_list.name %></p>
+					<p class="description">
+            <%=h truncate(mailing_list.summary_for_website, :length => 80) %>
+            <% if mailing_list.project %>
+						  <%= link_to "visit project", mailing_list.project %>
+            <% end %>
+					</p>
+				</div>
+				<div class="clear"></div>
+			</div>
+</li>

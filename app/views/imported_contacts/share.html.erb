@@ -1,0 +1,33 @@
+<% content_for(:page_title, "Share") %>
+
+<div class="breadcrumbs">
+	<%= link_to "&laquo; back to contacts page", imported_contacts_path, :class => "breadcrumbs green" %>
+</div>
+
+<!-- main body copy -->
+<div id="wrapper-copy">
+
+	<div class="component-header-full nopadtop">
+		<h3>SEND INVITATIONS</h3>
+	</div> 	
+	<!-- full-width component -->
+	<div class="box-full-middle">
+
+		<!-- buttons -->
+		<div class="filter pad_bottom">
+			<div class="left large">&nbsp;</div>
+			<div class="buttons large">
+        <%= link_to "", new_invite_imported_contacts_path, :id => "email_contacts_left" %>
+        <%= link_to "", share_imported_contacts_path, :id => "social_networks", :class => "active" %>
+      </div>
+			<div class="right large">&nbsp;</div>
+			<div class="clear"></div>
+		</div>
+		
+    <div class="div_center">
+		  <%= render :partial => "shared/share_page", :locals => { :shareable => @project_event } %>
+    </div>
+
+	</div>
+	<div class="box-full-bottom"></div>
+</div>

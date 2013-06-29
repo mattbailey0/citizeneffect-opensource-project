@@ -1,0 +1,27 @@
+<h1>Listing Global Focus Areas</h1>
+
+<div class="new-button">
+  <%= link_to '(+) Add Global Focus Area', new_admin_focus_area_path %>
+</div>
+
+<div class="xls_link">
+  <%= link_to "Download As Excel Spreadsheet", url_for({:format => :xls}.merge(params)) %>
+</div>
+
+<table cellpadding="0" cellspacing="0" class="index-list">
+  <tr class="index-list-header">
+    <th>ID</th>
+    <th>Name</th>
+    <th colspan="3">Actions</th>
+  </tr>
+
+<% @focus_areas.each do |focus_area| %>
+  <tr>
+    <td><%=h focus_area.id %></td>
+    <td><%=h focus_area.name %></td>
+    <td><%= link_to 'Show', [:admin, focus_area] %></td>
+    <td><%= link_to 'Edit', edit_admin_focus_area_path(focus_area) %></td>
+    <td><%= link_to 'Destroy', [:admin, focus_area], :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>

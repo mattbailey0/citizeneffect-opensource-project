@@ -1,0 +1,40 @@
+%h1
+  Partnership Inquiry Forms
+
+.xls_link
+  = link_to "Download All As Excel Spreadsheet", url_for({:format => :xls}.merge(params))
+
+%div= will_paginate(@partner_inquiry_forms_paginated)
+
+%table.index-list{:cellpadding => "0", :cellspacing => "0"}
+  %tr.index-list-header
+    %th ID
+    %th Submission Date
+    %th Source
+    %th Submitter Name
+    %th Submitter Email
+    %th Organization
+    %th Organization Phone
+    %th Website
+    %th Contact Name
+    %th Contact Email
+    %th Description
+
+  - @partner_inquiry_forms_paginated.each do |partner_inquiry_form|
+    %tr
+      %td= h partner_inquiry_form.id
+      %td= h partner_inquiry_form.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%Y-%m-%d %H:%M %Z")
+      %td= h partner_inquiry_form.submitter_name
+      %td= link_to h(partner_inquiry_form.submitter_email), "mailto:#{partner_inquiry_form.submitter_email}"
+      %td= h partner_inquiry_form.organization
+      %td= h partner_inquiry_form.organization_phone_number
+      %td= h partner_inquiry_form.organization_website
+      %td= h partner_inquiry_form.contact_name
+      %td= link_to h(partner_inquiry_form.contact_email), "mailto:#{partner_inquiry_form.contact_email}"
+      %td= h partner_inquiry_form.description
+
+
+%br
+
+%div= will_paginate(@partner_inquiry_forms_paginated)
+

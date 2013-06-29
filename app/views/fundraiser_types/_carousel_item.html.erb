@@ -1,0 +1,7 @@
+								<div class="carousel video blue">
+									<div class="copy video">
+										<p class="thumb"><%= link_to image_tag(carousel_item.picture.url(:fundraiser_type_carousel)), carousel_item %></p>
+										<p class="title"><%= link_to h(carousel_item.name), carousel_item %></p>
+									  	<p class="description"><%= link_to h(first_sentence_of(carousel_item.description)), carousel_item %></p>
+									</div>
+								</div>

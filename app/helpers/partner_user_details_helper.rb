@@ -1,0 +1,2 @@
+module PartnerUserDetailsHelper
+end

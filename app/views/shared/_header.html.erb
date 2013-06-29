@@ -1,0 +1,80 @@
+		<div id="wrapper-header">
+			<div id="header-left">
+        <%= render :partial => "shared/header_logo" %>
+
+				<%= render :partial => "shared/header_left_nav" %>
+			</div>
+			<div id="header-right">
+
+			  <% if !logged_in? -%>
+				<!-- top login and signup box -->
+				<div id="signup">
+					<a href="#" class="off updates_switcher">get email updates</a>
+					<a href="#" class="on login_switcher">login</a>
+
+					<!-- example of visible form -->
+          <% form_for [MailingList.global_list, MailingListUser.new], :html => { :id => "email_updates_form", :class => "inactive" } do |f| %>
+            <%= f.text_field :email, :class => "field_left global_email_signup watermark", :title => "email", :value => "email" %>
+            <%= f.text_field :zip, :class => "field_right global_email_signup_zip watermark",
+            :title => "zip", :value => "zip" %>
+						<input type="image" src="/images/signup_arrow.png" />
+						<div class="clear"></div>
+          <% end %>
+
+					<!-- example of invisible form -->
+          <% form_tag session_url(:protocol => SECURE_PROTOCOL), :id => "login_form", :class => "active" do -%>
+            <%= text_field_tag 'login', @login, :class => "field_left global_login_email watermark",
+            :title => "email", :value => "email" %>
+            <div style="position:relative;">
+              <%= password_field_tag 'password', nil, :class => "field_right global_login_password",
+              :title => "password" %>
+              <span style="position:absolute;right:33px;top:3px;" class="watermark" id="password_watermark">
+                password
+              </span>
+            </div>
+            <%= hidden_field_tag 'remember_me', "1" -%>
+						<input type="image" src="/images/signup_arrow.png" />
+						<div class="clear"></div>
+          <% end -%>
+				</div>
+        <% else -%>
+          <div id="auth_nav">
+                	<div class="right welcome">Welcome, <%= link_to h(current_user.name), edit_user_path(current_user,:anchor => "account-information") -%> <%= role_link %></div>
+                    <div class="clear"></div>
+                    <div class="nav">
+                    	<%= link_to "Inbox (#{current_user.unread_message_count})", [current_user, :messages] -%>
+
+                    	<%= link_to "Contacts (#{h current_user.imported_contacts.size})", imported_contacts_path -%>
+                        <%= link_to "Profile", current_user -%>
+                        <%= link_to "Active Projects", [:active_projects, current_user] -%>
+                        <%= link_to "Watch List (#{h current_user.watched_projects.size})", [current_user, :watched_project_associations] -%>
+                        <%= link_to "Logout", logout_path -%>
+                    </div>
+
+                    <div class="clear"></div>
+          </div>
+        <% end -%>
+
+				<!-- statistics -->
+        <%# CE USED TO HAVE STATS HERE
+				<div id="stats">
+					<div class="impacted"><span>X LIVES IMPACTED</span></div>
+					<div class="completed"><span>X PROJECTS COMPLETED</span></div>
+				</div>
+				%>
+
+				<div id="stats">
+				  <%#= image_tag 'formerly-1well.png', :width => '91', :height => '40', :alt => "Citizen Effect formerly known as 1Well" %>
+				<%= render :partial => "shared/social_network_icons" %>
+				</div>
+
+        <% if current_user.andand.is_a_cp? %>
+          <%= link_to image_tag("btn_cp_fundraising_tools.png", :alt => "CP Fundraising Tools", :height => "45", :width => "224"), fundraiser_types_path, :id => "sponsor", :class => "cp_fundraising_tools" %>
+        <% else %>
+          <%= link_to image_tag("btn_start_a_project.png", :alt => "Start a Project!", :height => "45"), new_cp_application_path, :id => "sponsor" %>
+        <% end %>
+			</div>
+		</div>
+    <div class="clear">
+    </div>
+

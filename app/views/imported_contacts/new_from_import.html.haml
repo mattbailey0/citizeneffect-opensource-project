@@ -1,0 +1,30 @@
+- content_for(:page_title, "Import Contacts")
+
+.breadcrumbs
+  = link_to "&laquo; back to profile", current_user, :class => "breadcrumbs green"
+  = link_to "&laquo; back to contacts", imported_contacts_path, :class => "breadcrumbs green"
+
+#wrapper-copy
+  .component-header-full.nopadtop
+    %h3="IMPORT CONTACTS"
+  
+
+  - form_tag(import_imported_contacts_path) do |f|
+    
+    .box-full-middle.account-info
+      .pad_full
+        %h1="Import New Contact(s) From:"
+        %p
+          = radio_button_tag "contact_service", "gmail", true
+          = label_tag "contact_service_gmail", image_tag("import-gmail-logo.png", :alt => "GMail", :width => "96", :height => "25"), :style => "display:inline;padding-right:15px;padding-top:10px;"
+          = radio_button_tag "contact_service", "yahoo", false
+          = label_tag "contact_service_yahoo", image_tag("import-yahoo-logo.png", :alt => "Yahoo", :width => "96", :height => "25"), :style => "display:inline;padding-top:10px;"
+        %p
+          = label_tag "contact_import_username", "USERNAME:"
+          = text_field_tag "contact_import_username"
+        %p
+          = label_tag "contact_import_password", "PASSWORD:"
+          = password_field_tag "contact_import_password"
+        .clear   
+        = image_submit_tag "btn_import_from_address_book.png", :class => "pad_top block add_contact"
+  .box-full-bottom

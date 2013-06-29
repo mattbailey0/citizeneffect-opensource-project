@@ -1,0 +1,12 @@
+<h1>Editing project_event</h1>
+
+<% form_for([:admin, @project_event]) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', [:admin, @project_event] %> |
+<%= link_to 'Back', admin_project_events_path %>

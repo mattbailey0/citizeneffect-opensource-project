@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+params: (row_number)
+is_singleton: false
+block_params: 
+name: row_values
+comment: 
+full_name: Celerity::Table#row_values
+visibility: public
+aliases: []
+

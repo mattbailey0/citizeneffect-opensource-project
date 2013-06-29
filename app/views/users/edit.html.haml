@@ -1,0 +1,16 @@
+- content_for(:page_title, "Edit #{@user.display_name}")
+
+/ breadcrumbs
+.breadcrumbs
+  = link_to "&laquo; Back to your profile", [@user], :class => "breadcrumbs green"
+
+/ main body copy
+#wrapper-copy
+  = render :partial => "edit_account_information"
+  = render :partial => "edit_about_me"
+  = render :partial => "edit_picture"
+  = render :partial => "edit_social_media_links"
+  - if @user.can_access_api?
+    = render :partial => "api_key"
+
+

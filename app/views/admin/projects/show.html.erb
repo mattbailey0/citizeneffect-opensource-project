@@ -1,0 +1,417 @@
+<%= render :partial => "title" %>
+<%= render :partial => "state_progress" %>
+
+<p>
+  <b>Campaigns:</b>
+	<% @project.campaigns.each do |c| %>
+		<br/>
+		<%= c.name ? link_to(c.name, [:admin, c	]) : "" %>
+	<% end %>
+</p>
+
+
+<p>
+  <b>State:</b>
+  <%=h @project.state %>
+</p>
+
+<% if @project.state == ProjectStatus.awaiting_cp %>
+<p>
+  <b>Next step:</b>
+  <%=h @project.next_step %>
+</p>
+
+<p>
+  <b>Due on:</b>
+  <%=h @project.due_on %>
+</p>
+<% end %>
+
+<% if @project.state == ProjectStatus.needs_more_information %>
+<p>
+  <b>What's missing:</b>
+  <%=h @project.whats_missing %>
+</p>
+<% end %>
+
+<% if @project.state == ProjectStatus.denied %>
+<p>
+  <b>Why it was denied:</b>
+  <%=h @project.why_denied %>
+</p>
+<% end %>
+
+<p>
+  <b>Project created at:</b>
+  <%=h @project.project_created_at %>
+</p>
+
+<p>
+  <b>Approved by Citizen Effect at:</b>
+  <%=h @project.approved_by_citizen_effect_at %>
+</p>
+
+<p>
+  <b>Sent back to Partner by Citizen Effect at:</b>
+  <%=h @project.sent_back_to_partner_by_citizen_effect_at %>
+</p>
+
+<p>
+  <b>Denied by Citizen Effect at:</b>
+  <%=h @project.denied_by_citizen_effect_at %>
+</p>
+
+<p>
+  <b>Partner:</b>
+  <%=h @project.partner.andand.display_name %>
+</p>
+
+<p>
+  <b>Permalink:</b>
+  <%=h @project.permalink %>
+</p>
+
+<p>
+  <b>Estimated construction start date:</b>
+  <%=h @project.estimated_construction_start_date %>
+</p>
+
+<p>
+  <b>Actual construction start date:</b>
+  <%=h @project.actual_construction_start_date %>
+</p>
+
+<p>
+  <b>Estimted construction completed date:</b>
+  <%=h @project.estimted_construction_completed_date %>
+</p>
+
+<p>
+  <b>Actual construction completed date:</b>
+  <%=h @project.actual_construction_completed_date %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%=h @project.name %>
+</p>
+
+<p>
+  <b>Priority:</b>
+  <%=h @project.priority %>
+</p>
+
+<p>
+  <b>Citizen Philanthropist:</b>
+  <%=h @project.cp.andand.name %>
+</p>
+
+<p>
+  <b>Focus area:</b>
+  <%= h @project.focus_areas.map(&:name).to_sentence %>
+</p>
+
+<p>
+  <b>Project types:</b>
+  <%= h @project.types.map(&:name).to_sentence %>
+</p>
+
+<p>
+  <b>Primary objective:</b>
+  <%=h @project.primary_objective %>
+</p>
+
+<p>
+  <b>Desired construction start date:</b>
+  <%=h @project.desired_construction_start_date %>
+</p>
+
+
+<div class="project_group_heading">
+  Personnel Details
+</div>
+<p>
+  <b>Partner coordinator:</b>
+  <%=h @project.partner_coordinator.andand.name %>
+</p>
+
+<p>
+  <b>District coordinator:</b>
+  <%=h @project.district_coordinator %>
+</p>
+
+<p>
+  <b>Community leader:</b>
+  <%=h @project.community_leader %>
+</p>
+
+<div class="project_group_heading">
+  Budget Details
+</div>
+<p>
+  <b>Total cost in local currency:</b>
+  <%=h @project.total_cost_in_local_currency %>
+</p>
+
+<p>
+  <b>Local currency type:</b>
+  <%=h @project.local_currency_type_id %>
+</p>
+
+<p>
+  <b>Total cost in usd:</b>
+  <%=h @project.total_cost_in_usd %>
+</p>
+
+<p>
+  <b>Detailed project budget:</b>
+  <%= link_to h(@project.detailed_project_budget.andand.original_filename), @project.detailed_project_budget.andand.url %>
+</p>
+
+<div class="project_group_heading">
+  Location &amp; Impact Stats
+</div>
+<p>
+  <b>Community name:</b>
+  <%=h @project.community_name %>
+</p>
+
+<p>
+  <b>District name:</b>
+  <%=h @project.district_name %>
+</p>
+
+<p>
+  <b>Community State:</b>
+  <%=h @project.community_state %>
+</p>
+
+<p>
+  <b>Country:</b>
+  <%=h @project.country.andand.name %>
+</p>
+
+<p>
+  <b>Community population:</b>
+  <%=h @project.community_population %>
+</p>
+
+<p>
+  <b>Primary lives impacted:</b>
+  <%=h @project.primary_lives_impacted %>
+</p>
+
+<p>
+  <b>Primary benefits / Direct impact:</b>
+  <%=h @project.primary_benefits %>
+</p>
+
+<p>
+  <b>Secondary lives impacted:</b>
+  <%=h @project.secondary_lives_impacted %>
+</p>
+
+<p>
+  <b>Secondary benefits / Indirect impact:</b>
+  <%=h @project.secondary_benefits %>
+</p>
+
+<div class="project_group_heading">
+  Community Details
+</div>
+<p>
+  <b>Summary for website:</b>
+  <%=h @project.community_summary_for_website %>
+</p>
+
+<p>
+  <b>Major communities:</b>
+  <%=h @project.major_communities %>
+</p>
+
+<p>
+  <b>Major occupations:</b>
+  <%=h @project.major_occupations %>
+</p>
+
+<p>
+  <b>Average income per household:</b>
+  <%=h @project.average_income_per_household %>
+</p>
+
+<p>
+  <b>Families living below poverty:</b>
+  <%=h @project.families_living_below_poverty %>
+</p>
+
+<p>
+  <b>Brief history of community:</b>
+  <%=h @project.brief_history_of_community %>
+</p>
+
+<p>
+  <b>Weather:</b>
+  <%=h @project.weather %>
+</p>
+
+<p>
+  <b>Major issues:</b>
+  <%=h @project.major_issues %>
+</p>
+
+<div class="project_group_heading">
+  Project Details
+</div>
+<p>
+  <b>Summary for website:</b>
+  <%=h @project.summary_for_website %>
+</p>
+
+<p>
+  <b>Justification for project:</b>
+  <%=h @project.justification_for_project %>
+</p>
+
+<p>
+  <b>What will be done:</b>
+  <%=h @project.what_will_be_done %>
+</p>
+
+<p>
+  <b>How will it be done:</b>
+  <%=h @project.how_will_it_be_done %>
+</p>
+
+<div class="project_group_subheading">
+  Sustainability
+</div>
+<p>
+  <b>Environmental sustainability:</b>
+  <%=h @project.environmental_sustainability %>
+</p>
+
+<p>
+  <b>Economic sustainability:</b>
+  <%=h @project.economic_sustainability %>
+</p>
+
+<p>
+  <b>Social sustainability:</b>
+  <%=h @project.social_sustainability %>
+</p>
+
+<div class="project_group_heading">
+  Project Timeline Details
+</div>
+<p>
+  <b>Proposed timeline:</b>
+  <%=h @project.proposed_timeline %>
+</p>
+
+<div class="project_group_heading">
+  Community Characteristic Details
+</div>
+<p>
+  <b>Agricultural land:</b>
+  <%=h @project.agricultural_land %>
+</p>
+
+<p>
+  <b>Animal husbandry:</b>
+  <%=h @project.animal_husbandry %>
+</p>
+
+<p>
+  <b>Water related infrastructure:</b>
+  <%=h @project.water_related_infrastructure %>
+</p>
+
+<p>
+  <b>Sanitation:</b>
+  <%=h @project.sanitation %>
+</p>
+
+<p>
+  <b>Healthcare facilities:</b>
+  <%=h @project.healthcare_facilities %>
+</p>
+
+<p>
+  <b>Transportation:</b>
+  <%=h @project.transportation %>
+</p>
+
+<p>
+  <b>Commerce:</b>
+  <%=h @project.commerce %>
+</p>
+
+<p>
+  <b>Education:</b>
+  <%=h @project.education %>
+</p>
+
+
+<div class="project_group_heading">
+  Community Member Profiles
+</div>
+<p>
+  <% @project.community_member_profiles.each do |profile| %>
+    <div>
+      Name: <%=h profile.name %>
+    </div>
+  <% end %>
+</p>
+
+<div class="project_group_heading">
+  Attached Files
+</div>
+<p>
+  <% @project.associated_files.each do |file| %>
+    <div>
+      <%= link_to h(file.andand.original_filename), file.andand.url, :target => "_blank" %>
+    </div>
+  <% end %>
+</p>
+
+
+
+<!-- <div class="project_group_heading"> -->
+<!--   Media -->
+<!-- </div> -->
+<!-- <div class="project_group_subheading"> -->
+<!--   Images -->
+<!-- </div> -->
+<!-- <p> -->
+<!--   <%# @project.pictures.each do |picture| %> -->
+<!--     <div> -->
+<!--       <%#= link_to h(picture.picture.original_filename), picture.picture.url %> -->
+<!--     </div> -->
+<!--   <%# end %> -->
+<!-- </p> -->
+<!-- <div class="project_group_subheading"> -->
+<!--   Videos -->
+<!-- </div> -->
+<!-- <p> -->
+<!--   <%# @project.videos.each do |video| %> -->
+<!--     <div> -->
+<!--       <%#= link_to h(video.video.original_filename), video.video.url %> -->
+<!--     </div> -->
+<!--   <%# end %> -->
+<!-- </p> -->
+<!-- <div class="project_group_subheading"> -->
+<!--   Audios -->
+<!-- </div> -->
+<!-- <p> -->
+<!--   <%# @project.audios.each do |audio| %> -->
+<!--     <div> -->
+<!--       <%#= link_to h(audio.audio.original_filename), audio.audio.url %> -->
+<!--     </div> -->
+<!--   <%# end %> -->
+<!-- </p> -->
+
+<%= render :partial => "approve_deny_more_info" if current_user.andand.is_a_citizen_effect_admin? %>
+
+<%= link_to 'Edit', edit_admin_project_path(@project) %> |
+<%= link_to 'Back', admin_projects_path %>
+

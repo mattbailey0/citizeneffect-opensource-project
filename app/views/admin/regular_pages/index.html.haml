@@ -1,0 +1,40 @@
+= render :partial => "admin/shared/website_pages", :locals => { :highlight => "regular_pages" }
+
+.new-button
+  = link_to "(+) Add New Page", new_admin_regular_page_path
+
+.xls_link
+  = link_to "Download As Excel Spreadsheet", url_for({:format => :xls}.merge(params))
+
+%table.index-list{:cellpadding => "0", :cellspacing => "0"}
+  %tr.index-list-header
+    %th
+      ID
+    %th
+      Title
+    %th
+      Date Added
+    %th
+      Last Updated
+    %th
+      URL
+    %th
+      Status
+    %th
+      Actions
+  - @regular_pages.each do |regular_page|
+    %tr
+      %td
+        = h regular_page.id
+      %td
+        = link_to h(regular_page.title), edit_admin_regular_page_path(regular_page)
+      %td
+        = h regular_page.created_at.strftime('%m/%d/%Y')
+      %td
+        = h regular_page.updated_at.strftime('%m/%d/%Y')
+      %td
+        = link_to h(regular_page.url), regular_page.url
+      %td
+        = h regular_page.status
+      %td
+        = link_to 'Destroy', [:admin, regular_page], :confirm => 'Are you sure?', :method => :delete

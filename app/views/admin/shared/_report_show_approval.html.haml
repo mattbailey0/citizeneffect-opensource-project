@@ -1,0 +1,10 @@
+%p{ :class => "status" }
+  %strong Status:
+  %strong{ :class => "#{@approvable.approval_status.blank? ? "" : @approvable.approval_status.downcase.gsub(/ /, '-')}" }
+    = "#{@approvable.approval_status}"
+  - if @approvable.approval.andand.approved? && !@approvable.approval.due_on.blank?
+    %strong Due on:
+    %strong{ :class => "approved" }= "#{@approvable.approval.due_on}"
+    %strong Next Step:
+    %strong{ :class => "approved" }= "#{@approvable.next_step}"
+  

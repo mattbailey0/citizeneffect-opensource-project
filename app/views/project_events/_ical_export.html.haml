@@ -1,0 +1,20 @@
+#add_to_calendar.menu-parent.basic-button-box
+  %a.cal-image.block.left{ :title=>"Click to view download options.", :onclick => "$('#add_to_calendar_options').toggle();" }
+    %img{ :src=> "/images/icon_cal_dark.gif", :alt=>"", :width=>"21", :height=>"20", :align=>"bottom"}
+  %a.cal.green.block.left.pad_left{ :onclick => "$('#add_to_calendar_options').toggle(); return false;", :href => "#" } add to calendar
+
+  .clear
+
+  #add_to_calendar_options.ics-menu.bg_ltblue{ :style=> "display:none" }
+    %ul
+      %li.cal-outlook
+        = link_to 'Outlook', formatted_project_project_event_path(@project, event, 'ics', :outlook => true), :title => "Download a file you can open in Outlook."
+      %li.cal-ical
+        = link_to 'Apple iCal', formatted_project_project_event_url(@project, event, 'ics'), :title => 'Download a file you can open in Apple iCal.'
+      %li.cal-google
+        = link_to 'Google', add_to_g_cal(event), :title => 'Add to Google Calendar.', :target => '_blank'
+      %li.cal-yahoo
+        = link_to 'Yahoo', add_to_y_cal(event), :title => 'Add to My Yahoo! Calendar.', :target => '_blank'
+      %li.cal-ics
+        = link_to 'Download .ics File', formatted_project_project_event_path(@project, event, 'ics'), :title => "A generic .ics file you can open in most calendar programs."
+

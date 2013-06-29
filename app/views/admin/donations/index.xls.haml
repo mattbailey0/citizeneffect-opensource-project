@@ -1,0 +1,64 @@
+%table
+  %tr{:style => "font-weight:bold;"}
+    %td Donation ID
+    %td Project Name
+    %td Project ID
+    %td Project URL
+    %td CP Name
+    %td CP ID
+    %td Anonymous?
+    %td Donor First Name
+    %td Donor Last Name
+    %td Date
+    %td Time (EST/EDT)
+    %td Original Base Donation Amount
+    %td Fee Percentage
+    %td Original Project Donation Amount
+    %td Original Tip %
+    %td Original Total Charged
+    %td Total Refunded Amount
+    %td Revised Tip %
+    %td Net Base Donation Amount
+    %td Net Project Donation Amount
+    %td Net CE Donation Amount
+    %td Net Total Donation Amount
+    %td Address 1
+    %td Address 2
+    %td City
+    %td State
+    %td Zip
+    %td Donor Email
+    %td Campaign Code
+    %td CP Profile
+  - @donations.each do |donation|
+    %tr
+      %td= h donation.id
+      %td= h donation.project.andand.name
+      %td= h donation.project.andand.id
+      %td= h donation.project.andand.permalink
+      %td= donation.project.andand.cp ? h(donation.project.andand.cp.name) : h(donation.donation_cp.andand.name)
+      %td= donation.project.andand.cp ? h(donation.project.andand.cp.id) : h(donation.donation_cp.andand.id)
+      %td= donation.anonymous ? "yes" : "no"
+      %td= h donation.first_name
+      %td= h donation.last_name
+      %td= h donation.donated_at.in_time_zone('Eastern Time (US & Canada)').strftime("%Y-%m-%d")
+      %td= h donation.donated_at.in_time_zone('Eastern Time (US & Canada)').strftime("%H:%M")
+      %td= h donation.amount_in_dollars
+      %td= h donation.fee_percentage.to_f * 100
+      %td= h donation.project_amount_in_dollars
+      %td= h donation.tip_percentage
+      %td= h donation.actual_amount_in_dollars
+      %td= h donation.refunded_amount_in_dollars
+      %td= h donation.current_tip_percentage
+      %td= h donation.net_amount_in_dollars
+      %td= h donation.net_project_amount_in_dollars
+      %td= h donation.net_ce_amount_in_dollars
+      %td= h donation.net_actual_amount_in_dollars
+      %td= h donation.address1
+      %td= h donation.address2
+      %td= h donation.city
+      %td= h donation.state
+      %td= h donation.zip
+      %td= h donation.email
+      %td= h donation.campaign_code
+      %td= h donation.donor.nil? ? '' : ONEWELL_HOST + url_for(donation.donor)

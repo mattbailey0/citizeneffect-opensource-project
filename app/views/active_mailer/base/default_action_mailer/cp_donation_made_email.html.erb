@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>[Citizen Effect] A donation has been made to your project!</title>
+</head>
+<body>
+  <p>Dear <%= @donation.project.cp.first_name -%>,</p>
+
+  <p>Great news! <%= @donation.display_name -%> has just made a donation to your "<%= @donation.project.name -%>" project in <%= @donation.project.display_location -%>!<p>
+
+  <p>Thank <%= @donation.display_name -%> by:</p>
+  <ul>
+    <li>Sending a thank you email</li>
+    <li>Sharing the donation to your project on <a href="http://www.facebook.com">Facebook</a></li>
+    <li>Tweeting about the donation on <a href="http://www.twitter.com">Twitter</a></li>
+  </ul>
+
+  <p>You can always check your fundraising total by visiting your <%= link_to "project page",project_url(@donation.project) -%>.</p>
+
+  <p>Keep up the great work!</p>
+
+  <p>
+    Warmly,<br/>
+    The Citizen Effect Team
+  </p>
+</body>
+</html>

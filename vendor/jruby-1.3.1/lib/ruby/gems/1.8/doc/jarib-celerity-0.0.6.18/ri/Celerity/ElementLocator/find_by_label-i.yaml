@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+params: (what)
+is_singleton: false
+block_params: 
+name: find_by_label
+comment: 
+full_name: Celerity::ElementLocator#find_by_label
+visibility: public
+aliases: []
+

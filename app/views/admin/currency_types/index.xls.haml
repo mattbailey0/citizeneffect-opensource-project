@@ -1,0 +1,8 @@
+%table
+  %tr{:style => "font-weight:bold;"}
+    %td ID
+    %td Currency code
+  - @currency_types.each do |currency_type|
+    %tr
+      %td= h currency_type.id
+      %td= h currency_type.currency_code

@@ -1,0 +1,15 @@
+					<div class="donation-project">
+						<div class="project-image">
+              <%= image_tag @project.main_picture_url(:watch_list), :width => "185", :height => "130" %>
+            </div>
+						<div class="project-info">
+							<div class="project-text"><%=h @donation.project.name_with_cp %><br>Thank you, <%=h @donation.first_name %> for your generous contribution! You've donated <%=h number_to_currency(@donation.actual_amount_in_dollars) %></div>
+							<div class="project-donation-buttons">
+                <%= link_to image_tag("btn_return_project.png"), @donation.project, :class => "return-button" %>
+                <a href="#<%=h share_box_id(@donation.project) %>" rel="facebox">
+                  <%= image_tag "btn_share_stripped_right.png" %>
+                </a>
+                <%= render :partial => "shared/share_box", :locals => { :shareable => @donation.project }%>
+							</div>
+						</div>
+					</div>

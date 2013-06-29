@@ -1,0 +1,54 @@
+<h1><%=h @role.name.pluralize.titleize %></h1>
+
+<div class="new-button">
+  <%= link_to @create_link_text, new_admin_role_user_role_association_path(@role.id) %>
+  <br/>
+  <%= link_to '(+) Create a New User', new_admin_user_path %>
+</div>
+
+<div class="xls_link">
+  <%= link_to "Download All As Excel Spreadsheet", url_for({:format => :xls}.merge(params)) %>
+</div>
+
+<%= will_paginate(@user_role_associations_paginated) %>
+
+<table cellpadding="0" cellspacing="0" class="index-list">
+  <tr class="index-list-header">
+    <th>ID</th>
+    <th>Email</th>
+    <th>Last Name</th>
+    <th>First Name</th>
+    <% if @role.name == "cp" %>
+      <th>State</th>
+      <th>Zipcode</th>
+      <th>Projects</th>
+      <th>Total Raised</th>
+    <% end %>
+    <% if current_user.is_a_citizen_effect_admin? %>
+      <th>Actions</th>
+    <% end %>
+  </tr>
+  <% @user_role_associations_paginated.each do |user_role_association| %>
+    <% user = user_role_association.user %>
+    <tr>
+      <td><%=h user.id %></td>
+      <td><%=h user.email %></td>
+      <td><%=h user.last_name %></td>
+      <td><%=h user.first_name %></td>
+      <% if @role.name == "cp" %>
+        <td><%=h user.state_code %></td>
+        <td><%=h user.zip %></td>
+        <td><%=h user.cped_projects.count %></td>
+        <td><%=h user.money_raised_in_usd %></td>
+      <% end %>
+      <% if current_user.is_a_citizen_effect_admin? %>
+        <td>
+          <%= link_to 'Destroy', [:admin, @role, user_role_association], :confirm => 'Are you sure?', :method => :delete %>
+        </td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
+
+<%= will_paginate(@user_role_associations_paginated) %>
+

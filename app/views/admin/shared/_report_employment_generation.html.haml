@@ -1,0 +1,35 @@
+%tr
+  %td{:colspan => "2"}
+    %strong Employment Generation
+
+%tr
+  %td.fl.no-pad= f.label :productive_time_created
+  %td= f.text_area :productive_time_created
+
+%tr
+  %td.fl= f.label :number_of_jobs_created, "Jobs created"
+  %td
+    = f.label :number_of_jobs_created, "Total #"
+    = f.text_field :number_of_jobs_created
+    %br
+    = f.label :job_breakdown, "Description and breakdown of jobs"
+    %br
+    = f.text_area :job_breakdown
+
+%tr
+  %td.fl.no-pad= f.label :wages_increased
+  %td= f.text_area :wages_increased
+
+%tr
+  %td.fl= f.label :small_businesses_created, "Small businesses created"
+  %td
+    = f.label :small_businesses_created, "Total #"
+    = f.text_field :small_businesses_created
+    %br
+    = f.label :business_breakdown, "Description and breakdown of businesses"
+    %br
+    = f.text_area :business_breakdown
+
+%tr
+  %td.fl.no-pad= f.label :other
+  %td= f.text_area :other

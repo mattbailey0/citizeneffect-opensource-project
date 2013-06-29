@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>select_value (Celerity::SelectList)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/celerity/elements/select_list.rb, line 72</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">select_value</span>(<span class="ruby-identifier">value</span>)
+      <span class="ruby-identifier">assert_exists</span>
+      <span class="ruby-identifier">selected</span> = <span class="ruby-ivar">@object</span>.<span class="ruby-identifier">getOptions</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">e</span><span class="ruby-operator">|</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">click</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">matches?</span>(<span class="ruby-identifier">e</span>.<span class="ruby-identifier">getValueAttribute</span>, <span class="ruby-identifier">value</span>) }.<span class="ruby-identifier">compact</span>.<span class="ruby-identifier">first</span>
+
+      <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">selected</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">NoValueFoundException</span>, <span class="ruby-node">&quot;unknown option with value #{value.inspect} for select_list #{@conditions.inspect}&quot;</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">selected</span>.<span class="ruby-identifier">asText</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

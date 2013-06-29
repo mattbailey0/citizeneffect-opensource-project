@@ -1,0 +1,52 @@
+%p
+  %b
+    Selected Project
+  = @cp_application.project.blank? ? "None" : h(@cp_application.project.name)
+%p
+  %b
+    Name
+  = h @cp_application.name
+%p
+  %b
+    Email
+  = h @cp_application.email
+%p
+  %b
+    Address
+  = h @cp_application.address1
+%p
+  %b
+    Address (Line 2)
+  = h @cp_application.address2
+%p
+  %b
+    City
+  = h @cp_application.city_name
+%p
+  %b
+    State
+  = h @cp_application.state_code
+%p
+  %b
+    Zip Code
+  = h @cp_application.zip
+%p
+  %b
+    Phone Number
+  = h @cp_application.phone_number
+%p
+  %b
+    Comment
+  = h @cp_application.comment
+
+= render :partial => "interested_in", :locals => { :cp_application => @cp_application }
+= render :partial => "referred_by", :locals => { :cp_application => @cp_application }
+
+- if @cp_application.has_approval_status?
+  = render :partial => "show_approval", :locals => { :cp_application => @cp_application }
+- else
+  = render :partial => "set_approval"
+
+= link_to 'Edit', edit_admin_cp_application_path(@cp_application)
+|
+= link_to 'Back', admin_cp_applications_path

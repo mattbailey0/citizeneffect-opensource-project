@@ -1,0 +1,265 @@
+* {
+	margin: 0;
+	padding: 0;
+	outline: none;
+}
+ul, ol {
+	list-style: none;
+}
+a img, img {
+	border: 0 none;
+}
+body {
+	background:#efedeb url(/images/bg.gif) top left repeat-x;
+}
+#header {
+	width: 1000px;
+	margin: 0 auto;
+	overflow: auto;
+	padding-top: 40px;
+	height: 100px;
+}
+#header-right {
+	float: right;
+	width: 376px;
+	height: 100px;
+	background: url(/images/top-decoration.gif) bottom left no-repeat;
+}
+.socialmedia {
+	float: right;
+	margin-right: 23px;
+}
+.socialmedia li {
+	float: left;
+	margin-left: 8px;
+}
+.socialmedia li.share {
+	width: 144px;
+	height: 18px;
+	text-indent: -9999px;
+	background: url(/images/share-with-friends.gif) top left no-repeat;
+	margin: 5px 5px 0 0;
+}
+h1 a {
+	background: url(/images/citizen-effect-holiday-harvest-logo.gif) top left no-repeat;
+	width: 339px;
+	height: 81px;
+	text-indent: -9999px;
+	float: left;
+	margin-left: 23px;
+}
+#container {
+	width: 960px;
+	margin: 0 auto;
+	position: relative;
+}
+#content {
+	background: #fff;
+	padding: 30px;
+	width: 900px;
+	margin: 30px 0;
+	overflow: auto;
+}
+#content h2 a { 
+	position:absolute;
+	top:58px; 
+	left:-6px; 
+	background: url(/images/banner-gift-card.png) top left no-repeat;
+	width: 180px;
+	height: 180px;
+	text-indent: -9999px;
+}
+.giftcard {
+	width: 410px;
+	float: left;
+	padding: 20px;
+	text-align: center;
+}
+.gc {
+	margin-bottom: 10px;
+}
+.blurb {
+	margin: 35px 5px 20px 5px;
+}
+.pgtitle {
+	width: 451px;
+	margin:35px auto 20px auto;
+}
+#featuredbg { 
+	width:924px;  
+	height: 345px;
+	background:url(/images/featured-bg.png) top left no-repeat;
+	padding:19px 18px;
+}
+#featured{ 
+	width:545px; 
+	padding-right:370px; 
+	position:relative; 
+	height:344px; 
+	background:#fff;
+	z-index: 1;
+}
+#featured ul.ui-tabs-nav{ 
+	position:absolute; 
+	top:0; 
+	left:524px; 
+	list-style:none; 
+	width:400px; 
+	z-index: 2;
+}
+#featured ul.ui-tabs-nav li{ 
+	padding-left:21px;  
+	font-size:12px; 
+	color:#666; 
+}
+#featured ul.ui-tabs-nav li img{ 
+	float:left; 
+	margin:2px 5px; 
+	background:#fff; 
+	padding:2px; 
+	border:1px solid #eee;
+}
+#featured ul.ui-tabs-nav li h2 {
+	margin:3px 0;
+}
+#featured ul.ui-tabs-nav li h2.peru{ 
+	background: url(/images/title1.png) top left no-repeat;
+	width: 199px;
+	height: 19px;
+	text-indent: -9999px;
+}
+#featured ul.ui-tabs-nav li h2.india{ 
+	background: url(/images/title2.png) top left no-repeat;
+	width: 211px;
+	height: 19px;
+	text-indent: -9999px;
+}
+#featured ul.ui-tabs-nav li h2.africa{ 
+	background: url(/images/title3.png) top left no-repeat;
+	width: 321px;
+	height: 19px;
+	text-indent: -9999px;
+}
+#featured ul.ui-tabs-nav li h2.usa{ 
+	background: url(/images/title4.png) top left no-repeat;
+	width: 267px;
+	height: 19px;
+	text-indent: -9999px;
+}
+
+#featured ul.ui-tabs-nav li span{ 
+	font-size:12px; 
+	font-family:Verdana, sans-serif; 
+	line-height:16px; 
+	color: #fff;
+}
+#featured li.ui-tabs-nav-item a.more { 
+	font-size:12px; 
+	font-family:Verdana, sans-serif; 
+	line-height:16px; 
+	height: auto;
+	color: #444;
+	text-decoration: underline;
+	padding: 0;
+	display: inline;
+} 
+#featured li.ui-tabs-nav-item a { 
+	display:block; 
+	height:60px; 
+	padding: 13px 20px;
+	color:#fff;  
+	text-decoration: none;
+	line-height:20px;
+}
+#featured li#nav-fragment-1 a {background:#efb43e;}
+#featured li#nav-fragment-2 a {background:#dc7e37;}
+#featured li#nav-fragment-3 a {background:#7a1e48;}
+#featured li#nav-fragment-4 a {background:#52bdec;}
+
+.ui-tabs-selected#nav-fragment-1{background:url('/images/selected-item1.png') top left no-repeat;}
+.ui-tabs-selected#nav-fragment-2{background:url('/images/selected-item2.png') top left no-repeat;}
+.ui-tabs-selected#nav-fragment-3{background:url('/images/selected-item3.png') top left no-repeat;}
+.ui-tabs-selected#nav-fragment-4{background:url('/images/selected-item4.png') top left no-repeat;}
+
+
+
+#featured ul.ui-tabs-nav li.ui-tabs-selected a{ 
+	background:#ccc; 
+}
+#featured .ui-tabs-panel{ 
+	width:545px; 
+	height:344px; 
+	background:#999; 
+	position:relative;
+}
+
+#featured .info h3 a { 
+	position:absolute;
+	top:-15px; 
+	left:-16px; 
+	background: url(/images/donate-now.png) top left no-repeat;
+	width: 166px;
+	height: 165px;
+	text-indent: -9999px;
+}
+#featured .info p{ 
+	margin:0 5px; 
+	font-family:Verdana; font-size:11px; 
+	line-height:15px; color:#f0f0f0;
+}
+#featured .info a{ 
+	text-decoration:none; 
+	color:#fff; 
+}
+#featured .info a:hover{ 
+	text-decoration:underline; 
+}
+#featured .ui-tabs-hide{ 
+	display:none; 
+}
+.buttons li {
+	width: 316px;
+	height: 150px;
+	float: left;
+	margin:15px 0 20px 3px;
+}
+.nav1 a{
+	position:absolute;
+	top:0; 
+	left:545px; 
+	background: url(/images/transparent.png) top left repeat;
+	width: 379px;
+	height: 86px;
+	text-indent: -9999px;
+	z-index: 99;
+}
+.nav2 a{
+	position:absolute;
+	top:86px; 
+	left:545px; 
+	background: url(/images/transparent.png) top left repeat;
+	width: 379px;
+	height: 86px;
+	text-indent: -9999px;
+	z-index: 99;
+}
+.nav3 a{
+	position:absolute;
+	top:172px; 
+	left:545px; 
+	background: url(/images/transparent.png) top left repeat;
+	width: 379px;
+	height: 86px;
+	text-indent: -9999px;
+	z-index: 99;
+}
+.nav4 a{
+	position:absolute;
+	top:258px; 
+	left:545px; 
+	background: url(/images/transparent.png) top left repeat;
+	width: 379px;
+	height: 86px;
+	text-indent: -9999px;
+	z-index: 99;
+}

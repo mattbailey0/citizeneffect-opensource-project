@@ -1,0 +1,76 @@
+%p
+  = f.submit fundraiser_type.new_record? ? 'Create' : 'Update'
+%hr
+%br
+
+%p
+  = f.label :name
+  %br
+  = f.text_field :name
+
+%p
+  = f.label :active
+  =f.select :active, options_for_select([['Inactive',false],['Active',true]])
+
+%p
+  = f.label :description
+  %br
+  = f.text_area :description
+
+%p
+  Typical Fundraising Amount
+.indented
+  %p
+    = f.label :minimum_typical_amount_raised_in_dollars, "Minimum"
+    %br
+    = f.text_field :minimum_typical_amount_raised_in_dollars
+  %p
+    = f.label :maximum_typical_amount_raised_in_dollars, "Maximum"
+    %br
+    = f.text_field :maximum_typical_amount_raised_in_dollars
+
+%p
+  = f.label :difficulty
+  %br
+  = f.select :difficulty, options_for_select(FundraiserType::DIFFICULTY_SET, @fundraiser_type.difficulty)
+
+%p
+  Good For
+.indented
+  = f.label :tags, "Tags"
+  (e.g. 'Athletics, Cooks')
+  %br
+  = f.text_field :tags
+
+%p
+  %b PDFs
+%p.indented
+  - unless fundraiser_type.new_record?
+    = link_to "Manage Associated PDFs", admin_unified_uploads_path(:uploadable_id => @fundraiser_type.id, :uploadable_type => @fundraiser_type.class, :association_name => "associated_files")
+  - else
+    %em You can add PDFs after creating the fundraiser type
+
+%p
+  %b CP Experiences
+%p.indented
+  - unless fundraiser_type.new_record?
+    = link_to "Manage Associated CP Experiences", admin_fundraiser_type_fundraiser_type_experiences_path(fundraiser_type)
+  - else
+    %em You can add CP Experiences after creating the fundraiser type
+
+
+- f.fields_for :picture do |pic_form|
+  %p
+    = pic_form.label :content, "Picture"
+    %br
+    = pic_form.file_field :content
+    - unless fundraiser_type.new_record?
+      %br
+      Current Pic
+      %br
+      = @fundraiser_type.picture.new_record? ? "None" : image_tag(@fundraiser_type.picture.url)
+%br
+%hr
+%p
+  = f.submit fundraiser_type.new_record? ? 'Create' : 'Update'
+

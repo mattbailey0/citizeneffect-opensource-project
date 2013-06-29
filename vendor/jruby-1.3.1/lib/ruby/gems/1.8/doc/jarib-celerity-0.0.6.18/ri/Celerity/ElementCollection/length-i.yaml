@@ -1,0 +1,13 @@
+--- !ruby/object:RI::MethodDescription 
+params: ()
+is_singleton: false
+block_params: 
+name: length
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: '@return [Fixnum] The number of elements in this collection.'
+full_name: Celerity::ElementCollection#length
+visibility: public
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: size

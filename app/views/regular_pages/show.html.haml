@@ -1,0 +1,14 @@
+- content_for :page_title, @regular_page.title
+- content_for :meta_keywords, @regular_page.meta_keywords
+- content_for :meta_description, @regular_page.meta_description
+
+/ breadcrumbs
+.breadcrumbs
+
+.wrapper-copy
+  .component-header-full.nopadtop
+    %h3= h @regular_page.title
+  .box-full-middle.padtop
+    %iframe{ :id => dom_id(@regular_page), :src => regular_pages_public_path(:permalink => params[:permalink], :inner => true), :style => "width:100%;"}
+  .box-full-bottom
+

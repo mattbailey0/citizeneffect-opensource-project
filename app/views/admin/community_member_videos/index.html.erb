@@ -1,0 +1,28 @@
+<%= link_to '&laquo; Back to the Community Member Profile Page', [:edit, :admin, @project, @community_member_profile] %>
+
+<h1>Listing Community Member Videos</h1>
+
+<div class="new-button">
+  <%= link_to '(+) Add Video to Community Member', [:new, :admin, @community_member_profile, :community_member_video] %>
+
+</div>
+
+<table cellpadding="0" cellspacing="0" class="index-list">
+  <tr class="index-list-header">
+    <th>Community member profile</th>
+    <th>Youtube URL</th>
+    <th>Caption</th>
+    <th colspan="3">Actions</th>
+  </tr>
+
+<% @community_member_videos.each do |community_member_video| %>
+  <tr>
+    <td><%=h community_member_video.community_member_profile.name %></td>
+    <td><%= link_to h(community_member_video.url), community_member_video.url, :target => "_blank" %></td>
+    <td><%=h community_member_video.caption %></td>
+    <td><%= link_to 'Show', [:admin, @community_member_profile, community_member_video] %></td>
+    <td><%= link_to 'Edit', [:edit, :admin, @community_member_profile, community_member_video] %></td>
+    <td><%= link_to 'Destroy', [:admin, @community_member_profile, community_member_video], :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>

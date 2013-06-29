@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+params: (index = Celerity.index_offset)
+is_singleton: false
+block_params: 
+name: column_count
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Returns the number of columns on the row at the given index. (1-indexed) Default
+    is the number of columns on the first row @param [Fixnum] index An index, 1-indexed
+    (optional). @return [Fixnum]
+full_name: Celerity::Table#column_count
+visibility: public
+aliases: []
+

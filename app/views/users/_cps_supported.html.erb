@@ -1,0 +1,13 @@
+				<!-- cp's x has also supported -->
+				<div class="box-rightcol-top"></div>
+				<div class="box-rightcol-inner">
+					<div class="header"><h4>CP'S SUPPORTED</h4></div>
+          <div id="cps_supported">
+            <%= render_with_last :partial => "shared/user_right_message", :collection => @user.cps_supported.top_5.all %>
+          </div>
+					<%= link_to_remote "view more", { :url => cps_supported_user_path(@user), :with => "'page=' + ++cps_supported_page", :method => :get }, :id => "home_top_cps_view_more", :class => "pad_top pad_left pad_bottom" %>
+				</div>
+				<div class="box-rightcol-bottom"></div>
+<% javascript_tag do %>
+  cps_supported_page = 1;
+<% end %>

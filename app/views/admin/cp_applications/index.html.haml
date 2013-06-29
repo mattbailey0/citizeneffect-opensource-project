@@ -1,0 +1,67 @@
+%h1
+  Citizen Philanthropist Applications
+
+.xls_link
+  = link_to "Download All As Excel Spreadsheet", url_for({:format => :xls}.merge(params))
+
+%div= will_paginate(@cp_applications_paginated)
+
+%table.index-list{:cellpadding => "0", :cellspacing => "0" }
+  %tr.index-list-header
+    %th
+      ID
+    %th
+      New CP?
+    %th
+      Email
+    %th
+      Last Name
+    %th
+      First Name
+    %th
+      State
+    %th
+      Zip Code
+    %th
+      Applying to Project
+    %th
+      Applied On
+    %th
+      Completed Projects
+    %th
+      Status
+    %th
+      Actions
+  - @cp_applications_paginated.each do |cpa|
+    %tr
+      %td
+        = cpa.id
+      %td
+        = cpa.applicant_is_new_cp? ? "Yes" : "No"
+      %td
+        = cpa.email
+      %td
+        = cpa.last_name
+      %td
+        = cpa.first_name
+      %td
+        = cpa.state_code
+      %td
+        = cpa.zip
+      %td
+        = cpa.project.andand.name
+      %td
+        = cpa.created_at.to_date.to_s
+      %td
+        = cpa.applicant_projects_completed_count
+      %td{ :class => "status #{cpa.approval_status.andand.dasherize.andand.downcase}" }
+        %strong= "#{cpa.approval_status}"
+      %td
+        - if cpa.has_approval_status?
+          = link_to 'Show', [:admin, cpa]
+        - else
+          = link_to 'Show/Approve/Deny', [:admin, cpa]
+
+
+%div= will_paginate(@cp_applications_paginated)
+

@@ -1,0 +1,108 @@
+Dear <%= @donation.first_name.strip -%> <%= @donation.last_name.strip -%>,
+
+<% if @donation.campaign_code == Donation::SNAPFISH_CARD &&  @donation.project.andand.enable_card_donation -%>
+Thank you for your generous donation of <%= number_to_currency(@donation.actual_amount_in_dollars) -%> to Citizen Effect’s Holiday Harvest!
+
+<% if @donation.project.id == 371 -%>
+Your support of Catholic Charities Food Assistance program for Gulf Coast fishing families will make a tremendous difference in their food security this Holiday season.  Catholic Charities will be posting reports on the project so you can see the impact you’ve had on the community.
+<% elsif @donation.project.id == 370 -%>
+Your support of Coprodeli’s nutrition program for children in Callao, Peru will make a tremendous difference in their food security this Holiday season.  Coprodeli will be posting reports on the project so you can see the impact you’ve had on the community.
+<% elsif @donation.project.id == 369 -%>
+Your support of SEWA’s agricultural growth project for families in Gujarat, India will make a tremendous difference in their food security this Holiday season.  SEWA will be posting reports on the project so you can see the impact you’ve had on the community.
+<% elsif @donation.project.id == 372 -%>
+Your support of Home from Home’s program for foster children in Cloetesville, South Africa will make a tremendous difference in their food security this Holiday season.  Home from Home will be posting reports on the project so you can see the impact you’ve had on the community.
+<% else %>
+Bookmark the project page below to stay up-to-date with the project and partner community. <%= @donation.project.partner.andand.display_name -%>, Citizen Effect's field partner in <%= @donation.project.display_location -%>, will be posting updates and reports on the project so you can see the impact you have had on the community.
+<% end %>
+
+Project Page: <%= project_url(@donation.project) %>
+
+Share your gift with friends and family so they can make an impact this season too (just click the "Share" button on the project page).
+
+Your Holiday Harvest greeting card can be redeemed by following the link below and using the following promo code: <%= Donation::SNAPFISH_PROMO_CODE %>
+
+Snapfish Card: <%= snapfish_card_project_url(@donation.project) %>
+
+Thanks again for supporting Citizen Effect’s Holiday Harvest!
+
+<% elsif @donation.campaign_code == Donation::YOGA -%>
+Thanks for your generous donation of <%= number_to_currency(@donation.actual_amount_in_dollars) -%> to join Citizen Effect’s Yoga Challenge!
+
+Your support will help DC-based Becky's Fund address domestic abuse in our community.
+
+ · A member of the Citizen Effect team will be in touch shortly to schedule a call to speak to your about your new donations page on Citizen Effect and best practices for fundraising.
+ · You can pick up your Yoga Challenge welcome packet at our DC location – . Or by emailing yoga@example.org to learn about our Yoga Challenge events where packets will be available.
+ · If you have any questions regarding the challenge please don’t hesitate to contact us at yoga@example.org
+
+Thanks again for supporting Citizen Effect’s Yoga Challenge! 
+<% elsif @donation.campaign_code == Donation::BRACKETS -%>
+Thanks for your generous donation of <%= number_to_currency(@donation.actual_amount_in_dollars) -%> to join Citizen Effect's Brackets with Benefits!
+
+Your support will help fund one of the many community-based projects Citizen Effect works to support.  Follow the steps below to set up your account on the BwB bracket platform.
+
+ • Go to .
+ • Fill out the user information required under ‘Register For This Pool’ on the bottom right-hand side and click 'Create Account' (*Note – You will not receive an email confirmation with this login information.  You can "Recover Login" through the registration page but it’s best to store this information somewhere)
+ • Once you’ve created your account go to the BwB homepage on TourneyTopia - 
+ • Follow the instructions to fill out your bracket.
+ • If you’re in a group click the name on the right side (if prompted use the access code provided by your Group BwB Manager).
+ • The submission window for bracket entries runs from 3/13/11 at 7pm until 3/17/11 at 12:30pm EST.
+ • If you have any questions please contact us at 
+
+Thanks again for supporting Citizen Effect’s Brackets with Benefits!
+
+
+<% elsif @donation.project -%>
+<% if @donation.project.campaigns.find_by_id(2) # Team Up 4 Health Campaign project -%>
+Thank you for your donation of <%= number_to_currency(@donation.actual_amount_in_dollars) -%> to <%= @donation.project.cp.andand.display_name -%>'s <%= @donation.project.name -%> project. 
+Support <%= @donation.project.cp.andand.display_name -%> by tweeting about the project and posting it on Facebook (you can do this directly from the project page).
+
+Thank you for supporting <%= @donation.project.cp.andand.display_name -%>’s project, Team Up 4 Health and Bell County. 100% of your donation (less credit card fees) goes towards the specific project you have supported. Thanks for being the solution!
+
+<% else -%>
+Thank you for your donation of <%= number_to_currency(@donation.actual_amount_in_dollars) -%> to <%= @donation.project.cp.andand.display_name -%>'s <%= @donation.project.name -%> project. Bookmark the project page below to stay up-to-date with the project and partner community. <%= @donation.project.partner.andand.display_name -%>, Citizen Effect's field partner in <%= @donation.project.display_location -%>, will be posting updates and reports on the project so you can see the impact you have had on the community.
+
+Project Page: <%= project_url(@donation.project) %>
+
+Support <%= @donation.project.cp.andand.display_name -%> by tweeting about the project and posting it on Facebook (just click the "Share" button on the project page).
+
+Thank you for supporting <%= @donation.project.cp.andand.display_name -%>’s project and Citizen Effect. 100% of your donation (less credit card fees) goes towards the specific project you have supported. Thanks for being the solution!
+
+<% end -%>
+<% else -%>
+Thank you for your generous gift of <%= number_to_currency(@donation.actual_amount_in_dollars) -%> to to Citizen Effect.
+ 
+Citizen Effect’s mission is to empower anyone to be a Philanthropist and allow people to make a real and significant change in the world. Your gift is crucial to helping us make that happen. 
+ 
+In the coming year, we will be helping hundreds of Citizen Philanthropists connect with communities in need around the world. Hundreds of small but critical projects will be completed and tens of thousands of people will be able to lead a more self-reliant and sustainable life. 
+
+Thank you again for believing in Citizen Effect and our work. We could not do it without you.
+<% end -%>
+
+The Citizen Effect Team
+
+
+Payment Details
+Order Number: <%= @donation.order_id %>
+Subtotal: <%= number_to_currency(@donation.amount_in_dollars) %>
+<% if @donation.project -%>
+<% if @donation.campaign_code == Donation::SNAPFISH_CARD && @donation.project.enable_card_donation -%>
+Holiday Card: <%= number_to_currency(@donation.project.card_donation_cost_in_usd) %>
+Tip: <%= number_to_currency(@donation.actual_amount_in_dollars - @donation.amount_in_dollars - @donation.project.card_donation_cost_in_usd) %>
+<% else -%>
+Tip: <%= number_to_currency(@donation.actual_amount_in_dollars - @donation.amount_in_dollars) %>
+<% end -%>
+<% end -%>
+Total: <%= number_to_currency(@donation.actual_amount_in_dollars) %>
+
+Billing Address
+<%= @donation.first_name.strip -%> <%= @donation.last_name.strip %>
+<%= @donation.address1.strip %>
+<% unless @donation.address2.blank? -%>
+<%= @donation.address2.strip %>
+<% end -%>
+<%= @donation.city.strip -%>, <%= @donation.state.strip -%> <%= @donation.zip.strip -%> <%= @donation.country.strip %>
+
+Email: <%= @donation.email.strip %>
+
+Citizen Effect is a 501(c)(3) nonprofit organization registered in Washington, DC (Federal Tax ID #45-0583035). No goods or services were provided in return for this contribution. Donations made to Citizen Effect and its projects are tax-deductible for U.S. taxpayers to the extent allowed by law. Please retain this letter for your tax record.
+

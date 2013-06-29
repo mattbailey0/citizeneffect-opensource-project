@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+params: (domain, name)
+is_singleton: false
+block_params: 
+name: remove_cookie
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Remove the cookie with the given domain and name (Celerity only)
+- !ruby/struct:SM::Flow::P 
+  body: '@param [String] domain @param [String] name'
+- !ruby/struct:SM::Flow::P 
+  body: '@raise [CookieNotFoundError] if the cookie doesn''t exist'
+full_name: Celerity::Browser#remove_cookie
+visibility: public
+aliases: []
+

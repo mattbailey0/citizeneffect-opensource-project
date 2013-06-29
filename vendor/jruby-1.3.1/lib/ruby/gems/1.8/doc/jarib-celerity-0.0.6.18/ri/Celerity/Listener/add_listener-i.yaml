@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+params: (type, &block)
+is_singleton: false
+block_params: 
+name: add_listener
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Add a listener block for one of the available types. @see Celerity::Browser#add_listener
+full_name: Celerity::Listener#add_listener
+visibility: public
+aliases: []
+

@@ -1,0 +1,15 @@
+= link_to '&laquo; Back to the Project Page', [:partner_view, :admin, @project]
+
+%h1
+  Add Progress Report
+%h3
+  = h "Project: #{@project.name}"
+
+- form_for([:admin, @project, @partner_project_progress_report]) do |f|
+  = f.error_messages
+  %table.form-table{:border => "0", :cellspacing => "0", :cellpadding => "0"}
+    = render :partial => "form", :locals => { :f => f }
+
+    %tr
+      %td.form-submit{:colspan => "2"}
+        = f.submit 'Add Progress Report'

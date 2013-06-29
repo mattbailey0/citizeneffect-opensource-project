@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+params: ()
+is_singleton: false
+block_params: 
+name: visible?
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Check if the element is visible to the user or not. Note that this only takes
+    the _style attribute_ of the element (and its parents) into account - styles from
+    applied CSS is not considered.
+- !ruby/struct:SM::Flow::P 
+  body: '@return [boolean]'
+full_name: Celerity::Element#visible?
+visibility: public
+aliases: []
+

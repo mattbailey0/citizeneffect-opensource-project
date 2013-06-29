@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>DETROIT 4 DETROIT | PARTNERS</title>
+<style type="text/css">
+<!--
+body {
+	background-color: #06C;
+	background-image: url(/images/detroit4detroit/white_bar2.png);
+	background-position: left top;
+	background-repeat: repeat-x;
+}
+-->
+</style>
+<link href="/stylesheets/detroit4detroit/partners.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+<!--
+function submitForm() {
+	document.getElementById('new_partner_inquiry_form').submit();
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+</head>
+
+
+<body onload="MM_preloadImages('/images/detroit4detroit/im_in2.jpg')">
+<div id="wrapper">
+
+  <div id="logo"><img src="/images/detroit4detroit/blank.png" name="home" width="501" height="138" border="0" align="middle" usemap="#homeMap" id="home" />
+    <map name="homeMap" id="homeMap">
+      <area shape="rect" coords="52,3,441,122" href="/detroit4detroit" />
+    </map>
+  </div>
+
+  <div id="city">
+    <div  id="readmore">
+      <span class="header">PARTNERS</span>
+       <br />
+        <span class="small_header">
+          <a href="about" class="small_header">ABOUT</a>
+        </span>
+        <br />
+        <br />
+       
+      </span>
+      
+  </div>
+
+  <div id="divider"></div>
+
+  <div id="text">
+    <span class="bodytext">Over the next year, Detroit4Detroit will bring 150 passionate Detroit citizens together with 150 critical Detroit projects. We are looking for five non-profit partners to provide these projects. Read below and nominate your favorite Detroit nonprofit.
+    </span>
+    <br />
+    <br />
+    <span class="readmore">What it takes to be a Detroit4Detroit partner:
+    </span>
+    <br />
+    <span class="bodytext">Partners need to be registered 501(c)(3) nonprofits who have been working in Detroit, MI for at least three years. Their work must include community-driven initiatives meeting the basic needs of the local residents. For example, work that address health, shelter, job skills, food security, urban revitalization and education all fit the bill.
+      <br />
+      <br />
+      Each partner must be able to provide between 15 and 45 projects. Some of the projects can be duplicated, but we need organizations that have a breadth of projects so there is a good selection for passionate citizens to choose from. Importantly, each project must stand on its own. For example, if someone raises $5,000 for a project, it is assured of getting done. Projects must range from $1,000 and $10,000 to implement. Why? That is the comfort range for citizens who lead fundraising for the projects.
+      <br />
+      <br />
+      Organizations need not be large but must be well organized so they can manage the projects developed with Detroit4Detroit. Organizations must  also be able to measure the impact of the projects and periodically report to Detroit4Detroit on their progress.
+      <br />
+      <br />
+      Nonprofits have existing networks that are motivated to help, so Detroit4Detroit partners must promote their Detroit4Detroit projects to their existing networks. Nothing is more valuable than converting an existing volunteer into a $5,000 fundraiser. Being part of Detroit4Detroit will drive hundreds of new donors to your organization.
+    </span>
+    <br />
+    <br />
+  </div>
+
+    <div id="text">
+      <span class="readmore">Know a great non-profit?
+      </span>
+      <br />
+      <span class="bodytext">We want to work with all the great nonprofits of Detroit, but we have to start somewhere. We are selecting the first wave of partners in November 2011 and will have the first projects identified and ready by December 31, 2011. Recruitment of citizen fundraisers begins January 2012 and fundraising will commence in March. By the end of 2012, 150 projects will be funded. Learn more at <a href="http://citizeneffect.org/" target="_blank" class="bodytext">www.citizeneffect.org</a>.
+      </span>
+      <br />
+      <br />
+
+      <% form_for(@partner_inquiry_form, :url => detroit4detroit_partners_thankyou_path, :method => :post,
+	                            :html => {:style => "margin:0px; padding:0px;"} ) do |f| %>
+	    <%= f.error_messages %>
+	    <%#= f.hidden_field :campaign_code %>
+
+
+      <form id="form1" name="form1" method="post" action="">
+        <span class="bodytext">To nominate an organization fill out the form below.
+        </span>
+
+
+        <span class="readmore">
+          <br />
+          <br />
+          Your Name:
+        </span>
+        <br />
+        <label>
+          <%= f.text_field :submitter_name %>
+        </label>
+        <br />
+        <br />
+        <span class="readmore">Your Email:
+        </span>
+        <br />
+        <label>
+          <%= f.text_field :submitter_email %>
+        </label>
+        <br />
+        <span class="readmore">
+          <br />
+          Name of Organization:
+        </span>
+        <br />
+        <label>
+          <%= f.text_field :organization %>
+        </label>
+        <br />
+        <span class="readmore">
+          <br />
+          Website:
+        </span>
+        <br />
+        <label>
+          <%= f.text_field :organization_website %>
+        </label>
+        <br />
+        <span class="readmore">
+          <br />
+          Organization Phone Number:
+        </span>
+        <br />
+        <label>
+          <%= f.text_field :organization_phone_number %>
+        </label>
+        <br />
+        <br />
+        <span class="readmore">Contact at Organization
+          <br />
+          (if different from above):
+        </span>
+        <br />
+        <label>
+          <%= f.text_field :contact_name %>
+          <br />
+          <br />
+          <span class="readmore">Contact Email:
+          </span>
+        </label>
+        <br />
+        <label>
+          <%= f.text_field :contact_email %>
+          <br />
+          <span class="readmore">
+            <br />
+            Short Description:
+          </span>
+        </label>
+        <span class="readmore">
+        </span>
+        <br />
+        <label>
+          <%= f.text_area :description %>
+        </label>
+        <br />
+        <a href="javascript:submitForm()" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('join_us','','/images/detroit4detroit/submit2.jpg',1)"><img src="/images/detroit4detroit/submit.jpg" name="join_us" width="90" height="30" border="0" id="join_us" /></a>
+		  <% end %>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+

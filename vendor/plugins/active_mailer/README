@@ -1,0 +1,75 @@
+ActiveMailer
+============
+
+Introduction goes here.
+
+
+Example
+=======
+
+# need the users table
+class CreateActiveMailerTables < ActiveRecord::Migration
+  def self.up
+    create_table :email_users do |t|
+      t.string :email_address
+      t.timestamps
+    end
+    
+    create_table :email_user_associations do |t|
+      t.references :email_user
+      t.string :emailable_type
+      t.integer :emailable_id
+      t.timestamps
+    end
+  end
+
+  def self.down
+    drop_table :email_users
+    drop_table :email_user_associations
+  end
+end
+
+
+
+# sample active mailer migration
+class CreateNotificationEmail < ActiveRecord::Migration
+  def self.up
+    create_active_mailer_table :notification_emails do |t|
+      t.integer :registration_id
+      t.string  :kind
+      t.timestamps
+    end
+  end
+
+  def self.down
+    drop_table :notification_emails
+  end
+end
+
+
+Copyright (c) 2009 Matt Gordon, released under the MIT license
+
+
+#sender_id is already taken, which is ghetto. make sender polymorphic and let them decide
+#make a generator
+#make recipients polymorphic
+#automatically make the email_user and association tables
+#path to default erb template is ghetto
+
+# I automatically make a template_variable for every attribute of the table, but if you forget and have
+  `foo` as an attribute on your class along with `template_variable :foo` in your AM object then
+  the object will mysteriously refuse to set the attribute.
+
+# global to, cc, bcc feature
+# send! should set errors not throw exceptions
+
+#make logging easier
+
+#can end up with duplicates in template_variable (and maybe mailer_variable); possibly caused by
+ using reload! in console. Have to explciitly use template_variable(?)
+
+# template variables aren't implemented yet. it just makes the accessor and doesn't provide it to the email
+
+# rendered_contents contains what was actually sent, we should make it an option to store it instead of 
+  making it your job every time
+

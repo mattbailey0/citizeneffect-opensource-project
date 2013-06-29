@@ -1,0 +1,15 @@
+<div class="component-header-full">
+	<h3>OTHER PROJECTS YOU MIGHT LIKE</h3>
+</div>
+		
+<!-- full-width carousel -->
+<div class="box-full-top"></div>
+<div class="box-full-middle">
+	<div class="header"><h4>&nbsp;</h4></div>
+  <ul class="carousel3 jcarousel-skin-tango">
+    <%= render :partial => "projects/carousel_3_project", 
+               :collection => @project.andand.people_who_liked_this_project_also_liked.andand.top_10 %>
+  </ul>
+	<div class="clear"></div>
+</div>
+<div class="box-full-bottom"></div>

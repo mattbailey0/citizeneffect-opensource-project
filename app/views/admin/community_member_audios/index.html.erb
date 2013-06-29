@@ -1,0 +1,27 @@
+<%= link_to '&laquo; Back to the Community Member Profile Page', [:edit, :admin, @project, @community_member_profile] %>
+
+<h1>Listing Community Member Audios</h1>
+
+<div class="new-button">
+  <%= link_to '(+) Add Audio to Community Member', [:new, :admin, @community_member_profile, :community_member_audio] %>
+</div>
+
+<table cellpadding="0" cellspacing="0" class="index-list">
+  <tr class="index-list-header">
+    <th>Community member profile</th>
+    <th>Audio file name</th>
+    <th>Caption</th>
+    <th colspan="3">Actions</th>
+  </tr>
+
+<% @community_member_audios.each do |community_member_audio| %>
+  <tr>
+    <td><%=h community_member_audio.community_member_profile.andand.name -%></td>
+    <td><%= link_to h(community_member_audio.audio.andand.original_filename), community_member_audio.audio.andand.url, :target => "_blank" -%></td>
+    <td><%=h community_member_audio.caption -%></td>
+    <td><%= link_to 'Show', [:admin, @community_member_profile, community_member_audio] %></td>
+    <td><%= link_to 'Edit', [:edit, :admin, @community_member_profile, community_member_audio] %></td>
+    <td><%= link_to 'Destroy', [:admin, @community_member_profile, community_member_audio], :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>

@@ -1,0 +1,17 @@
+<h1>Viewing Project Type</h1>
+<p>
+  <b>Name:</b>
+  <%=h @project_type.name %>
+</p>
+
+<p>
+  <strong>Current Picture:</strong><br />
+  <% if @project_type.icon.blank? -%>
+    None
+  <% else -%>
+    <%= image_tag @project_type.icon.url %>
+  <% end -%>
+</p>
+
+<%= link_to 'Edit', edit_admin_project_type_path(@project_type) %> |
+<%= link_to 'Back', admin_project_types_path %>

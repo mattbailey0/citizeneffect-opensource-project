@@ -1,0 +1,13 @@
+<p>
+  <b>Project type:</b>
+  <%=h @project_type_association.project_type.name %>
+</p>
+
+<p>
+  <b>Project:</b>
+  <%=h @project_type_association.project.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_admin_project_project_type_association_path(@project, @project_type_association) %> |
+<%= link_to 'Back', admin_project_project_type_associations_path(@project) %>

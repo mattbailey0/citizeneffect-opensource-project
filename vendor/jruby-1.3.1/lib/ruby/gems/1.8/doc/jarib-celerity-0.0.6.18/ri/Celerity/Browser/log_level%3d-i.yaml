@@ -1,0 +1,15 @@
+--- !ruby/object:RI::MethodDescription 
+params: (level)
+is_singleton: false
+block_params: 
+name: log_level=
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Set Java log level (default is :warning, can be any of :all, :finest, :finer,
+    :fine, :config, :info, :warning, :severe, :off)
+- !ruby/struct:SM::Flow::P 
+  body: '@param [Symbol] level The new log level.'
+full_name: Celerity::Browser#log_level=
+visibility: public
+aliases: []
+

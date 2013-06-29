@@ -1,0 +1,4 @@
+  <tr>
+    <td class="form-label"><%= f.label :project_type_id %></td>
+    <td><%= f.collection_select :project_type_id, ProjectType.all, :id, :name, :prompt => true %></td>
+  </tr>

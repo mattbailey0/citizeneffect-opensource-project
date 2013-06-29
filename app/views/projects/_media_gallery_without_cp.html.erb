@@ -1,0 +1,11 @@
+
+<% if !@project.photos.blank? || !@project.videos.blank? -%>
+		<div class="component-header-full">
+			<h3>MEDIA GALLERY</h3>
+		</div>
+		
+    <%= render :partial => "projects/photo_gallery_without_cp" %>
+		
+    <%= render :partial => "projects/video_gallery_without_cp" %>
+<!-- 		<div class="box-full-bottom"></div> -->
+<% end %>

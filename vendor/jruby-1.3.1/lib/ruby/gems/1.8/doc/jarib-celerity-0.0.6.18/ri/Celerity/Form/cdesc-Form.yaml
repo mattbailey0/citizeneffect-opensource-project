@@ -1,0 +1,31 @@
+--- !ruby/object:RI::ClassDescription 
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: Container
+name: Form
+constants: 
+- !ruby/object:RI::Constant 
+  name: TAGS
+  value: '[Identifier.new(''form'')]'
+  comment: 
+- !ruby/object:RI::Constant 
+  name: ATTRIBUTES
+  value: BASE_ATTRIBUTES | [:action, :method, :enctype, :accept, :name, :onsubmit,
+    :onreset, :target, :'accept-charset']
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: HTML 4.01 Transitional DTD
+- !ruby/object:RI::Constant 
+  name: DEFAULT_HOW
+  value: ":name"
+  comment: 
+comment: 
+attributes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: submit
+full_name: Celerity::Form
+superclass: Element
+class_methods: []
+

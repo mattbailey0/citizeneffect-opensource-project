@@ -1,0 +1,8 @@
+  <tr>
+    <td class="form-label"><%= f.label :focus_area_id %></td>
+    <td><%= f.collection_select :focus_area_id, FocusArea.all, :id, :name, :prompt => true %></td>
+  </tr>
+<!--   <tr> -->
+<!--     <td class="form-label"><%= f.label :partner_id %></td> -->
+<!--     <td><%= f.text_field :partner_id %></td> -->
+<!--   </tr> -->

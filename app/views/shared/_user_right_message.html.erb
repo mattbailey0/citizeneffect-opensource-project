@@ -1,0 +1,9 @@
+<div class="people<%= last_class(object, last) -%>">
+	<div class="left"><%= link_to image_tag(object.picture_url_thumb(:watched_project_cp), :alt => "", :width => "50", :height => "50"), object %></div>
+	<div class="right">
+		<p class="name"><%= link_to h(object.display_name), object, :class => 'content-blue bold px12' -%></p>
+		<p class="location"><%=h object.display_location -%></p>
+		<p class="link"><%= link_to "send member a message", message_user_path(object) -%></p>
+	</div>
+	<div class="clear"></div>
+</div>

@@ -1,0 +1,24 @@
+%table
+  %tr{:style => "font-weight:bold;"}
+    %td ID
+    %td Email
+    %td Last Name
+    %td First Name
+    - if @role.name == "cp"
+      %td State
+      %td Zipcode
+      %td Projects
+      %td Total Raised
+  - @user_role_associations.each do |user_role_association|
+    - user = user_role_association.user
+    %tr
+      %td= h user.id
+      %td= h user.email
+      %td= h user.last_name
+      %td= h user.first_name
+      - if @role.name == "cp"
+        %td= h user.state_code
+        %td= h user.zip
+        %td= h user.cped_projects.count
+        %td= h user.money_raised_in_usd
+

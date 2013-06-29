@@ -1,0 +1,16 @@
+= render :partial => "title"
+= render :partial => "state_progress"
+
+#summary_container
+  = render :partial => "summary"
+
+#completion_items
+  #before_completion_items
+    = render :partial => "before_completion_items"
+  #after_completion_items
+    = render :partial => "after_completion_items"
+
+.clear
+
+#project_reports
+  = render :partial => "project_reports"

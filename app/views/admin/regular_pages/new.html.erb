@@ -1,0 +1,41 @@
+<h1>New Regular Page</h1>
+
+<% form_for([:admin, @regular_page]) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :permalink_text, "Permalink (letters, numbers, and dashes (-) only)" %><br />
+    <%= f.text_field :permalink_text %>
+  </p>
+  <p>
+    <%= f.label :meta_keywords, "Meta Keywords <em>(optional)</em>" %><br />
+    <%= f.text_field :meta_keywords %>
+  </p>
+  <p>
+    <%= f.label :meta_description, "Meta Description <em>(optional)</em>" %><br />
+    <%= f.text_field :meta_description %>
+  </p>
+  <p>
+    <%= f.label :content %><br />
+    <%= f.text_area :content %>
+  </p>
+  <p>
+    <%= f.submit 'Save as Draft' %>
+    <%= f.submit 'Save & Publish', :confirm => "Press OK to make this page available to the public." %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', admin_regular_pages_path %>
+
+<% javascript_tag do -%>
+  jQuery(document).ready(function($) 
+	{
+		var fckEditor = new FCKeditor('regular_page[content]');
+		fckEditor.BasePath = "/javascripts/bloggity/fckeditor/";
+		fckEditor.ReplaceTextarea();
+  });
+<% end -%>

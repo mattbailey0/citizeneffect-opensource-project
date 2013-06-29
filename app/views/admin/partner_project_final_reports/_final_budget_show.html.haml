@@ -1,0 +1,14 @@
+%p
+  %strong Budget file:
+  - unless report.final_budget.blank?
+    = link_to h(report.final_budget.andand.original_filename), report.final_budget.andand.url
+  - else
+    None
+
+%p
+  %strong Cost in local currency:
+  = h "#{report.final_cost_in_local_currency} #{@currency_type.andand.currency_code}"
+
+%p
+  %strong Cost in USD:
+  = h "#{report.final_cost_in_usd} USD"

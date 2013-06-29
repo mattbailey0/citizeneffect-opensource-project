@@ -1,0 +1,86 @@
+<% content_for(:page_title, "Sign In") %>
+
+<div class="breadcrumbs"></div>
+		
+<!-- main body copy -->
+<div id="wrapper-copy">
+		
+	<div class="component-header-full nopadtop">
+		<h3>ACCOUNT SIGN IN</h3>
+	</div> 		
+		
+	<!-- full-width component -->
+	<style type="text/css">
+		.difference_container{
+				width:100%;
+				background-color:#dbeaf2;
+				height:63px;
+				padding:25px 12px 0 0;
+				margin-left:-7px;
+				font-size:12px;
+		}
+		.large_text{
+				font-size:14px;
+		}
+		.difference{
+				padding-left:16px;
+		}
+		#account_signin{
+				width:350px;
+				padding:50px 0 0 75px;
+				padding-bottom:50px;
+				border-right:1px #ccc solid;
+		}
+		#account_signin p{
+				text-align:left;
+		}
+		#join_text{
+				text-align:center;
+				margin:0 auto;
+				width:200px;
+				padding:65px 0 0 155px;
+				font-size:12px;
+		}
+		.large_link{
+				font-size:16px;
+		}
+	</style>
+  <div class="box-full-middle" style="">
+    <div class="difference_container">
+      <p class="difference pad_left left">
+        <span class="bold large_text">WELCOME BACK</span><br />
+        We're glad to see you again!
+      </p>
+    </div>
+  </div>
+	<div id="account_signin_container" class="box-full-middle account-info pad_top">
+    <div id="account_signin" class="left">
+      <% form_tag session_path do -%>
+        <p class="">
+          <%= label_tag "login_page", "EMAIL" %>
+          <%= text_field_tag "login", @login, :id => "login_page", :class => "large" %>
+        </p>
+        <p class="">
+          <%= label_tag "password_page", "PASSWORD" %>
+          <%= password_field_tag "password", nil, :id => "password_page", :class => "large margin_right" %>
+          <%= link_to "Forgot Password?", forgot_password_path, :class => "blue" %>
+        </p>
+        <p>
+          <%= check_box_tag "remember_me", "1", @remember_me %>Remember Me
+        </p>
+        <%= image_submit_tag "sign-in.png", :class => "pad_top login_button" %>
+      <% end -%>
+    </div>
+    <div id="join_text" class="left">
+      <p>
+        <span class="bold">Don't have an account yet?</span><br />
+        <%= link_to "Join", signup_path, :class => "large_link" %><br /><br />
+        It's free and easy to sign up.
+      </p>
+    </div>
+    <div class="clear"></div>
+	</div>
+  
+	<div class="box-full-bottom"></div>
+	
+</div>

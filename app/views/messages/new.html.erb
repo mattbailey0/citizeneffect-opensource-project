@@ -1,0 +1,43 @@
+<% content_for(:page_title, "New Message") %>
+
+<div class="breadcrumbs">
+  <%= link_to "&laquo; back to profile", @user, :class => "breadcrumbs green" %>
+  <%= link_to "&laquo; back to inbox", user_messages_path(@user), :class => "breadcrumbs green" %>
+</div>
+
+<!-- main body copy -->
+<div id="wrapper-copy">
+			
+	<div class="component-header-full nopadtop">
+		<h3>NEW MESSAGE</h3>
+	</div> 	
+	<!-- full-width component -->
+	<div class="box-full-middle">
+		<div class="editform pad_top">
+      <% form_for @message, :url => user_messages_path(@user), 
+                  :html => {:style => "width:620px;height:260px;"} do |f| %>
+        <% content_for :form_errors do -%>
+          <%= f.error_messages %>
+        <% end -%>
+
+        <%= f.hidden_field :recipient_id %>
+			  <p class="right nopad lh18" style="width:556px">
+          <%=h @message.andand.recipient.andand.display_name %>
+        </p>
+        <label class="right">TO:</label>
+				<div class="clear"></div>
+				
+        <%= f.text_field :subject, :class => "pad_bottom right", :style => "width:550px;" %>
+        <%= f.label :subject, "SUBJECT:", :class => "right"  %>
+				<div class="clear"></div>
+				
+        <%= f.text_area :body, :class => "right margin_bottom", :style => "width:555px; height:160px;" %>
+        <%= f.label :body, "CUSTOM<br />MESSAGE:", :class => "block right" %>
+				<div class="clear"></div>
+
+        <%= image_submit_tag "btn_send.png", :class => "right send_message" %>
+      <% end -%>
+		</div>
+	</div>
+	<div class="box-full-bottom"></div>
+</div>

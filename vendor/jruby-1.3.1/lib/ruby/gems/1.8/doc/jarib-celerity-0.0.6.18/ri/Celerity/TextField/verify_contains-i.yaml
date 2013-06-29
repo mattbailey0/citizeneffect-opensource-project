@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+params: (expected)
+is_singleton: false
+block_params: 
+name: verify_contains
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: A boolean version of TextField#contains_text
+- !ruby/struct:SM::Flow::P 
+  body: '@param [String, Regexp] expected_text The text to look for. @return [boolean]'
+full_name: Celerity::TextField#verify_contains
+visibility: public
+aliases: []
+

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+params: (keys)
+is_singleton: false
+block_params: 
+name: send_keys
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: experimental - should be removed?
+full_name: Celerity::Browser#send_keys
+visibility: public
+aliases: []
+

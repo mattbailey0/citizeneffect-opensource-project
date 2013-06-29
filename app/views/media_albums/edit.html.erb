@@ -1,0 +1,108 @@
+<% content_for(:page_title, "Edit Media Albums For #{@project.name}") %>
+
+		<div class="breadcrumbs">
+      <%= link_to "&laquo; back to project page", @project, :class => "breadcrumbs green" %>
+
+		</div>
+		
+		<!-- main body copy -->
+		<div id="wrapper-copy">	<div class="component-header-full nopadtop">
+			<h3>ADD PROJECT PHOTOS</h3>
+		</div>
+		<!-- full-width component -->
+		<div class="box-full-middle social">
+      <% form_for [@project, @media_album], :html => { :multipart => true } do |form| %>
+			<h5>
+        <div class="right">
+          <%= link_to "add a new album", [:new, @project, :media_album], :class => "green disc_desc" %>
+          <span class="disc">+</span>
+        </div>
+        <%=h @project.name_with_location %>
+      </h5>
+
+<% content_for :form_errors do -%>
+  <%= form.error_messages %>
+<% end -%>
+			
+			<div class="pad_full bg_ltblue margin_top">
+				<div class="primary_content_wrapper">
+                   <span class="strong">
+                     Album Title:
+                   </span>
+                   <%= form.text_field :title, :class => "large" %>
+				</div>
+				<div class="clear"></div>
+			</div>
+			
+      <div id="media_album_medias">
+        <% form.fields_for :media_album_medias do |media_album_media_form|%>
+          <%= render :partial => "media_album_media", :object => media_album_media_form.object, :locals => { :form => media_album_media_form, :album_form => form } %>
+        <% end %>
+      </div>
+      <%= sortable_element "media_album_medias", :tag => "div", :handle => "drag_handle", :url => [:sort, @project, @media_album] unless @media_album.new_record? %>
+
+            
+            <div class="upload_wrapper blue">
+            	<div class="pad_full bg_ltblue margin_top">
+
+					<div class="primary_content_wrapper bold" style="width: 100%;">
+                		Add another File
+                    <%#= link_to image_tag("select_file.gif", :class => "middle"), "#", :onclick => "$('#upload_field').click(); return false;" %>
+                    
+                    <% form.fields_for :media_album_medias, form.object.media_album_medias.build(:media => MediaAlbumPhoto.new) do |media_album_media_form|%>
+                      <% media_album_media_form.fields_for :media do |media_form| %>
+                        <%= media_form.hidden_field :type, :value => "MediaAlbumPhoto" %>
+                        <%= media_form.file_field :photo, :id => "upload_field", :onchange => "$(this).closest('form').submit();" %>
+                      <% end %>
+                    <% end %>
+
+                            &nbsp;
+                            &nbsp;
+                    or
+                            &nbsp;
+                            &nbsp;
+
+<!--                     				<span class="middle left lh30">YouTube Video URL</span> -->
+                    				<span class="middle lh30">YouTube Video URL</span>
+                            &nbsp;
+                    <% form.fields_for :media_album_medias, form.object.media_album_medias.build(:media => MediaAlbumVideo.new) do |media_album_media_form|%>
+                      <% media_album_media_form.fields_for :media do |media_form| %>
+                        <%= media_form.hidden_field :type, :value => "MediaAlbumVideo" %>
+                        <%= media_form.text_field :url, :class => "middle large" %>
+                      <% end %>
+                    <% end %>
+                            <%= form.submit "Add" %>
+
+                    </div>
+					<div class="clear"></div>
+                </div>
+                 <div class="album_option_wrapper pad_left pad_top">
+
+                 	<span class="bold">Have this album show up in <span class="normal">(pick all that apply)</span></span>
+                    	<p class="pad_top">
+                        <% @project.events.each do |event| %>
+                          <%= form.check_box :project_event_ids, { :multiple => true, :id => "media_album_project_event_ids_#{event.id}" }, event.id, "" %>
+                          <%= form.label "project_event_ids_#{event.id}", "An Event &raquo; " + link_to(h(event.name), [@project, event]), :class => "pad_left inline" %>
+                          <br/>
+                        <% end %>
+                        </p>
+                        <p>
+
+<!--                     		<input type="checkbox" name="" /><label class="pad_left inline">A Blog Post &raquo; </label> -->
+                        <% @project.blog.blog_posts.each do |blog_post| %>
+                          <%= form.check_box :blog_post_ids, { :multiple => true, :id => "blog_post_ids_#{blog_post.id}" }, blog_post.id, "" %>
+                          <%= form.label "blog_post_ids_#{blog_post.id}", "A Blog Post &raquo; " + link_to(h(blog_post.title.blank? ? "(no title)" : blog_post.title), [@project.blog, blog_post]), :class => "pad_left inline" %>
+                          <br/>
+                        <% end %>
+                        </p>
+                 </div>
+            </div>
+			<div class="center"><%= image_submit_tag "upload_pics_save_changes.gif" %></div>
+      <% end %>
+		</div>
+		<div class="box-full-bottom"></div>
+
+		<%= render :partial => "project_albums" %>
+
+    <%= render :partial => "citizen_effect_albums" %>
+		</div>

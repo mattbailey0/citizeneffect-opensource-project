@@ -1,0 +1,31 @@
+%h1
+  New Featured Project
+- form_for([:admin, @featured_project], :html => { :multipart => true }) do |f|
+  = f.error_messages
+  %p
+    = f.label :title
+    %br
+    = f.text_field :title
+  %p
+    = f.label :caption
+    %br
+    = f.text_field :caption
+  %p
+    = f.label :url_identifier
+    (e.g. "http://citizeneffect.org/projects/josh_waterproject/")
+    %br
+    = f.text_field :url_identifier
+
+  %p
+    = f.label :picture, "Large Picture (629 x 391)"
+    %br
+    = f.file_field :picture
+
+  %p
+    = f.label :picture_thumbnail, "Thumbnail (67x67)"
+    %br
+    = f.file_field :picture_thumbnail
+
+  %p
+    = f.submit 'Create', :confirm => "Press OK to publish this Featured Project."
+= link_to 'Back', admin_featured_projects_path

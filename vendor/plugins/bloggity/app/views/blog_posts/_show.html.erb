@@ -1,0 +1,111 @@
+<%# Renders a blog post
+# -params-
+# blog_post: the blog post
+# header_style (optional): 'h1', 'h2', etc.
+# show_comment_count (optional): true or false
+-%>
+
+<% content_for :meta_description, (blog_post.excerpt.gsub(/<style[^>]*>.*?<\/style[^>]*>/im, "").gsub(/<\/?[^>]*>/, "")[0..250] + "...").strip %>
+<% image_url = blog_post.excerpt.scan(/src="([^"]*)"/).first %>
+<% image_url = blog_post.body.scan(/src="([^"]*)"/).first if image_url.blank? %>
+
+<% unless image_url.blank? %>
+<% content_for :meta_tags do %>
+<meta property="og:image" content="<%= image_url %>" />
+<link rel="image_src" href="<%= image_url %>" />
+<% end %>
+<% end %>
+
+<% 
+albums = []
+blog_post.media_albums.each do |ma|
+  if ma.album_cover
+    albums << {:album_cover => ma.album_cover, :album_title => ma.title }
+  end
+end 
+albums.compact! 
+%>
+
+<% header_style ||= 'h1'
+   show_comment_count ||= false %>
+	 
+<!-- projects needing donations -->
+<div class="component-wrapper">
+	<div class="component-header">
+		<h3><%= "(DRAFT) " unless blog_post.is_complete %><%= @blog.project ? header_text(@blog.project.name, :length => 43) : "CITIZEN EFFECT" %> BLOG</h3>
+	</div>
+	
+  <div class="component">
+		<ul class="blank">
+			<li class="left pad_right">
+				<h1 class="large"><%=h blog_post.title %></h1>
+				<h2>by <%=h blog_post.posted_by.display_name -%> on <%= blog_post.created_at.strftime("%B %d, %Y") -%></h2>
+			</li>
+			<li class="left"><%= image_tag blog_post_icon(blog_post) %></li>
+      
+			<li class="right">
+        <a href="#<%=h share_box_id(blog_post) %>" rel="facebox">
+					<%= image_tag("btn_share_stripped.png")%>
+        </a>
+      </li>
+		</ul>
+
+    <ul>
+    <li class="right">
+      <a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical" data-url="<%= ONEWELL_HOST + blog_named_link(blog_post) %>">Tweet</a>
+      <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+      <iframe src="http://www.facebook.com/plugins/like.php?href=<%= CGI.escape(ONEWELL_HOST + blog_named_link(blog_post)) %>&amp;layout=box_count&amp;show_faces=true&amp;width=55&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=65" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:55px; height:62px; margin-left:10px;margin-bottom:-2px;" allowTransparency="true"></iframe>
+    </li>
+    <li>    <%= link_to("leave a comment", "#disqus_thread", :class => "blog_read_more", "data-disqus-identifier" => blog_post.id) %> </li>
+    </ul>
+    
+
+	</div>
+
+	<div class="component morepad blog_article">
+    <iframe id="<%= dom_id(blog_post) %>" src="<%= iframe_blog_blog_post_path(blog_post.blog, blog_post) %>" 
+            style="width:100%;"></iframe>
+    
+		<p class="readmore">
+      <a class="orange_bottom" href="#<%=h share_box_id(blog_post) %>" rel="facebox">share</a>
+      <% if blog_logged_in? && current_user.can_blog?(@blog.id) -%>
+        | <%= link_to "edit", [:edit, @blog, blog_post] %> |
+        <%= link_to "delete", blog_named_link(blog_post, :destroy), { :method => :delete,
+              :confirm => "Are you sure you want to delete this post?" } %>
+      <% end %>
+    </p>
+	</div>
+</div>
+<div class="component-bottom"></div> 
+
+<%= render :partial => "shared/share_box", :locals => { :shareable => blog_post }%>
+
+    
+    
+<% if !albums.blank? -%>
+<!-- blog post photo albums -->
+<div class="component-top"></div>
+<div class="component-wrapper">
+	<div class="component thinpad">
+		<div class="header">
+			<h4>PHOTOS</h4>
+		</div>
+
+    <div class="carousel_padder">
+			<div class="prev video fluid">
+        <a href=""><img src="/images/btn_arrow_left.png" width="24" height="24" alt="" /></a>
+      </div>
+      <ul id="video-gallery-carousel" class="external_control_carousel_3 media_carousel_with_cp">
+        <% albums.each do |album_hash| %>
+          <%= render :partial => "projects/photo", :locals => { :photo => album_hash[:album_cover], :display_title => album_hash[:album_title], :image_size_name => :carousel_3 } %>
+        <% end %>
+      </ul>
+			<div class="next video fluid">
+        <a href=""><img src="/images/btn_arrow_right.png" width="24" height="24" alt="" /></a>
+      </div>
+	  </div>
+		<div class="clear"></div>
+	</div>
+</div>
+<div class="component-bottom"></div> 
+<% end %>

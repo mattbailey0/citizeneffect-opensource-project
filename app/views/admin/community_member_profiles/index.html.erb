@@ -1,0 +1,23 @@
+<h1>Project Community Members</h1>
+<h3>Project: <%=h @project.name %></h3>
+<div class="new-button">
+  <%= link_to '(+) Add Community Member to Project', new_admin_project_community_member_profile_path(@project) %>
+</div>
+
+<table cellpadding="0" cellspacing="0" class="index-list">
+  <tr class="index-list-header">
+    <th>Name</th>
+    <th>Biography</th>
+    <th colspan="3">Actions</th>
+  </tr>
+
+<% @community_member_profiles.each do |community_member_profile| %>
+  <tr>
+    <td><%=h community_member_profile.name %></td>
+    <td><%=h community_member_profile.biography %></td>
+    <td><%= link_to 'Show', admin_project_community_member_profile_path(@project, community_member_profile) %></td>
+    <td><%= link_to 'Edit', edit_admin_project_community_member_profile_path(@project, community_member_profile) %></td>
+    <td><%= link_to 'Destroy', admin_project_community_member_profile_path(@project, community_member_profile), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>

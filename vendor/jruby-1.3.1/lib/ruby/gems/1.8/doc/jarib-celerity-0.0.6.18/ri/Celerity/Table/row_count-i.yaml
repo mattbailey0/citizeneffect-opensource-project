@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+params: ()
+is_singleton: false
+block_params: 
+name: row_count
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: The number of rows in the table @return [Fixnum]
+full_name: Celerity::Table#row_count
+visibility: public
+aliases: []
+

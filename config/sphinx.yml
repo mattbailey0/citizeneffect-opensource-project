@@ -1,0 +1,6 @@
+development:
+  bin_path: '/usr/local/bin'
+production:
+  address: 
+  bin_path: '/usr/bin'
+

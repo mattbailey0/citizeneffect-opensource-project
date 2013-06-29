@@ -1,0 +1,11 @@
+<h1>New approvable_association</h1>
+
+<% form_for([:admin, @approvable_association]) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', admin_approvable_associations_path %>

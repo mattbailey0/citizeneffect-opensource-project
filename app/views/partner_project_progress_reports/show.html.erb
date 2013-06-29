@@ -1,0 +1,101 @@
+<% content_for(:page_title, "Progress Report For #{@project.name}") %>
+
+<div class="clear"></div>
+
+<div class="breadcrumbs">
+  <%= link_to "&laquo; back to project", @project, :class => "breadcrumbs green" %>
+</div>
+
+<div id="wrapper-copy">
+  <div class="component-header-full nopadtop">
+    <h3>Progress Report</h3>
+  </div>
+  <div class="box-full-middle">
+    <div class="pad_top pad_left">
+      
+      <p><em>Posted: <%=h @partner_project_progress_report.created_at.strftime("%m/%d/%Y") %></em></p>
+        
+      <hr />
+      <p><strong>Construction</strong></p>
+      <hr />
+
+      <p>
+        <strong>Start date</strong><br />
+        <%=h @partner_project_progress_report.start_date.strftime("%m/%d/%Y") %>
+      </p>
+
+      <p>
+        <strong>Expected completion date</strong><br />
+        <%=h @partner_project_progress_report.expected_completion_date.strftime("%m/%d/%Y") %>
+      </p>
+
+      <% unless @partner_project_progress_report.what_has_been_constructed.blank? %>
+      <p>
+        <strong>What Has Been Constructed to Date</strong><br />
+        <%= auto_link(simple_format(h(@partner_project_progress_report.what_has_been_constructed))) %>
+      </p>
+      <% end %>
+
+      <% unless @partner_project_progress_report.what_has_been_purchased.blank? %>
+      <p>
+        <strong>What Has Been Purchased for the Project</strong><br />
+        <%= auto_link(simple_format(h(@partner_project_progress_report.what_has_been_purchased))) %>
+      </p>
+      <% end %>
+
+      <% unless @partner_project_progress_report.number_of_construction_jobs_created.blank? %>
+      <p>
+        <strong>Jobs Created During Construction</strong><br />
+        <%= h(@partner_project_progress_report.number_of_construction_jobs_created) %>
+      </p>
+      <% end %>
+
+      <% unless @partner_project_progress_report.construction_job_breakdown.blank? %>
+      <p>
+        <strong>Description and breakdown of jobs </strong><br />
+        <%= auto_link(simple_format(h(@partner_project_progress_report.construction_job_breakdown))) %>
+      </p>
+      <% end %>
+      
+      
+      <hr />
+      <p><strong>Impact (to date)</strong></p>
+      <hr />
+
+      
+      <% unless @partner_project_progress_report.lives_directly_impacted.blank? %>
+      <p>
+        <strong>Total # Lives Directly Impacted </strong><br />
+        <%= h(@partner_project_progress_report.lives_directly_impacted) %>
+      </p>
+      <% end %>
+      
+      <% unless @partner_project_progress_report.primary_benefits_summary.blank? %>
+      <p>
+        <strong>Direct Impact/Primary Benefits</strong><br />
+        <%= auto_link(simple_format(h(@partner_project_progress_report.primary_benefits_summary))) %>
+      </p>
+      <% end %>
+
+      
+      <% unless @partner_project_progress_report.lives_indirectly_impacted.blank? %>
+      <p>
+        <strong>Total # Lives Indirectly Impacted </strong><br />
+        <%= h(@partner_project_progress_report.lives_indirectly_impacted) %>
+      </p>
+      <% end %>
+      
+      <% unless @partner_project_progress_report.extended_benefits_summary.blank? %>
+      <p>
+        <strong>Community-wide Impact/Extended Benefits</strong><br />
+        <%= auto_link(simple_format(h(@partner_project_progress_report.extended_benefits_summary))) %>
+      </p>
+      <% end %>
+      
+      
+      <%= render :partial => "shared/partner_project_report_downloads", :locals => { :report => @partner_project_progress_report } %>
+    </div>
+  </div>
+  <div class="box-full-bottom"></div>
+</div>
+<div class="clear">

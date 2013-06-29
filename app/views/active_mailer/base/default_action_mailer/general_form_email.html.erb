@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+<% if @general_form.source == "DETROIT4DETROIT-2011" %>
+  <head>
+    <title>Welcome to Detroit4Detroit!</title>
+  </head>
+  <body>
+ <% if @general_form.request && @general_form.request == "cp_application" %>
+    	<p>Hi <%= @general_form.first_name -%>,<br>&nbsp;</p>
+      <p>Thanks for joining #the150!  We are thrilled that you're bringing Citizen Philanthropy to Detroit in 2012 to have an impact where it counts.</p>
+      <p>We'll be contacting you soon to introduce ourselves and get you started with your favorite Detroit4Detroit project. It's important we get to know you so that your project is set up for success. Take a minute and <a href="http://app.fluidsurveys.com/s/Detroit4Detroit/">fill out this form</a> to give us insight to best work together. You'll hear from us within two business days of submitting your answers.</p>
+      <p>Questions or comments? You can get a hold of us at any time - just email  or call.</p>
+      <p>Congratulations on joining #the150!</p>
+      <p>The Detroit4Detroit Team</p>
+  <% elsif @general_form.request && @general_form.request == "organization_info"%>
+      <p>Hi <%= @general_form.first_name -%>,<br>&nbsp;</p>
+      <p>Thanks for your interest in getting involved with Detroit4Detroit!
+      <p>Whether you're ready to become a marketing, social media or corporate partner, we would love to have you join us in having an impact on Detroit.  Now that we're in touch, we'll follow up soon to learn more about you and your team and keep you updated on opportunities for organizations to support the 150.</p>
+      <p>Questions or comments? You can get a hold of us at any time - just email.</p>
+      <p>Thanks your support and we look forward to working with you!</p>
+      <p>The Detroit4Detroit Team</p>
+  <% else %>
+    	<p>Hi <%= @general_form.first_name -%>,<br>&nbsp;</p>
+      <p>Thanks for your interest in Detroit4Detroit!</p>
+      <p>Now that we're in touch, we'll keep you updated on new projects, upcoming events and stories of the impact that citizens just like you are having on Detroit.  </p>
+      <p>Questions or comments? You can get a hold of us at any time - just email .</p>
+      <p>We look forward to keeping you up to date on Detroit4Detroit!</p>
+      <p>The Detroit4Detroit Team</p>
+  <% end %>
+    </body>
+<% else %>
+  <head>
+    <title>[Citizen Effect] Confirmation Email</title>
+  </head>
+  <body>
+	  <p>Dear <%= @general_form.first_name -%>,<br>&nbsp;</p>
+
+	  <p>Thank you for registering!  We are thrilled that you have joined Citizen Effect to give back to our community! We'll be in touch shortly to talk about how we
+	  can have as big an impact as possible together.<br>&nbsp;</p>
+
+	  <p>If you have any questions for Citizen Effect, please don't hesitate to contact us at <a href="mailto:info@example.org">info@example.org</a> <br>&nbsp;</p>
+
+	  <p>Thank you for commitment and we look forward to working together!<br>&nbsp;</p>
+
+	  <p>The Citizen Effect Team</p>
+	</body>
+<% end %>
+</html>
+

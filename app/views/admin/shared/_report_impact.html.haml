@@ -1,0 +1,56 @@
+- extended = false if nil == extended
+
+%tr
+  %td{:colspan => "2"}
+    %strong Impact (to date)
+
+%tr
+  %td.fl Lives directly impacted
+  %td
+    %strong= f.label :lives_directly_impacted, "Total # Lives Directly Impacted*"
+    = f.text_field :lives_directly_impacted
+    
+%tr
+  %td.fl.no-pad
+    %strong= f.label :primary_benefits_summary, "Direct Impact/Primary Benefits*"
+  %td= f.text_area :primary_benefits_summary
+
+
+- if !extended
+  %tr
+    %td.fl Lives indirectly impacted
+    %td
+      = f.label :lives_indirectly_impacted, "Total # Lives Indirectly Impacted"
+      = f.text_field :lives_indirectly_impacted
+
+  %tr
+    %td.fl.no-pad= f.label :extended_benefits_summary, "Community-wide Impact/Extended Benefits"
+    %td= f.text_area :extended_benefits_summary
+
+- else
+  %tr
+    %td.fl Lives indirectly impacted
+    %td
+      %strong= f.label :lives_indirectly_impacted, "Total # Lives Indirectly Impacted*"
+      = f.text_field :lives_indirectly_impacted
+
+  %tr
+    %td.fl.no-pad
+      %strong= f.label :extended_benefits_summary, "Community-wide Impact/Extended Benefits*"
+    %td= f.text_area :extended_benefits_summary
+
+  %tr
+    %td.fl.no-pad= f.label :education_and_nutrition, "Education & Nutrition"
+    %td= f.text_area :education_and_nutrition
+
+  %tr
+    %td.fl.no-pad= f.label :improved_health
+    %td= f.text_area :improved_health
+
+  %tr
+    %td.fl.no-pad= f.label :agriculture_and_food
+    %td= f.text_area :agriculture_and_food
+
+  %tr
+    %td.fl.no-pad= f.label :clean_energy
+    %td= f.text_area :clean_energy

@@ -1,0 +1,17 @@
+- report = @partner_project_status_update
+
+= link_to '&laquo; Back to the Project Page', [:partner_view, :admin, @project]
+
+%h1 Viewing Partner Project Status Update
+
+= render :partial => "admin/shared/report_owner_show", :locals => { :report => report }
+
+%p
+  %strong Title of Status Update:
+  = report.title
+
+%p
+  %strong Updates from the Field:
+  = report.field_updates.to_s
+
+= link_to 'Edit Status Update', [:edit, :admin, @project, report]

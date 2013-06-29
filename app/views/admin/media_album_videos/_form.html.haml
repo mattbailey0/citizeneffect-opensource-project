@@ -1,0 +1,19 @@
+%tr
+  %td.fl= f.label :title
+  %td= f.text_field :title
+
+%tr
+  %td.no_pad= f.label :description
+  %td= f.text_area :description
+
+%tr
+  %td.fl= f.label :url
+  %td= f.text_field :url
+
+- unless @media_album_video.new_record?
+  %tr
+    %td.fl Existing Video
+    - unless @media_album_video.url.blank?
+      %td.no_pad= @media_album_video.embedded_html
+    - else
+      %td None

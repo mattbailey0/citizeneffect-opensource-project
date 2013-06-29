@@ -1,0 +1,119 @@
+<% content_for :form_errors do -%>
+  <%= f.error_messages %>
+<% end -%>
+          <div class="event-title"><%=h @project.name_with_location %></div>
+          <div class="event-field-intro">Create or edit a fundraising event for your project here.  Choose an event type, fill in a few basic details, and away you go!  After you create your event, check out our recommendations on how to promote it and make it a huge success.  Good luck!</div>
+          <div class="fundraiser_type_list_wrapper">
+					  <div class="event-field-section">
+					    <div class="event-field-title"><hr><h2>Required Information</h2></div>
+              <div class="event-section-intro">Fill in these fields to add your event to your project page and alert the Citizen Effect team of what you're planning.  We'll help however we can.</div>
+					    <div class="event-field-title">EVENT TYPE: (required)</div>
+				      <div class="event-field">
+		            <ul class="fundraiser_type_list" style="overflow:visible"><!--<ul class="external_control_carousel_4" style="overflow:visible">-->
+                  <% FundraiserType.active.each do |fundraiser_type| %>
+        						<li style="overflow:visible">
+                      <%= f.radio_button :fundraiser_type_id, fundraiser_type.id, :class => "event-radio" %>
+          					  <div class="fundraiser_type_list_content">
+          						  <div class="fundraiser_type_list_img"><%= image_tag(fundraiser_type.picture.url(:fundraiser_type_carousel), :width=>50) %></div>
+          						  <div class="event-field-title"><%= f.label "fundraiser_type_id_#{fundraiser_type.id}", fundraiser_type.name.upcase %></div>
+          						  <div class="event-field-description">
+                          <%=h fundraiser_type.description %>
+                          <%= link_to "more", fundraiser_type, :target => '_blank' %>
+                        </div>
+                      </div>
+        							<div class="clear"></div>
+        						</li>
+                  <% end %>
+		            </ul>
+				      </div>
+				    	<div class="clear"></div>
+            	<div class="event-block">
+                	<div class="event-field-title">EVENT NAME</div>
+                  <div class="event-field"><%= f.text_field :name, :class => "event-field-long" %></div>
+              </div>
+              <div class="event-block">
+                	<div class="event-field-title">EVENT DESCRIPTION</div>
+                  <div class="event-field"><%= f.text_field :short_description, :class => "event-field-long" %></div>
+              </div>
+              <div class="event-block ">
+                  <div class="event-field-title">IS THIS EVENT OPEN TO THE PUBLIC?</div>
+                  <div class="event-field"><%= f.select :public, options_for_select([['Yes - come one, come all!',true],['No - let\'s keep this exclusive.',false]],@project_event.andand.public)%><br/></div>
+              </div>
+              <div class="event-block time">
+                	<div class="event-time">START TIME:</div>
+                  <div class="event-time"><%= f.text_field :event_start_time, :id => "datetimeStart", :size => nil %></div>
+                	<div class="event-time">END TIME:</div>
+                  <div class="event-time"><%= f.text_field :event_end_time, :id => "datetimeEnd", :size => nil %></div>
+              </div>
+            </div>
+            <div class="event-field-section">
+					    <div class="event-field-title "><br/><hr><h2>Optional Information</h2></div>
+              <div class="event-section-intro">Fill in these fields to enable advanced features for your event, like Google Maps integration.</div>
+              <div class="event-block">
+              	<div class="event-field-title">ADDRESS</div>
+                  <div class="event-field"><%= f.text_field :address1, :class => "event-field-short" %></div>
+                  <div class="event-field"><%= f.text_field :address2, :class => "event-field-short" %></div>
+              </div>
+              <div class="event-block">
+              	<div class="event-field-title">CITY / TOWN</div>
+                <div class="event-field"><%= f.text_field :city, :class => "event-field-short" %></div>
+              </div>
+              <div class="event-block">
+              	<div class="event-field-title">STATE</div>
+                <div class="event-field"><%= f.text_field :state, :class => "event-field-short" %></div>
+              </div>
+              <div class="event-block">
+              	<div class="event-field-title">ZIPCODE</div>
+              	<div class="event-field"><%= f.text_field :zip, :class => "event-field-short" %></div>
+              </div>
+              <div class="event-block">
+              	<div class="event-field-title">COUNTRY</div>
+                <div class="event-field"><%= f.text_field :country, :class => "event-field-short" %></div>
+              </div>
+<!--                 	<div class="event-image"><img src="/images/no_pic_yet.jpg"></div> -->
+<!--                     <div class="upload-event-pic"><a href="#">upload/edit picture</a></div> -->
+<!--                     <div class="upload-pic-icon"><a href="#"><img src="/images/icon_add.png"></a></div> -->
+
+<% unless @project_event.new_record? %>
+<div id="map" class="mapDiv"></div>
+        <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=<%=h Geokit::Geocoders::google %>"
+
+          type="text/javascript"></script>
+        <script type="text/javascript">
+        //<![CDATA[
+          if (GBrowserIsCompatible()) {
+            var map = new GMap2(document.getElementById("map"));
+            map.setCenter(new GLatLng(<%=h @project_event.lat %>,<%=h @project_event.lng %>), 15);
+			      map.addControl(new GSmallMapControl());
+			      map.addControl(new GMapTypeControl());
+            var latlng = new GLatLng(<%=h @project_event.lat %>,<%=h @project_event.lng %>);
+            map.addOverlay(new GMarker(latlng));
+          }
+        //]]>
+        </script>
+<% end %>
+
+            </div> <!-- end second optional fields -->
+                <div class="event-albums">
+                	<div class="event-field-title albums">ALBUMS</div>
+                    <div class="event-albums-blue">
+                    	<div class="add-albums">
+                        <%= link_to "add a new album", new_project_media_album_path(@project, :media_album => { :project_event_ids => [@project_event.id]}), :target => "_blank" %>
+                      </div>
+
+                    	<div class="add-albums-icon">
+                        <%= link_to image_tag("icon_add.png"), new_project_media_album_path(@project, :media_album => { :project_event_ids => [@project_event.id]}), :target => "_blank" %>
+                      </div>
+                	</div>
+                </div>
+                <div class="event-button pad_top">
+                  <%= image_submit_tag "btn_add_update.png", :class => "add_update_event" %>
+                  <% unless @project_event.new_record? %>
+                    <div style="text-align: center;">
+                      or<br/>
+                      <%= link_to "Delete Event", [@project, @project_event], :method => :delete, :confirm => "Are you sure you want to delete this event?" %>
+                    </div>
+                  <% end %>
+                </div>
+</div>
+

@@ -1,0 +1,27 @@
+<h1>Listing Countries</h1>
+
+<div class="new-button">
+  <%= link_to '(+) Add Global Country', new_admin_country_path %>
+</div>
+
+<div class="xls_link">
+  <%= link_to "Download As Excel Spreadsheet", url_for({:format => :xls}.merge(params)) %>
+</div>
+
+<table cellpadding="0" cellspacing="0" class="index-list">
+  <tr class="index-list-header">
+    <th>ID</th>
+    <th>Name</th>
+    <th colspan="3">Actions</th>
+  </tr>
+
+<% @countries.each do |country| %>
+  <tr>
+    <td><%=h country.id %></td>
+    <td><%=h country.name %></td>
+    <td><%= link_to 'Show', [:admin, country] %></td>
+    <td><%= link_to 'Edit', edit_admin_country_path(country) %></td>
+    <td><%= link_to 'Destroy', [:admin, country], :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>

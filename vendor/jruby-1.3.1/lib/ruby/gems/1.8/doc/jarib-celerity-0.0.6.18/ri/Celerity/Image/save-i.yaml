@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+params: (filename)
+is_singleton: false
+block_params: 
+name: save
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Saves the image to the given file
+full_name: Celerity::Image#save
+visibility: public
+aliases: []
+
